@@ -1,7 +1,6 @@
 import React from "react";
 import { Fragment } from "react";
 import { ToastContainer } from "react-toastify";
-import Body from "../components/general/Body";
 import MainRoutes from "./MainRoutes";
 
 const Layout = () => {
@@ -9,12 +8,9 @@ const Layout = () => {
     <Fragment>
       {/* Toast Container */}
       <ToastContainer />
-      {/* Boady Braper */}
-      <Body>
-        {/* Header */}
-        <MainRoutes />
-        {/* Footer */}
-      </Body>
+      {/* Header */}
+      <MainRoutes />
+      {/* Footer */}
     </Fragment>
   );
 };
