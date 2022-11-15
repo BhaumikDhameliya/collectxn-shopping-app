@@ -7,3 +7,14 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+@font-face {
+  font-family: "Cera Pro";
+  src: url("../public/fonts/cera-pro/Cera\ Pro\ Regular.otf");
+}
+
+@layer base {
+  html {
+    font-family: 'Space Grotesk';
+  }
+}
