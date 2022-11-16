@@ -5,6 +5,8 @@ import img_signup from '../assets/img/img_signup.png'
 import logo_cxn from '../assets/img/logo_cxn.png'
 
 import { ReactComponent as RightArrow } from '../assets/svg/svg_arrow_right.svg'
+import { ReactComponent as EmailLogo } from '../assets/svg/logo_email.svg'
+import PopButton from '../components/buttons/PopButton'
 
 const VerifyOTP = () => {
   const navigate = useNavigate()
@@ -20,7 +22,55 @@ const VerifyOTP = () => {
           </div>
         </div>
         <div className="px-1/10 flex items-center justify-center h-full">
-          <div></div>
+          <div className="flex flex-col items-start gap-10 w-full">
+            <div>
+              <EmailLogo />
+            </div>
+            <div>
+              <p className="font-bold text-[31px]">OTP Verification</p>
+              <p className="font-cera-pro text-base">
+                We sent code to your email *****@gmail.com, please enter the
+                same here to login.
+              </p>
+            </div>
+            <div className="flex flex-col items-center gap-8 w-full">
+              <div className="flex flex-col gap-3">
+                <div className="flex flex-row items-start gap-4">
+                  <div className="flex-shrink">
+                    <input
+                      type="text"
+                      className="flex items-center justify-center px-6 py-3 border rounded-3xl border-black-mate w-full"
+                    />
+                  </div>
+                  <div className="flex-shrink">
+                    <input
+                      type="text"
+                      className="flex items-center justify-center px-6 py-3 border rounded-3xl border-black-mate w-full"
+                    />
+                  </div>
+                  <div className="flex-shrink">
+                    <input
+                      type="text"
+                      className="flex items-center justify-center px-6 py-3 border rounded-3xl border-black-mate w-full"
+                    />
+                  </div>
+                  <div className="flex-shrink">
+                    <input
+                      type="text"
+                      className="flex items-center justify-center px-6 py-3 border rounded-3xl border-black-mate w-full"
+                    />
+                  </div>
+                </div>
+                <p className="font-cera-pro text-base text-error text-center">
+                  Invalid OTP! Please try again.
+                </p>
+              </div>
+              <PopButton disabled>Verify</PopButton>
+              <p className="font-cera-pro font-medium text-xl text-center">
+                Resend in <span className="text-pink">15 sec</span>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
       <div className="hidden laptop:block laptop:w-1/2">
