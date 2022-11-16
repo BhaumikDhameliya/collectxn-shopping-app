@@ -5,13 +5,16 @@ import img_signup from '../assets/img/img_signup.png'
 import logo_cxn from '../assets/img/logo_cxn.png'
 
 import { ReactComponent as RightArrow } from '../assets/svg/svg_arrow_right.svg'
-import { ReactComponent as LogoGoogle } from '../assets/svg/logo_google.svg'
-import { ReactComponent as LogoFacebook } from '../assets/svg/logo_facebook.svg'
+
+import TextInput from '../components/TextInput'
+import PopButton from '../components/buttons/PopButton'
+import GoogleButton from '../components/buttons/GoogleButton'
+import FacebookButton from '../components/buttons/FacebookButton'
 
 const Signup = () => {
   const navigate = useNavigate()
   return (
-    <div className="flex h-screen">
+    <div className="flex min-h-screen">
       <div className="flex flex-col w-full laptop:w-1/2">
         <div className="h-20 flex items-center px-8">
           <div className="flex items-center gap-8">
@@ -30,35 +33,32 @@ const Signup = () => {
               <p className="font-cera-pro">
                 Join our community or{' '}
                 <span className="font-space-grotesk text-pink underline">
-                  <Link to="/login">login</Link>
+                  <Link to="/auth/login">login</Link>
                 </span>
               </p>
             </div>
-            <div className="pb-10 border-b flex items-center justify-between border-gray-light gap-3 mt-8">
-              <button className="flex flex-row justify-center items-center px-4 py-3 gap-[10px] h-12 border border-black rounded-[36px] w-1/2 hover:shadow-btn">
-                <LogoGoogle />
-                <span>Signup with Google</span>
-              </button>
-              <button className="flex flex-row justify-center items-center px-4 py-3 gap-[10px] h-12 border border-black rounded-3xl bg-[#1877F2] text-white w-1/2 hover:shadow-btn">
-                <LogoFacebook />
-                <span>Signup with Facebook</span>
-              </button>
+            <div className="pb-10 border-b flex items-center justify-between border-gray-light gap-3 mt-8 flex-wrap">
+              <GoogleButton text="Signup with Google" />
+              <FacebookButton text="Signup with Facebook" />
             </div>
-            <div>
-              <div>
-                <label htmlFor="">Full Name</label>
-                <input type="text" />
+            <div className="flex flex-col items-start">
+              <TextInput labelText="Full Name" />
+              <TextInput labelText="Email Address" />
+              <div className="mt-8 w-full">
+                <PopButton>Sign up</PopButton>
               </div>
-              <div>
-                <label htmlFor="">Email Address</label>
-                <input type="text" />
-              </div>
-              <button>Sign up</button>
             </div>
-            <div>
-              <p>
-                By creating an account, you agree to our Terms and have read and
-                acknowledge the Global Privacy Statement.
+            <div className="mt-8">
+              <p className="font-cera-pro font-medium text-black-mate text-base text-center">
+                By creating an account, you agree to{' '}
+                <span className="text-blue underline">
+                  <Link to="/">our Terms</Link>
+                </span>{' '}
+                and have read and acknowledge the Global{' '}
+                <span className="text-blue underline">
+                  <Link to="/">Privacy Statement</Link>
+                </span>
+                .
               </p>
             </div>
           </div>
