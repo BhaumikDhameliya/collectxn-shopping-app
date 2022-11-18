@@ -9,9 +9,11 @@ import { ReactComponent as HappyCustomers } from '../assets/svg/happy_customers.
 import { ReactComponent as ScrollToExplore } from '../assets/svg/scroll_to_explore.svg'
 import { ReactComponent as TrustedSuppliers } from '../assets/svg/trusted_suppliers.svg'
 import { ReactComponent as UniqueCollection } from '../assets/svg/unique_collection.svg'
+import { ReactComponent as Arrow } from '../assets/svg/arrow.svg'
 import PopButton from '../components/buttons/PopButton'
 
 import Crawler from '../components/Crawler'
+import ProductCard from '../components/Card/ProductCard'
 
 const Home = () => {
   return (
@@ -34,7 +36,7 @@ const Home = () => {
         </div>
       </div>
       <div className="bg-white">
-        <div className="relative bg-[#F1F1F1] rounded-2xl mt-24 mb-32 ml-20 w-2/3 pt-12 pb-20 pl-16">
+        <div className="relative bg-[#F1F1F1] rounded-2xl mt-24 mb-32 ml-[5%] w-2/3 pt-12 pb-20 pl-16">
           <div className="flex flex-col gap-7 max-w-[70%]">
             <p className="font-bold text-6xl ">
               Collectxn Focused on Providing Collectables In Best way
@@ -71,12 +73,26 @@ const Home = () => {
             <img src={collectxn_focused} alt="collectxn_focused" />
           </div>
         </div>
-        <div className="flex flex-col items-center gap-8">
-          <div className="flex justify-between items-center">
-            <p className="font-cera-pro font-bold text-2xl ">
+        <div className="flex flex-col items-center gap-8 px-[5%]">
+          <div className="flex justify-between items-center w-full">
+            <div className="font-cera-pro font-bold text-2xl ">
               Popular Right Now
-            </p>
-            <div className="flex gap-3 "></div>
+            </div>
+            <div className="flex gap-3 ">
+              <div className="p-2 border border-black-mate rounded-full">
+                <Arrow />
+              </div>
+              <div className="p-2 border border-black-mate rounded-full rotate-180">
+                <Arrow />
+              </div>
+            </div>
+          </div>
+          <div className="flex items-center gap-6 overflow-x-scroll no-scrollbar">
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
           </div>
         </div>
       </div>

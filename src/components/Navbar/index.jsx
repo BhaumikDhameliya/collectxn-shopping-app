@@ -11,7 +11,7 @@ import { ReactComponent as UserIcon } from '../../assets/svg/user.svg'
 const Navbar = () => {
   return (
     <nav className="absolute flex justify-between items-center px-20 py-6 gap-32 w-full">
-      <Link to="/">
+      <Link to="/" className="flex-none">
         <img src={LogoCollectionTransparent} alt="collection logo" />
       </Link>
       <ul className="flex gap-8 text-white font-bold text-base whitespace-nowrap">
@@ -52,7 +52,9 @@ const Navbar = () => {
         </div>
         <div className="flex gap-3">
           <ShoppingBagIcon />
-          <UserIcon />
+          <Link to="/auth/login">
+            <UserIcon />
+          </Link>
         </div>
       </div>
     </nav>
