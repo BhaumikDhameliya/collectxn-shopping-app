@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/static/css/main.57e44713.css",
+    "main.js": "/static/js/main.4d220bb1.js",
+    "static/media/img_log_in.png": "/static/media/img_log_in.2f7d7565fad5267e0a31.png",
+    "static/media/img_coming_soon_laptop.png": "/static/media/img_coming_soon_laptop.e87d41e2ba3502d6bb6e.png",
+    "static/media/img_coming_soon_tablet.png": "/static/media/img_coming_soon_tablet.17d8a86d6a066ddd0383.png",
+    "static/media/img_signup.png": "/static/media/img_signup.53d8af6c4b6ebfb8af48.png",
+    "static/media/air_jordan.png": "/static/media/air_jordan.f8f47773715eb4e50bd8.png",
+    "static/media/img_coming_soon_mobile.png": "/static/media/img_coming_soon_mobile.b25070f8b4ebb272f670.png",
+    "static/media/collectxn_focused.png": "/static/media/collectxn_focused.f71703791d757074e3d4.png",
+    "static/media/Cera Pro Regular.otf": "/static/media/Cera Pro Regular.8f68a75dd154b7d8968a.otf",
+    "static/media/collectxn_focused_purple_line.png": "/static/media/collectxn_focused_purple_line.21e6c1b538f37873a89a.png",
+    "static/media/trusted_suppliers.svg": "/static/media/trusted_suppliers.17538d3f0c7b3e4012487df8ab476f1a.svg",
+    "static/media/scroll_to_explore.svg": "/static/media/scroll_to_explore.b9135fcc00dda7fd8817f9fbdfe9905e.svg",
+    "static/media/happy_customers.svg": "/static/media/happy_customers.a786fa268c948c7a629db8d95dfc6ee2.svg",
+    "static/media/unique_collection.svg": "/static/media/unique_collection.ff24e1a9967c1382148b292a3df3094a.svg",
+    "static/media/logo_email.svg": "/static/media/logo_email.2620ac91374819cff32cfbbf61b05ea2.svg",
+    "static/media/logo_google.svg": "/static/media/logo_google.f016bc0ded6c1ae71c7824b4b25c1aee.svg",
+    "static/media/shopping_bag.svg": "/static/media/shopping_bag.cd2838ab98951f5b58016a3e02dd7e6c.svg",
+    "index.html": "/index.html",
+    "static/media/crawler_star.svg": "/static/media/crawler_star.1d7d20fd330e846b9a3eb8d7d4bffabc.svg",
+    "static/media/user.svg": "/static/media/user.6e27aba6d1e3835ef2419b26d5feb41b.svg",
+    "static/media/logo_facebook.svg": "/static/media/logo_facebook.d4cd7eb2230574772e802c5db6dd6f19.svg",
+    "static/media/svg_arrow_right.svg": "/static/media/svg_arrow_right.0c41d75a11a03d5cfe590fd48b8ae102.svg",
+    "static/media/search.svg": "/static/media/search.502a4f4b0e33d9c442482ff43c3cdc82.svg",
+    "static/media/arrow.svg": "/static/media/arrow.f212899706bca3dad102e04bbccc37f2.svg",
+    "main.57e44713.css.map": "/static/css/main.57e44713.css.map",
+    "main.4d220bb1.js.map": "/static/js/main.4d220bb1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.57e44713.css",
+    "static/js/main.4d220bb1.js"
+  ]
+}
