@@ -4,6 +4,11 @@ import air_Jordan_image from '../assets/img/air_jordan.png'
 import the_only from '../assets/img/the_only.png'
 import collectxn_focused from '../assets/img/collectxn_focused.png'
 import collectxn_focused_purple_line from '../assets/img/collectxn_focused_purple_line.png'
+import style_for_men from '../assets/img/style_for_men.png'
+import fashion_for_women from '../assets/img/fashion_for_women.png'
+import style_fashion_men_women from '../assets/img/style_fashion_men_women.png'
+import explore_collectxn from '../assets/img/explore_collectxn.png'
+import mask_group from '../assets/img/mask_group.png'
 
 import { ReactComponent as HappyCustomers } from '../assets/svg/happy_customers.svg'
 import { ReactComponent as ScrollToExplore } from '../assets/svg/scroll_to_explore.svg'
@@ -41,7 +46,7 @@ const Home = () => {
             <p className="font-bold text-6xl ">
               Collectxn Focused on Providing Collectables In Best way
             </p>
-            <p className="font-cera-pro text-2xl">
+            <p className="font-cera-pro text-2xl max-w-lg">
               One of the leading retailers in premium sports footware and
               apparel in India, which caters to sneaker enthusiasts.
             </p>
@@ -87,12 +92,34 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className="flex items-center gap-6 overflow-x-scroll no-scrollbar">
+          <div className="flex items-center gap-6 overflow-x-scroll no-scrollbar pb-[5%]">
             <ProductCard />
             <ProductCard />
             <ProductCard />
             <ProductCard />
             <ProductCard />
+          </div>
+        </div>
+      </div>
+      <div className="bg-black-mate p-[5%] flex relative">
+        <div className="flex flex-col gap-[10%] w-1/2">
+          <div className="mr-[8%]">
+            <img src={style_for_men} alt="style_for_men" />
+          </div>
+          <div className="ml-[8%]">
+            <img src={fashion_for_women} alt="fashion_for_women" />
+          </div>
+        </div>
+
+        <div className="absolute bottom-0 right-0">
+          <img src={mask_group} alt="mask_group" />
+        </div>
+        <div className="relative">
+          <div className="absolute top-0">
+            <img src={explore_collectxn} alt="explore_collectxn" />
+          </div>
+          <div>
+            <img src={style_fashion_men_women} alt="style_fashion_men_women" />
           </div>
         </div>
       </div>

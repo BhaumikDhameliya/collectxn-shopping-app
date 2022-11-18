@@ -44,7 +44,9 @@ const Login = () => {
             <div className="flex flex-col items-start">
               <TextInput labelText="Email Address" />
               <div className="mt-8 w-full">
-                <PopButton>Log In</PopButton>
+                <PopButton onClick={() => navigate('/auth/verify-otp')}>
+                  Log In
+                </PopButton>
               </div>
             </div>
           </div>

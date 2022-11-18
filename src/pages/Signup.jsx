@@ -45,7 +45,9 @@ const Signup = () => {
               <TextInput labelText="Full Name" />
               <TextInput labelText="Email Address" />
               <div className="mt-8 w-full">
-                <PopButton>Sign up</PopButton>
+                <PopButton onClick={() => navigate('/auth/verify-otp')}>
+                  Sign up
+                </PopButton>
               </div>
             </div>
             <div className="mt-8">

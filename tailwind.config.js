@@ -25,6 +25,8 @@ module.exports = {
       },
       boxShadow: {
         btn: '3px 3px 0px #000000',
+        card: '5px 5px 0px #161617',
+
       },
       screens: {
         tablet: '640px',
@@ -45,6 +47,9 @@ module.exports = {
         '4/5': '80%',
         '9/10': '90%',
       },
+      borderColor: {
+        DEFAULT: 'black'
+      }
     },
     fontFamily: {
       display: ['Space\\ Grotesk'],
