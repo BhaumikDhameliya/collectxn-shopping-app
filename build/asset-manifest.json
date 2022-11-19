@@ -1,21 +1,32 @@
 {
   "files": {
-    "main.css": "/static/css/main.57e44713.css",
-    "main.js": "/static/js/main.4d220bb1.js",
+    "main.css": "/static/css/main.351476e3.css",
+    "main.js": "/static/js/main.8780d1c4.js",
     "static/media/img_log_in.png": "/static/media/img_log_in.2f7d7565fad5267e0a31.png",
     "static/media/img_coming_soon_laptop.png": "/static/media/img_coming_soon_laptop.e87d41e2ba3502d6bb6e.png",
     "static/media/img_coming_soon_tablet.png": "/static/media/img_coming_soon_tablet.17d8a86d6a066ddd0383.png",
+    "static/media/request_product_banner.png": "/static/media/request_product_banner.3e28cdcaf5e24ea29f2c.png",
     "static/media/img_signup.png": "/static/media/img_signup.53d8af6c4b6ebfb8af48.png",
+    "static/media/style_fashion_men_women.png": "/static/media/style_fashion_men_women.56aac396e015c3ff6fc9.png",
     "static/media/air_jordan.png": "/static/media/air_jordan.f8f47773715eb4e50bd8.png",
     "static/media/img_coming_soon_mobile.png": "/static/media/img_coming_soon_mobile.b25070f8b4ebb272f670.png",
     "static/media/collectxn_focused.png": "/static/media/collectxn_focused.f71703791d757074e3d4.png",
     "static/media/Cera Pro Regular.otf": "/static/media/Cera Pro Regular.8f68a75dd154b7d8968a.otf",
+    "static/media/fashion_for_women.png": "/static/media/fashion_for_women.c211edd6602f97062b02.png",
+    "static/media/air_max_flyknit_racer_shoes.png": "/static/media/air_max_flyknit_racer_shoes.d841a3dc190c7bbbea70.png",
+    "static/media/style_for_men.png": "/static/media/style_for_men.f7499cba727ae7c4d351.png",
+    "static/media/trending_brands_banner.png": "/static/media/trending_brands_banner.2d977e611d3ee54e2958.png",
+    "static/media/request_product_mask_group.png": "/static/media/request_product_mask_group.5d5b91401183f9a54749.png",
+    "static/media/mask_group.png": "/static/media/mask_group.3c4c07d499cb691879c3.png",
     "static/media/collectxn_focused_purple_line.png": "/static/media/collectxn_focused_purple_line.21e6c1b538f37873a89a.png",
     "static/media/trusted_suppliers.svg": "/static/media/trusted_suppliers.17538d3f0c7b3e4012487df8ab476f1a.svg",
+    "static/media/request_product_text.png": "/static/media/request_product_text.246c36535fdfa122f815.png",
     "static/media/scroll_to_explore.svg": "/static/media/scroll_to_explore.b9135fcc00dda7fd8817f9fbdfe9905e.svg",
+    "static/media/request_product_sticker.png": "/static/media/request_product_sticker.1f9099e3c16f63d5e086.png",
     "static/media/happy_customers.svg": "/static/media/happy_customers.a786fa268c948c7a629db8d95dfc6ee2.svg",
     "static/media/unique_collection.svg": "/static/media/unique_collection.ff24e1a9967c1382148b292a3df3094a.svg",
     "static/media/logo_email.svg": "/static/media/logo_email.2620ac91374819cff32cfbbf61b05ea2.svg",
+    "static/media/heart.svg": "/static/media/heart.70815ba1ac7d1db2003b56309f9e0cfb.svg",
     "static/media/logo_google.svg": "/static/media/logo_google.f016bc0ded6c1ae71c7824b4b25c1aee.svg",
     "static/media/shopping_bag.svg": "/static/media/shopping_bag.cd2838ab98951f5b58016a3e02dd7e6c.svg",
     "index.html": "/index.html",
@@ -25,11 +36,11 @@
     "static/media/svg_arrow_right.svg": "/static/media/svg_arrow_right.0c41d75a11a03d5cfe590fd48b8ae102.svg",
     "static/media/search.svg": "/static/media/search.502a4f4b0e33d9c442482ff43c3cdc82.svg",
     "static/media/arrow.svg": "/static/media/arrow.f212899706bca3dad102e04bbccc37f2.svg",
-    "main.57e44713.css.map": "/static/css/main.57e44713.css.map",
-    "main.4d220bb1.js.map": "/static/js/main.4d220bb1.js.map"
+    "main.351476e3.css.map": "/static/css/main.351476e3.css.map",
+    "main.8780d1c4.js.map": "/static/js/main.8780d1c4.js.map"
   },
   "entrypoints": [
-    "static/css/main.57e44713.css",
-    "static/js/main.4d220bb1.js"
+    "static/css/main.351476e3.css",
+    "static/js/main.8780d1c4.js"
   ]
 }
