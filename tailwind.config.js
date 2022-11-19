@@ -26,13 +26,13 @@ module.exports = {
       boxShadow: {
         btn: '3px 3px 0px #000000',
         card: '5px 5px 0px #161617',
-
       },
       screens: {
         tablet: '640px',
         laptop: '1024px',
       },
       spacing: {
+        '1/20': '5%',
         '1/10': '10%',
         '1/5': '20%',
         '1/4': '25%',
@@ -48,8 +48,8 @@ module.exports = {
         '9/10': '90%',
       },
       borderColor: {
-        DEFAULT: 'black'
-      }
+        DEFAULT: 'black',
+      },
     },
     fontFamily: {
       display: ['Space\\ Grotesk'],

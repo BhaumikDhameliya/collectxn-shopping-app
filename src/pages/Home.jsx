@@ -18,7 +18,13 @@ import { ReactComponent as Arrow } from '../assets/svg/arrow.svg'
 import PopButton from '../components/buttons/PopButton'
 
 import Crawler from '../components/Crawler'
-import ProductCard from '../components/Card/ProductCard'
+import ProductCardScrollable from '../components/Card/ProductCardScrollable'
+import ExploreSneakers from '../components/Explore/ExploreSneakers'
+import ExploreApparels from '../components/Explore/ExploreApparels'
+import ExploreJewellary from '../components/Explore/ExploreJewellary'
+import ExploreAssecersories from '../components/Explore/ExploreAssecersories'
+import RequestProductBanner from '../components/Banners/RequestProductBanner'
+import TrendingBrandsBanner from '../components/Banners/TrendingBrandsBanner'
 
 const Home = () => {
   return (
@@ -41,7 +47,7 @@ const Home = () => {
         </div>
       </div>
       <div className="bg-white">
-        <div className="relative bg-[#F1F1F1] rounded-2xl mt-24 mb-32 ml-[5%] w-2/3 pt-12 pb-20 pl-16">
+        <div className="relative bg-[#F1F1F1] rounded-2xl mt-24 mb-32 ml-1/20 w-2/3 pt-12 pb-20 pl-16">
           <div className="flex flex-col gap-7 max-w-[70%]">
             <p className="font-bold text-6xl ">
               Collectxn Focused on Providing Collectables In Best way
@@ -78,7 +84,7 @@ const Home = () => {
             <img src={collectxn_focused} alt="collectxn_focused" />
           </div>
         </div>
-        <div className="flex flex-col items-center gap-8 px-[5%]">
+        <div className="flex flex-col items-center gap-8 px-1/20">
           <div className="flex justify-between items-center w-full">
             <div className="font-cera-pro font-bold text-2xl ">
               Popular Right Now
@@ -92,16 +98,16 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className="flex items-center gap-6 overflow-x-scroll no-scrollbar pb-[5%]">
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
+          <div className="flex items-center gap-6 w-full overflow-x-scroll no-scrollbar pb-1/20">
+            <ProductCardScrollable />
+            <ProductCardScrollable />
+            <ProductCardScrollable />
+            <ProductCardScrollable />
+            <ProductCardScrollable />
           </div>
         </div>
       </div>
-      <div className="bg-black-mate p-[5%] flex relative">
+      <div className="bg-black-mate p-1/20 flex relative">
         <div className="flex flex-col gap-[10%] w-1/2">
           <div className="mr-[8%]">
             <img src={style_for_men} alt="style_for_men" />
@@ -123,6 +129,21 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <div className="bg-white p-1/20">
+        <div className="flex flex-col gap-12">
+          <div className="font-cera-pro font-bold text-3xl">
+            Explore Various Categories
+          </div>
+          <div className="flex flex-col gap-16">
+            <ExploreSneakers />
+            <ExploreApparels />
+            <ExploreJewellary />
+            <ExploreAssecersories />
+          </div>
+        </div>
+      </div>
+      <RequestProductBanner />
+      <TrendingBrandsBanner />
 
       <Crawler />
     </>

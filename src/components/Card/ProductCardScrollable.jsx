@@ -5,9 +5,9 @@ import air_max from '../../assets/img/air_max_flyknit_racer_shoes.png'
 import { ReactComponent as Heart } from '../../assets/svg/heart.svg'
 import { ReactComponent as Arrow } from '../../assets/svg/arrow.svg'
 
-const ProductCard = () => {
+const ProductCardScrollable = () => {
   return (
-    <div className="flex flex-col border rounded-lg divide-y hover:shadow-card">
+    <div className="flex flex-col border rounded-lg divide-y w-96 hover:shadow-card flex-none">
       <div className="rounded-t-lg">
         <img src={air_max} alt="air_max" />
       </div>
@@ -22,8 +22,8 @@ const ProductCard = () => {
           <p className="font-medium text-xl">₹ 14,995</p>
           <p className="text-sm line-through text-gray-dark">₹ 14,995</p>
         </div>
-        <div className="flex justify-center items-center py-3 px-4 gap-2 rounded-br-lg w-1/2">
-          <div className="font-medium text-xl  whitespace-nowrap">
+        <div className="flex justify-center items-center gap-2 py-3 px-4 rounded-br-lg w-1/2">
+          <div className="font-medium text-xl whitespace-nowrap">
             Add to Bag
           </div>
           <div className="rotate-180">
@@ -35,4 +35,4 @@ const ProductCard = () => {
   )
 }
 
-export default ProductCard
+export default ProductCardScrollable

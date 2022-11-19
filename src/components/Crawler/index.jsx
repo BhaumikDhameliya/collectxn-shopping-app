@@ -21,7 +21,7 @@ const List = [
 
 const Crawler = () => {
   return (
-    <div className="sticky bottom-0 flex py-4 bg-punchy-neon">
+    <div className="sticky bottom-0 flex py-4 bg-punchy-neon overflow-x-auto no-scrollbar">
       <div className="flex items-center px-6 gap-6">
         {List.map((item) => {
           return (
