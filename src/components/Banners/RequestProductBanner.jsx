@@ -24,7 +24,7 @@ const RequestProductBanner = () => {
             deliver that.
           </p>
         </div>
-        <div className="w-1/3 mt-1/10">
+        <div className="w-1/3 mt-1/10 whitespace-nowrap">
           <PopButton type="outline">Make Request</PopButton>
         </div>
       </div>

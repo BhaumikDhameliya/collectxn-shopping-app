@@ -42,8 +42,12 @@ const Signup = () => {
               <FacebookButton text="Signup with Facebook" />
             </div>
             <div className="flex flex-col items-start">
-              <TextInput labelText="Full Name" />
-              <TextInput labelText="Email Address" />
+              <div className="mt-6">
+                <TextInput labelText="Full Name" />
+              </div>
+              <div className="mt-6">
+                <TextInput labelText="Email Address" />
+              </div>
               <div className="mt-8 w-full">
                 <PopButton onClick={() => navigate('/auth/verify-otp')}>
                   Sign up

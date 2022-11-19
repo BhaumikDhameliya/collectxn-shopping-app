@@ -25,6 +25,9 @@ import ExploreJewellary from '../components/Explore/ExploreJewellary'
 import ExploreAssecersories from '../components/Explore/ExploreAssecersories'
 import RequestProductBanner from '../components/Banners/RequestProductBanner'
 import TrendingBrandsBanner from '../components/Banners/TrendingBrandsBanner'
+import UserReviewsBanner from '../components/Banners/UserReviewsBanner'
+import FromTheMagazineBanner from '../components/Banners/FromTheMagazineBanner'
+import NewsletterBanner from '../components/Banners/NewsletterBanner'
 
 const Home = () => {
   return (
@@ -134,7 +137,7 @@ const Home = () => {
           <div className="font-cera-pro font-bold text-3xl">
             Explore Various Categories
           </div>
-          <div className="flex flex-col gap-16">
+          <div className="flex flex-col gap-10">
             <ExploreSneakers />
             <ExploreApparels />
             <ExploreJewellary />
@@ -144,6 +147,9 @@ const Home = () => {
       </div>
       <RequestProductBanner />
       <TrendingBrandsBanner />
+      <UserReviewsBanner />
+      <FromTheMagazineBanner />
+      <NewsletterBanner />
 
       <Crawler />
     </>
