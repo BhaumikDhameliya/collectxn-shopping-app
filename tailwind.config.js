@@ -27,7 +27,9 @@ module.exports = {
         btn: '3px 3px 0px #000000',
         card: '5px 5px 0px #161617',
         black110: '1px 1px 0px #000000',
-        blog: '5px 5px 0px #BCD63F'
+        blog: '5px 5px 0px #BCD63F',
+        men: '6px 6px 0px #64731B',
+        women: '6px 6px 0px #125C2F',
       },
       screens: {
         tablet: '640px',

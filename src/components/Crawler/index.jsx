@@ -23,9 +23,9 @@ const Crawler = () => {
   return (
     <div className="sticky bottom-0 flex py-4 bg-punchy-neon overflow-x-auto no-scrollbar">
       <div className="flex items-center px-6 gap-6">
-        {List.map((item) => {
+        {List.map((item, index) => {
           return (
-            <React.Fragment key={item}>
+            <React.Fragment key={`${item}_${index}`}>
               <CrawlerStar />
               <div className="font-cera-pro font-medium text-2xl text-black">
                 <p className="whitespace-nowrap">{item}</p>

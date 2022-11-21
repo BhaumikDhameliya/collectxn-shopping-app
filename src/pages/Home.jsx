@@ -8,7 +8,6 @@ import style_for_men from '../assets/img/style_for_men.png'
 import fashion_for_women from '../assets/img/fashion_for_women.png'
 import style_fashion_men_women from '../assets/img/style_fashion_men_women.png'
 import explore_collectxn from '../assets/img/explore_collectxn.png'
-import mask_group from '../assets/img/mask_group.png'
 
 import { ReactComponent as HappyCustomers } from '../assets/svg/happy_customers.svg'
 import { ReactComponent as ScrollToExplore } from '../assets/svg/scroll_to_explore.svg'
@@ -111,19 +110,24 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="bg-black-mate p-1/20 flex relative">
+      <div className="bg-black-mate p-1/20 flex relative bg-[url('/src/assets/img/mask_group.png')] bg-no-repeat bg-right-bottom">
         <div className="flex flex-col gap-[10%] w-1/2">
           <div className="mr-[8%]">
-            <img src={style_for_men} alt="style_for_men" />
+            <img
+              src={style_for_men}
+              alt="style_for_men"
+              className="rounded-xl hover:shadow-men"
+            />
           </div>
           <div className="ml-[8%]">
-            <img src={fashion_for_women} alt="fashion_for_women" />
+            <img
+              src={fashion_for_women}
+              alt="fashion_for_women"
+              className="rounded-xl hover:shadow-women"
+            />
           </div>
         </div>
 
-        <div className="absolute bottom-0 right-0">
-          <img src={mask_group} alt="mask_group" />
-        </div>
         <div className="relative">
           <div className="absolute top-0">
             <img src={explore_collectxn} alt="explore_collectxn" />
