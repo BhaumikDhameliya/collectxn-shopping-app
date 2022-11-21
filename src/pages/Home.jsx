@@ -28,10 +28,11 @@ import TrendingBrandsBanner from '../components/Banners/TrendingBrandsBanner'
 import UserReviewsBanner from '../components/Banners/UserReviewsBanner'
 import FromTheMagazineBanner from '../components/Banners/FromTheMagazineBanner'
 import NewsletterBanner from '../components/Banners/NewsletterBanner'
+import BecomeACollectxrBanner from '../components/Banners/BecomeACollectxrBanner'
 
 const Home = () => {
   return (
-    <>
+    <div className="overflow-auto no-scrollbar">
       <div className="bg-black-mate text-white bg-[url('/src/assets/img/gird_pattern.png')] pt-[124px] px-20">
         <div>
           <div>
@@ -49,7 +50,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="bg-white">
+      <div className="bg-white overflow-auto no-scrollbar">
         <div className="relative bg-[#F1F1F1] rounded-2xl mt-24 mb-32 ml-1/20 w-2/3 pt-12 pb-20 pl-16">
           <div className="flex flex-col gap-7 max-w-[70%]">
             <p className="font-bold text-6xl ">
@@ -150,9 +151,10 @@ const Home = () => {
       <UserReviewsBanner />
       <FromTheMagazineBanner />
       <NewsletterBanner />
+      <BecomeACollectxrBanner />
 
       <Crawler />
-    </>
+    </div>
   )
 }
 

@@ -1,0 +1,5 @@
+export { default as DiscordLogoSVG } from './Discord.svg'
+export { default as FacebookLogoSVG } from './Facebook.svg'
+export { default as InstagramLogoSVG } from './Instagram.svg'
+export { default as TelegramLogoSVG } from './Telegram.svg'
+export { default as TwitterLogoSVG } from './Twitter.svg'

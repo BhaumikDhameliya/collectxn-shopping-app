@@ -16,7 +16,7 @@ const ExploreApparels = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-between gap-6 overflow-hidden py-6">
+      <div className="flex justify-between gap-6 py-6 overflow-auto no-scrollbar">
         <ProductCard />
         <ProductCard />
         <ProductCard />

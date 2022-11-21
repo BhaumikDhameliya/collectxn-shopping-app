@@ -10,7 +10,7 @@ import { ReactComponent as UserIcon } from '../../assets/svg/user.svg'
 
 const Navbar = () => {
   return (
-    <nav className="absolute flex justify-between items-center px-20 py-6 gap-32 w-full">
+    <nav className="absolute flex justify-between items-center px-20 py-6 gap-32 w-full overflow-auto no-scrollbar">
       <Link to="/" className="flex-none">
         <img src={LogoCollectionTransparent} alt="collection logo" />
       </Link>
