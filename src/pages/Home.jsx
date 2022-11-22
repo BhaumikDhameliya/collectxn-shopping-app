@@ -32,7 +32,7 @@ import BecomeACollectxrBanner from '../components/Banners/BecomeACollectxrBanner
 const Home = () => {
   return (
     <div className="overflow-auto no-scrollbar">
-      <div className="bg-black-mate text-white bg-[url('/src/assets/img/gird_pattern.png')] pt-[124px] px-20">
+      <div className="bg-black-mate text-white bg-[url('/src/assets/img/gird_pattern.png')]  pt-20 tablet:pt-28 laptop:pt-[124px] px-4 tablet:px-8 laptop:px-20">
         <div>
           <div>
             <img
