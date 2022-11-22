@@ -1,7 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.eef4b6c8.css",
-    "main.js": "/static/js/main.145aa757.js",
+    "main.css": "/static/css/main.cbe324a7.css",
+    "main.js": "/static/js/main.4e2f0eda.js",
+    "static/media/collectxn_focused_woman.png": "/static/media/collectxn_focused_woman.f27714a291729fe8d2a9.png",
     "static/media/newsletter_banner_image.png": "/static/media/newsletter_banner_image.78643bda8afdc5098218.png",
     "static/media/img_log_in.png": "/static/media/img_log_in.2f7d7565fad5267e0a31.png",
     "static/media/img_coming_soon_laptop.png": "/static/media/img_coming_soon_laptop.e87d41e2ba3502d6bb6e.png",
@@ -11,7 +12,6 @@
     "static/media/style_fashion_men_women.png": "/static/media/style_fashion_men_women.56aac396e015c3ff6fc9.png",
     "static/media/air_jordan.png": "/static/media/air_jordan.f8f47773715eb4e50bd8.png",
     "static/media/img_coming_soon_mobile.png": "/static/media/img_coming_soon_mobile.b25070f8b4ebb272f670.png",
-    "static/media/collectxn_focused.png": "/static/media/collectxn_focused.f71703791d757074e3d4.png",
     "static/media/Cera Pro Regular.otf": "/static/media/Cera Pro Regular.8f68a75dd154b7d8968a.otf",
     "static/media/blog_card_image.png": "/static/media/blog_card_image.24ecf24ce0c4a220ca9d.png",
     "static/media/fashion_for_women.png": "/static/media/fashion_for_women.c211edd6602f97062b02.png",
@@ -24,14 +24,10 @@
     "static/media/review_user.png": "/static/media/review_user.f52f3176e3a3b9b5fbd4.png",
     "static/media/the_only_gray_mid.png": "/static/media/the_only_gray_mid.2c3b53d0abbbf453b257.png",
     "static/media/from_the_magazine_text.png": "/static/media/from_the_magazine_text.b9bfac2fbe4565051662.png",
-    "static/media/collectxn_focused_purple_line.png": "/static/media/collectxn_focused_purple_line.21e6c1b538f37873a89a.png",
-    "static/media/trusted_suppliers.svg": "/static/media/trusted_suppliers.17538d3f0c7b3e4012487df8ab476f1a.svg",
     "static/media/request_product_text.png": "/static/media/request_product_text.246c36535fdfa122f815.png",
     "static/media/scroll_to_explore.svg": "/static/media/scroll_to_explore.b9135fcc00dda7fd8817f9fbdfe9905e.svg",
     "static/media/become_a_collectxr_text.png": "/static/media/become_a_collectxr_text.362e67bbd7db2d972ce0.png",
     "static/media/request_product_sticker.png": "/static/media/request_product_sticker.1f9099e3c16f63d5e086.png",
-    "static/media/happy_customers.svg": "/static/media/happy_customers.a786fa268c948c7a629db8d95dfc6ee2.svg",
-    "static/media/unique_collection.svg": "/static/media/unique_collection.ff24e1a9967c1382148b292a3df3094a.svg",
     "static/media/logo_email.svg": "/static/media/logo_email.2620ac91374819cff32cfbbf61b05ea2.svg",
     "static/media/Instagram.svg": "/static/media/Instagram.168e2f45b2654bd18a768c011f34559c.svg",
     "static/media/Discord.svg": "/static/media/Discord.934c489396b56ea8f8e7a2296f377693.svg",
@@ -52,12 +48,14 @@
     "static/media/logo_facebook.svg": "/static/media/logo_facebook.d4cd7eb2230574772e802c5db6dd6f19.svg",
     "static/media/svg_arrow_right.svg": "/static/media/svg_arrow_right.0c41d75a11a03d5cfe590fd48b8ae102.svg",
     "static/media/search.svg": "/static/media/search.502a4f4b0e33d9c442482ff43c3cdc82.svg",
+    "static/media/mobile_menu_icon.svg": "/static/media/mobile_menu_icon.66e63abbe725e59218bebc8cfef270fb.svg",
+    "static/media/close_mobile_menu.svg": "/static/media/close_mobile_menu.5d0c08d8206ffb86b21b186eec2508ad.svg",
     "static/media/arrow.svg": "/static/media/arrow.f212899706bca3dad102e04bbccc37f2.svg",
-    "main.eef4b6c8.css.map": "/static/css/main.eef4b6c8.css.map",
-    "main.145aa757.js.map": "/static/js/main.145aa757.js.map"
+    "main.cbe324a7.css.map": "/static/css/main.cbe324a7.css.map",
+    "main.4e2f0eda.js.map": "/static/js/main.4e2f0eda.js.map"
   },
   "entrypoints": [
-    "static/css/main.eef4b6c8.css",
-    "static/js/main.145aa757.js"
+    "static/css/main.cbe324a7.css",
+    "static/js/main.4e2f0eda.js"
   ]
 }
