@@ -15,7 +15,7 @@ import { ReactComponent as CloseMobileMenuSVG } from '../../assets/svg/close_mob
 import UserSVG from '../../assets/SVGComponent/UserSVG'
 
 const Navbar = () => {
-  const [showMenu, setShowMenu] = useState(true)
+  const [showMenu, setShowMenu] = useState(false)
   return (
     <nav
       className={`absolute p-4 tablet:px-8 laptop:px-20 tablet:py-6 w-full overflow-auto no-scrollbar ${

@@ -4,7 +4,7 @@ const PopButton = (props) => {
   const { children, type, onClick, ...rest } = props
 
   let classes =
-    'bg-black-mate flex items-center justify-center py-3 px-6 gap-[10px] rounded-3xl w-full font-medium text-black-mate border border-black-mate'
+    'bg-black-mate flex items-center justify-center px-4 py-2 tablet:px-6 tablet:py-3 gap-[10px] rounded-3xl w-full font-medium text-xs tablet:text-base text-black-mate border border-black-mate'
 
   const disabledClasses =
     'disabled:bg-gray-mid disabled:shadow-none disabled:text-white'
