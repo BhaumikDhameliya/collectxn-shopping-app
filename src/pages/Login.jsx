@@ -6,7 +6,7 @@ import logo_cxn from '../assets/img/logo_cxn.png'
 
 import { ReactComponent as RightArrow } from '../assets/svg/svg_arrow_right.svg'
 
-import TextInput from '../components/TextInput'
+import TextInput from '../components/Input/TextInput'
 import PopButton from '../components/buttons/PopButton'
 import GoogleButton from '../components/buttons/GoogleButton'
 import FacebookButton from '../components/buttons/FacebookButton'

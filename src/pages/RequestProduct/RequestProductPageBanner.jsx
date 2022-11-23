@@ -1,16 +1,13 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 import request_product_banner from '../../assets/img/request_product/request_product_banner.png'
 import request_product_sticker from '../../assets/img/request_product/request_product_sticker.png'
 import request_product_text from '../../assets/img/request_product/request_product_text.png'
 
-import PopButton from '../buttons/PopButton'
-
-const RequestProductBanner = () => {
+const RequestProductPageBanner = () => {
   return (
-    <div className="bg-purple relative bg-[url('/src/assets/img/request_product/request_product_mask_group.png')] bg-no-repeat bg-right-top bg-contain overflow-hidden tablet:overflow-visible">
-      <div className="px-1/20 py-1/10 tablet:w-1/2 pr-8">
+    <div className="bg-purple relative bg-[url('/src/assets/img/mask_group.png')] bg-no-repeat bg-right-bottom bg-contain overflow-hidden tablet:overflow-visible">
+      <div className="px-1/20 py-1/10 pr-8">
         <div className="flex">
           <div>
             <img src={request_product_text} alt="request_product_text" />
@@ -25,17 +22,12 @@ const RequestProductBanner = () => {
             deliver that.
           </p>
         </div>
-        <div className="w-1/3 mt-1/10 whitespace-nowrap">
-          <PopButton type="outline">
-            <Link to="/request-product">Make Request</Link>
-          </PopButton>
-        </div>
       </div>
-      <div className="relative tablet:absolute -top-16 -right-10 tablet:-top-1/10 tablet:right-0 pointer-events-none">
+      <div className="pointer-events-none">
         <img src={request_product_banner} alt="request_product_banner" />
       </div>
     </div>
   )
 }
 
-export default RequestProductBanner
+export default RequestProductPageBanner

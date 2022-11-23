@@ -3,6 +3,9 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
+      backgroundPosition: {
+        'select-caret': 'calc(100% - 24px) center',
+      },
       colors: {
         error: '#EF4949',
         gray: {
@@ -63,6 +66,7 @@ module.exports = {
       borderColor: {
         DEFAULT: 'black',
       },
+
     },
     fontFamily: {
       display: ['Space\\ Grotesk'],

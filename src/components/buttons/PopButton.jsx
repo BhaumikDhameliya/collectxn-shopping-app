@@ -1,7 +1,7 @@
 import React from 'react'
 
 const PopButton = (props) => {
-  const { children, type, onClick, ...rest } = props
+  const { children, type, onClick, btnClasses, ...rest } = props
 
   let classes =
     'bg-black-mate flex items-center justify-center px-4 py-2 tablet:px-6 tablet:py-3 gap-[10px] rounded-full w-full font-medium text-xs tablet:text-xl text-black-mate border border-black-mate'
@@ -17,7 +17,7 @@ const PopButton = (props) => {
     <button
       className={`${classes} ${disabledClasses} ${hoveredClasses} ${
         type === 'outline' ? outlineClasses : 'text-white'
-      }`}
+      } ${btnClasses}`}
       onClick={onClick}
       {...rest}
     >

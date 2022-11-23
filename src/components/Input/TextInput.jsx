@@ -1,10 +1,14 @@
 import React from 'react'
 
 const TextInput = (props) => {
-  const { labelText, error = false, placeholder, rest } = props
+  const { labelText, error = false, placeholder, labelClasses, ...rest } = props
   return (
     <div className="flex flex-col w-full">
-      {labelText && <label htmlFor="">{labelText}</label>}
+      {labelText && (
+        <label htmlFor="" className={`${labelClasses}`}>
+          {labelText}
+        </label>
+      )}
       <input
         type="text"
         className="py-3 px-6 border rounded-3xl border-black-mate"
