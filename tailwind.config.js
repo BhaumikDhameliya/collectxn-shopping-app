@@ -34,6 +34,7 @@ module.exports = {
       fontSize: {
         10: ['10px', '120%'],
         13: ['13px', '120%'],
+        31: ['31px', '120%'],
       },
       screens: {
         tablet: '640px',

@@ -11,7 +11,7 @@ import {
 
 const KeepInTouch = () => {
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3 min-w-[200px]">
       <p className="font-cera-pro font-bold text-xs tablet:text-lg text-[#A8A8A8]">
         KEEP IN TOUCH
       </p>

@@ -57,13 +57,13 @@ const Home = () => {
         <Crawler />
       </div>
       <div className="bg-white overflow-auto no-scrollbar relative">
-        <div className="relative bg-[#F1F1F1] pl-4 pr-8 pt-13 pb-37 tablet:rounded-2xl tablet:mt-24 tablet:mb-32 tablet:ml-1/20 tablet:w-2/3 tablet:pt-12 tablet:pb-20 tablet:pl-16 mb-42">
-          <div className="flex flex-col gap-7">
+        <div className="relative bg-[#F1F1F1] pl-4 pr-8 pt-13 pb-37 tablet:rounded-2xl tablet:mt-12 laptop:mt-24 tablet:mb-32 tablet:ml-1/20 tablet:w-2/3 tablet:pt-6 laptop:pt-12 tablet:pb-7 laptop:pb-20 tablet:pl-8 laptop:pl-16 mb-42">
+          <div className="flex flex-col gap-7 tablet:gap-2">
             <div className="flex flex-col gap-5 tablet:gap-7 tablet:max-w-[70%]">
-              <p className="font-bold text-2xl tablet:text-6xl ">
+              <p className="font-bold text-2xl tablet:text-31 laptop:text-6xl ">
                 Collectxn Focused on Providing Collectables In Best way
               </p>
-              <p className="font-cera-pro text-xs tablet:text-2xl max-w-lg font-semibold">
+              <p className="font-cera-pro text-xs tablet:text-13 laptop:text-2xl max-w-lg font-semibold tablet:font-medium">
                 One of the leading retailers in premium sports footware and
                 apparel in India, which caters to sneaker enthusiasts.
               </p>
@@ -86,10 +86,10 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className="w-min whitespace-nowrap mt-12">
+          <div className="w-min whitespace-nowrap mt-12 tablet:mt-8">
             <PopButton type="outline">About us</PopButton>
           </div>
-          <div className="absolute max-w-[70%] right-1 -bottom-1/5">
+          <div className="absolute max-w-[70%] right-1 -bottom-1/5 tablet:-right-[30%] tablet:w-3/5 tablet:-bottom-1/10">
             <img src={collectxn_focused_woman} alt="collectxn_focused" />
           </div>
         </div>
@@ -145,7 +145,7 @@ const Home = () => {
       </div>
       <div className="bg-white p-1/20">
         <div className="flex flex-col gap-12">
-          <div className="font-cera-pro font-bold text-xl tablet:text-3xl">
+          <div className="font-cera-pro font-bold text-xl laptop:text-3xl">
             Explore Various Categories
           </div>
           <div className="flex flex-col gap-12 pb-16">

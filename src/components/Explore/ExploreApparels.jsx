@@ -9,10 +9,10 @@ const ExploreApparels = () => {
   return (
     <div className="flex flex-col">
       <div className="flex justify-between items-center">
-        <p className="font-cera-pro font-bold text-xl tablet:text-3xl border-b">
+        <p className="font-cera-pro font-bold text-xl laptop:text-3xl border-b">
           Apparels
         </p>
-        <div className="hidden tablet:flex items-center py-1 gap-2">
+        <div className="hidden laptop:flex items-center py-1 gap-2">
           <p className="font-medium text-base">View All</p>
           <div className="">
             <ViewAllArrow />
@@ -25,7 +25,7 @@ const ExploreApparels = () => {
         <ProductCard />
         <ProductCard />
       </div>
-      <div className="flex tablet:hidden items-center justify-center">
+      <div className="flex laptop:hidden items-center justify-center">
         <div>
           <PopButton type="outline">View more</PopButton>
         </div>

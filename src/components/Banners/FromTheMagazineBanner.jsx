@@ -10,7 +10,7 @@ const FromTheMagazineBanner = () => {
   return (
     <div className="bg-black-mate px-1/20 pt-1/10 pb-1/20 ">
       <div className="bg-[url('/src/assets/img/chex_mask.png')] bg-contain">
-        <div className="pb-9 pt-32">
+        <div className="pb-9 pt-32 tablet:pt-0">
           <img
             src={from_the_magazine_text}
             alt="from_the_magazine_text"
@@ -18,7 +18,7 @@ const FromTheMagazineBanner = () => {
           />
         </div>
         <div className="flex flex-col justify-center items-center gap-10">
-          <div className="flex gap-6 flex-col laptop:flex-row">
+          <div className="flex gap-6 flex-col tablet:flex-row">
             <BlogCard />
             <BlogCard />
             <BlogCard />
