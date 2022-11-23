@@ -31,6 +31,10 @@ module.exports = {
         men: '6px 6px 0px #64731B',
         women: '6px 6px 0px #125C2F',
       },
+      fontSize: {
+        10: ['10px', '120%'],
+        13: ['13px', '120%'],
+      },
       screens: {
         tablet: '640px',
         laptop: '1024px',
@@ -39,6 +43,7 @@ module.exports = {
         13: '52px',
         37: '148px',
         42: '168px',
+        55: '220px',
         '1/20': '5%',
         '1/10': '10%',
         '1/5': '20%',

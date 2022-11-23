@@ -30,11 +30,12 @@ import UserReviewsBanner from '../components/Banners/UserReviewsBanner'
 import FromTheMagazineBanner from '../components/Banners/FromTheMagazineBanner'
 import NewsletterBanner from '../components/Banners/NewsletterBanner'
 import BecomeACollectxrBanner from '../components/Banners/BecomeACollectxrBanner'
+import ExplorePlaystation from '../components/Explore/ExplorePlaystation'
 
 const Home = () => {
   return (
     <div className="overflow-auto no-scrollbar">
-      <div className="bg-black-mate text-white bg-[url('/src/assets/img/gird_pattern.png')]">
+      <div className="bg-black-mate text-white bg-[url('/src/assets/img/gird_pattern.png')] bg-con">
         <div className="pt-20 tablet:pt-28 laptop:pt-[124px] px-4 tablet:px-8 laptop:px-20">
           <div>
             <img
@@ -97,7 +98,7 @@ const Home = () => {
             <div className="font-cera-pro font-bold text-2xl ">
               Popular Right Now
             </div>
-            <div className="flex gap-3 ">
+            <div className="hidden tablet:flex gap-3">
               <div className="p-2 border border-black-mate rounded-full">
                 <Arrow />
               </div>
@@ -115,16 +116,16 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="bg-black-mate p-1/20 flex relative bg-[url('/src/assets/img/mask_group.png')] bg-no-repeat bg-right-bottom">
-        <div className="flex flex-col gap-[10%] w-1/2">
-          <div className="mr-[8%]">
+      <div className="bg-black-mate p-1/20 flex flex-col tablet:flex-row relative bg-[url('/src/assets/img/mask_group.png')] bg-no-repeat bg-right-bottom bg-contain gap-8">
+        <div className="flex flex-col gap-6 tablet:gap-[10%] tablet:w-1/2">
+          <div className="tablet:mr-[8%]">
             <img
               src={style_for_men}
               alt="style_for_men"
               className="rounded-xl hover:shadow-men"
             />
           </div>
-          <div className="ml-[8%]">
+          <div className="tablet:ml-[8%]">
             <img
               src={fashion_for_women}
               alt="fashion_for_women"
@@ -144,13 +145,14 @@ const Home = () => {
       </div>
       <div className="bg-white p-1/20">
         <div className="flex flex-col gap-12">
-          <div className="font-cera-pro font-bold text-3xl">
+          <div className="font-cera-pro font-bold text-xl tablet:text-3xl">
             Explore Various Categories
           </div>
-          <div className="flex flex-col gap-10">
+          <div className="flex flex-col gap-12 pb-16">
             <ExploreSneakers />
             <ExploreApparels />
             <ExploreJewellary />
+            <ExplorePlaystation />
             <ExploreAssecersories />
           </div>
         </div>

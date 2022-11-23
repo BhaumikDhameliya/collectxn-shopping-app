@@ -8,8 +8,8 @@ import PopButton from '../buttons/PopButton'
 
 const RequestProductBanner = () => {
   return (
-    <div className="bg-purple relative bg-[url('/src/assets/img/request_product/request_product_mask_group.png')] bg-no-repeat bg-right-top">
-      <div className="px-1/20 py-1/10 w-1/2">
+    <div className="bg-purple relative bg-[url('/src/assets/img/request_product/request_product_mask_group.png')] bg-no-repeat bg-right-top bg-contain overflow-hidden">
+      <div className="px-1/20 py-1/10 tablet:w-1/2 pr-8">
         <div className="flex">
           <div>
             <img src={request_product_text} alt="request_product_text" />
@@ -19,7 +19,7 @@ const RequestProductBanner = () => {
           </div>
         </div>
         <div className="mt-1/10">
-          <p className="text-2xl text-white font-cera-pro">
+          <p className="text-13 tablet:text-2xl text-white font-cera-pro">
             Just tell us which product you are looking for we try our best to
             deliver that.
           </p>
@@ -28,7 +28,7 @@ const RequestProductBanner = () => {
           <PopButton type="outline">Make Request</PopButton>
         </div>
       </div>
-      <div className="absolute -top-1/10 right-0 ">
+      <div className="relative tablet:absolute -top-16 -right-10 tablet:-top-1/10 tablet:right-0 ">
         <img src={request_product_banner} alt="request_product_banner" />
       </div>
     </div>

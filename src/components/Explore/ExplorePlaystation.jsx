@@ -5,12 +5,12 @@ import ViewAllArrow from '../../assets/SVGComponent/ViewAllArrow'
 import ProductCard from '../../components/Card/ProductCard'
 import PopButton from '../buttons/PopButton'
 
-const ExploreJewellary = () => {
+const ExplorePlaystation = () => {
   return (
     <div className="flex flex-col">
       <div className="flex justify-between items-center">
         <p className="font-cera-pro font-bold text-xl tablet:text-3xl border-b">
-          Jewellary
+          Playstation
         </p>
         <div className="hidden tablet:flex items-center py-1 gap-2">
           <p className="font-medium text-base">View All</p>
@@ -34,4 +34,4 @@ const ExploreJewellary = () => {
   )
 }
 
-export default ExploreJewellary
+export default ExplorePlaystation

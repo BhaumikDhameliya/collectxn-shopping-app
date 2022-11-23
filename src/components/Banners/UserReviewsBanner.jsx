@@ -10,21 +10,23 @@ import PopButton from '../buttons/PopButton'
 
 const UserReviewsBanner = () => {
   return (
-    <div className="bg-[#F2F2EF] text-black  px-1/20 py-1/10">
+    <div className="bg-[#F2F2EF] text-black p-8 laptop:px-1/20 py-1/10">
       <div className="flex justify-between">
-        <div className="flex items-center justify-center">
+        <div className="hidden laptop:flex items-center justify-center">
           <div className="p-2 border border-black-mate rounded-full bg-white">
             <ArrowSVG />
           </div>
         </div>
         <div className="flex flex-col items-center gap-12">
-          <div className="flex flex-col items-center gap-10 w-2/3">
-            <div className="flex items-center gap-6">
+          <div className="flex flex-col items-center gap-10 laptop:w-2/3">
+            <div className="flex flex-col tablet:flex-row items-center gap-6">
               <div>
                 <img src={review_user} alt="review_user" />
               </div>
-              <div className="flex flex-col gap-4">
-                <PopButton type="outline">Aman Singh</PopButton>
+              <div className="flex flex-col items-center gap-4">
+                <div className="w-max">
+                  <PopButton type="outline">Aman Singh</PopButton>
+                </div>
                 <div className="flex items-center justify-center gap-3">
                   <div className="flex gap-2">
                     <StarSVG />
@@ -38,7 +40,7 @@ const UserReviewsBanner = () => {
               </div>
             </div>
             <div>
-              <p className="font-cera-pro text-xl text-center">
+              <p className="font-cera-pro text-13 tablet:text-xl text-center">
                 Earth is the third planet from the Sun and the only astronomical
                 object known to harbor life. According to radiometric dating
                 estimation and other evidence, Earth formed over 4.5 billion
@@ -53,8 +55,7 @@ const UserReviewsBanner = () => {
             <div className="w-3 h-3 bg-gray-light border rounded-full shadow-black110"></div>
           </div>
         </div>
-
-        <div className="flex items-center justify-center">
+        <div className="hidden laptop:flex items-center justify-center">
           <div className="p-2 border border-black-mate rounded-full bg-white rotate-180">
             <ArrowSVG />
           </div>
