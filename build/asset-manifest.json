@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.b49e1755.css",
-    "main.js": "/static/js/main.60d1b5a2.js",
+    "main.css": "/static/css/main.ed971f3d.css",
+    "main.js": "/static/js/main.8df317fd.js",
     "static/media/collectxn_focused_woman.png": "/static/media/collectxn_focused_woman.f27714a291729fe8d2a9.png",
     "static/media/newsletter_banner_image.png": "/static/media/newsletter_banner_image.78643bda8afdc5098218.png",
     "static/media/img_log_in.png": "/static/media/img_log_in.2f7d7565fad5267e0a31.png",
@@ -22,6 +22,7 @@
     "static/media/request_product_mask_group.png": "/static/media/request_product_mask_group.5d5b91401183f9a54749.png",
     "static/media/mask_group.png": "/static/media/mask_group.3c4c07d499cb691879c3.png",
     "static/media/review_user.png": "/static/media/review_user.f52f3176e3a3b9b5fbd4.png",
+    "static/media/sneakers_banner.png": "/static/media/sneakers_banner.ecbd7fa9f2222c92acbb.png",
     "static/media/the_only_gray_mid.png": "/static/media/the_only_gray_mid.2c3b53d0abbbf453b257.png",
     "static/media/from_the_magazine_text.png": "/static/media/from_the_magazine_text.b9bfac2fbe4565051662.png",
     "static/media/request_product_text.png": "/static/media/request_product_text.246c36535fdfa122f815.png",
@@ -33,6 +34,7 @@
     "static/media/Discord.svg": "/static/media/Discord.934c489396b56ea8f8e7a2296f377693.svg",
     "static/media/newsletter_badge.svg": "/static/media/newsletter_badge.c80261897e95a64409186837d519bb68.svg",
     "static/media/open_all_days.svg": "/static/media/open_all_days.bca2a7f38d3c5b53d4b7d673e34a62a6.svg",
+    "static/media/verified_rounded.svg": "/static/media/verified_rounded.c81b9847d16373f0485efc04bf417357.svg",
     "static/media/heart.svg": "/static/media/heart.70815ba1ac7d1db2003b56309f9e0cfb.svg",
     "static/media/star_half.svg": "/static/media/star_half.2e4fbaff037c28583710de7de8458c8d.svg",
     "static/media/call.svg": "/static/media/call.01888408309abba6bf9a425a722f9fc9.svg",
@@ -45,17 +47,19 @@
     "static/media/Facebook.svg": "/static/media/Facebook.c36cdf479cfa3e34607518845a2f1a2c.svg",
     "static/media/user.svg": "/static/media/user.6e27aba6d1e3835ef2419b26d5feb41b.svg",
     "static/media/star.svg": "/static/media/star.6c50505fb203f8c50beca3d0e9c43738.svg",
+    "static/media/caret_down.svg": "/static/media/caret_down.1044e101435e6e4f568b.svg",
     "static/media/logo_facebook.svg": "/static/media/logo_facebook.d4cd7eb2230574772e802c5db6dd6f19.svg",
     "static/media/svg_arrow_right.svg": "/static/media/svg_arrow_right.0c41d75a11a03d5cfe590fd48b8ae102.svg",
     "static/media/search.svg": "/static/media/search.502a4f4b0e33d9c442482ff43c3cdc82.svg",
     "static/media/mobile_menu_icon.svg": "/static/media/mobile_menu_icon.66e63abbe725e59218bebc8cfef270fb.svg",
+    "static/media/close_rounded_white.svg": "/static/media/close_rounded_white.0ed67874ab54267ef6d860e3a2236f8e.svg",
     "static/media/close_mobile_menu.svg": "/static/media/close_mobile_menu.5d0c08d8206ffb86b21b186eec2508ad.svg",
     "static/media/arrow.svg": "/static/media/arrow.f212899706bca3dad102e04bbccc37f2.svg",
-    "main.b49e1755.css.map": "/static/css/main.b49e1755.css.map",
-    "main.60d1b5a2.js.map": "/static/js/main.60d1b5a2.js.map"
+    "main.ed971f3d.css.map": "/static/css/main.ed971f3d.css.map",
+    "main.8df317fd.js.map": "/static/js/main.8df317fd.js.map"
   },
   "entrypoints": [
-    "static/css/main.b49e1755.css",
-    "static/js/main.60d1b5a2.js"
+    "static/css/main.ed971f3d.css",
+    "static/js/main.8df317fd.js"
   ]
 }
