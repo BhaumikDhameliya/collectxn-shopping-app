@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { ReactComponent as CloseRoundedWhiteSVG } from '../../assets/svg/close_rounded_white.svg'
 import { ReactComponent as VerifiedRoundedSVG } from '../../assets/svg/verified_rounded.svg'
@@ -9,17 +10,18 @@ import TextInput from '../../components/Input/TextInput'
 import RequestProductPageBanner from './RequestProductPageBanner'
 
 const RequestProduct = () => {
+  const navigate = useNavigate()
   return (
-    <div className="flex flex-row gap-8 rounded-xl">
-      <div className="hidden laptop:flex">
+    <div className="flex flex-row rounded-xl min-h-screen">
+      <div className="hidden laptop:flex max-w-[45%]">
         <RequestProductPageBanner />
       </div>
-      <div className="flex flex-col items-center px-8 py-6 gap-8 rounded-xl">
-        <div className="flex items-center gap-6 justify-between flex-grow w-full">
+      <div className="flex flex-col items-center px-8 py-6 gap-8 rounded-xl flex-grow">
+        <div className="flex items-center gap-6 justify-between w-full">
           <div className="font-bold text-2xl">Request Product</div>
-          <div>
+          <button onClick={() => navigate(-1)}>
             <CloseRoundedWhiteSVG />
-          </div>
+          </button>
         </div>
         <div className="w-full flex flex-col gap-6">
           <TextInput

@@ -24,7 +24,11 @@ const RequestProductPageBanner = () => {
         </div>
       </div>
       <div className="pointer-events-none">
-        <img src={request_product_banner} alt="request_product_banner" />
+        <img
+          src={request_product_banner}
+          alt="request_product_banner"
+          className="object-contain"
+        />
       </div>
     </div>
   )

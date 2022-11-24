@@ -36,7 +36,7 @@ const Home = () => {
   return (
     <div className="overflow-auto no-scrollbar">
       <div className="bg-black-mate text-white bg-[url('/src/assets/img/gird_pattern.png')] bg-con">
-        <div className="pt-20 tablet:pt-28 laptop:pt-[124px] px-4 tablet:px-8 laptop:px-20">
+        <div className="pt-[14px] tablet:pt-6 laptop:pt-9 px-4 tablet:px-8 laptop:px-20">
           <div>
             <img
               src={air_Jordan_image}
@@ -89,7 +89,7 @@ const Home = () => {
           <div className="w-min whitespace-nowrap mt-12 tablet:mt-8">
             <PopButton type="outline">About us</PopButton>
           </div>
-          <div className="absolute max-w-[70%] right-1 -bottom-1/5 tablet:-right-[30%] tablet:w-3/5 tablet:-bottom-1/10">
+          <div className="absolute max-w-[70%] right-1 -bottom-1/5 tablet:-right-[30%] tablet:w-3/5 tablet:-bottom-1/10 laptop:w-auto">
             <img src={collectxn_focused_woman} alt="collectxn_focused" />
           </div>
         </div>

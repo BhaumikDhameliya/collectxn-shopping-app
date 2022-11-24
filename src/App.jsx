@@ -16,7 +16,7 @@ import VerifyOtp from './pages/VerifyOtp'
 
 export default function App() {
   return (
-    <div className="text-black-mate">
+    <div className="text-black-mate min-h-screen">
       <Routes>
         <Route path="routes" element={<RouteLinks />} />
         <Route path="/auth">

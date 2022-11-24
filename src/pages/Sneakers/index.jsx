@@ -1,7 +1,8 @@
 import React from 'react'
+import ProductListing from '../../layouts/ProductListing'
 
 const Sneakers = () => {
-  return <div>Sneakers</div>
+  return <ProductListing />
 }
 
 export default Sneakers

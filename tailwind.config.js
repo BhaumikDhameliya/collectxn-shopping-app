@@ -45,6 +45,8 @@ module.exports = {
       },
       spacing: {
         13: '52px',
+        16.5: '66px',
+        22: '88px',
         37: '148px',
         42: '168px',
         55: '220px',
@@ -66,7 +68,6 @@ module.exports = {
       borderColor: {
         DEFAULT: 'black',
       },
-
     },
     fontFamily: {
       display: ['Space\\ Grotesk'],

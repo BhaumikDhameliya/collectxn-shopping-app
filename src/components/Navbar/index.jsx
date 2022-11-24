@@ -18,8 +18,8 @@ const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false)
   return (
     <nav
-      className={`absolute p-4 tablet:px-8 laptop:px-20 tablet:py-6 w-full overflow-auto no-scrollbar ${
-        showMenu ? 'bg-white' : ''
+      className={`absolute h-16.5 tablet:h-22 p-4 tablet:px-8 laptop:px-20 tablet:py-6 w-full overflow-auto no-scrollbar ${
+        showMenu ? 'bg-white' : 'bg-black-mate'
       }`}
     >
       <div className="flex items-center justify-between gap-6">
