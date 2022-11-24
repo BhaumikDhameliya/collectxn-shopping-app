@@ -7,6 +7,7 @@ const SelectInput = (props) => {
     error = false,
     placeholder,
     labelClasses,
+    selectClasses,
     options = [],
     hint,
     defaultValue,
@@ -22,7 +23,7 @@ const SelectInput = (props) => {
       <select
         name={name}
         type="text"
-        className="py-3 px-6 border rounded-3xl border-black-mate appearance-none bg-[url('/src/assets/svg/caret_down.svg')] bg-no-repeat  bg-select-caret"
+        className={`py-3 pl-6 pr-11 border rounded-3xl border-black-mate appearance-none bg-[url('/src/assets/svg/caret_down.svg')] bg-no-repeat bg-select-caret ${selectClasses}`}
         placeholder={placeholder}
         {...rest}
         defaultValue={defaultValue || ''}

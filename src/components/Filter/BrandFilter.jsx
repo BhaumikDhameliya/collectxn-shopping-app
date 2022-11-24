@@ -1,20 +1,24 @@
 import React from 'react'
 
-const categoryList = [
-  { name: 'Sneakers' },
-  { name: 'Apparels' },
-  { name: 'Jewellary' },
-  { name: 'Play Station' },
+const brandList = [
+  { name: 'Nike' },
+  { name: 'Adidas' },
+  { name: 'Urban Monkey' },
+  { name: 'Reebok' },
+  { name: 'Nike' },
+  { name: 'Adidas' },
+  { name: 'Urban Monkey' },
+  { name: 'Reebok' },
 ]
 
-const CategoryFilter = () => {
+const BrandFilter = () => {
   return (
     <div className="flex flex-col">
       <div className="flex pb-3 border-b border-gray-mid">
-        <p className="uppercase font-medium ">Catagories</p>
+        <p className="uppercase font-medium ">Brand</p>
       </div>
-      <ul className="flex flex-col px-2 py-4 gap-3">
-        {categoryList.map(({ name }, index) => {
+      <ul className="flex flex-col px-2 py-4 gap-3 text-13">
+        {brandList.map(({ name }, index) => {
           return (
             <li key={index}>
               <div className="">
@@ -26,7 +30,9 @@ const CategoryFilter = () => {
                     value={name}
                     className="accent-black-mate"
                   />
-                  <label htmlFor={name}>{name}</label>
+                  <label htmlFor={name} className="font-cera-pro font-medium">
+                    {name}
+                  </label>
                 </div>
               </div>
             </li>
@@ -37,4 +43,4 @@ const CategoryFilter = () => {
   )
 }
 
-export default CategoryFilter
+export default BrandFilter
