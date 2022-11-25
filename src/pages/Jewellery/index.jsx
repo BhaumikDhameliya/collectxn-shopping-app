@@ -1,7 +1,8 @@
 import React from 'react'
+import ProductListing from '../../layouts/ProductListing'
 
 const Jewellery = () => {
-  return <div>Jewellery</div>
+  return <ProductListing />
 }
 
 export default Jewellery

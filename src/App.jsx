@@ -1,6 +1,8 @@
 import * as React from 'react'
 import { Routes, Route } from 'react-router-dom'
+import ProductInfo from './layouts/ProductInfo'
 import Apparels from './pages/Apparels'
+import Assecersories from './pages/Assecersories'
 
 import CoomingSoon from './pages/CoomingSoon'
 import Home from './pages/Home'
@@ -8,6 +10,7 @@ import Jewellery from './pages/Jewellery'
 import Layout from './pages/Layout'
 import Login from './pages/Login'
 import NoMatch from './pages/NoMatch'
+import PlayStation from './pages/Playstation'
 import RequestProduct from './pages/RequestProduct/RequestProduct'
 import RouteLinks from './pages/RouteLinks'
 import Signup from './pages/Signup'
@@ -31,6 +34,9 @@ export default function App() {
           <Route path="apparels" element={<Apparels />} />
           <Route path="jewellery" element={<Jewellery />} />
           <Route path="sneakers" element={<Sneakers />} />
+          <Route path="playstation" element={<PlayStation />} />
+          <Route path="assecersories" element={<Assecersories />} />
+          <Route path="product/:productId" element={<ProductInfo />} />
         </Route>
         <Route path="*" element={<NoMatch />} />
       </Routes>

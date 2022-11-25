@@ -1,6 +1,6 @@
 import React from 'react'
 
-const brandList = [
+const sizeList = [
   { name: '3' },
   { name: '3.5' },
   { name: '4' },
@@ -45,7 +45,7 @@ const SizeFilter = () => {
         <p className="uppercase font-medium ">Sizes</p>
       </div>
       <ul className="grid items-center justify-center flex-wrap px-2 py-4 gap-3 text-13 grid-cols-5">
-        {brandList.map(({ name }, index) => {
+        {sizeList.map(({ name }, index) => {
           return (
             <li key={index}>
               <div className="flex items-center gap-2">
@@ -58,7 +58,7 @@ const SizeFilter = () => {
                 />
                 <label
                   htmlFor={name}
-                  className="font-cera-pro font-medium flex items-center justify-center px-2 py-1.5 rounded border border-gray-light peer-checked:bg-gray-light peer-checked:text-white flex-grow"
+                  className="font-cera-pro font-medium flex items-center justify-center px-2 py-1.5 rounded border border-gray-light peer-checked:bg-gray-light peer-checked:text-gray-dark flex-grow"
                 >
                   {name}
                 </label>

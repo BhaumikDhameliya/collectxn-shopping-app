@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import air_max from '../../assets/img/air_max_flyknit_racer_shoes.png'
 
@@ -9,7 +10,9 @@ const ProductCard = () => {
   return (
     <div className="flex flex-col border rounded laptop:rounded-lg divide-y hover:shadow-card">
       <div className="rounded-t-lg relative">
-        <img src={air_max} alt="air_max" />
+        <Link to="/product/1">
+          <img src={air_max} alt="air_max" />
+        </Link>
         <div className="laptop:hidden absolute top-3 right-3">
           <Heart />
         </div>

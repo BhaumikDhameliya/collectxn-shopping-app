@@ -1,6 +1,6 @@
 import React from 'react'
 
-const brandList = [
+const yearList = [
   { name: '2022' },
   { name: '2021' },
   { name: '2020' },
@@ -14,7 +14,7 @@ const RealeaseYearFilter = () => {
         <p className="uppercase font-medium ">RELEASE YEARS</p>
       </div>
       <ul className="flex flex-col px-2 py-4 gap-3 text-13">
-        {brandList.map(({ name }, index) => {
+        {yearList.map(({ name }, index) => {
           return (
             <li key={index}>
               <div className="">

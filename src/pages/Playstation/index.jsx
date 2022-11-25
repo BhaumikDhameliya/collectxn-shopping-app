@@ -1,8 +1,8 @@
 import React from 'react'
 import ProductListing from '../../layouts/ProductListing'
 
-const Apparels = () => {
+const PlayStation = () => {
   return <ProductListing />
 }
 
-export default Apparels
+export default PlayStation

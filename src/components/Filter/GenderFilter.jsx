@@ -1,6 +1,6 @@
 import React from 'react'
 
-const brandList = [{ name: 'Men' }, { name: 'Women' }]
+const genderList = [{ name: 'Men' }, { name: 'Women' }]
 
 const GenderFilter = () => {
   return (
@@ -9,7 +9,7 @@ const GenderFilter = () => {
         <p className="uppercase font-medium ">Gender</p>
       </div>
       <ul className="flex flex-col px-2 py-4 gap-3 text-13">
-        {brandList.map(({ name }, index) => {
+        {genderList.map(({ name }, index) => {
           return (
             <li key={index}>
               <div className="">

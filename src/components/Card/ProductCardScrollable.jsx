@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import air_max from '../../assets/img/air_max_flyknit_racer_shoes.png'
 
@@ -9,7 +10,9 @@ const ProductCardScrollable = () => {
   return (
     <div className="flex flex-col border rounded-lg divide-y hover:shadow-card flex-none w-55 laptop:w-96">
       <div className="rounded-t-lg relative">
-        <img src={air_max} alt="air_max" />
+        <Link to="/product/1">
+          <img src={air_max} alt="air_max" />
+        </Link>
       </div>
       <div className="flex items-center justify-between p-2 laptop:py-3 laptop:px-4 gap-2">
         <div className="flex font-bold text-xs laptop:text-xl">

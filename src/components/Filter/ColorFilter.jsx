@@ -1,6 +1,6 @@
 import React from 'react'
 
-const brandList = [
+const colorList = [
   { name: 'Black', color: '#000000' },
   { name: 'Blue', color: '#396CB4' },
   { name: 'Brown', color: '#7C482B' },
@@ -24,7 +24,7 @@ const ColorFilter = () => {
         <p className="uppercase font-medium ">Sizes</p>
       </div>
       <ul className="grid items-center justify-center flex-wrap px-2 py-4 gap-3 text-13 grid-cols-2 max-w-[254px]">
-        {brandList.map(({ name, color, border }, index) => {
+        {colorList.map(({ name, color, border }, index) => {
           return (
             <li key={index}>
               <div className="flex items-center gap-2">

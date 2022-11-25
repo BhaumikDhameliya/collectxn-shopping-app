@@ -1,6 +1,6 @@
 import React from 'react'
 
-const brandList = [
+const priceList = [
   { name: '₹2500 to ₹4000', count: 265 },
   { name: '₹4000 to ₹8500', count: 208 },
   { name: '₹8500 to ₹12000', count: 130 },
@@ -14,7 +14,7 @@ const PriceFilter = () => {
         <p className="uppercase font-medium ">PRICE</p>
       </div>
       <ul className="flex flex-col px-2 py-4 gap-3 text-13">
-        {brandList.map(({ name, count }, index) => {
+        {priceList.map(({ name, count }, index) => {
           return (
             <li key={index}>
               <div className="">
