@@ -3,6 +3,8 @@ import { Routes, Route } from 'react-router-dom'
 import ProductInfo from './layouts/ProductInfo'
 import Apparels from './pages/Apparels'
 import Assecersories from './pages/Assecersories'
+import Checkout from './pages/Checkout'
+import OrderPlaced from './pages/Checkout/OrderPlaced'
 
 import CoomingSoon from './pages/CoomingSoon'
 import Home from './pages/Home'
@@ -13,6 +15,7 @@ import NoMatch from './pages/NoMatch'
 import PlayStation from './pages/Playstation'
 import RequestProduct from './pages/RequestProduct/RequestProduct'
 import RouteLinks from './pages/RouteLinks'
+import ShoppingBag from './pages/ShoppingBag'
 import Signup from './pages/Signup'
 import Sneakers from './pages/Sneakers'
 import VerifyOtp from './pages/VerifyOtp'
@@ -38,6 +41,10 @@ export default function App() {
           <Route path="assecersories" element={<Assecersories />} />
           <Route path="product/:productId" element={<ProductInfo />} />
         </Route>
+        <Route path="/order-placed" element={<OrderPlaced />} />
+        <Route path="/shopping-bag" element={<ShoppingBag />} />
+        <Route path="/checkout" element={<Checkout />} />
+
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </div>

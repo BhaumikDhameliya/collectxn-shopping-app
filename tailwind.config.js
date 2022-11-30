@@ -6,6 +6,9 @@ module.exports = {
       backgroundPosition: {
         'select-caret': 'calc(100% - 24px) center',
       },
+      borderRadius: {
+        10: "10px"
+      },
       colors: {
         error: '#EF4949',
         gray: {

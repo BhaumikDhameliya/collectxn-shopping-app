@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import LogoCollectionTransparent from '../../assets/img/logo_collectxn_transparent.png'
 import logo_collectxn_black from '../../assets/img/logo_collectxn_black.png'
@@ -16,10 +15,13 @@ import UserSVG from '../../assets/SVGComponent/UserSVG'
 import SearchMenu from '../Menu/SearchMenu'
 
 const Navbar = () => {
+  const navigate = useNavigate()
+
   const [showMenu, setShowMenu] = useState(false)
   const [showSearchMenu, setShowSearchMenu] = useState(false)
 
   const toggleSearchMenu = () => setShowSearchMenu((prev) => !prev)
+  const goToShoppingBag = () => navigate('/shopping-bag')
 
   return (
     <>
@@ -95,7 +97,9 @@ const Navbar = () => {
                     </button>
                   </div>
                   <div className="flex gap-3">
-                    <ShoppingBagIcon />
+                    <button onClick={goToShoppingBag}>
+                      <ShoppingBagIcon />
+                    </button>
                     <div className="hidden tablet:block">
                       <Link to="/auth/login">
                         <UserIcon />
@@ -106,15 +110,17 @@ const Navbar = () => {
               </>
             )}
           </div>
-          {showMenu ? (
-            <button onClick={() => setShowMenu(false)}>
-              <CloseMobileMenuSVG />
-            </button>
-          ) : (
-            <button onClick={() => setShowMenu(true)}>
-              <MobileMenuSVG />
-            </button>
-          )}
+          <div className="laptop:hidden">
+            {showMenu ? (
+              <button onClick={() => setShowMenu(false)}>
+                <CloseMobileMenuSVG />
+              </button>
+            ) : (
+              <button onClick={() => setShowMenu(true)}>
+                <MobileMenuSVG />
+              </button>
+            )}
+          </div>
         </div>
         {showMenu && (
           <div className="flex flex-col items-center">
