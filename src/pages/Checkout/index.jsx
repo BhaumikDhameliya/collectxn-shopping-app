@@ -20,17 +20,17 @@ const Checkout = () => {
   return (
     <>
       <div className="bg-white flex flex-col min-h-screen">
-        <div className="flex items-center px-4 py-6 gap-10 border-b">
+        <div className="flex items-center px-4 tablet:px-8 py-6 gap-10 border-b">
           <button className="absolute" onClick={goBack}>
             <ArrowLeft strokeWidth={1} size={32} />
           </button>
           <span className="flex-grow text-center font-bold text-xl">
-            YOUR BAG
+            Checkout
           </span>
         </div>
         <div className="flex flex-col items-center justify-between flex-grow">
           <AddressAndBilling />
-          <div className="flex flex-col items-center px-4 py-3 gap-5 border-t relative bottom-0 w-full">
+          <div className="flex flex-col items-center px-4 tablet:px-8 py-3 gap-5 border-t relative bottom-0 w-full">
             <PopButton btnClasses="bg-black-mate" onClick={togglePaymentPage}>
               Proceed to Checkout
             </PopButton>

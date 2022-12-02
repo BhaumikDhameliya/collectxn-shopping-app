@@ -15,7 +15,9 @@ const OrderPlaced = () => {
           <div className="flex flex-col items-center justify-center">
             <OrderPlacedBag />
             <div className="flex gap-3 items-center text-center mt-8">
-              <p className="font-bold text-2xl">Order placed successfully</p>
+              <p className="font-bold text-2xl tablet:text-3xl">
+                Order placed successfully
+              </p>
               <div>
                 <VerifiedRoundedSVG />
               </div>

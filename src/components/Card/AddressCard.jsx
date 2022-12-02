@@ -13,7 +13,7 @@ const AddressCard = (props) => {
           <div className="h-2.5 w-2.5 rounded-full bg-punchy-neon"></div>
         </div>
       </div>
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 flex-grow">
         <div className="flex flex-col gap-1.5 font-cera-pro font-semibold">
           <div>{address.addressLine1}</div>
           <div>{address.addressLine2}</div>

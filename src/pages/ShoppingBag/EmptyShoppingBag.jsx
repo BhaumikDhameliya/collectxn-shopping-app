@@ -2,9 +2,12 @@ import React from 'react'
 
 import { ReactComponent as NoMatchBagSVG } from '../../assets/svg/no_match_bag.svg'
 
-const EmptyShoppingBag = () => {
+const EmptyShoppingBag = ({ onClick }) => {
   return (
-    <div className="flex flex-col items-center justify-center gap-3 flex-grow">
+    <div
+      className="flex flex-col items-center justify-center gap-3 flex-grow"
+      onClick={onClick}
+    >
       <div>
         <NoMatchBagSVG />
       </div>

@@ -15,7 +15,7 @@ const CartProduct = () => {
         <img
           src={air_max}
           alt="air_max"
-          className="w-16 rounded-md tablet:w-28"
+          className="w-16 rounded-md tablet:w-48"
         />
       </div>
       <div className="flex flex-col justify-between gap-6 flex-grow">

@@ -2,6 +2,8 @@ import React from 'react'
 import PopButton from '../../components/buttons/PopButton'
 import AddressCard from '../../components/Card/AddressCard'
 
+import { ReactComponent as ShieldSVG } from '../../assets/svg/shield.svg'
+
 const addressList = [
   {
     name: 'address 1',
@@ -17,9 +19,9 @@ const addressList = [
 
 const AddressAndBilling = () => {
   return (
-    <div className="flex flex-col w-full">
-      <div className="flex flex-col px-4 pt-4 pb-6 gap-4">
-        <div className="flex justify-between py-4 pt-4 pb-6 gap-4">
+    <div className="flex flex-col w-full laptop:bg-[#FAFAFA] laptop:border laptop:rounded-10">
+      <div className="flex flex-col px-4 tablet:px-8 pt-4 pb-6 gap-4">
+        <div className="flex items-center justify-between py-4 pt-4 pb-6 gap-4">
           <p className="font-bold text-xl">Shipping Address</p>
           <div>
             <PopButton btnClasses="bg-black-mate">Add address</PopButton>
@@ -39,7 +41,7 @@ const AddressAndBilling = () => {
           )
         })}
       </div>
-      <div className="flex flex-col px-4 py-6 border-t border-gray-light">
+      <div className="flex flex-col px-4 tablet:px-8 py-6 border-t border-gray-light">
         <div className="flex pb-3">
           <p className="font-bold text-xl">Billing</p>
         </div>
@@ -62,6 +64,15 @@ const AddressAndBilling = () => {
             <p>Total Amount</p>
             <p>₹16,398.00</p>
           </div>
+        </div>
+      </div>
+      <div className="hidden laptop:flex flex-col items-center px-4 tablet:px-8 py-3 gap-5 relative bottom-0 w-full">
+        <PopButton btnClasses="bg-black-mate">Place order</PopButton>
+        <div className="flex items-center px-2 py-1 gap-2">
+          <div>
+            <ShieldSVG />
+          </div>
+          <p className="font-cera-pro font-semibold">100% Secure</p>
         </div>
       </div>
     </div>
