@@ -3,7 +3,7 @@ import React from 'react'
 import { ReactComponent as LogoFacebook } from '../../assets/svg/logo_facebook.svg'
 import { signInWithFacebook } from '../../utils/firebase/firebase.utils'
 
-const FacebookButton = ({ text = 'Facebook' }) => {
+const FacebookButton = ({ text = 'Facebook', type }) => {
   const logFacebookUser = async () => {
     const response = await signInWithFacebook()
     console.log('response----', response)

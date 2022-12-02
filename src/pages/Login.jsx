@@ -38,8 +38,8 @@ const Login = () => {
               </p>
             </div>
             <div className="pb-10 border-b flex items-center justify-between border-gray-light gap-3 mt-8 flex-wrap">
-              <GoogleButton text="Log in with Google" />
-              <FacebookButton text="Log in with Facebook" />
+              <GoogleButton text="Log in with Google" type="login" />
+              <FacebookButton text="Log in with Facebook" type="login" />
             </div>
             <div className="flex flex-col items-start">
               <div className="mt-6 w-full">
