@@ -46,7 +46,7 @@ const Checkout = () => {
       <div
         className={`absolute ${
           showPaymentPage ? 'block' : 'hidden'
-        } bg-black bg-opacity-50 h-screen w-screen top-0 left-0 flex items-center justify-center`}
+        } bg-black bg-opacity-50 min-h-full min-w-full top-0 left-0 flex items-center justify-center flex-grow`}
         // onClick={togglePaymentPage}
         onClick={() => navigate('/order-placed')}
       >

@@ -15,11 +15,9 @@ import unique_collection from '../assets/img/unique_collection.png'
 import { ReactComponent as ScrollToExplore } from '../assets/svg/scroll_to_explore.svg'
 // import { ReactComponent as TrustedSuppliers } from '../assets/svg/trusted_suppliers.svg'
 // import { ReactComponent as UniqueCollection } from '../assets/svg/unique_collection.svg'
-import { ReactComponent as Arrow } from '../assets/svg/arrow.svg'
 import PopButton from '../components/buttons/PopButton'
 
 import Crawler from '../components/Crawler'
-import ProductCardScrollable from '../components/Card/ProductCardScrollable'
 import ExploreSneakers from '../components/Explore/ExploreSneakers'
 import ExploreApparels from '../components/Explore/ExploreApparels'
 import ExploreJewellary from '../components/Explore/ExploreJewellary'
@@ -31,6 +29,7 @@ import FromTheMagazineBanner from '../components/Banners/FromTheMagazineBanner'
 import NewsletterBanner from '../components/Banners/NewsletterBanner'
 import BecomeACollectxrBanner from '../components/Banners/BecomeACollectxrBanner'
 import ExplorePlaystation from '../components/Explore/ExplorePlaystation'
+import PopularRightNow from '../components/Banners/PopularRightNow'
 
 const Home = () => {
   return (
@@ -40,15 +39,15 @@ const Home = () => {
           <div>
             <div
               id="carouselExampleCaptions"
-              class="carousel slide relative"
+              className="carousel slide relative"
               data-bs-ride="carousel"
             >
-              <div class="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
+              <div className="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
                 <button
                   type="button"
                   data-bs-target="#carouselExampleCaptions"
                   data-bs-slide-to="0"
-                  class="active"
+                  className="active"
                   aria-current="true"
                   aria-label="Slide 1"
                 ></button>
@@ -65,43 +64,43 @@ const Home = () => {
                   aria-label="Slide 3"
                 ></button>
               </div>
-              <div class="carousel-inner relative w-full overflow-hidden">
-                <div class="carousel-item active relative float-left w-full">
+              <div className="carousel-inner relative w-full overflow-hidden">
+                <div className="carousel-item active relative float-left w-full">
                   <img
                     src="https://mdbootstrap.com/img/Photos/Slides/img%20(15).jpg"
-                    class="block w-full"
+                    className="block w-full"
                     alt="..."
                   />
-                  <div class="carousel-caption hidden md:block absolute text-center">
-                    <h5 class="text-xl">First slide label</h5>
+                  <div className="carousel-caption hidden md:block absolute text-center">
+                    <h5 className="text-xl">First slide label</h5>
                     <p>
                       Some representative placeholder content for the first
                       slide.
                     </p>
                   </div>
                 </div>
-                <div class="carousel-item relative float-left w-full">
+                <div className="carousel-item relative float-left w-full">
                   <img
                     src="https://mdbootstrap.com/img/Photos/Slides/img%20(22).jpg"
-                    class="block w-full"
+                    className="block w-full"
                     alt="..."
                   />
-                  <div class="carousel-caption hidden md:block absolute text-center">
-                    <h5 class="text-xl">Second slide label</h5>
+                  <div className="carousel-caption hidden md:block absolute text-center">
+                    <h5 className="text-xl">Second slide label</h5>
                     <p>
                       Some representative placeholder content for the second
                       slide.
                     </p>
                   </div>
                 </div>
-                <div class="carousel-item relative float-left w-full">
+                <div className="carousel-item relative float-left w-full">
                   <img
                     src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
-                    class="block w-full"
+                    className="block w-full"
                     alt="..."
                   />
-                  <div class="carousel-caption hidden md:block absolute text-center">
-                    <h5 class="text-xl">Third slide label</h5>
+                  <div className="carousel-caption hidden md:block absolute text-center">
+                    <h5 className="text-xl">Third slide label</h5>
                     <p>
                       Some representative placeholder content for the third
                       slide.
@@ -110,28 +109,28 @@ const Home = () => {
                 </div>
               </div>
               <button
-                class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
+                className="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
                 type="button"
                 data-bs-target="#carouselExampleCaptions"
                 data-bs-slide="prev"
               >
                 <span
-                  class="carousel-control-prev-icon inline-block bg-no-repeat"
+                  className="carousel-control-prev-icon inline-block bg-no-repeat"
                   aria-hidden="true"
                 ></span>
-                <span class="visually-hidden">Previous</span>
+                <span className="visually-hidden">Previous</span>
               </button>
               <button
-                class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
+                className="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
                 type="button"
                 data-bs-target="#carouselExampleCaptions"
                 data-bs-slide="next"
               >
                 <span
-                  class="carousel-control-next-icon inline-block bg-no-repeat"
+                  className="carousel-control-next-icon inline-block bg-no-repeat"
                   aria-hidden="true"
                 ></span>
-                <span class="visually-hidden">Next</span>
+                <span className="visually-hidden">Next</span>
               </button>
             </div>
             {/* <img
@@ -189,28 +188,7 @@ const Home = () => {
             <img src={collectxn_focused_woman} alt="collectxn_focused" />
           </div>
         </div>
-        <div className="flex flex-col items-center gap-8 px-1/20">
-          <div className="flex justify-between items-center w-full">
-            <div className="font-cera-pro font-bold text-2xl ">
-              Popular Right Now
-            </div>
-            <div className="hidden tablet:flex gap-3">
-              <div className="p-2 border border-black-mate rounded-full">
-                <Arrow />
-              </div>
-              <div className="p-2 border border-black-mate rounded-full rotate-180">
-                <Arrow />
-              </div>
-            </div>
-          </div>
-          <div className="flex items-center gap-6 w-full overflow-x-scroll no-scrollbar pb-1/20">
-            <ProductCardScrollable />
-            <ProductCardScrollable />
-            <ProductCardScrollable />
-            <ProductCardScrollable />
-            <ProductCardScrollable />
-          </div>
-        </div>
+        <PopularRightNow />
       </div>
       <div className="bg-black-mate p-1/20 flex flex-col tablet:flex-row relative bg-[url('/src/assets/img/mask_group.png')] bg-no-repeat bg-right-bottom bg-contain gap-8">
         <div className="flex flex-col gap-6 tablet:gap-[10%] tablet:w-1/2">
