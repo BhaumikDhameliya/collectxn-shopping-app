@@ -42,11 +42,14 @@ const Login = () => {
               <FacebookButton text="Log in with Facebook" />
             </div>
             <div className="flex flex-col items-start">
-              <div className="mt-6">
+              <div className="mt-6 w-full">
                 <TextInput labelText="Email Address" />
               </div>
               <div className="mt-8 w-full">
-                <PopButton onClick={() => navigate('/auth/verify-otp')}>
+                <PopButton
+                  btnClasses="bg-black-mate"
+                  onClick={() => navigate('/auth/verify-otp')}
+                >
                   Log In
                 </PopButton>
               </div>

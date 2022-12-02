@@ -1,4 +1,3 @@
-import { signInWithPopup } from 'firebase/auth'
 import React from 'react'
 
 import { ReactComponent as LogoGoogle } from '../../assets/svg/logo_google.svg'

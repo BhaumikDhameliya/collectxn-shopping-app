@@ -1,6 +1,6 @@
 import React from 'react'
 
-import air_Jordan_image from '../assets/img/air_jordan.png'
+// import air_Jordan_image from '../assets/img/air_jordan.png'
 import the_only from '../assets/img/the_only.png'
 import collectxn_focused_woman from '../assets/img/collectxn_focused_woman.png'
 import style_for_men from '../assets/img/style_for_men.png'
@@ -38,11 +38,107 @@ const Home = () => {
       <div className="bg-black-mate text-white bg-[url('/src/assets/img/gird_pattern.png')] bg-con">
         <div className="pt-[14px] tablet:pt-6 laptop:pt-9 px-4 tablet:px-8 laptop:px-20">
           <div>
-            <img
+            <div
+              id="carouselExampleCaptions"
+              class="carousel slide relative"
+              data-bs-ride="carousel"
+            >
+              <div class="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
+                <button
+                  type="button"
+                  data-bs-target="#carouselExampleCaptions"
+                  data-bs-slide-to="0"
+                  class="active"
+                  aria-current="true"
+                  aria-label="Slide 1"
+                ></button>
+                <button
+                  type="button"
+                  data-bs-target="#carouselExampleCaptions"
+                  data-bs-slide-to="1"
+                  aria-label="Slide 2"
+                ></button>
+                <button
+                  type="button"
+                  data-bs-target="#carouselExampleCaptions"
+                  data-bs-slide-to="2"
+                  aria-label="Slide 3"
+                ></button>
+              </div>
+              <div class="carousel-inner relative w-full overflow-hidden">
+                <div class="carousel-item active relative float-left w-full">
+                  <img
+                    src="https://mdbootstrap.com/img/Photos/Slides/img%20(15).jpg"
+                    class="block w-full"
+                    alt="..."
+                  />
+                  <div class="carousel-caption hidden md:block absolute text-center">
+                    <h5 class="text-xl">First slide label</h5>
+                    <p>
+                      Some representative placeholder content for the first
+                      slide.
+                    </p>
+                  </div>
+                </div>
+                <div class="carousel-item relative float-left w-full">
+                  <img
+                    src="https://mdbootstrap.com/img/Photos/Slides/img%20(22).jpg"
+                    class="block w-full"
+                    alt="..."
+                  />
+                  <div class="carousel-caption hidden md:block absolute text-center">
+                    <h5 class="text-xl">Second slide label</h5>
+                    <p>
+                      Some representative placeholder content for the second
+                      slide.
+                    </p>
+                  </div>
+                </div>
+                <div class="carousel-item relative float-left w-full">
+                  <img
+                    src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
+                    class="block w-full"
+                    alt="..."
+                  />
+                  <div class="carousel-caption hidden md:block absolute text-center">
+                    <h5 class="text-xl">Third slide label</h5>
+                    <p>
+                      Some representative placeholder content for the third
+                      slide.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <button
+                class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
+                type="button"
+                data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="prev"
+              >
+                <span
+                  class="carousel-control-prev-icon inline-block bg-no-repeat"
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
+                type="button"
+                data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="next"
+              >
+                <span
+                  class="carousel-control-next-icon inline-block bg-no-repeat"
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+            {/* <img
               src={air_Jordan_image}
               alt="air_Jordan_image"
               className="w-full"
-            />
+            /> */}
           </div>
 
           <div className="flex items-center justify-between py-1/20">
