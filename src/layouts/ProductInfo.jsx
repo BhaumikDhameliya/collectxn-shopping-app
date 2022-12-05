@@ -1,15 +1,18 @@
-import React, { useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
+
 import { Minus, Plus, ArrowLeft, ArrowRight } from 'akar-icons'
 
 import air_max from '../assets/img/air_max_flyknit_racer_shoes.png'
 import zestImage from '../assets/img/zest.png'
 import logo_cxn_black from '../assets/img/logo_cxn_black.png'
-import product_image_1 from '../assets/img/ProductImage/product_image_1.png'
-import product_image_2 from '../assets/img/ProductImage/product_image_2.png'
-import product_image_3 from '../assets/img/ProductImage/product_image_3.png'
-import product_image_4 from '../assets/img/ProductImage/product_image_4.png'
-import product_image_5 from '../assets/img/ProductImage/product_image_5.png'
-import product_image_6 from '../assets/img/ProductImage/product_image_6.png'
+// import product_image_1 from '../assets/img/ProductImage/product_image_1.png'
+// import product_image_2 from '../assets/img/ProductImage/product_image_2.png'
+// import product_image_3 from '../assets/img/ProductImage/product_image_3.png'
+// import product_image_4 from '../assets/img/ProductImage/product_image_4.png'
+// import product_image_5 from '../assets/img/ProductImage/product_image_5.png'
+// import product_image_6 from '../assets/img/ProductImage/product_image_6.png'
 
 import { ReactComponent as HeartSVG } from '../assets/svg/heart.svg'
 import { ReactComponent as GetItBySVG } from '../assets/svg/get_it_by.svg'
@@ -20,6 +23,8 @@ import TextInput from '../components/Input/TextInput'
 import BecomeACollectxrBanner from '../components/Banners/BecomeACollectxrBanner'
 import ProductCardScrollable from '../components/Card/ProductCardScrollable'
 import Breadcrumbs from '../components/Breadcrumbs'
+import { getProductDetails } from '../api/products.api'
+import { setProductDetail } from '../features/product/productSlice'
 
 const sizeList = [
   { name: '3' },
@@ -60,10 +65,28 @@ const sizeList = [
 ]
 
 const ProductInfo = () => {
+  const dispatch = useDispatch()
+  const { productId } = useParams()
+
+  const product = useSelector((state) => state.product.products?.[productId])
+  console.log('Product-----', product)
+
   const [quantity, setQuantity] = useState(1)
 
   const increaseQuantity = () => setQuantity((prev) => prev + 1)
   const decreaseQuantity = () => setQuantity((prev) => prev - 1)
+
+  const getCategoryProuductsData = useCallback(async () => {
+    const res = await getProductDetails(productId)
+    const product = res?.data?.product
+    if (product) {
+      dispatch(setProductDetail({ productId, product }))
+    }
+  }, [productId, dispatch])
+
+  useEffect(() => {
+    getCategoryProuductsData()
+  }, [getCategoryProuductsData])
 
   return (
     <div>
@@ -85,48 +108,17 @@ const ProductInfo = () => {
       <div className="flex px-20 justify-between">
         <div className="hidden laptop:flex items-start justify-center">
           <div className="hidden laptop:grid grid-cols-2 gap-4">
-            <div>
-              <img
-                src={product_image_1}
-                alt="product_image_1"
-                className="rounded-md"
-              />
-            </div>
-            <div>
-              <img
-                src={product_image_2}
-                alt="product_image_2"
-                className="rounded-md"
-              />
-            </div>
-            <div>
-              <img
-                src={product_image_3}
-                alt="product_image_3"
-                className="rounded-md"
-              />
-            </div>
-            <div>
-              <img
-                src={product_image_4}
-                alt="product_image_4"
-                className="rounded-md"
-              />
-            </div>
-            <div>
-              <img
-                src={product_image_5}
-                alt="product_image_5"
-                className="rounded-md"
-              />
-            </div>
-            <div>
-              <img
-                src={product_image_6}
-                alt="product_image_6"
-                className="rounded-md"
-              />
-            </div>
+            {product?.ProductImages?.map((prImage) => {
+              return (
+                <div className="flex items-center justify-center">
+                  <img
+                    src={prImage?.image}
+                    alt={prImage?.image}
+                    className="rounded-md"
+                  />
+                </div>
+              )
+            })}
           </div>
         </div>
         <div className="flex flex-col px-4 py-6 gap-10 laptop:w-2/5">
@@ -135,13 +127,13 @@ const ProductInfo = () => {
               <div className="flex flex-col pb-8 gap-6 border-b border-gray-mid w-full">
                 <div className="flex flex-col gap-3">
                   <div className="flex gap-3 font-medium text-13 text-gray-dark">
-                    <p>Air Jordan</p>
+                    <p>{product?.brand}</p>
                     <p>|</p>
-                    <p>Release year 2022</p>
+                    <p>Release year {product?.releaseYear}</p>
                   </div>
                   <div className="flex flex-col gap-2">
                     <div className="flex items-center gap-10">
-                      <p className="font-bold text-2xl">Air Jordan XXXVI Low</p>
+                      <p className="font-bold text-2xl">{product?.name}</p>
                       <HeartSVG />
                     </div>
                     <div className="flex items-center gap-2">

@@ -20,6 +20,16 @@ export const getAllProducts = async (params) => {
     }
 }
 
+export const getProductDetails = async (productId, params) => {
+    try {
+        const res = await collectionAPI.get(`/products/id/${productId}`, { params })
+        console.log("res-----", res)
+        return res?.data
+    } catch (error) {
+        console.log("error-----", error)
+    }
+}
+
 export const updateProducts = async (payload) => {
     try {
         const res = await collectionAPI.patch('/products', payload)
