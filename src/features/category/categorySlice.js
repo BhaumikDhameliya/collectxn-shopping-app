@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-export const counterSlice = createSlice({
+export const categorySlice = createSlice({
     name: 'category',
     initialState: {
         categories: {},
@@ -12,7 +12,6 @@ export const counterSlice = createSlice({
     },
 })
 
-// Action creators are generated for each case reducer function
-export const { setCategories } = counterSlice.actions
+export const { setCategories } = categorySlice.actions
 
-export default counterSlice.reducer
+export default categorySlice.reducer

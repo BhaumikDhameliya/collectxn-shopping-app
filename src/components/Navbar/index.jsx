@@ -15,7 +15,6 @@ import { ReactComponent as CloseMobileMenuSVG } from '../../assets/svg/close_mob
 import UserSVG from '../../assets/SVGComponent/UserSVG'
 import SearchMenu from '../Menu/SearchMenu'
 import { getCategories } from '../../api/categories.api'
-import { collectionAPI } from '../../utils/axios/axios.utils'
 
 import { setCategories } from '../../features/category/categorySlice'
 
@@ -44,11 +43,8 @@ const Navbar = () => {
   }, [dispatch])
 
   useEffect(() => {
-    const authToken = localStorage.getItem('authToken')
-    if (!authToken) navigate('/auth/login', { replace: true })
-    collectionAPI.defaults.headers.common['Authorization'] = authToken
     getCategoryData()
-  }, [getCategoryData, navigate])
+  }, [getCategoryData])
 
   return (
     <>
