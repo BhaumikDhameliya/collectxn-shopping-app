@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 
 import LogoCollectionTransparent from '../../assets/img/logo_collectxn_transparent.png'
@@ -13,15 +14,41 @@ import { ReactComponent as MobileMenuSVG } from '../../assets/svg/mobile_menu_ic
 import { ReactComponent as CloseMobileMenuSVG } from '../../assets/svg/close_mobile_menu.svg'
 import UserSVG from '../../assets/SVGComponent/UserSVG'
 import SearchMenu from '../Menu/SearchMenu'
+import { getCategories } from '../../api/categories.api'
+import { collectionAPI } from '../../utils/axios/axios.utils'
+
+import { setCategories } from '../../features/category/categorySlice'
 
 const Navbar = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const [showMenu, setShowMenu] = useState(false)
   const [showSearchMenu, setShowSearchMenu] = useState(false)
+  const [categoryList, setCategoryList] = useState([])
 
   const toggleSearchMenu = () => setShowSearchMenu((prev) => !prev)
   const goToShoppingBag = () => navigate('/shopping-bag')
+
+  const getCategoryData = useCallback(async () => {
+    const res = await getCategories()
+    const catList = res?.data?.categories
+    let categories
+    catList.forEach((cat) => {
+      categories[cat.name] = cat
+    })
+    if (catList) {
+      dispatch(setCategories(categories))
+      setCategoryList(catList)
+    }
+  }, [dispatch])
+
+  useEffect(() => {
+    const authToken = localStorage.getItem('authToken')
+    if (!authToken) navigate('/auth/login', { replace: true })
+    collectionAPI.defaults.headers.common['Authorization'] = authToken
+    getCategoryData()
+  }, [getCategoryData, navigate])
 
   return (
     <>
@@ -60,7 +87,16 @@ const Navbar = () => {
               <>
                 <div className="hidden laptop:block">
                   <ul className="flex gap-8 text-white font-bold text-base whitespace-nowrap">
-                    <li className="flex py-[6px] px-3 gap-[10px] rounded-[4px]">
+                    {categoryList?.map((cat) => {
+                      return (
+                        <li className="flex py-[6px] px-3 gap-[10px] rounded-[4px]">
+                          <Link to={`/${cat?.name}`} className="">
+                            {cat?.name}
+                          </Link>
+                        </li>
+                      )
+                    })}
+                    {/* <li className="flex py-[6px] px-3 gap-[10px] rounded-[4px]">
                       <Link to="/" className="">
                         New Release
                       </Link>
@@ -84,7 +120,7 @@ const Navbar = () => {
                       <Link to="/" className="">
                         Play station
                       </Link>
-                    </li>
+                    </li> */}
                   </ul>
                 </div>
                 <div className="flex items-center gap-6">

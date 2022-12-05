@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useParams } from 'react-router-dom'
 
 import sneakers_banner from '../assets/img/banner/sneakers_banner.png'
 
@@ -9,6 +10,9 @@ import FiltersMenu from '../components/Menu/FiltersMenu'
 import SortByMenu from '../components/Menu/SortByMenu'
 
 const ProductListing = () => {
+  const { category } = useParams()
+
+  const [categoryData, setCategoryData] = useState()
   const [showSortByMenu, setShowSortByMenu] = useState(false)
   const [showFiltersMenu, setShowFiltersMenu] = useState(false)
 
