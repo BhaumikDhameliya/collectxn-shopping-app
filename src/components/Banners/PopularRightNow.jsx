@@ -2,8 +2,10 @@ import React from 'react'
 import { ArrowLeft, ArrowRight } from 'akar-icons'
 import ProductCardScrollable from '../Card/ProductCardScrollable'
 import { useRef } from 'react'
+import { useSelector } from 'react-redux'
 
 const PopularRightNow = () => {
+  const products = useSelector((state) => state.product.products)
   const scrollRef = useRef()
 
   const scrollRight = () => {
@@ -47,15 +49,9 @@ const PopularRightNow = () => {
         ref={scrollRef}
         className="flex items-center gap-6 w-full overflow-x-scroll no-scrollbar pb-1/20"
       >
-        <ProductCardScrollable />
-        <ProductCardScrollable />
-        <ProductCardScrollable />
-        <ProductCardScrollable />
-        <ProductCardScrollable />
-        <ProductCardScrollable />
-        <ProductCardScrollable />
-        <ProductCardScrollable />
-        <ProductCardScrollable />
+        {Object.entries(products).map(([productId, product]) => {
+          return <ProductCardScrollable key={productId} product={product} />
+        })}
       </div>
     </div>
   )

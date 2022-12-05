@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 // import air_Jordan_image from '../assets/img/air_jordan.png'
 import the_only from '../assets/img/the_only.png'
@@ -19,23 +19,26 @@ import { ReactComponent as ScrollToExplore } from '../assets/svg/scroll_to_explo
 import PopButton from '../components/buttons/PopButton'
 
 import Crawler from '../components/Crawler'
-import ExploreSneakers from '../components/Explore/ExploreSneakers'
-import ExploreApparels from '../components/Explore/ExploreApparels'
-import ExploreJewellary from '../components/Explore/ExploreJewellary'
-import ExploreAssecersories from '../components/Explore/ExploreAssecersories'
+// import ExploreSneakers from '../components/Explore/ExploreSneakers'
+// import ExploreApparels from '../components/Explore/ExploreApparels'
+// import ExploreJewellary from '../components/Explore/ExploreJewellary'
+// import ExploreAssecersories from '../components/Explore/ExploreAssecersories'
+// import ExplorePlaystation from '../components/Explore/ExplorePlaystation'
 import RequestProductBanner from '../components/Banners/RequestProductBanner'
 import TrendingBrandsBanner from '../components/Banners/TrendingBrandsBanner'
 import UserReviewsBanner from '../components/Banners/UserReviewsBanner'
 import FromTheMagazineBanner from '../components/Banners/FromTheMagazineBanner'
 import NewsletterBanner from '../components/Banners/NewsletterBanner'
 import BecomeACollectxrBanner from '../components/Banners/BecomeACollectxrBanner'
-import ExplorePlaystation from '../components/Explore/ExplorePlaystation'
 import PopularRightNow from '../components/Banners/PopularRightNow'
 import { getAllProducts } from '../api/products.api'
 import { setProducts } from '../features/product/productSlice'
+import ExploreCategory from '../components/Explore/ExploreCategory'
 
 const Home = () => {
   const dispatch = useDispatch()
+
+  const { categories } = useSelector((state) => state.category)
 
   const getAllProuductsData = useCallback(async () => {
     const res = await getAllProducts()
@@ -244,11 +247,14 @@ const Home = () => {
             Explore Various Categories
           </div>
           <div className="flex flex-col gap-12 pb-16">
-            <ExploreSneakers />
+            {Object.entries(categories).map(([categoryId, category]) => {
+              return <ExploreCategory key={categoryId} category={category} />
+            })}
+            {/* <ExploreSneakers />
             <ExploreApparels />
             <ExploreJewellary />
             <ExplorePlaystation />
-            <ExploreAssecersories />
+            <ExploreAssecersories /> */}
           </div>
         </div>
       </div>
