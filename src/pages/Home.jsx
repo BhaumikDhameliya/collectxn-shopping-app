@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useCallback, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 
 // import air_Jordan_image from '../assets/img/air_jordan.png'
 import the_only from '../assets/img/the_only.png'
@@ -30,8 +31,28 @@ import NewsletterBanner from '../components/Banners/NewsletterBanner'
 import BecomeACollectxrBanner from '../components/Banners/BecomeACollectxrBanner'
 import ExplorePlaystation from '../components/Explore/ExplorePlaystation'
 import PopularRightNow from '../components/Banners/PopularRightNow'
+import { getAllProducts } from '../api/products.api'
+import { setProducts } from '../features/product/productSlice'
 
 const Home = () => {
+  const dispatch = useDispatch()
+
+  const getAllProuductsData = useCallback(async () => {
+    const res = await getAllProducts()
+    const productList = res?.data?.products
+    if (productList) {
+      let products = {}
+      productList.forEach((product) => {
+        products[product.id] = product
+      })
+      dispatch(setProducts(products))
+    }
+  }, [dispatch])
+
+  useEffect(() => {
+    getAllProuductsData()
+  }, [getAllProuductsData])
+
   return (
     <div className="overflow-auto no-scrollbar">
       <div className="bg-black-mate text-white bg-[url('/src/assets/img/gird_pattern.png')] bg-con">

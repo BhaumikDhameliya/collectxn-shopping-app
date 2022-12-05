@@ -37,7 +37,7 @@ export default function App() {
         <Route path="request-product" element={<RequestProduct />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="/:category" element={<ProductListing />} />
+          <Route path="category/:categoryId" element={<ProductListing />} />
           <Route path="product/:productId" element={<ProductInfo />} />
           {/* <Route path="apparels" element={<Apparels />} />
           <Route path="jewellery" element={<Jewellery />} />

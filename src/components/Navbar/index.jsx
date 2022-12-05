@@ -32,11 +32,11 @@ const Navbar = () => {
   const getCategoryData = useCallback(async () => {
     const res = await getCategories()
     const catList = res?.data?.categories
-    let categories
-    catList.forEach((cat) => {
-      categories[cat.name] = cat
-    })
     if (catList) {
+      let categories = {}
+      catList.forEach((cat) => {
+        categories[cat.id] = cat
+      })
       dispatch(setCategories(categories))
       setCategoryList(catList)
     }
@@ -85,8 +85,11 @@ const Navbar = () => {
                   <ul className="flex gap-8 text-white font-bold text-base whitespace-nowrap">
                     {categoryList?.map((cat) => {
                       return (
-                        <li className="flex py-[6px] px-3 gap-[10px] rounded-[4px]">
-                          <Link to={`/${cat?.name}`} className="">
+                        <li
+                          className="flex py-[6px] px-3 gap-[10px] rounded-[4px]"
+                          key={cat?.name}
+                        >
+                          <Link to={`category/${cat?.id}`} className="">
                             {cat?.name}
                           </Link>
                         </li>

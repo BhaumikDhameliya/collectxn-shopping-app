@@ -10,9 +10,9 @@ export const createProducts = async (payload) => {
     }
 }
 
-export const getProducts = async (payload) => {
+export const getAllProducts = async (params) => {
     try {
-        const res = await collectionAPI.get('/products', payload)
+        const res = await collectionAPI.get('/products', { params })
         console.log("res-----", res)
         return res?.data
     } catch (error) {
