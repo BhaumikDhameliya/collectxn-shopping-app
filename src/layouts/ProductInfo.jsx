@@ -201,7 +201,7 @@ const ProductInfo = () => {
                             />
                             <label
                               htmlFor={name}
-                              className="font-cera-pro font-medium flex items-center justify-center px-2 py-1.5 rounded border border-gray-light peer-checked:bg-gray-light peer-checked:text-gray-dark flex-grow"
+                              className="font-cera-pro font-medium flex items-center justify-center px-2 py-1.5 rounded border border-gray-light peer-checked:bg-black-mate peer-checked:text-white flex-grow"
                             >
                               {name}
                             </label>

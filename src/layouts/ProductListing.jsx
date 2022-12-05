@@ -1,16 +1,24 @@
-import React, { useState } from 'react'
-// import { useParams } from 'react-router-dom'
+import React, { useCallback, useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getAllProducts } from '../api/products.api'
+import { useParams } from 'react-router-dom'
 
 import sneakers_banner from '../assets/img/banner/sneakers_banner.png'
 
-import PopButton from '../components/buttons/PopButton'
+// import PopButton from '../components/buttons/PopButton'
 import ProductCard from '../components/Card/ProductCard'
 import SelectInput from '../components/Input/SelectInput'
 import FiltersMenu from '../components/Menu/FiltersMenu'
 import SortByMenu from '../components/Menu/SortByMenu'
+import { setCategoryProducts } from '../features/product/productSlice'
 
 const ProductListing = () => {
-  // const { category } = useParams()
+  const dispatch = useDispatch()
+  const { categoryId } = useParams()
+
+  const products = useSelector(
+    (state) => state.product.categoryProducts?.[categoryId],
+  )
 
   // const [categoryData, setCategoryData] = useState()
   const [showSortByMenu, setShowSortByMenu] = useState(false)
@@ -18,6 +26,23 @@ const ProductListing = () => {
 
   const toggleSortByMenu = () => setShowSortByMenu((prev) => !prev)
   const toggleFiltersMenu = () => setShowFiltersMenu((prev) => !prev)
+
+  const getCategoryProuductsData = useCallback(async () => {
+    const res = await getAllProducts({ Categories: categoryId })
+    const productList = res?.data?.products
+    if (productList) {
+      let products = {}
+      productList.forEach((product) => {
+        products[product.id] = product
+      })
+      dispatch(setCategoryProducts({ categoryId: categoryId, products }))
+    }
+  }, [categoryId, dispatch])
+
+  useEffect(() => {
+    getCategoryProuductsData()
+  }, [getCategoryProuductsData])
+
   return (
     <div>
       {showSortByMenu && <SortByMenu toggle={toggleSortByMenu} />}
@@ -67,22 +92,20 @@ const ProductListing = () => {
 
             <div className="flex flex-col gap-6 pb-8 tablet:pb-12">
               <div className="grid grid-cols-2 tablet:grid-cols-4 laptop:grid-cols-3 justify-between gap-4 tablet:gap-6">
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
+                {Object.entries(products || {}).map(
+                  ([productId, product], index) => {
+                    if (index > 3) return null
+                    return <ProductCard key={productId} product={product} />
+                  },
+                )}
               </div>
-              <div className="flex items-center justify-center">
+              {/* <div className="flex items-center justify-center">
                 <div>
                   <PopButton type="outline" onClick={() => {}}>
                     Load more
                   </PopButton>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
