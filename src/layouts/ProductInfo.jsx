@@ -104,18 +104,31 @@ const ProductInfo = () => {
           <img src={logo_cxn_black} alt="logo_cxn_black" />
         </div>
       </div>
-      <Breadcrumbs />
+      <Breadcrumbs
+        path={[
+          { text: 'home', to: '/' },
+          {
+            text: product?.Category?.name,
+            to: `/category/${product?.CategoryId}`,
+          },
+          { text: product?.name },
+        ]}
+      />
       <div className="flex px-20 justify-between">
         <div className="hidden laptop:flex items-start justify-center">
           <div className="hidden laptop:grid grid-cols-2 gap-4">
             {product?.ProductImages?.map((prImage) => {
               return (
-                <div className="flex items-center justify-center">
+                <div className="relative flex items-center justify-center rounded-md bg-gray-100">
                   <img
                     src={prImage?.image}
                     alt={prImage?.image}
-                    className="rounded-md"
+                    height={450}
+                    className="rounded-md max-w-sm"
                   />
+                  <div className="absolute opacity-20 left-4 bottom-4 tablet:left-8 tablet:bottom-8">
+                    <img src={logo_cxn_black} alt="logo_cxn_black" />
+                  </div>
                 </div>
               )
             })}
@@ -136,22 +149,26 @@ const ProductInfo = () => {
                       <p className="font-bold text-2xl">{product?.name}</p>
                       <HeartSVG />
                     </div>
-                    <div className="flex items-center gap-2">
+                    {/* <div className="flex items-center gap-2">
                       <p className="font-medium text-gray-dark text-13">
                         3 interest-free payments of ₹ 2166 with{' '}
                       </p>
                       <img src={zestImage} alt="zestImage" />
-                    </div>
+                    </div> */}
                   </div>
                   <div className="flex flex-col gap-2">
                     <div className="flex items-center gap-2 5">
                       <div className="flex items-end gap-2 5">
-                        <p className="font-medium tablet:text-xl">₹ 14,995</p>
+                        <p className="font-medium tablet:text-xl">
+                          ₹ {product?.price}
+                        </p>
                         <p className="text-10 tablet:text-13 line-through text-gray-dark">
-                          ₹ 14,995
+                          ₹ {product?.displayPice}
                         </p>
                       </div>
-                      <p className="font-bold text-pink">(25% off)</p>
+                      <p className="font-bold text-pink">
+                        ({product?.discountPercent || 0}% off)
+                      </p>
                     </div>
                     <p className="font-bold text-10 text-green">
                       Inclusive of all taxes
@@ -160,18 +177,33 @@ const ProductInfo = () => {
                 </div>
               </div>
               <div className="flex flex-col pb-10 gap-8 border-b border-gray-light w-full">
-                <div className="flex gap-3">
-                  <div className="">
-                    <img
-                      src={air_max}
-                      alt="air_max"
-                      className="w-15 rounded-md border"
-                    />
+                {product?.ColorAvailabilities?.length && (
+                  <div className="flex gap-3">
+                    {product.ColorAvailabilities.map((prd) => {
+                      const { color } = prd
+                      return (
+                        <div className="">
+                          <input
+                            type="checkbox"
+                            id={color}
+                            name={color}
+                            className="hidden peer"
+                          />
+                          <label
+                            htmlFor={color}
+                            className="w-15 rounded-md border"
+                          >
+                            <img
+                              src={air_max}
+                              alt="air_max"
+                              className="w-15 rounded-md"
+                            />
+                          </label>
+                        </div>
+                      )
+                    })}
                   </div>
-                  <div>
-                    <img src={air_max} alt="air_max" className="w-15" />
-                  </div>
-                </div>
+                )}
                 <div className="flex flex-col">
                   <div className="flex py-1 5 gap-2 items-center justify-between">
                     <p className="font-medium">Select size</p>
@@ -241,12 +273,14 @@ const ProductInfo = () => {
                       Get it by Sun, Sep 18
                     </p>
                   </div>
-                  <div className="flex items-center gap-1 5">
-                    <PayOnDeliverySVG />
-                    <p className="font-cera-pro font-semibold">
-                      Pay on delivery available
-                    </p>
-                  </div>
+                  {product?.allowPayOnDelivery && (
+                    <div className="flex items-center gap-1 5">
+                      <PayOnDeliverySVG />
+                      <p className="font-cera-pro font-semibold">
+                        Pay on delivery available
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
