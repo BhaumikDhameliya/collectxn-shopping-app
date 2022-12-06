@@ -11,7 +11,7 @@ module.exports = {
         'select-caret': 'calc(100% - 24px) center',
       },
       borderRadius: {
-        10: "10px"
+        10: '10px',
       },
       colors: {
         error: '#EF4949',
@@ -56,8 +56,10 @@ module.exports = {
         16.5: '66px',
         22: '88px',
         37: '148px',
+        39: '156px',
         42: '168px',
         55: '220px',
+        74: '296px',
         '1/20': '5%',
         '1/10': '10%',
         '1/5': '20%',

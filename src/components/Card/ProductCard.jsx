@@ -10,13 +10,13 @@ const ProductCard = (props) => {
   const { product } = props
   console.log('product-----', product)
   return (
-    <div className="flex flex-col border rounded laptop:rounded-lg divide-y hover:shadow-card">
+    <div className="flex flex-col border rounded laptop:rounded-lg divide-y hover:shadow-card w-39 laptop:w-74">
       <div className="rounded-t-lg relative">
         <Link to={`/product/${product?.id}`}>
           <img
             src={product?.ProductImages?.[0]?.image || air_max}
             alt={product?.name}
-            className="rounded-t-lg m-auto"
+            className="rounded-t-lg m-auto h-39 w-39 laptop:h-74 laptop:w-74"
           />
         </Link>
         <div className="laptop:hidden absolute top-3 right-3">
