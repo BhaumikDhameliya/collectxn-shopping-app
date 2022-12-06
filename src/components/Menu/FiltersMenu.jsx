@@ -1,25 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import { ReactComponent as ArrowSVG } from '../../assets/svg/arrow.svg'
 import BrandFilter from '../Filter/BrandFilter'
 import CategoryFilter from '../Filter/CategoryFilter'
 import ColorFilter from '../Filter/ColorFilter'
-// import GenderFilter from '../Filter/GenderFilter'
-// import PriceFilter from '../Filter/PriceFilter'
-// import RealeaseYearFilter from '../Filter/ReleaseYearFilter'
+import GenderFilter from '../Filter/GenderFilter'
+import PriceFilter from '../Filter/PriceFilter'
+import RealeaseYearFilter from '../Filter/ReleaseYearFilter'
 import SizeFilter from '../Filter/SizeFilter'
 import TypeFilter from '../Filter/TypeFilter'
 
 const FiltersMenu = (props) => {
   const { toggle } = props
   const { categoryId } = useParams()
+  const navigate = useNavigate()
+
+  const [selectedCategoryId, setSelectedCategoryId] = useState(categoryId)
 
   const category = useSelector(
     (state) => state.category.categories?.[categoryId],
   )
   console.log('category-----', category)
+
+  useEffect(() => {
+    if (selectedCategoryId) {
+      navigate(`/category/${selectedCategoryId}`)
+    }
+  }, [selectedCategoryId, navigate, categoryId])
 
   return (
     <div className="absolute laptop:relative bg-white flex flex-col w-full z-10">
@@ -31,14 +40,14 @@ const FiltersMenu = (props) => {
           <p className="font-bold text-xl uppercase">Filters</p>
         </div>
         <div className="flex flex-col gap-6 pt-4">
-          <CategoryFilter />
+          <CategoryFilter {...{ selectedCategoryId, setSelectedCategoryId }} />
           {category?.brands && <BrandFilter brandList={category?.brands} />}
-          {/* <GenderFilter /> */}
+          <GenderFilter />
           {category?.sizes && <SizeFilter sizeList={category?.sizes} />}
           {category?.colors && <ColorFilter colorList={category?.colors} />}
           {category?.types && <TypeFilter typeList={category?.types} />}
-          {/* <RealeaseYearFilter />
-          <PriceFilter /> */}
+          <RealeaseYearFilter />
+          <PriceFilter />
         </div>
       </div>
       <div className="flex flex-row items-center border divide-x text-center laptop:hidden">

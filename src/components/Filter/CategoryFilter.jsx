@@ -1,7 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
-const CategoryFilter = () => {
+const CategoryFilter = (props) => {
+  const { selectedCategoryId, setSelectedCategoryId } = props
   const categories = useSelector((state) => state.category.categories)
 
   return (
@@ -20,8 +21,14 @@ const CategoryFilter = () => {
                     <input
                       type="checkbox"
                       id={name}
-                      name="category"
+                      name={name}
                       value={categoryId}
+                      checked={categoryId === selectedCategoryId}
+                      onChange={(e) => {
+                        if (e.target.checked) {
+                          setSelectedCategoryId(categoryId)
+                        }
+                      }}
                       className="accent-black-mate"
                     />
                     <label htmlFor={name}>{name}</label>
