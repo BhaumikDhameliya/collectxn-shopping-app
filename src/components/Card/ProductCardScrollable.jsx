@@ -10,13 +10,13 @@ const ProductCardScrollable = (props) => {
   const { product } = props
 
   return (
-    <div className="flex flex-col border rounded-lg divide-y hover:shadow-card flex-none w-55 laptop:w-96">
+    <div className="flex flex-col border rounded-lg divide-y hover:shadow-card flex-none max-w-55 laptop:max-w-96">
       <div className="rounded-t-lg relative">
         <Link to={`/product/${product?.id}`}>
           <img
             src={product?.ProductImages?.[0]?.image || air_max}
             alt={product?.name}
-            className="rounded-t-lg m-auto h-55 w-55 laptop:h-96 laptop:w-96"
+            className="rounded-t-lg m-auto max-h-55 max-w-55 laptop:max-h-96 laptop:max-w-96"
           />
         </Link>
       </div>

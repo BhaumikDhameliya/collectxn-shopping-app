@@ -67,7 +67,7 @@ const ProductListing = () => {
           <div className="hidden laptop:block">
             <FiltersMenu />
           </div>
-          <div className="flex flex-col gap-8 px-4 tablet:px-8 laptop:px-10">
+          <div className="flex flex-col gap-8 px-4 tablet:px-8 laptop:px-10 flex-grow">
             <div className="hidden laptop:flex items-center justify-end gap-2">
               <p className="font-bold">sort by:</p>
               <div>
