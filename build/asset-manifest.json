@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.60adaa5c.css",
-    "main.js": "/static/js/main.0cdeea0c.js",
+    "main.css": "/static/css/main.502b2892.css",
+    "main.js": "/static/js/main.b653c808.js",
     "static/media/collectxn_focused_woman.png": "/static/media/collectxn_focused_woman.f27714a291729fe8d2a9.png",
     "static/media/newsletter_banner_image.png": "/static/media/newsletter_banner_image.78643bda8afdc5098218.png",
     "static/media/img_log_in.png": "/static/media/img_log_in.2f7d7565fad5267e0a31.png",
@@ -9,28 +9,23 @@
     "static/media/img_coming_soon_tablet.png": "/static/media/img_coming_soon_tablet.17d8a86d6a066ddd0383.png",
     "static/media/request_product_banner.png": "/static/media/request_product_banner.3e28cdcaf5e24ea29f2c.png",
     "static/media/img_signup.png": "/static/media/img_signup.53d8af6c4b6ebfb8af48.png",
-    "static/media/product_image_5.png": "/static/media/product_image_5.e74bcbdde5ba454e45c2.png",
     "static/media/style_fashion_men_women.png": "/static/media/style_fashion_men_women.56aac396e015c3ff6fc9.png",
-    "static/media/air_jordan.png": "/static/media/air_jordan.f8f47773715eb4e50bd8.png",
-    "static/media/product_image_6.png": "/static/media/product_image_6.581c35ea45be83609015.png",
     "static/media/img_coming_soon_mobile.png": "/static/media/img_coming_soon_mobile.b25070f8b4ebb272f670.png",
     "static/media/Cera Pro Regular.otf": "/static/media/Cera Pro Regular.8f68a75dd154b7d8968a.otf",
-    "static/media/product_image_4.png": "/static/media/product_image_4.8a2da11fe66598dd975d.png",
     "static/media/sneakers_banner.png": "/static/media/sneakers_banner.4c280da33bcc8072bd8e.png",
     "static/media/blog_card_image.png": "/static/media/blog_card_image.24ecf24ce0c4a220ca9d.png",
-    "static/media/product_image_1.png": "/static/media/product_image_1.8764f8986c3b72d391bf.png",
     "static/media/fashion_for_women.png": "/static/media/fashion_for_women.c211edd6602f97062b02.png",
     "static/media/air_max_flyknit_racer_shoes.png": "/static/media/air_max_flyknit_racer_shoes.d841a3dc190c7bbbea70.png",
-    "static/media/product_image_2.png": "/static/media/product_image_2.5ae691eac66b67a3308d.png",
     "static/media/become_a_collectxr_bg.png": "/static/media/become_a_collectxr_bg.631f782d0109ae1693f9.png",
     "static/media/style_for_men.png": "/static/media/style_for_men.f7499cba727ae7c4d351.png",
-    "static/media/product_image_3.png": "/static/media/product_image_3.d7fd473ff9c9c0847b1a.png",
     "static/media/trending_brands_banner.png": "/static/media/trending_brands_banner.2d977e611d3ee54e2958.png",
     "static/media/request_product_mask_group.png": "/static/media/request_product_mask_group.5d5b91401183f9a54749.png",
+    "static/media/payment.png": "/static/media/payment.b3a055b1ab3af2f65df3.png",
     "static/media/mask_group.png": "/static/media/mask_group.3c4c07d499cb691879c3.png",
     "static/media/review_user.png": "/static/media/review_user.f52f3176e3a3b9b5fbd4.png",
     "static/media/the_only_gray_mid.png": "/static/media/the_only_gray_mid.2c3b53d0abbbf453b257.png",
     "static/media/from_the_magazine_text.png": "/static/media/from_the_magazine_text.b9bfac2fbe4565051662.png",
+    "static/media/order_placed_bag.svg": "/static/media/order_placed_bag.1202b405a8ac016695bb9b1cd7c42945.svg",
     "static/media/no_match_bag.svg": "/static/media/no_match_bag.e68e017b56561ea504c4923f19ee7ea1.svg",
     "static/media/request_product_text.png": "/static/media/request_product_text.246c36535fdfa122f815.png",
     "static/media/scroll_to_explore.svg": "/static/media/scroll_to_explore.b9135fcc00dda7fd8817f9fbdfe9905e.svg",
@@ -48,6 +43,7 @@
     "static/media/star_half.svg": "/static/media/star_half.2e4fbaff037c28583710de7de8458c8d.svg",
     "static/media/call.svg": "/static/media/call.01888408309abba6bf9a425a722f9fc9.svg",
     "static/media/Twitter.svg": "/static/media/Twitter.b2bd48fe7362d64c1cfd6dc7708f7e55.svg",
+    "static/media/shield.svg": "/static/media/shield.8e395520daf36b944db29a0aa6cb9fcc.svg",
     "static/media/logo_google.svg": "/static/media/logo_google.f016bc0ded6c1ae71c7824b4b25c1aee.svg",
     "static/media/Telegram.svg": "/static/media/Telegram.f085ad561595636e92646e571ec2d2f8.svg",
     "static/media/shopping_bag.svg": "/static/media/shopping_bag.cd2838ab98951f5b58016a3e02dd7e6c.svg",
@@ -65,11 +61,11 @@
     "static/media/close_rounded_white.svg": "/static/media/close_rounded_white.0ed67874ab54267ef6d860e3a2236f8e.svg",
     "static/media/close_mobile_menu.svg": "/static/media/close_mobile_menu.5d0c08d8206ffb86b21b186eec2508ad.svg",
     "static/media/arrow.svg": "/static/media/arrow.f212899706bca3dad102e04bbccc37f2.svg",
-    "main.60adaa5c.css.map": "/static/css/main.60adaa5c.css.map",
-    "main.0cdeea0c.js.map": "/static/js/main.0cdeea0c.js.map"
+    "main.502b2892.css.map": "/static/css/main.502b2892.css.map",
+    "main.b653c808.js.map": "/static/js/main.b653c808.js.map"
   },
   "entrypoints": [
-    "static/css/main.60adaa5c.css",
-    "static/js/main.0cdeea0c.js"
+    "static/css/main.502b2892.css",
+    "static/js/main.b653c808.js"
   ]
 }
