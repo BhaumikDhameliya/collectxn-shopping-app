@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import PopButton from '../buttons/PopButton'
 
 const priceList = [
   { name: '₹2500 to ₹4000', count: 265 },
@@ -17,11 +16,11 @@ const PriceFilter = () => {
         <p className="uppercase font-medium">PRICE</p>
       </div>
       <div>
-        <div className="flex gap-3 px-2 pt-4 laptop:max-w-xs">
+        <div className="flex gap-3 px-2 pt-4 laptop:max-w-xs text-13">
           <input
             type="number"
             min={0}
-            className="flex border border-gray-dark rounded-md p-2 w-24"
+            className="flex border border-gray-dark rounded-md p-2 w-16"
             placeholder="Min"
             value={min}
             onChange={(e) => setMin(e.target.value)}
@@ -29,12 +28,14 @@ const PriceFilter = () => {
           <input
             type="number"
             min={0}
-            className="flex border border-gray-dark rounded-md p-2 w-24"
+            className="flex border border-gray-dark rounded-md p-2 w-16"
             placeholder="Max"
             value={max}
             onChange={(e) => setMax(e.target.value)}
           />
-          <PopButton btnClasses="bg-black-mate">Go</PopButton>
+          <button className="bg-black-mate text-13 flex items-center justify-center px-3 gap-[10px] rounded-full w-full font-medium tablet:text-xl border border-black-mate disabled:bg-gray-mid disabled:shadow-none disabled:text-white hover:shadow-btn hover:bg-punchy-neon hover:text-black-mate text-white">
+            <span className="text-13">Go</span>
+          </button>
         </div>
         <ul className="flex flex-col px-2 py-4 gap-3 text-13">
           {priceList.map(({ name, count }, index) => {

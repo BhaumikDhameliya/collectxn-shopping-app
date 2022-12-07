@@ -16,7 +16,7 @@ const ProductCardScrollable = (props) => {
           <img
             src={product?.ProductImages?.[0]?.image || air_max}
             alt={product?.name}
-            className="rounded-t-lg m-auto max-h-55 max-w-55 laptop:max-h-96 laptop:max-w-96"
+            className="rounded-t-lg m-auto h-55 w-55 laptop:h-96 laptop:w-96"
           />
         </Link>
       </div>

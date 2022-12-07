@@ -17,7 +17,7 @@ const PopButton = (props) => {
     <button
       className={`${classes} ${disabledClasses} ${hoveredClasses} ${
         type === 'outline' ? outlineClasses : 'text-white'
-      } ${btnClasses}`}
+      } ${btnClasses} text-13`}
       onClick={onClick}
       {...rest}
     >
