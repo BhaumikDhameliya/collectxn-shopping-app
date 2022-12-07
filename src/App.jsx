@@ -1,4 +1,5 @@
-import * as React from 'react'
+import React, { useCallback, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import { Routes, Route } from 'react-router-dom'
 
 import ProductInfo from './layouts/ProductInfo'
@@ -17,13 +18,36 @@ import Home from './pages/Home'
 import Layout from './pages/Layout'
 import Login from './pages/Login'
 import NoMatch from './pages/NoMatch'
+import Profile from './pages/Profile'
 import RequestProduct from './pages/RequestProduct/RequestProduct'
 import RouteLinks from './pages/RouteLinks'
 import ShoppingBag from './pages/ShoppingBag'
 import Signup from './pages/Signup'
 import VerifyOtp from './pages/VerifyOtp'
 
+import { collectionAPI } from './utils/axios/axios.utils'
+import { getUserProfile } from './api/user.api'
+import { setUserProfile } from './features/user/userSlice'
+
 export default function App() {
+  const dispatch = useDispatch()
+  const getUserProfileData = useCallback(async () => {
+    const res = await getUserProfile()
+    const userP = res?.data?.user
+    if (!userP) {
+      localStorage.removeItem('authToken')
+    }
+    dispatch(setUserProfile(userP))
+  }, [dispatch])
+
+  useEffect(() => {
+    const authToken = localStorage.getItem('authToken')
+    if (authToken) {
+      collectionAPI.defaults.headers.common['Authorization'] = authToken
+      getUserProfileData()
+    }
+  }, [getUserProfileData])
+
   return (
     <div className="text-black-mate min-h-screen">
       <Routes>
@@ -48,6 +72,7 @@ export default function App() {
         <Route path="/order-placed" element={<OrderPlaced />} />
         <Route path="/shopping-bag" element={<ShoppingBag />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="profile" element={<Profile />} />
 
         <Route path="*" element={<NoMatch />} />
       </Routes>

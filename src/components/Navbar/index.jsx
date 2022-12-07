@@ -29,6 +29,11 @@ const Navbar = () => {
   const toggleSearchMenu = () => setShowSearchMenu((prev) => !prev)
   const goToShoppingBag = () => navigate('/shopping-bag')
 
+  const gotoProfile = () => {
+    setShowMenu(false)
+    navigate('/profile')
+  }
+
   const getCategoryData = useCallback(async () => {
     const res = await getCategories()
     const catList = res?.data?.categories
@@ -136,7 +141,7 @@ const Navbar = () => {
                       <ShoppingBagIcon />
                     </button>
                     <div className="hidden tablet:block">
-                      <Link to="/auth/login">
+                      <Link to="/profile">
                         <UserIcon />
                       </Link>
                     </div>
@@ -173,7 +178,10 @@ const Navbar = () => {
             </div>
             <div className="flex items-center justify-center px-3 py-4 gap-2 tablet:hidden">
               <p className="font-cera-pro font-semibold">
-                <button className="flex items-center px-3 py-2 gap-2 bg-punchy-neon border rounded-3xl">
+                <button
+                  className="flex items-center px-3 py-2 gap-2 bg-punchy-neon border rounded-3xl"
+                  onClick={gotoProfile}
+                >
                   <UserSVG fill="#000000" />
                   <p>Profile</p>
                 </button>
