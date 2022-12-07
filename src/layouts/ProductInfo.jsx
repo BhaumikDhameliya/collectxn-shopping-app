@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 import { Minus, Plus, ArrowLeft, ArrowRight } from 'akar-icons'
 
 import air_max from '../assets/img/air_max_flyknit_racer_shoes.png'
-import zestImage from '../assets/img/zest.png'
+// import zestImage from '../assets/img/zest.png'
 import logo_cxn_black from '../assets/img/logo_cxn_black.png'
 // import product_image_1 from '../assets/img/ProductImage/product_image_1.png'
 // import product_image_2 from '../assets/img/ProductImage/product_image_2.png'
@@ -25,44 +25,7 @@ import ProductCardScrollable from '../components/Card/ProductCardScrollable'
 import Breadcrumbs from '../components/Breadcrumbs'
 import { getProductDetails } from '../api/products.api'
 import { setProductDetail } from '../features/product/productSlice'
-
-const sizeList = [
-  { name: '3' },
-  { name: '3.5' },
-  { name: '4' },
-  { name: '4.5' },
-  { name: '5' },
-  { name: '5.5' },
-  { name: '6' },
-  { name: '6.5' },
-  { name: '7' },
-  { name: '7.5' },
-  { name: '8' },
-  { name: '8.5' },
-  { name: '9' },
-  { name: '9.5' },
-  { name: '10' },
-  { name: '10.5' },
-  { name: '11' },
-  { name: '11.5' },
-  { name: '12' },
-  { name: '12.5' },
-  { name: '13' },
-  { name: '13.5' },
-  { name: '14' },
-  { name: '14.5' },
-  { name: '15' },
-  { name: '15.5' },
-  { name: '16' },
-  { name: '16.5' },
-  { name: '17' },
-  { name: '17.5' },
-  { name: '18' },
-  { name: '18.5' },
-  { name: '19' },
-  { name: '19.5' },
-  { name: '20' },
-]
+import SizeSelectProductInfo from '../components/Select/SizeSelectProductInfo'
 
 const ProductInfo = () => {
   const dispatch = useDispatch()
@@ -72,6 +35,8 @@ const ProductInfo = () => {
   console.log('Product-----', product)
 
   const [quantity, setQuantity] = useState(1)
+  const [selectedColor, setSelectedColor] = useState()
+  const [selectedSize, setSelectedSize] = useState()
 
   const increaseQuantity = () => setQuantity((prev) => prev + 1)
   const decreaseQuantity = () => setQuantity((prev) => prev - 1)
@@ -119,12 +84,12 @@ const ProductInfo = () => {
           <div className="hidden laptop:grid grid-cols-2 gap-4">
             {product?.ProductImages?.map((prImage) => {
               return (
-                <div className="relative flex items-center justify-center rounded-md bg-gray-100">
+                <div className="relative flex items-center justify-center rounded-md bg-gray-100 max-w-sm">
                   <img
                     src={prImage?.image}
                     alt={prImage?.image}
                     height={450}
-                    className="rounded-md max-w-sm"
+                    className="rounded-md"
                   />
                   <div className="absolute opacity-20 left-4 bottom-4 tablet:left-8 tablet:bottom-8">
                     <img src={logo_cxn_black} alt="logo_cxn_black" />
@@ -160,14 +125,21 @@ const ProductInfo = () => {
                     <div className="flex items-center gap-2 5">
                       <div className="flex items-end gap-2 5">
                         <p className="font-medium tablet:text-xl">
-                          ₹ {product?.price}
+                          ₹ {selectedSize?.price || product?.price || 0}
                         </p>
                         <p className="text-10 tablet:text-13 line-through text-gray-dark">
-                          ₹ {product?.displayPice}
+                          ₹{' '}
+                          {selectedSize?.displayPrice ||
+                            product?.displayPice ||
+                            0}
                         </p>
                       </div>
                       <p className="font-bold text-pink">
-                        ({product?.discountPercent || 0}% off)
+                        (
+                        {selectedSize?.discountPercent ||
+                          product?.discountPercent ||
+                          0}
+                        % off)
                       </p>
                     </div>
                     <p className="font-bold text-10 text-green">
@@ -180,23 +152,28 @@ const ProductInfo = () => {
                 {product?.ColorAvailabilities?.length && (
                   <div className="flex gap-3">
                     {product.ColorAvailabilities.map((prd) => {
-                      const { color } = prd
+                      const { id: colorId, color } = prd
                       return (
                         <div className="">
                           <input
-                            type="checkbox"
-                            id={color}
-                            name={color}
+                            type="radio"
+                            id={colorId}
+                            name="productColor"
                             className="hidden peer"
+                            value={colorId}
+                            onChange={(e) => {
+                              if (e.target.checked) {
+                                setSelectedColor(prd)
+                              }
+                            }}
                           />
-                          <label
-                            htmlFor={color}
-                            className="w-15 rounded-md border"
-                          >
+                          <label htmlFor={colorId}>
                             <img
-                              src={air_max}
-                              alt="air_max"
-                              className="w-15 rounded-md"
+                              src={prd?.image || air_max}
+                              alt={color}
+                              className={`w-15 rounded-md ${
+                                colorId === selectedColor?.id ? 'border' : ''
+                              }`}
                             />
                           </label>
                         </div>
@@ -204,37 +181,15 @@ const ProductInfo = () => {
                     })}
                   </div>
                 )}
-                <div className="flex flex-col">
-                  <div className="flex py-1 5 gap-2 items-center justify-between">
-                    <p className="font-medium">Select size</p>
-                    <button className="font-medium text-13 border-b">
-                      Request size
-                    </button>
-                  </div>
-                  <ul className="grid items-center justify-center flex-wrap px-2 py-4 gap-3 text-13 tablet:text-base grid-cols-5">
-                    {sizeList.map(({ name }, index) => {
-                      return (
-                        <li key={index}>
-                          <div className="flex items-center gap-2">
-                            <input
-                              type="checkbox"
-                              id={name}
-                              name={name}
-                              value={name}
-                              className="accent-black-mate hidden peer"
-                            />
-                            <label
-                              htmlFor={name}
-                              className="font-cera-pro font-medium flex items-center justify-center px-2 py-1.5 rounded border border-gray-light peer-checked:bg-black-mate peer-checked:text-white flex-grow"
-                            >
-                              {name}
-                            </label>
-                          </div>
-                        </li>
-                      )
-                    })}
-                  </ul>
-                </div>
+                {selectedColor && (
+                  <SizeSelectProductInfo
+                    {...{
+                      selectedSize,
+                      setSelectedSize,
+                      product: selectedColor,
+                    }}
+                  />
+                )}
                 <div className="flex items-center gap-3">
                   <p className="font-medium">Select Quantity</p>
                   <div className="flex items-center p-2 gap-2 bg-white border rounded-full">
