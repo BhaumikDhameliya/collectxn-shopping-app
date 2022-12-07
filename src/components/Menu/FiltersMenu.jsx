@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 import { ReactComponent as ArrowSVG } from '../../assets/svg/arrow.svg'
 import BrandFilter from '../Filter/BrandFilter'
@@ -15,20 +15,11 @@ import TypeFilter from '../Filter/TypeFilter'
 const FiltersMenu = (props) => {
   const { toggle } = props
   const { categoryId } = useParams()
-  const navigate = useNavigate()
-
-  const [selectedCategoryId, setSelectedCategoryId] = useState(categoryId)
 
   const category = useSelector(
     (state) => state.category.categories?.[categoryId],
   )
   console.log('category-----', category)
-
-  useEffect(() => {
-    if (selectedCategoryId) {
-      navigate(`/category/${selectedCategoryId}`)
-    }
-  }, [selectedCategoryId, navigate, categoryId])
 
   return (
     <div className="absolute laptop:relative bg-white flex flex-col w-full z-10">
@@ -40,7 +31,7 @@ const FiltersMenu = (props) => {
           <p className="font-bold text-xl uppercase">Filters</p>
         </div>
         <div className="flex flex-col gap-6 pt-4">
-          <CategoryFilter {...{ selectedCategoryId, setSelectedCategoryId }} />
+          <CategoryFilter />
           {category?.brands && <BrandFilter brandList={category?.brands} />}
           <GenderFilter />
           {category?.sizes && <SizeFilter sizeList={category?.sizes} />}

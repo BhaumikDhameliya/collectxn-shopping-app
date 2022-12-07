@@ -9,7 +9,7 @@ const SearchMenu = (props) => {
   const { toggleSearchMenu } = props
 
   return (
-    <div className="flex flex-col bg-white absolute w-full z-10">
+    <div className="flex flex-col bg-white absolute w-full z-20">
       <div className="flex flex-col items-center px-4 tablet:px-20 py-6 gap-5">
         <p className="font-bold tablet:text-31">Search Products</p>
         <TextInput placeholder="" buttonText="search" />

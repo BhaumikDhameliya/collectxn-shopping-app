@@ -35,7 +35,7 @@ const ProductCard = (props) => {
         <div className="flex items-end p-2 laptop:py-3 laptop:px-4 gap-2 rounded-bl-lg whitespace-nowrap w-1/2">
           <p className="font-medium">₹ {product?.price}</p>
           <p className="text-10 laptop:text-sm line-through text-gray-dark">
-            ₹ {product?.displayPice}
+            ₹ {product?.displayPrice}
           </p>
         </div>
         <div className="hidden laptop:flex justify-center items-center py-3 px-4 gap-2 rounded-br-lg w-1/2">
