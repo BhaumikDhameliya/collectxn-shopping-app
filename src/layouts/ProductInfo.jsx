@@ -15,7 +15,7 @@ import logo_cxn_black from '../assets/img/logo_cxn_black.png'
 // import product_image_6 from '../assets/img/ProductImage/product_image_6.png'
 
 import { ReactComponent as HeartSVG } from '../assets/svg/heart.svg'
-import { ReactComponent as GetItBySVG } from '../assets/svg/get_it_by.svg'
+// import { ReactComponent as GetItBySVG } from '../assets/svg/get_it_by.svg'
 import { ReactComponent as PayOnDeliverySVG } from '../assets/svg/pay_on_delivery.svg'
 
 import PopButton from '../components/buttons/PopButton'
@@ -222,12 +222,12 @@ const ProductInfo = () => {
                   />
                 </div>
                 <div className="flex flex-col gap-2.5">
-                  <div className="flex items-center gap-1 5">
+                  {/* <div className="flex items-center gap-1 5">
                     <GetItBySVG />
                     <p className="font-cera-pro font-semibold">
                       Get it by Sun, Sep 18
                     </p>
-                  </div>
+                  </div> */}
                   {product?.allowPayOnDelivery && (
                     <div className="flex items-center gap-1 5">
                       <PayOnDeliverySVG />
@@ -243,15 +243,8 @@ const ProductInfo = () => {
           <div className="flex flex-col gap-5">
             <p className="font-bold text-lg">PRODUCT DESCRIPTION</p>
             <div className="flex flex-col gap-6 ont-cera-pro">
-              <p className="">
-                From the perimeter to the hoop, take the court with confidence.
-                This is one of the lightest Air Jordan game shoes to date, with
-                a minimal but durable leno-weave upper reinforced with tough
-                plastic details. Meanwhile, Zoom Air cushioning delivers energy
-                return and elite responsiveness. The game asks for
-                everything—now you have the shoe to match.
-              </p>
-              <div>
+              <p className="">{product?.description}</p>
+              {/* <div>
                 <p className="font-bold">More Benefits</p>
                 <ul className="list-disc pl-6">
                   <li>
@@ -267,6 +260,10 @@ const ProductInfo = () => {
                   <li>Style: DH0832-071</li>
                   <li>Country/Region of Origin: Vietnam</li>
                 </ul>
+              </div> */}
+              <div>
+                <p className="font-bold">Product Policy</p>
+                <p className="">{product?.policy}</p>
               </div>
             </div>
           </div>
