@@ -21,11 +21,11 @@ import { ReactComponent as PayOnDeliverySVG } from '../assets/svg/pay_on_deliver
 import PopButton from '../components/buttons/PopButton'
 import TextInput from '../components/Input/TextInput'
 import BecomeACollectxrBanner from '../components/Banners/BecomeACollectxrBanner'
-import ProductCardScrollable from '../components/Card/ProductCardScrollable'
 import Breadcrumbs from '../components/Breadcrumbs'
 import { getProductDetails } from '../api/products.api'
 import { setProductDetail } from '../features/product/productSlice'
 import SizeSelectProductInfo from '../components/Select/SizeSelectProductInfo'
+import RelatedProducts from '../features/product/RelatedProducts'
 
 const ProductInfo = () => {
   const dispatch = useDispatch()
@@ -269,20 +269,7 @@ const ProductInfo = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col items-center gap-4 laptop:gap-8 px-1/20 my-16">
-        <div className="flex justify-between items-center w-full">
-          <div className="font-cera-pro font-bold text-2xl ">
-            Product you might like
-          </div>
-        </div>
-        <div className="flex items-center gap-6 w-full overflow-x-scroll no-scrollbar pb-1/20">
-          <ProductCardScrollable />
-          <ProductCardScrollable />
-          <ProductCardScrollable />
-          <ProductCardScrollable />
-          <ProductCardScrollable />
-        </div>
-      </div>
+      <RelatedProducts />
       <BecomeACollectxrBanner />
     </div>
   )
