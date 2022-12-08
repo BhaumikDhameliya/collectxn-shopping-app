@@ -3,21 +3,32 @@ import { useNavigate } from 'react-router-dom'
 
 import { ReactComponent as LogoGoogle } from '../../assets/svg/logo_google.svg'
 
-import { signInWithGooglePopup } from '../../utils/firebase/firebase.utils'
+import {
+  signInWithGooglePopup,
+  // signInWithGoogleRedirect,
+} from '../../utils/firebase/firebase.utils'
 import { SocialAuth } from '../../api/auth.api'
+// import { GoogleAuthProvider } from 'firebase/auth'
 
 const GoogleButton = ({ text = 'Google', type }) => {
   const navigate = useNavigate()
   const logGoogleUser = async () => {
-    const response = await signInWithGooglePopup()
-    console.log('response----', response)
-    const firebase_token = response?.user?.accessToken
-    if (firebase_token) {
-      const response = await SocialAuth({ firebase_token })
-      const token = response?.data?.token
-      if (token) {
-        navigate('/')
+    try {
+      const response = await signInWithGooglePopup()
+      // const response = await signInWithGoogleRedirect()
+      console.log('response----', response)
+      // const credential = GoogleAuthProvider.credentialFromResult(response)
+      // const firebase_token = credential.accessToken
+      const firebase_token = response?.user?.accessToken
+      if (firebase_token) {
+        const response = await SocialAuth({ firebase_token })
+        const token = response?.data?.token
+        if (token) {
+          navigate('/')
+        }
       }
+    } catch (error) {
+      alert(error.message)
     }
   }
   return (

@@ -1,11 +1,11 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app'
-import 'firebase/auth'
 import {
   getAuth,
   signInWithPopup,
   GoogleAuthProvider,
   FacebookAuthProvider,
+  // signInWithRedirect,
 } from 'firebase/auth'
 
 // collectxn
@@ -37,6 +37,7 @@ const facebookProvider = new FacebookAuthProvider()
 googleProvider.setCustomParameters({
   prompt: 'select_account',
 })
+// googleProvider.addScope('https://www.googleapis.com/auth/contacts.readonly')
 
 facebookProvider.setCustomParameters({
   display: 'popup',
@@ -45,4 +46,6 @@ facebookProvider.setCustomParameters({
 export const auth = getAuth(firebaseApp)
 
 export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider)
+// export const signInWithGoogleRedirect = () =>
+//   signInWithRedirect(auth, googleProvider)
 export const signInWithFacebook = () => signInWithPopup(auth, facebookProvider)

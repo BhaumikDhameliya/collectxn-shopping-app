@@ -1,10 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 import Navbar from '../../components/Navbar'
 
 const Profile = () => {
+  const navigate = useNavigate()
   const userProfile = useSelector((state) => state.user.profile)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!Object.keys(userProfile)?.length) {
+        navigate('/auth/login')
+      }
+    }, 500)
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [navigate, userProfile])
+
   return (
     <div>
       <Navbar />

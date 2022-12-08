@@ -29,7 +29,7 @@ const Layout = () => {
   useEffect(() => {
     const authToken = localStorage.getItem('authToken')
     if (!authToken) {
-      navigate('/auth/login', { replace: true })
+      // navigate('/auth/login', { replace: true })
     } else {
       collectionAPI.defaults.headers.common['Authorization'] = authToken
       getUserProfileData()
