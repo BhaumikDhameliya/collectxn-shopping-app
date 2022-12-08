@@ -54,7 +54,7 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`absolute min-h-[66px] tablet:min-h-[88px] p-4 tablet:px-8 laptop:px-20 tablet:py-6 w-full overflow-auto no-scrollbar z-10 ${
+        className={`absolute h-16.5 tablet:h-22 p-4 tablet:px-8 laptop:px-20 tablet:py-6 w-full overflow-auto no-scrollbar z-10 ${
           showMenu ? 'bg-white' : 'bg-black-mate'
         }`}
       >

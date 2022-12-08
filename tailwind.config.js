@@ -13,6 +13,9 @@ module.exports = {
       borderRadius: {
         10: '10px',
       },
+      borderWidth: {
+        5: '5px',
+      },
       colors: {
         error: '#EF4949',
         gray: {
