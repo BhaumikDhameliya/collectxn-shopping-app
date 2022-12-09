@@ -6,6 +6,7 @@ import {
   GoogleAuthProvider,
   FacebookAuthProvider,
   // signInWithRedirect,
+  signOut
 } from 'firebase/auth'
 
 // collectxn
@@ -49,3 +50,13 @@ export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider)
 // export const signInWithGoogleRedirect = () =>
 //   signInWithRedirect(auth, googleProvider)
 export const signInWithFacebook = () => signInWithPopup(auth, facebookProvider)
+
+export const logout = async () => {
+  try {
+    await signOut(auth);
+    // signed out success
+  } catch (e) {
+    console.log("error logout-----", e)
+    // an error
+  }
+}

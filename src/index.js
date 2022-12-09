@@ -7,8 +7,13 @@ import './index.css'
 import App from './App'
 import ScrollToTop from './HOC/ScrollToTop'
 
+// redux
 import { Provider } from 'react-redux'
 import store from './app/store'
+
+// react-toastify
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
@@ -17,6 +22,7 @@ root.render(
       <ScrollToTop />
       <Provider store={store}>
         <App />
+        <ToastContainer />
       </Provider>
     </BrowserRouter>
   </React.StrictMode>,

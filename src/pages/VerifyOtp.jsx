@@ -1,5 +1,5 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 import img_signup from '../assets/img/img_signup.png'
 import logo_cxn from '../assets/img/logo_cxn.png'
@@ -10,6 +10,12 @@ import PopButton from '../components/buttons/PopButton'
 
 const VerifyOTP = () => {
   const navigate = useNavigate()
+  const location = useLocation()
+
+  const { token, email } = location.state
+
+  const [otp, setOtp] = useState('6543')
+
   return (
     <div className="flex min-h-screen">
       <div className="flex flex-col w-full laptop:w-1/2">
@@ -29,37 +35,37 @@ const VerifyOTP = () => {
             <div>
               <p className="font-bold text-[31px]">OTP Verification</p>
               <p className="font-cera-pro text-base">
-                We sent code to your email *****@gmail.com, please enter the
-                same here to login.
+                We sent code to your email {email}, please enter the same here
+                to login.
               </p>
             </div>
             <div className="flex flex-col items-center gap-8 w-full">
-              <div className="flex flex-col gap-3">
-                <div className="flex flex-row items-start gap-4">
-                  <div className="flex-shrink">
-                    <input
-                      type="text"
-                      className="flex items-center justify-center px-6 py-3 border rounded-3xl border-black-mate w-full"
-                    />
-                  </div>
-                  <div className="flex-shrink">
-                    <input
-                      type="text"
-                      className="flex items-center justify-center px-6 py-3 border rounded-3xl border-black-mate w-full"
-                    />
-                  </div>
-                  <div className="flex-shrink">
-                    <input
-                      type="text"
-                      className="flex items-center justify-center px-6 py-3 border rounded-3xl border-black-mate w-full"
-                    />
-                  </div>
-                  <div className="flex-shrink">
-                    <input
-                      type="text"
-                      className="flex items-center justify-center px-6 py-3 border rounded-3xl border-black-mate w-full"
-                    />
-                  </div>
+              <div className="flex flex-col gap-3 w-full">
+                <div className="flex flex-row justify-between gap-4">
+                  <input
+                    className="flex items-center justify-center px-6 py-3 border rounded-3xl border-black-mate w-full"
+                    type="text"
+                    inputMode="numeric"
+                    pattern="\d{1}"
+                  />
+                  <input
+                    className="flex items-center justify-center px-6 py-3 border rounded-3xl border-black-mate w-full"
+                    type="text"
+                    inputMode="numeric"
+                    pattern="\d{1}"
+                  />
+                  <input
+                    className="flex items-center justify-center px-6 py-3 border rounded-3xl border-black-mate w-full"
+                    type="text"
+                    inputMode="numeric"
+                    pattern="\d{1}"
+                  />
+                  <input
+                    className="flex items-center justify-center px-6 py-3 border rounded-3xl border-black-mate w-full"
+                    type="text"
+                    inputMode="numeric"
+                    pattern="\d{1}"
+                  />
                 </div>
                 <p className="font-cera-pro text-base text-error text-center">
                   Invalid OTP! Please try again.
