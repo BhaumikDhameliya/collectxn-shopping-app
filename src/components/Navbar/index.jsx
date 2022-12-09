@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 
 import LogoCollectionTransparent from '../../assets/img/logo_collectxn_transparent.png'
 import logo_collectxn_black from '../../assets/img/logo_collectxn_black.png'
@@ -21,6 +21,7 @@ import { setCategories } from '../../features/category/categorySlice'
 const Navbar = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const params = useParams()
 
   const [showMenu, setShowMenu] = useState(false)
   const [showSearchMenu, setShowSearchMenu] = useState(false)
@@ -91,12 +92,18 @@ const Navbar = () => {
                     {categoryList?.map((cat) => {
                       return (
                         <li
-                          className="flex py-[6px] px-3 gap-[10px] rounded-[4px]"
+                          className={`flex py-[6px] px-3 gap-[10px] rounded-[4px] ${
+                            // eslint-disable-next-line eqeqeq
+                            params?.categoryId == cat?.id
+                              ? 'border-b-5 border-punchy-neon'
+                              : ''
+                          }`}
+                          onClick={() => {
+                            navigate(`/category/${cat.id}`)
+                          }}
                           key={cat?.name}
                         >
-                          <Link to={`category/${cat?.id}`} className="">
-                            {cat?.name}
-                          </Link>
+                          <span className="">{cat?.name}</span>
                         </li>
                       )
                     })}
