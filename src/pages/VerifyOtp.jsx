@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 import img_signup from '../assets/img/img_signup.png'
@@ -7,14 +7,53 @@ import logo_cxn from '../assets/img/logo_cxn.png'
 import { ReactComponent as RightArrow } from '../assets/svg/svg_arrow_right.svg'
 import { ReactComponent as EmailLogo } from '../assets/svg/logo_email.svg'
 import PopButton from '../components/buttons/PopButton'
+import OtpInput from '../features/user/OtpInput'
+import { otpVerification } from '../api/auth.api'
 
 const VerifyOTP = () => {
   const navigate = useNavigate()
   const location = useLocation()
+  const email = location.state?.email
+  const token = location.state?.token
+  const [otp, setOtp] = useState('')
+  const [error, setError] = useState('')
 
-  const { token, email } = location.state
+  const handleOtpSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      const res = await otpVerification({ OTP: otp })
+      if (res?.status === 200) {
+        navigate('/')
+      } else {
+        if (res?.message) {
+          setError(res.message)
+        }
+      }
+    } catch (error) {
+      alert(error)
+    }
+  }
 
-  const [otp, setOtp] = useState('6543')
+  useEffect(() => {
+    let errorTimer
+    if (error) {
+      errorTimer = setTimeout(() => {
+        setError('')
+      }, [5000])
+    }
+
+    return () => {
+      clearTimeout(errorTimer)
+    }
+  }, [error])
+
+  useEffect(() => {
+    if (location.state === null) {
+      navigate('/auth/login')
+    }
+  }, [location.state, navigate])
+
+  console.log('token-----', token)
 
   return (
     <div className="flex min-h-screen">
@@ -39,43 +78,32 @@ const VerifyOTP = () => {
                 to login.
               </p>
             </div>
-            <div className="flex flex-col items-center gap-8 w-full">
-              <div className="flex flex-col gap-3 w-full">
-                <div className="flex flex-row justify-between gap-4">
-                  <input
-                    className="flex items-center justify-center px-6 py-3 border rounded-3xl border-black-mate w-full"
-                    type="text"
-                    inputMode="numeric"
-                    pattern="\d{1}"
-                  />
-                  <input
-                    className="flex items-center justify-center px-6 py-3 border rounded-3xl border-black-mate w-full"
-                    type="text"
-                    inputMode="numeric"
-                    pattern="\d{1}"
-                  />
-                  <input
-                    className="flex items-center justify-center px-6 py-3 border rounded-3xl border-black-mate w-full"
-                    type="text"
-                    inputMode="numeric"
-                    pattern="\d{1}"
-                  />
-                  <input
-                    className="flex items-center justify-center px-6 py-3 border rounded-3xl border-black-mate w-full"
-                    type="text"
-                    inputMode="numeric"
-                    pattern="\d{1}"
-                  />
+            <form onSubmit={handleOtpSubmit}>
+              <div className="flex flex-col items-center gap-8 w-full">
+                <div className="flex flex-col gap-3 w-full">
+                  <div className="flex flex-row justify-between gap-4">
+                    <OtpInput
+                      value={otp}
+                      valueLength={4}
+                      onChange={setOtp}
+                      className="flex items-center justify-center px-6 py-3 border rounded-3xl border-black-mate w-full"
+                    />
+                  </div>
+                  <p className="font-cera-pro text-base text-error text-center">
+                    {error && error}
+                  </p>
                 </div>
-                <p className="font-cera-pro text-base text-error text-center">
-                  Invalid OTP! Please try again.
+                <PopButton
+                  disabled={otp?.trim('')?.length !== 4}
+                  btnClasses="bg-black-mate"
+                >
+                  Verify
+                </PopButton>
+                <p className="font-cera-pro font-medium text-xl text-center">
+                  Resend in <span className="text-pink">15 sec</span>
                 </p>
               </div>
-              <PopButton disabled>Verify</PopButton>
-              <p className="font-cera-pro font-medium text-xl text-center">
-                Resend in <span className="text-pink">15 sec</span>
-              </p>
-            </div>
+            </form>
           </div>
         </div>
       </div>
