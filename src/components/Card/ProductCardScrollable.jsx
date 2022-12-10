@@ -32,7 +32,7 @@ const ProductCardScrollable = (props) => {
         <div className="flex items-end p-2 laptop:py-3 laptop:px-4 gap-2 rounded-bl-lg whitespace-nowrap flex-grow w-full laptop:w-1/2">
           <p className="font-medium">₹ {product?.price}</p>
           <p className="text-10 laptop:text-sm line-through text-gray-dark">
-            ₹ {product?.displayPice}
+            ₹ {product?.displayPrice}
           </p>
         </div>
         <div className="flex justify-center items-center gap-2 p-2 laptop:py-3 laptop:px-4 rounded-br-lg w-full laptop:w-1/2">

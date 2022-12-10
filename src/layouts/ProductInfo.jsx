@@ -53,6 +53,13 @@ const ProductInfo = () => {
     getCategoryProuductsData()
   }, [getCategoryProuductsData])
 
+  useEffect(() => {
+    const selColor = product?.ColorAvailabilities?.[0]
+    if (selColor) {
+      setSelectedColor(selColor)
+    }
+  }, [product?.ColorAvailabilities])
+
   return (
     <div>
       <div className="relative laptop:hidden">
@@ -81,23 +88,36 @@ const ProductInfo = () => {
       />
       <div className="flex px-20 justify-between">
         <div className="hidden laptop:flex items-start justify-center">
-          <div className="hidden laptop:grid grid-cols-2 gap-4">
-            {product?.ProductImages?.map((prImage) => {
-              return (
-                <div className="relative flex items-center justify-center rounded-md bg-gray-100 max-w-sm">
-                  <img
-                    src={prImage?.image}
-                    alt={prImage?.image}
-                    height={450}
-                    className="rounded-md"
-                  />
-                  <div className="absolute opacity-20 left-4 bottom-4 tablet:left-8 tablet:bottom-8">
-                    <img src={logo_cxn_black} alt="logo_cxn_black" />
+          {product?.ProductImages?.length === 1 ? (
+            <div className="relative flex items-center justify-center rounded-md bg-gray-100">
+              <img
+                src={product?.ProductImages?.[0]?.image}
+                alt={product?.ProductImages?.[0]?.image}
+                className="rounded-md"
+              />
+              <div className="absolute opacity-20 left-4 bottom-4 tablet:left-8 tablet:bottom-8">
+                <img src={logo_cxn_black} alt="logo_cxn_black" />
+              </div>
+            </div>
+          ) : (
+            <div className="hidden laptop:grid grid-cols-2 gap-4">
+              {product?.ProductImages?.map((prImage) => {
+                return (
+                  <div className="relative flex items-center justify-center rounded-md bg-gray-100 max-w-sm">
+                    <img
+                      src={prImage?.image}
+                      alt={prImage?.image}
+                      height={450}
+                      className="rounded-md"
+                    />
+                    <div className="absolute opacity-20 left-4 bottom-4 tablet:left-8 tablet:bottom-8">
+                      <img src={logo_cxn_black} alt="logo_cxn_black" />
+                    </div>
                   </div>
-                </div>
-              )
-            })}
-          </div>
+                )
+              })}
+            </div>
+          )}
         </div>
         <div className="flex flex-col px-4 py-6 gap-10 laptop:w-2/5">
           <div className="flex flex-col gap-10">
