@@ -7,6 +7,8 @@ import Navbar from '../../components/Navbar'
 import LogoutSVG from '../../assets/svg/logout_rounded.svg'
 import TextInput from '../../components/Input/TextInput'
 import AddressCard from '../../components/Card/AddressCard'
+import Wishlist from './Wishlist'
+import Orders from './Orders'
 
 const addressList = [
   {
@@ -25,7 +27,7 @@ const Profile = () => {
   const navigate = useNavigate()
   const userProfile = useSelector((state) => state.user.profile)
 
-  const [selectedTab, setSelectedTab] = useState('profile')
+  const [selectedTab, setSelectedTab] = useState('wishlist')
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -94,38 +96,44 @@ const Profile = () => {
             </div>
           </div>
           <div className="flex flex-col p-4">
-            <div className="flex flex-col gap-8">
-              <div className="flex items-center justify-between gap-2.5 pt-3 pb-4 border-b border-gray-light">
-                <div className="font-medium text-xl">Account info</div>
-                <button className="flex items-center justify-center px-4 py-2 gap-2.5 bg-gray-mid rounded-full">
-                  <p className="font-medium text-13 text-white">save changes</p>
-                </button>
-              </div>
-              <div className="flex flex-col gap-8 font-cera-pro font-semibold">
-                <TextInput labelText="Full Name" placeHolder="John Doe" />
-                <TextInput labelText="Mobile Number" buttonText="change" />
-                <TextInput labelText="Email ID" buttonText="change" />
-              </div>
-              <div>
+            {selectedTab === 'wishlist' && <Wishlist />}
+            {selectedTab === 'orders' && <Orders />}
+            {selectedTab === 'profile' && (
+              <div className="flex flex-col gap-8">
                 <div className="flex items-center justify-between gap-2.5 pt-3 pb-4 border-b border-gray-light">
-                  <div className="font-medium text-xl">Shipping Address</div>
-                  <button className="flex items-center justify-center px-4 py-2 gap-2.5 bg-black-mate rounded-full">
+                  <div className="font-medium text-xl">Account info</div>
+                  <button className="flex items-center justify-center px-4 py-2 gap-2.5 bg-gray-mid rounded-full">
                     <p className="font-medium text-13 text-white">
-                      Add address
+                      save changes
                     </p>
                   </button>
                 </div>
-                <div className="flex flex-col gap-4 mt-8">
-                  {addressList.map((address, index) => {
-                    return (
-                      <div className="" key={index}>
-                        <AddressCard address={address} showRadio={false} />
-                      </div>
-                    )
-                  })}
+                <div className="flex flex-col gap-8 font-cera-pro font-semibold">
+                  <TextInput labelText="Full Name" placeHolder="John Doe" />
+                  <TextInput labelText="Mobile Number" buttonText="change" />
+                  <TextInput labelText="Email ID" buttonText="change" />
+                </div>
+                <div>
+                  <div className="flex items-center justify-between gap-2.5 pt-3 pb-4 border-b border-gray-light">
+                    <div className="font-medium text-xl">Shipping Address</div>
+                    <button className="flex items-center justify-center px-4 py-2 gap-2.5 bg-black-mate rounded-full">
+                      <p className="font-medium text-13 text-white">
+                        Add address
+                      </p>
+                    </button>
+                  </div>
+                  <div className="flex flex-col gap-4 mt-8">
+                    {addressList.map((address, index) => {
+                      return (
+                        <div className="" key={index}>
+                          <AddressCard address={address} showRadio={false} />
+                        </div>
+                      )
+                    })}
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
