@@ -8,7 +8,7 @@ import LogoutSVG from '../../assets/svg/logout_rounded.svg'
 import TextInput from '../../components/Input/TextInput'
 import AddressCard from '../../components/Card/AddressCard'
 import Wishlist from './Wishlist'
-import Orders from './Orders'
+import ProfileOrders from './ProfileOrders'
 
 const addressList = [
   {
@@ -27,7 +27,7 @@ const Profile = () => {
   const navigate = useNavigate()
   const userProfile = useSelector((state) => state.user.profile)
 
-  const [selectedTab, setSelectedTab] = useState('wishlist')
+  const [selectedTab, setSelectedTab] = useState('orders')
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -97,7 +97,7 @@ const Profile = () => {
           </div>
           <div className="flex flex-col p-4">
             {selectedTab === 'wishlist' && <Wishlist />}
-            {selectedTab === 'orders' && <Orders />}
+            {selectedTab === 'orders' && <ProfileOrders />}
             {selectedTab === 'profile' && (
               <div className="flex flex-col gap-8">
                 <div className="flex items-center justify-between gap-2.5 pt-3 pb-4 border-b border-gray-light">

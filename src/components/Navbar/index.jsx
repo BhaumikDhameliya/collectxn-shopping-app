@@ -55,7 +55,7 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`absolute h-16.5 tablet:h-22 p-4 tablet:px-8 laptop:px-20 tablet:py-6 w-full overflow-auto no-scrollbar z-10 ${
+        className={`absolute h-16.5 tablet:h-22 p-4 tablet:px-8 laptop:px-20 tablet:py-6 w-full overflow-auto no-scrollbar z-20 ${
           showMenu ? 'bg-white' : 'bg-black-mate'
         }`}
       >
@@ -169,35 +169,34 @@ const Navbar = () => {
             )}
           </div>
         </div>
-        {showMenu && (
-          <div className="flex flex-col items-center">
-            <div className="flex items-center justify-center px-3 py-4 gap-2">
-              <p className="font-cera-pro font-semibold">Sneakers</p>
-            </div>
-            <div className="flex items-center justify-center px-3 py-4 gap-2">
-              <p className="font-cera-pro font-semibold">Apparels</p>
-            </div>
-            <div className="flex items-center justify-center px-3 py-4 gap-2">
-              <p className="font-cera-pro font-semibold">Jewellary</p>
-            </div>
-            <div className="flex items-center justify-center px-3 py-4 gap-2">
-              <p className="font-cera-pro font-semibold">PlayStation</p>
-            </div>
-            <div className="flex items-center justify-center px-3 py-4 gap-2 tablet:hidden">
-              <p className="font-cera-pro font-semibold">
-                <button
-                  className="flex items-center px-3 py-2 gap-2 bg-punchy-neon border rounded-3xl"
-                  onClick={gotoProfile}
-                >
-                  <UserSVG fill="#000000" />
-                  <p>Profile</p>
-                </button>
-              </p>
-            </div>
-          </div>
-        )}
       </nav>
-
+      {showMenu && (
+        <div className="flex flex-col items-center bg-white w-full absolute pt-16.5 laptop:pt-22 z-10">
+          <div className="flex items-center justify-center px-3 py-4 gap-2">
+            <p className="font-cera-pro font-semibold">Sneakers</p>
+          </div>
+          <div className="flex items-center justify-center px-3 py-4 gap-2">
+            <p className="font-cera-pro font-semibold">Apparels</p>
+          </div>
+          <div className="flex items-center justify-center px-3 py-4 gap-2">
+            <p className="font-cera-pro font-semibold">Jewellary</p>
+          </div>
+          <div className="flex items-center justify-center px-3 py-4 gap-2">
+            <p className="font-cera-pro font-semibold">PlayStation</p>
+          </div>
+          <div className="flex items-center justify-center px-3 py-4 gap-2 tablet:hidden">
+            <p className="font-cera-pro font-semibold">
+              <button
+                className="flex items-center px-3 py-2 gap-2 bg-punchy-neon border rounded-3xl"
+                onClick={gotoProfile}
+              >
+                <UserSVG fill="#000000" />
+                <p>Profile</p>
+              </button>
+            </p>
+          </div>
+        </div>
+      )}
       {showSearchMenu && (
         <div className="pt-16.5 tablet:pt-22">
           <SearchMenu toggleSearchMenu={toggleSearchMenu} />
