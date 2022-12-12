@@ -9,6 +9,9 @@ import TextInput from '../../components/Input/TextInput'
 import AddressCard from '../../components/Card/AddressCard'
 import Wishlist from './Wishlist'
 import ProfileOrders from './ProfileOrders'
+import Breadcrumbs from '../../components/Breadcrumbs'
+import ProfileTabsMobile from './ProfileTabsMobile'
+import ProfileCardLaptop from './ProfileCardLaptop'
 
 const addressList = [
   {
@@ -27,7 +30,7 @@ const Profile = () => {
   const navigate = useNavigate()
   const userProfile = useSelector((state) => state.user.profile)
 
-  const [selectedTab, setSelectedTab] = useState('orders')
+  const [selectedTab, setSelectedTab] = useState('profile')
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -43,9 +46,14 @@ const Profile = () => {
   return (
     <div>
       <Navbar />
-      <div className="pt-16.5 tablet:pt-22 min-h-screen flex">
-        <div className="flex flex-col divide-y divide-black min-w-full">
-          <div className="flex items-center justify-between p-4 gap-2 5">
+      <div className="pt-16.5 tablet:pt-22 min-h-screen flex laptop:flex-col">
+        <div className="hidden laptop:block">
+          <Breadcrumbs
+            path={[{ text: 'home', to: '/' }, { text: 'My Profile' }]}
+          />
+        </div>
+        <div className="flex flex-col divide-y divide-black laptop:divide-y-0 min-w-full laptop:flex-row laptop:px-20">
+          <div className="flex items-center justify-between p-4 gap-2.5 laptop:hidden">
             <div className="flex items-center justify-between gap-3 min-w-full">
               <div className="relative flex items-center justify-center gap-3">
                 <div className="bg-[url('/src/assets/img/profile_round_bg.png')] bg-contain bg-no-repeat w-12 h-12 flex items-center justify-center">
@@ -61,45 +69,21 @@ const Profile = () => {
               </div>
             </div>
           </div>
-          <div className="flex items-center justify-around">
-            <div
-              className={`flex px-4 py-3 ${
-                selectedTab === 'orders' ? 'border-b-5 border-punchy-neon' : ''
-              }`}
-              onClick={() => {
-                setSelectedTab('orders')
-              }}
-            >
-              Orders
-            </div>
-            <div
-              className={`flex px-4 py-3 ${
-                selectedTab === 'profile' ? 'border-b-5 border-punchy-neon' : ''
-              }`}
-              onClick={() => {
-                setSelectedTab('profile')
-              }}
-            >
-              My Profile
-            </div>
-            <div
-              className={`flex px-4 py-3 ${
-                selectedTab === 'wishlist'
-                  ? 'border-b-5 border-punchy-neon'
-                  : ''
-              }`}
-              onClick={() => {
-                setSelectedTab('wishlist')
-              }}
-            >
-              Wishlist
-            </div>
+          <div className="flex items-center w-full laptop:hidden">
+            <ProfileTabsMobile {...{ selectedTab, setSelectedTab }} />
           </div>
-          <div className="flex flex-col p-4">
+          <div className="hidden laptop:flex flex-col">
+            <ProfileCardLaptop {...{ selectedTab, setSelectedTab }} />
+          </div>
+
+          <div className="flex flex-col flex-grow p-4 tablet:p-8 laptop:p-4 ">
+            <div className="hidden laptop:flex py-3 gap-2.5">
+              <p className="font-bold text-31">My Profile</p>
+            </div>
             {selectedTab === 'wishlist' && <Wishlist />}
             {selectedTab === 'orders' && <ProfileOrders />}
             {selectedTab === 'profile' && (
-              <div className="flex flex-col gap-8">
+              <div className="flex flex-col gap-8 laptop:pl-13 laptop:pt-8">
                 <div className="flex items-center justify-between gap-2.5 pt-3 pb-4 border-b border-gray-light">
                   <div className="font-medium text-xl">Account info</div>
                   <button className="flex items-center justify-center px-4 py-2 gap-2.5 bg-gray-mid rounded-full">
@@ -109,9 +93,13 @@ const Profile = () => {
                   </button>
                 </div>
                 <div className="flex flex-col gap-8 font-cera-pro font-semibold">
-                  <TextInput labelText="Full Name" placeHolder="John Doe" />
-                  <TextInput labelText="Mobile Number" buttonText="change" />
-                  <TextInput labelText="Email ID" buttonText="change" />
+                  <div className="flex flex-col tablet:flex-row gap-8">
+                    <TextInput labelText="Full Name" placeHolder="John Doe" />
+                    <TextInput labelText="Mobile Number" buttonText="change" />
+                  </div>
+                  <div className="flex tablet:max-w-md">
+                    <TextInput labelText="Email ID" buttonText="change" />
+                  </div>
                 </div>
                 <div>
                   <div className="flex items-center justify-between gap-2.5 pt-3 pb-4 border-b border-gray-light">
@@ -122,7 +110,7 @@ const Profile = () => {
                       </p>
                     </button>
                   </div>
-                  <div className="flex flex-col gap-4 mt-8">
+                  <div className="flex flex-col gap-4 tablet:gap-6 mt-8 tablet:grid tablet:grid-cols-2">
                     {addressList.map((address, index) => {
                       return (
                         <div className="" key={index}>
