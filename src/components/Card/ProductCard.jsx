@@ -2,7 +2,7 @@ import { Heart } from 'akar-icons'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import { likeProduct } from '../../api/products.api'
+import { likeProduct, removeLikedProduct } from '../../api/products.api'
 
 import air_max from '../../assets/img/air_max_flyknit_racer_shoes.png'
 
@@ -20,6 +20,14 @@ const ProductCard = (props) => {
     }
   }
 
+  const handleRemoveLikeProduct = async () => {
+    const res = await removeLikedProduct({}, { ProductId: product.id })
+    debugger
+    if (res?.status === 200) {
+      toast.success('like removed successfully')
+    }
+  }
+
   console.log('product-----', product)
   return (
     <div className="flex flex-col border rounded laptop:rounded-lg divide-y hover:shadow-card max-w-39 laptop:max-w-74">
@@ -32,7 +40,10 @@ const ProductCard = (props) => {
           />
         </Link>
         {false ? (
-          <button className="laptop:hidden absolute top-3 right-3">
+          <button
+            className="laptop:hidden absolute top-3 right-3"
+            onClick={handleRemoveLikeProduct}
+          >
             <Heart strokeWidth={0} size={20} className="fill-pink" />
           </button>
         ) : (
@@ -49,7 +60,10 @@ const ProductCard = (props) => {
           {product?.name}
         </div>
         {false ? (
-          <button className="hidden laptop:block">
+          <button
+            className="hidden laptop:block"
+            onClick={handleRemoveLikeProduct}
+          >
             <Heart strokeWidth={0} size={20} className="fill-pink" />
           </button>
         ) : (

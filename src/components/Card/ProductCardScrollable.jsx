@@ -7,7 +7,7 @@ import air_max from '../../assets/img/air_max_flyknit_racer_shoes.png'
 // import { ReactComponent as Heart } from '../../assets/svg/heart.svg'
 import ViewAllArrow from '../../assets/SVGComponent/ViewAllArrow'
 
-import { likeProduct } from '../../api/products.api'
+import { likeProduct, removeLikedProduct } from '../../api/products.api'
 import { toast } from 'react-toastify'
 
 const ProductCardScrollable = (props) => {
@@ -17,6 +17,14 @@ const ProductCardScrollable = (props) => {
     const res = await likeProduct({}, { ProductId: product.id })
     if (res?.data?.isLiked) {
       toast.success('Product liked successfully')
+    }
+  }
+
+  const handleRemoveLikeProduct = async () => {
+    const res = await removeLikedProduct({}, { ProductId: product.id })
+    debugger
+    if (res?.status === 200) {
+      toast.success('like removed successfully')
     }
   }
 
@@ -36,7 +44,10 @@ const ProductCardScrollable = (props) => {
           {product?.name}
         </div>
         {false ? (
-          <button className="hidden laptop:block">
+          <button
+            className="hidden laptop:block"
+            onClick={handleRemoveLikeProduct}
+          >
             <Heart strokeWidth={0} size={20} className="fill-pink" />
           </button>
         ) : (
