@@ -53,7 +53,9 @@ export const signInWithFacebook = () => signInWithPopup(auth, facebookProvider)
 
 export const logout = async () => {
   try {
-    await signOut(auth);
+    signOut(auth)
+    localStorage.clear()
+    window.location.replace('/');
     // signed out success
   } catch (e) {
     console.log("error logout-----", e)

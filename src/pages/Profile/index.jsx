@@ -12,6 +12,7 @@ import ProfileOrders from './ProfileOrders'
 import Breadcrumbs from '../../components/Breadcrumbs'
 import ProfileTabsMobile from './ProfileTabsMobile'
 import ProfileCardLaptop from './ProfileCardLaptop'
+import { logout } from '../../utils/firebase/firebase.utils'
 
 const addressList = [
   {
@@ -61,12 +62,15 @@ const Profile = () => {
                 </div>
                 <p className="font-medium text-xl ">{userProfile?.name}</p>
               </div>
-              <div className="flex items-center px-4 py-3 gap-2 bg-gray-extra-light rounded-full">
+              <button
+                className="flex items-center px-4 py-3 gap-2 bg-gray-extra-light rounded-full"
+                onClick={logout}
+              >
                 <div>
                   <img src={LogoutSVG} alt="LogoutSVG" className="w-4 h-4" />
                 </div>
                 <div className="font-medium text-13">Logout</div>
-              </div>
+              </button>
             </div>
           </div>
           <div className="flex items-center w-full laptop:hidden">
@@ -78,7 +82,9 @@ const Profile = () => {
 
           <div className="flex flex-col flex-grow p-4 tablet:p-8 laptop:p-4 ">
             <div className="hidden laptop:flex py-3 gap-2.5">
-              <p className="font-bold text-31">My Profile</p>
+              <p className="font-bold text-31">
+                {selectedTab === 'profile' && 'My Profile'}
+              </p>
             </div>
             {selectedTab === 'wishlist' && <Wishlist />}
             {selectedTab === 'orders' && <ProfileOrders />}
@@ -94,7 +100,7 @@ const Profile = () => {
                 </div>
                 <div className="flex flex-col gap-8 font-cera-pro font-semibold">
                   <div className="flex flex-col tablet:flex-row gap-8">
-                    <TextInput labelText="Full Name" placeHolder="John Doe" />
+                    <TextInput labelText="Full Name" placeholder="John Doe" />
                     <TextInput labelText="Mobile Number" buttonText="change" />
                   </div>
                   <div className="flex tablet:max-w-md">

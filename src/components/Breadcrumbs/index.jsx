@@ -7,13 +7,17 @@ const Breadcrumbs = (props) => {
     <div className="flex gap-1.5 py-8 px-20 font-medium text-13 text-gray-mid">
       {path.map((p, index) => {
         if (index === path.length - 1) {
-          return <span className="text-black-mate">{p?.text}</span>
+          return (
+            <span className="text-black-mate" key={p.text}>
+              {p?.text}
+            </span>
+          )
         }
         return (
-          <>
+          <div className="flex gap-1" key={p?.text}>
             <Link to={p?.to || '/'}>{p?.text}</Link>
             <span>/</span>
-          </>
+          </div>
         )
       })}
     </div>
