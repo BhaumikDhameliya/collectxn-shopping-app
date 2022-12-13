@@ -6,14 +6,16 @@ import ProductCardScrollable from '../../components/Card/ProductCardScrollable'
 import AddressAndBilling from '../Checkout/AddressAndBilling'
 
 const Orders = () => {
-  const { cart } = useSelector((state) => state.cart)
+  const cart = useSelector((state) => state.cart.cart)
+  console.log('cart-----', cart)
 
   return (
     <div className="flex flex-col w-full laptop:px-20">
       <div className="laptop:flex gap-6">
         <div className="border-t border-gray-mid flex-grow">
           {cart?.cartItems?.map((cartItem) => {
-            return <CartProduct cartItem={cartItem} />
+            if (!cartItem?.Product) return null
+            return <CartProduct cartItem={cartItem} key={cartItem.id} />
           })}
         </div>
         <div className="hidden laptop:flex">

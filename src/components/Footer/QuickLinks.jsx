@@ -15,6 +15,7 @@ const QuickLinks = () => {
         {Object.entries(categories || {})?.map(([categoryId, category]) => {
           return (
             <div
+              key={categoryId}
               onClick={() => {
                 navigate(`/category/${categoryId}`)
               }}

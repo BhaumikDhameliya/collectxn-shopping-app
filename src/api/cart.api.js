@@ -30,7 +30,7 @@ export const getMyCart = async (params) => {
 //     }
 // }
 
-export const deleteCart = async (cartItemId, payload) => {
+export const removeFromCart = async (cartItemId, payload) => {
     try {
         const res = await collectionAPI.delete(`/cart-items/remove/${cartItemId}`, payload)
         console.log("res-----", res)

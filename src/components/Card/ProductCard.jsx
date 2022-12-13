@@ -38,14 +38,14 @@ const ProductCard = (props) => {
             ₹ {product?.displayPrice}
           </p>
         </div>
-        <div className="hidden laptop:flex justify-center items-center py-3 px-4 gap-2 rounded-br-lg w-1/2">
+        <button className="hidden laptop:flex justify-center items-center py-3 px-4 gap-2 rounded-br-lg w-1/2">
           <div className="font-medium text-xl  whitespace-nowrap">
             Add to Bag
           </div>
           <div>
             <ViewAllArrow />
           </div>
-        </div>
+        </button>
       </div>
     </div>
   )

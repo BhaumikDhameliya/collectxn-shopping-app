@@ -18,7 +18,7 @@ const ShoppingBag = () => {
 
   const [bag, setBag] = useState('empty')
 
-  const { cart } = useSelector((state) => state.cart)
+  const cart = useSelector((state) => state.cart.cart)
 
   const goBack = () => navigate(-1)
 
@@ -32,7 +32,10 @@ const ShoppingBag = () => {
 
   const getCartData = useCallback(async () => {
     const cartRes = await getMyCart()
-    dispatch(setCartData(cartRes?.data?.cart))
+    const cartData = cartRes?.data?.cart
+    if (cartData) {
+      dispatch(setCartData(cartData))
+    }
   }, [dispatch])
 
   useEffect(() => {

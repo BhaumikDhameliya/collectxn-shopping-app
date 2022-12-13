@@ -28,6 +28,7 @@ import SizeSelectProductInfo from '../components/Select/SizeSelectProductInfo'
 import RelatedProducts from '../features/product/RelatedProducts'
 import { addToCart } from '../api/cart.api'
 import { toast } from 'react-toastify'
+import { addProductToCart } from '../features/cart/cartSlice'
 
 const ProductInfo = () => {
   const dispatch = useDispatch()
@@ -58,7 +59,10 @@ const ProductInfo = () => {
       color: selectedColor?.color,
       size: selectedSize?.size,
     })
-    debugger
+    const cartItem = cartRes?.data?.cartItem
+    if (cartItem) {
+      dispatch(addProductToCart(cartItem))
+    }
   }
 
   const getCategoryProuductsData = useCallback(async () => {
