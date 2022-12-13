@@ -1,4 +1,5 @@
 import { collectionAPI } from "../utils/axios/axios.utils"
+import { getMyCart } from "./cart.api"
 
 export const SocialAuth = async (payload) => {
     try {
@@ -10,6 +11,7 @@ export const SocialAuth = async (payload) => {
             authToken = `Bearer ${authToken}`
             localStorage.setItem("authToken", authToken)
             collectionAPI.defaults.headers.common['Authorization'] = authToken;
+            getMyCart()
         }
         return res
     } catch (error) {
@@ -43,6 +45,7 @@ export const otpVerification = async (payload) => {
             authToken = `Bearer ${authToken}`
             localStorage.setItem("authToken", authToken)
             collectionAPI.defaults.headers.common['Authorization'] = authToken;
+            getMyCart()
         }
         return res?.data
     } catch (error) {

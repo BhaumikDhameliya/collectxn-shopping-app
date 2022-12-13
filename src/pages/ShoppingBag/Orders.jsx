@@ -1,16 +1,20 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 import CartProduct from '../../components/Card/CartProduct'
 import ProductCardScrollable from '../../components/Card/ProductCardScrollable'
 import AddressAndBilling from '../Checkout/AddressAndBilling'
 
 const Orders = () => {
+  const { cart } = useSelector((state) => state.cart)
+
   return (
     <div className="flex flex-col w-full laptop:px-20">
       <div className="laptop:flex gap-6">
-        <div className="border-t border-gray-mid">
-          <CartProduct />
-          <CartProduct />
+        <div className="border-t border-gray-mid flex-grow">
+          {cart?.cartItems?.map((cartItem) => {
+            return <CartProduct cartItem={cartItem} />
+          })}
         </div>
         <div className="hidden laptop:flex">
           <AddressAndBilling />

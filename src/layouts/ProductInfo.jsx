@@ -26,6 +26,8 @@ import { getProductDetails } from '../api/products.api'
 import { setProductDetail } from '../features/product/productSlice'
 import SizeSelectProductInfo from '../components/Select/SizeSelectProductInfo'
 import RelatedProducts from '../features/product/RelatedProducts'
+import { addToCart } from '../api/cart.api'
+import { toast } from 'react-toastify'
 
 const ProductInfo = () => {
   const dispatch = useDispatch()
@@ -40,6 +42,24 @@ const ProductInfo = () => {
 
   const increaseQuantity = () => setQuantity((prev) => prev + 1)
   const decreaseQuantity = () => setQuantity((prev) => prev - 1)
+
+  const handleAddtoCart = async () => {
+    if (!selectedColor) {
+      toast.error('Please select color')
+      return
+    }
+    if (!selectedSize) {
+      toast.error('Please select size')
+      return
+    }
+    const cartRes = await addToCart({
+      quantity: quantity,
+      ProductId: productId,
+      color: selectedColor?.color,
+      size: selectedSize?.size,
+    })
+    debugger
+  }
 
   const getCategoryProuductsData = useCallback(async () => {
     const res = await getProductDetails(productId)
@@ -227,7 +247,9 @@ const ProductInfo = () => {
                 </div>
                 <div className="flex flex-col gap-4">
                   <PopButton btnClasses="bg-black-mate">Buy Now</PopButton>
-                  <PopButton type="outline">Add to Bag</PopButton>
+                  <PopButton type="outline" onClick={handleAddtoCart}>
+                    Add to Bag
+                  </PopButton>
                 </div>
               </div>
             </div>

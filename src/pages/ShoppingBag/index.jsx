@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import { ArrowLeft } from 'akar-icons'
@@ -8,11 +9,16 @@ import EmptyShoppingBag from './EmptyShoppingBag'
 import Orders from './Orders'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
+import { getMyCart } from '../../api/cart.api'
+import { setCartData } from '../../features/cart/cartSlice'
 
 const ShoppingBag = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const [bag, setBag] = useState('empty')
+
+  const { cart } = useSelector((state) => state.cart)
 
   const goBack = () => navigate(-1)
 
@@ -23,6 +29,15 @@ const ShoppingBag = () => {
       navigate('/checkout')
     }
   }
+
+  const getCartData = useCallback(async () => {
+    const cartRes = await getMyCart()
+    dispatch(setCartData(cartRes?.data?.cart))
+  }, [dispatch])
+
+  useEffect(() => {
+    getCartData()
+  }, [getCartData])
 
   return (
     <>
@@ -49,12 +64,12 @@ const ShoppingBag = () => {
           Shopping Bag
         </div>
         <div className="flex flex-col items-center justify-between flex-grow">
-          {bag === 'empty' ? (
-            <EmptyShoppingBag onClick={handleCheckoutClick} />
-          ) : (
+          {cart?.cartItems?.length ? (
             <>
               <Orders />
             </>
+          ) : (
+            <EmptyShoppingBag onClick={handleCheckoutClick} />
           )}
           <div className="flex items-center px-4 py-3 gap-5 border-t relative bottom-0 w-full laptop:hidden">
             <PopButton btnClasses="bg-black-mate" onClick={handleCheckoutClick}>

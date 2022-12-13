@@ -4,8 +4,10 @@ import { CircleX, Minus, Plus } from 'akar-icons'
 
 import air_max from '../../assets/img/air_max_flyknit_racer_shoes.png'
 
-const CartProduct = () => {
-  const [quantity, setQuantity] = useState(1)
+const CartProduct = (props) => {
+  const { cartItem } = props
+  const { name, brand } = cartItem?.Product
+  const [quantity, setQuantity] = useState(cartItem?.quantity)
 
   const increaseQuantity = () => setQuantity((prev) => prev + 1)
   const decreaseQuantity = () => setQuantity((prev) => prev - 1)
@@ -22,14 +24,14 @@ const CartProduct = () => {
         <div className="flex gap-6 justify-between">
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-1.5">
-              <p className="font-bold tablet:text-2xl">Air Max Flyknit Racer</p>
+              <p className="font-bold tablet:text-2xl">{name}</p>
               <p className="font-medium text-13 tablet:text-base text-gray-mid">
-                Nike
+                {brand}
               </p>
             </div>
             <div className="flex flex-col gap-2 font-medium text-13">
-              <p>Size: UK 8</p>
-              <p>Select Color: White</p>
+              <p>Size: {cartItem?.size}</p>
+              <p>Select Color: {cartItem?.color}</p>
             </div>
           </div>
           <div>
@@ -38,7 +40,7 @@ const CartProduct = () => {
         </div>
 
         <div className="flex items-center justify-between gap-3">
-          <p className="font-bold">₹ 12,699.00</p>
+          <p className="font-bold">₹ {cartItem?.price}</p>
           <div className="flex items-center p-2 gap-2 bg-white border rounded-full">
             <button disabled={quantity < 2} onClick={decreaseQuantity}>
               <Minus size={12} color={quantity < 2 ? '#B3B3B3' : '#161617'} />
