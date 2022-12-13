@@ -7,7 +7,14 @@ const Wishlist = () => {
     <div className="flex flex-col">
       <div className="flex flex-col gap-4 tablet:gap-8">
         <div className="flex flex-col gap-4 tablet:flex-row tablet:justify-between">
-          <div className="font-medium">(25 products)</div>
+          <div>
+            <div className="flex items-center gap-4">
+              <p className="font-bold text-31 hidden laptop:block">
+                My Wishlist
+              </p>
+              <div className="font-medium">(25 products)</div>
+            </div>
+          </div>
           <div className="flex items-center gap-2">
             <p className="font-bold">sort by:</p>
             <div>
@@ -23,7 +30,7 @@ const Wishlist = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-wrap gap-4 justify-center">
+        <div className="grid grid-cols-2 tablet:grid-cols-3 gap-4">
           <ProductCard />
           <ProductCard />
           <ProductCard />

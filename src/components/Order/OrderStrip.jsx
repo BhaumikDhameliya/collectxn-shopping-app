@@ -19,7 +19,7 @@ const OrderStrip = () => {
               <span className="font-medium text-10">On Mon, 19 Sep</span>
             </div>
           </div>
-          <div className="flex flex-col items-center justify-center gap-1 font-bold text-10">
+          <div className="flex flex-col items-center justify-center gap-1 font-bold text-10 tablet:text-13">
             <p>Order Placed on: 17 July 2022</p>
             <p>Order ID - CXN-22633-54954152</p>
           </div>
