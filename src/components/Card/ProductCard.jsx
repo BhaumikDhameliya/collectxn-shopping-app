@@ -10,7 +10,7 @@ import air_max from '../../assets/img/air_max_flyknit_racer_shoes.png'
 import ViewAllArrow from '../../assets/SVGComponent/ViewAllArrow'
 
 const ProductCard = (props) => {
-  const { product } = props
+  const { product, isLiked } = props
 
   const handleLikeProduct = async () => {
     const res = await likeProduct({}, { ProductId: product.id })
@@ -28,7 +28,6 @@ const ProductCard = (props) => {
     }
   }
 
-  console.log('product-----', product)
   return (
     <div className="flex flex-col border rounded laptop:rounded-lg divide-y hover:shadow-card max-w-39 laptop:max-w-74">
       <div className="rounded-t-lg relative">
@@ -39,7 +38,7 @@ const ProductCard = (props) => {
             className="rounded-t-lg m-auto max-h-39 max-w-39 laptop:max-h-74 laptop:max-w-74"
           />
         </Link>
-        {false ? (
+        {isLiked ? (
           <button
             className="laptop:hidden absolute top-3 right-3"
             onClick={handleRemoveLikeProduct}

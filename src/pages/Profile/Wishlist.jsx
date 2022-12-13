@@ -1,8 +1,31 @@
-import React from 'react'
+import React, { useCallback, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
 import ProductCard from '../../components/Card/ProductCard'
 import SelectInput from '../../components/Input/SelectInput'
 
+import { getLikedProducts } from '../../api/products.api'
+
+import { setLikedProducts } from '../../features/product/productSlice'
+
 const Wishlist = () => {
+  const dispatch = useDispatch()
+
+  const likedProducts = useSelector((state) => state.product.likedProducts)
+  console.log('likedProducts----', likedProducts)
+
+  const getLikedProductsData = useCallback(async () => {
+    const likedProductsData = await getLikedProducts()
+    const likedProducts = likedProductsData?.data?.likedProducts
+    if (likedProducts) {
+      dispatch(setLikedProducts(likedProducts))
+    }
+  }, [dispatch])
+
+  useEffect(() => {
+    getLikedProductsData()
+  }, [getLikedProductsData])
+
   return (
     <div className="flex flex-col">
       <div className="flex flex-col gap-4 tablet:gap-8">
@@ -31,10 +54,11 @@ const Wishlist = () => {
           </div>
         </div>
         <div className="grid grid-cols-2 tablet:grid-cols-3 gap-4">
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
+          {likedProducts?.map((product) => {
+            return (
+              <ProductCard key={product.id} product={product} isLiked={true} />
+            )
+          })}
         </div>
       </div>
     </div>
