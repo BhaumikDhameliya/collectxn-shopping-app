@@ -9,7 +9,7 @@ import { removeProductFromCart } from '../../features/cart/cartSlice'
 
 const CartProduct = (props) => {
   const { cartItem } = props
-  const { name = '', brand = '' } = cartItem?.Product
+  const { name = '', brand = '', image } = cartItem?.Product
 
   const dispatch = useDispatch()
   const [quantity, setQuantity] = useState(cartItem?.quantity)
@@ -31,11 +31,7 @@ const CartProduct = (props) => {
   return (
     <div className="flex px-4 py-6 gap-4 bg-white border-b border-gray-mid">
       <div>
-        <img
-          src={air_max}
-          alt="air_max"
-          className="w-16 rounded-md tablet:w-48"
-        />
+        <img src={image} alt="name" className="w-16 rounded-md tablet:w-48" />
       </div>
       <div className="flex flex-col justify-between gap-6 flex-grow">
         <div className="flex gap-6 items-start justify-between">

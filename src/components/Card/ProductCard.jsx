@@ -1,13 +1,25 @@
+import { Heart } from 'akar-icons'
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import { likeProduct } from '../../api/products.api'
 
 import air_max from '../../assets/img/air_max_flyknit_racer_shoes.png'
 
-import { ReactComponent as Heart } from '../../assets/svg/heart.svg'
+// import { ReactComponent as Heart } from '../../assets/svg/heart.svg'
 import ViewAllArrow from '../../assets/SVGComponent/ViewAllArrow'
 
 const ProductCard = (props) => {
   const { product } = props
+
+  const handleLikeProduct = async () => {
+    const res = await likeProduct({}, { ProductId: product.id })
+    debugger
+    if (res?.data?.isLiked) {
+      toast.success('Product liked successfully')
+    }
+  }
+
   console.log('product-----', product)
   return (
     <div className="flex flex-col border rounded laptop:rounded-lg divide-y hover:shadow-card max-w-39 laptop:max-w-74">
@@ -19,17 +31,32 @@ const ProductCard = (props) => {
             className="rounded-t-lg m-auto max-h-39 max-w-39 laptop:max-h-74 laptop:max-w-74"
           />
         </Link>
-        <div className="laptop:hidden absolute top-3 right-3">
-          <Heart />
-        </div>
+        {false ? (
+          <button className="laptop:hidden absolute top-3 right-3">
+            <Heart strokeWidth={0} size={20} className="fill-pink" />
+          </button>
+        ) : (
+          <button
+            className="laptop:hidden absolute top-3 right-3"
+            onClick={handleLikeProduct}
+          >
+            <Heart strokeWidth={2.5} size={20} />
+          </button>
+        )}
       </div>
       <div className="flex items-center justify-between p-2 laptop:py-3 laptop:px-4 gap-2">
         <div className="flex font-bold text-13 laptop:text-xl">
           {product?.name}
         </div>
-        <div className="hidden laptop:block">
-          <Heart />
-        </div>
+        {false ? (
+          <button className="hidden laptop:block">
+            <Heart strokeWidth={0} size={20} className="fill-pink" />
+          </button>
+        ) : (
+          <button className="hidden laptop:block" onClick={handleLikeProduct}>
+            <Heart strokeWidth={2.5} size={20} />
+          </button>
+        )}
       </div>
       <div className="flex items-center divide-x text-13 laptop:text-xl">
         <div className="flex items-end p-2 laptop:py-3 laptop:px-4 gap-2 rounded-bl-lg whitespace-nowrap w-1/2">

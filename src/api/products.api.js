@@ -59,3 +59,33 @@ export const deleteProducts = async (payload) => {
         console.log("error-----", error)
     }
 }
+
+export const likeProduct = async (payload, params) => {
+    try {
+        const res = await collectionAPI.post('/products/like', payload, { params })
+        console.log("res-----", res)
+        return res?.data
+    } catch (error) {
+        console.log("error-----", error)
+    }
+}
+
+export const getLikedProducts = async (params) => {
+    try {
+        const res = await collectionAPI.get('/products/like', { params })
+        console.log("res-----", res)
+        return res?.data
+    } catch (error) {
+        console.log("error-----", error)
+    }
+}
+
+export const removeLikedProduct = async (payload, params) => {
+    try {
+        const res = await collectionAPI.delete('/products/like', payload, { params })
+        console.log("res-----", res)
+        return res?.data
+    } catch (error) {
+        console.log("error-----", error)
+    }
+}

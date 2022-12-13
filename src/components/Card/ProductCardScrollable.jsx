@@ -1,13 +1,24 @@
+import { Heart } from 'akar-icons'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
 import air_max from '../../assets/img/air_max_flyknit_racer_shoes.png'
 
-import { ReactComponent as Heart } from '../../assets/svg/heart.svg'
+// import { ReactComponent as Heart } from '../../assets/svg/heart.svg'
 import ViewAllArrow from '../../assets/SVGComponent/ViewAllArrow'
+
+import { likeProduct } from '../../api/products.api'
+import { toast } from 'react-toastify'
 
 const ProductCardScrollable = (props) => {
   const { product } = props
+
+  const handleLikeProduct = async () => {
+    const res = await likeProduct({}, { ProductId: product.id })
+    if (res?.data?.isLiked) {
+      toast.success('Product liked successfully')
+    }
+  }
 
   return (
     <div className="flex flex-col border rounded-lg divide-y hover:shadow-card flex-none max-w-55 laptop:max-w-96">
@@ -24,9 +35,15 @@ const ProductCardScrollable = (props) => {
         <div className="flex font-bold text-xs laptop:text-xl">
           {product?.name}
         </div>
-        <div className="hidden laptop:block">
-          <Heart />
-        </div>
+        {false ? (
+          <button className="hidden laptop:block">
+            <Heart strokeWidth={0} size={20} className="fill-pink" />
+          </button>
+        ) : (
+          <button className="hidden laptop:block" onClick={handleLikeProduct}>
+            <Heart strokeWidth={2.5} size={20} />
+          </button>
+        )}
       </div>
       <div className="flex flex-col laptop:flex-row items-center divide-y laptop:divide-y-0 laptop:divide-x text-xs laptop:text-xl">
         <div className="flex items-end p-2 laptop:py-3 laptop:px-4 gap-2 rounded-bl-lg whitespace-nowrap flex-grow w-full laptop:w-1/2">

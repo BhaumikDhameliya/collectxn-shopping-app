@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
-import { Minus, Plus, ArrowLeft, ArrowRight } from 'akar-icons'
+import { Minus, Plus, ArrowLeft, ArrowRight, Heart } from 'akar-icons'
 
 import air_max from '../assets/img/air_max_flyknit_racer_shoes.png'
 // import zestImage from '../assets/img/zest.png'
@@ -14,7 +14,7 @@ import logo_cxn_black from '../assets/img/logo_cxn_black.png'
 // import product_image_5 from '../assets/img/ProductImage/product_image_5.png'
 // import product_image_6 from '../assets/img/ProductImage/product_image_6.png'
 
-import { ReactComponent as HeartSVG } from '../assets/svg/heart.svg'
+// import { ReactComponent as HeartSVG } from '../assets/svg/heart.svg'
 // import { ReactComponent as GetItBySVG } from '../assets/svg/get_it_by.svg'
 import { ReactComponent as PayOnDeliverySVG } from '../assets/svg/pay_on_delivery.svg'
 
@@ -27,6 +27,7 @@ import { setProductDetail } from '../features/product/productSlice'
 import SizeSelectProductInfo from '../components/Select/SizeSelectProductInfo'
 import RelatedProducts from '../features/product/RelatedProducts'
 import { addToCart } from '../api/cart.api'
+import { likeProduct } from '../api/products.api'
 import { toast } from 'react-toastify'
 import { addProductToCart } from '../features/cart/cartSlice'
 
@@ -61,6 +62,7 @@ const ProductInfo = () => {
     })
     const cartItem = cartRes?.data?.cartItem
     if (cartItem) {
+      toast.success('Product added to cart')
       dispatch(addProductToCart(cartItem))
     }
   }
@@ -72,6 +74,14 @@ const ProductInfo = () => {
       dispatch(setProductDetail({ productId, product }))
     }
   }, [productId, dispatch])
+
+  const handleLikeProduct = async () => {
+    const res = await likeProduct({}, { ProductId: productId })
+    debugger
+    if (res?.data?.isLiked) {
+      toast.success('Product liked successfully')
+    }
+  }
 
   useEffect(() => {
     getCategoryProuductsData()
@@ -156,7 +166,19 @@ const ProductInfo = () => {
                   <div className="flex flex-col gap-2">
                     <div className="flex items-center gap-10">
                       <p className="font-bold text-2xl">{product?.name}</p>
-                      <HeartSVG />
+                      {false ? (
+                        <button>
+                          <Heart
+                            strokeWidth={0}
+                            size={20}
+                            className="fill-pink"
+                          />
+                        </button>
+                      ) : (
+                        <button onClick={handleLikeProduct}>
+                          <Heart strokeWidth={2.5} size={20} />
+                        </button>
+                      )}
                     </div>
                     {/* <div className="flex items-center gap-2">
                       <p className="font-medium text-gray-dark text-13">
