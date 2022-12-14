@@ -3,15 +3,24 @@ import { useDispatch } from 'react-redux'
 
 import { CircleX, Minus, Plus } from 'akar-icons'
 
-import air_max from '../../assets/img/air_max_flyknit_racer_shoes.png'
-import { removeFromCart } from '../../api/cart.api'
-import { removeProductFromCart } from '../../features/cart/cartSlice'
+import {
+  addToCart,
+  decreaseCartQuantity,
+  removeFromCart,
+} from '../../api/cart.api'
+import {
+  removeProductFromCart,
+  replaceCartItem,
+} from '../../features/cart/cartSlice'
 
 const CartProduct = (props) => {
   const { cartItem } = props
-  const { name = '', brand = '', image } = cartItem?.Product
+  const { color = '', size = '', Product = {} } = cartItem
+  const { name = '', brand = '', image, id } = Product
 
   const dispatch = useDispatch()
+
+  const [isLoading, setIsLoading] = useState(false)
   const [quantity, setQuantity] = useState(cartItem?.quantity)
 
   const increaseQuantity = () => setQuantity((prev) => prev + 1)
@@ -19,12 +28,48 @@ const CartProduct = (props) => {
 
   const handleRemoveProductFromCart = async () => {
     try {
+      setIsLoading(true)
       const res = await removeFromCart(cartItem.id)
       if (res.status === 200) {
         dispatch(removeProductFromCart(cartItem))
       }
     } catch (error) {
       console.log('error-----', error)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const handleIncreaseQuantity = async () => {
+    try {
+      const cartRes = await addToCart({
+        quantity: quantity,
+        ProductId: id,
+        color: color,
+        size: size,
+      })
+      const cartItem = cartRes?.data?.cartItem
+      if (cartItem) {
+        increaseQuantity()
+        dispatch(replaceCartItem(cartItem))
+      }
+      setIsLoading(true)
+    } catch (error) {
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const handleDecreaseQuantity = async () => {
+    try {
+      setIsLoading(true)
+      const cartRes = await decreaseCartQuantity(cartItem.id)
+      if (cartRes?.status === 200) {
+        decreaseQuantity()
+      }
+    } catch (error) {
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -55,11 +100,11 @@ const CartProduct = (props) => {
         <div className="flex items-center justify-between gap-3">
           <p className="font-bold">₹ {cartItem?.price}</p>
           <div className="flex items-center p-2 gap-2 bg-white border rounded-full">
-            <button disabled={quantity < 2} onClick={decreaseQuantity}>
+            <button disabled={quantity < 2} onClick={handleDecreaseQuantity}>
               <Minus size={12} color={quantity < 2 ? '#B3B3B3' : '#161617'} />
             </button>
             <p>{quantity}</p>
-            <button onClick={increaseQuantity}>
+            <button onClick={handleIncreaseQuantity}>
               <Plus size={12} />
             </button>
           </div>

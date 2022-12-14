@@ -20,15 +20,15 @@ export const getMyCart = async (params) => {
     }
 }
 
-// export const updateCart = async (payload) => {
-//     try {
-//         const res = await collectionAPI.patch('/cart', payload)
-//         console.log("res-----", res)
-//         return res?.data
-//     } catch (error) {
-//         console.log("error-----", error)
-//     }
-// }
+export const decreaseCartQuantity = async (cartItemId, payload) => {
+    try {
+        const res = await collectionAPI.patch(`/cart-items/decrease/${cartItemId}`, payload)
+        console.log("res-----", res)
+        return res?.data
+    } catch (error) {
+        console.log("error-----", error)
+    }
+}
 
 export const removeFromCart = async (cartItemId, payload) => {
     try {
