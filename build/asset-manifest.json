@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.74763719.css",
-    "main.js": "/static/js/main.22c0dcc2.js",
+    "main.css": "/static/css/main.3a849ed5.css",
+    "main.js": "/static/js/main.0af20c47.js",
     "static/media/collectxn_focused_woman.png": "/static/media/collectxn_focused_woman.f27714a291729fe8d2a9.png",
     "static/media/newsletter_banner_image.png": "/static/media/newsletter_banner_image.78643bda8afdc5098218.png",
     "static/media/img_log_in.png": "/static/media/img_log_in.2f7d7565fad5267e0a31.png",
@@ -11,6 +11,7 @@
     "static/media/img_signup.png": "/static/media/img_signup.53d8af6c4b6ebfb8af48.png",
     "static/media/style_fashion_men_women.png": "/static/media/style_fashion_men_women.56aac396e015c3ff6fc9.png",
     "static/media/img_coming_soon_mobile.png": "/static/media/img_coming_soon_mobile.b25070f8b4ebb272f670.png",
+    "static/media/Cera Pro Medium.otf": "/static/media/Cera Pro Medium.2bc02ae84a1e73c231d6.otf",
     "static/media/Cera Pro Regular.otf": "/static/media/Cera Pro Regular.8f68a75dd154b7d8968a.otf",
     "static/media/sneakers_banner.png": "/static/media/sneakers_banner.4c280da33bcc8072bd8e.png",
     "static/media/blog_card_image.png": "/static/media/blog_card_image.24ecf24ce0c4a220ca9d.png",
@@ -39,7 +40,6 @@
     "static/media/newsletter_badge.svg": "/static/media/newsletter_badge.c80261897e95a64409186837d519bb68.svg",
     "static/media/open_all_days.svg": "/static/media/open_all_days.bca2a7f38d3c5b53d4b7d673e34a62a6.svg",
     "static/media/verified_rounded.svg": "/static/media/verified_rounded.c81b9847d16373f0485efc04bf417357.svg",
-    "static/media/heart.svg": "/static/media/heart.70815ba1ac7d1db2003b56309f9e0cfb.svg",
     "static/media/star_half.svg": "/static/media/star_half.2e4fbaff037c28583710de7de8458c8d.svg",
     "static/media/call.svg": "/static/media/call.01888408309abba6bf9a425a722f9fc9.svg",
     "static/media/Twitter.svg": "/static/media/Twitter.b2bd48fe7362d64c1cfd6dc7708f7e55.svg",
@@ -62,11 +62,11 @@
     "static/media/close_rounded_white.svg": "/static/media/close_rounded_white.0ed67874ab54267ef6d860e3a2236f8e.svg",
     "static/media/close_mobile_menu.svg": "/static/media/close_mobile_menu.5d0c08d8206ffb86b21b186eec2508ad.svg",
     "static/media/arrow.svg": "/static/media/arrow.f212899706bca3dad102e04bbccc37f2.svg",
-    "main.74763719.css.map": "/static/css/main.74763719.css.map",
-    "main.22c0dcc2.js.map": "/static/js/main.22c0dcc2.js.map"
+    "main.3a849ed5.css.map": "/static/css/main.3a849ed5.css.map",
+    "main.0af20c47.js.map": "/static/js/main.0af20c47.js.map"
   },
   "entrypoints": [
-    "static/css/main.74763719.css",
-    "static/js/main.22c0dcc2.js"
+    "static/css/main.3a849ed5.css",
+    "static/js/main.0af20c47.js"
   ]
 }
