@@ -19,9 +19,8 @@ const AddressAndBilling = () => {
             <PopButton btnClasses="bg-black-mate">Add address</PopButton>
           </div>
         </div>
-        <div>
+        <div className="flex flex-col gap-4">
           {userProfile?.DeliveryAddresses?.map((address, index) => {
-            debugger
             return (
               <div className="" key={index}>
                 <input
