@@ -16,7 +16,7 @@ const NewsletterBanner = () => {
       <div className="flex flex-col gap-4 items-start justify-center p-4 tablet:py-1/10 flex-grow">
         <div className="flex flex-col gap-1">
           <div className="flex items-end">
-            <div className="font-cera-pro font-semibold text-2xl laptop:text-4xl">
+            <div className="font-cera-pro font-medium text-2xl laptop:text-4xl">
               Signup for
             </div>
             <div className="relative tablet:-bottom-1/5 laptop:-left-1/20 w-16 laptop:w-auto -bottom-2 -left-2">

@@ -23,31 +23,20 @@ const RequestProduct = () => {
             <CloseRoundedWhiteSVG />
           </button>
         </div>
-        <div className="w-full flex flex-col gap-6">
-          <TextInput
-            labelText="Your Name*"
-            labelClasses="font-cera-pro font-semibold"
-          />
+        <div className="w-full flex flex-col gap-6 font-cera-pro font-medium">
+          <TextInput labelText="Your Name*" />
           <SelectInput
             labelText="Product Catagory*"
-            labelClasses="font-cera-pro font-semibold"
             options={[
               { value: 'sneakers', name: 'Sneakers' },
               { value: 'apparels', name: 'Apparels' },
             ]}
           />
-          <TextInput
-            labelText="Brand Name"
-            labelClasses="font-cera-pro font-semibold"
-          />
-          <TextInput
-            labelText="Product Name*"
-            labelClasses="font-cera-pro font-semibold"
-          />
+          <TextInput labelText="Brand Name" />
+          <TextInput labelText="Product Name*" />
           <SelectInput
             labelText="Product Size*"
             placeholder="select size"
-            labelClasses="font-cera-pro font-semibold"
             options={[
               { value: 'sneakers', name: 'Sneakers' },
               { value: 'apparels', name: 'Apparels' },
@@ -67,7 +56,7 @@ const RequestProduct = () => {
             <div className="flex flex-col gap-1.5 flex-grow">
               <TextInput
                 labelText="Phone Number*"
-                labelClasses="font-cera-pro font-semibold"
+                labelClasses="font-cera-pro font-medium"
               ></TextInput>
             </div>
             <div className="w-max">

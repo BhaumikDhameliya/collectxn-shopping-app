@@ -187,7 +187,7 @@ const Home = () => {
                 apparel in India, which caters to sneaker enthusiasts.
               </p>
             </div>
-            <div className="flex gap-6 tablet:gap-8 mt-5 font-cera-pro font-semibold text-xs tablet:text-base text-black text-center">
+            <div className="flex gap-6 tablet:gap-8 mt-5 font-cera-pro font-medium text-xs tablet:text-base text-black text-center">
               <div className="flex flex-col gap-1 tablet:gap-2 items-center w-16">
                 {/* <TrustedSuppliers /> */}
                 <img src={trusted_suppliers} alt="trusted_suppliers" />

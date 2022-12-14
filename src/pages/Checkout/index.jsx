@@ -38,7 +38,7 @@ const Checkout = () => {
               <div>
                 <ShieldSVG />
               </div>
-              <p className="font-cera-pro font-semibold">100% Secure</p>
+              <p className="font-cera-pro font-medium">100% Secure</p>
             </div>
           </div>
         </div>

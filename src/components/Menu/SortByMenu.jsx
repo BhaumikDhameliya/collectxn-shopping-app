@@ -12,17 +12,11 @@ const SortByMenu = (props) => {
           <CloseRoundedWhiteSVG />
         </button>
       </div>
-      <div className="flex flex-col divide-y divide-gray-mid">
-        <p className="px-2.5 py-4 font-cera-pro font-semibold">Recommanded</p>
-        <p className="px-2.5 py-4 font-cera-pro font-semibold">
-          Price: Low to High
-        </p>
-        <p className="px-2.5 py-4 font-cera-pro font-semibold">
-          Price: High to Low
-        </p>
-        <p className="px-2.5 py-4 font-cera-pro font-semibold">
-          Newest Arrivals
-        </p>
+      <div className="flex flex-col divide-y divide-gray-mid font-cera-pro font-medium">
+        <p className="px-2.5 py-4">Recommanded</p>
+        <p className="px-2.5 py-4">Price: Low to High</p>
+        <p className="px-2.5 py-4">Price: High to Low</p>
+        <p className="px-2.5 py-4">Newest Arrivals</p>
       </div>
     </div>
   )

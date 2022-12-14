@@ -171,21 +171,24 @@ const Navbar = () => {
         </div>
       </nav>
       {showMenu && (
-        <div className="flex flex-col items-center bg-white w-full absolute pt-16.5 laptop:pt-22 z-10">
+        <div
+          className="flex flex-col items-center bg-white w-full absolute pt-16.5 laptop:pt-22 z-10
+        font-cera-pro font-medium"
+        >
           <div className="flex items-center justify-center px-3 py-4 gap-2">
-            <p className="font-cera-pro font-semibold">Sneakers</p>
+            <p>Sneakers</p>
           </div>
           <div className="flex items-center justify-center px-3 py-4 gap-2">
-            <p className="font-cera-pro font-semibold">Apparels</p>
+            <p>Apparels</p>
           </div>
           <div className="flex items-center justify-center px-3 py-4 gap-2">
-            <p className="font-cera-pro font-semibold">Jewellary</p>
+            <p>Jewellary</p>
           </div>
           <div className="flex items-center justify-center px-3 py-4 gap-2">
-            <p className="font-cera-pro font-semibold">PlayStation</p>
+            <p>PlayStation</p>
           </div>
           <div className="flex items-center justify-center px-3 py-4 gap-2 tablet:hidden">
-            <p className="font-cera-pro font-semibold">
+            <p>
               <button
                 className="flex items-center px-3 py-2 gap-2 bg-punchy-neon border rounded-3xl"
                 onClick={gotoProfile}

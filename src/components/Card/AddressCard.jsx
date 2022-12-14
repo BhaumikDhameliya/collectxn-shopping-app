@@ -1,10 +1,24 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+
+import { updateAddress } from '../../api/addresses.api'
+import { updateDeliveryAddress } from '../../features/user/userSlice'
 
 const AddressCard = (props) => {
   const { address, showRadio = true } = props
+  const dispatch = useDispatch()
+
+  const hanldeMakeDefault = async () => {
+    const addressRes = await updateAddress(address.id, { isDefault: true })
+    const addressData = addressRes?.data?.address
+    if (addressData) {
+      dispatch(updateDeliveryAddress(addressData))
+    }
+  }
+
   return (
     <label
-      htmlFor={address.name}
+      htmlFor={`address_${address?.id}`}
       className="flex px-6 py-4 gap-5 bg-white border rounded-10"
     >
       {showRadio && (
@@ -16,17 +30,26 @@ const AddressCard = (props) => {
         </div>
       )}
       <div className="flex flex-col gap-6 flex-grow">
-        <div className="flex flex-col gap-1.5 font-cera-pro font-semibold">
-          <div>{address.addressLine1}</div>
-          <div>{address.addressLine2}</div>
+        <div className="flex flex-col gap-1.5 font-cera-pro font-medium">
+          <div>{address.line1}</div>
+          <div>{address.line2}</div>
         </div>
         <div className="flex items-center justify-between text-13 font-medium">
           <div className="flex gap-4">
             <button className="border-b capitalize">edit</button>
             <button className="border-b capitalize">Remove</button>
-            <button className="border-b capitalize">Make it default</button>
+            {!address?.isDefault && (
+              <button
+                className="border-b capitalize"
+                onClick={hanldeMakeDefault}
+              >
+                Make it default
+              </button>
+            )}
           </div>
-          <p className="text-gray-mid">Default Address</p>
+          {address?.isDefault && (
+            <p className="text-gray-mid">Default Address</p>
+          )}
         </div>
       </div>
     </label>

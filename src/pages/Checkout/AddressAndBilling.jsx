@@ -1,23 +1,15 @@
-import React from 'react'
-import PopButton from '../../components/buttons/PopButton'
-import AddressCard from '../../components/Card/AddressCard'
+import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 
 import { ReactComponent as ShieldSVG } from '../../assets/svg/shield.svg'
 
-const addressList = [
-  {
-    name: 'address 1',
-    addressLine1: '15 Changi Business Park Cres',
-    addressLine2: 'Bidadari Park Drive - Singapore',
-  },
-  {
-    name: 'address 2',
-    addressLine1: '18 Changi Business Park Cres',
-    addressLine2: 'Park Drive - India',
-  },
-]
+import PopButton from '../../components/buttons/PopButton'
+import AddressCard from '../../components/Card/AddressCard'
 
 const AddressAndBilling = () => {
+  const userProfile = useSelector((state) => state.user.profile)
+  const [showAddAddress, setShowAddAddress] = useState(false)
+
   return (
     <div className="flex flex-col w-full laptop:bg-[#FAFAFA] laptop:border laptop:rounded-10">
       <div className="flex flex-col px-4 tablet:px-8 pt-4 pb-6 gap-4">
@@ -27,19 +19,22 @@ const AddressAndBilling = () => {
             <PopButton btnClasses="bg-black-mate">Add address</PopButton>
           </div>
         </div>
-        {addressList.map((address, index) => {
-          return (
-            <div className="" key={index}>
-              <input
-                type="checkbox"
-                id={address.name}
-                name={address.name}
-                className="accent-black-mate peer hidden"
-              />
-              <AddressCard address={address} />
-            </div>
-          )
-        })}
+        <div>
+          {userProfile?.DeliveryAddresses?.map((address, index) => {
+            debugger
+            return (
+              <div className="" key={index}>
+                <input
+                  type="checkbox"
+                  id={address.name}
+                  name={address.name}
+                  className="accent-black-mate peer hidden"
+                />
+                <AddressCard address={address} />
+              </div>
+            )
+          })}
+        </div>
       </div>
       <div className="flex flex-col px-4 tablet:px-8 py-6 border-t border-gray-light">
         <div className="flex pb-3">
@@ -72,7 +67,7 @@ const AddressAndBilling = () => {
           <div>
             <ShieldSVG />
           </div>
-          <p className="font-cera-pro font-semibold">100% Secure</p>
+          <p className="font-cera-pro font-medium">100% Secure</p>
         </div>
       </div>
     </div>

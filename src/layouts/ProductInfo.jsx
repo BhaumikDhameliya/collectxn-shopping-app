@@ -292,14 +292,14 @@ const ProductInfo = () => {
                 <div className="flex flex-col gap-2.5">
                   {/* <div className="flex items-center gap-1 5">
                     <GetItBySVG />
-                    <p className="font-cera-pro font-semibold">
+                    <p className="font-cera-pro font-medium">
                       Get it by Sun, Sep 18
                     </p>
                   </div> */}
                   {product?.allowPayOnDelivery && (
                     <div className="flex items-center gap-1 5">
                       <PayOnDeliverySVG />
-                      <p className="font-cera-pro font-semibold">
+                      <p className="font-cera-pro font-medium">
                         Pay on delivery available
                       </p>
                     </div>

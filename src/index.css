@@ -17,6 +17,12 @@ html {
   src: url("../public/fonts/cera-pro/Cera\ Pro\ Regular.otf");
 }
 
+@font-face {
+  font-family: "Cera Pro";
+  src: url("../public/fonts/cera-pro/Cera\ Pro\ Medium.otf");
+  font-weight: 500;
+}
+
 @layer base {
   html {
     font-family: 'Space Grotesk';

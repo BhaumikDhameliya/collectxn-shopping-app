@@ -13,32 +13,23 @@ import Breadcrumbs from '../../components/Breadcrumbs'
 import ProfileTabsMobile from './ProfileTabsMobile'
 import ProfileCardLaptop from './ProfileCardLaptop'
 import { logout } from '../../utils/firebase/firebase.utils'
-
-const addressList = [
-  {
-    name: 'address 1',
-    addressLine1: '15 Changi Business Park Cres',
-    addressLine2: 'Bidadari Park Drive - Singapore',
-  },
-  {
-    name: 'address 2',
-    addressLine1: '18 Changi Business Park Cres',
-    addressLine2: 'Park Drive - India',
-  },
-]
+import AddAddress from '../../features/user/AddAddress'
 
 const Profile = () => {
   const navigate = useNavigate()
   const userProfile = useSelector((state) => state.user.profile)
 
   const [selectedTab, setSelectedTab] = useState('profile')
+  const [showAddAddress, setShowAddAddress] = useState(false)
+
+  const toggleShowAddress = () => setShowAddAddress((prev) => !prev)
 
   useEffect(() => {
     const timer = setTimeout(() => {
       if (!Object.keys(userProfile)?.length) {
         navigate('/auth/login')
       }
-    }, 500)
+    }, 300)
     return () => {
       clearTimeout(timer)
     }
@@ -98,7 +89,7 @@ const Profile = () => {
                     </p>
                   </button>
                 </div>
-                <div className="flex flex-col gap-8 font-cera-pro font-semibold">
+                <div className="flex flex-col gap-8 font-cera-pro font-meduim">
                   <div className="flex flex-col tablet:flex-row gap-8">
                     <TextInput labelText="Full Name" placeholder="John Doe" />
                     <TextInput labelText="Mobile Number" buttonText="change" />
@@ -110,20 +101,30 @@ const Profile = () => {
                 <div>
                   <div className="flex items-center justify-between gap-2.5 pt-3 pb-4 border-b border-gray-light">
                     <div className="font-medium text-xl">Shipping Address</div>
-                    <button className="flex items-center justify-center px-4 py-2 gap-2.5 bg-black-mate rounded-full">
+                    <button
+                      className="flex items-center justify-center px-4 py-2 gap-2.5 bg-black-mate rounded-full"
+                      onClick={toggleShowAddress}
+                    >
                       <p className="font-medium text-13 text-white">
                         Add address
                       </p>
                     </button>
                   </div>
-                  <div className="flex flex-col gap-4 tablet:gap-6 mt-8 tablet:grid tablet:grid-cols-2">
-                    {addressList.map((address, index) => {
-                      return (
-                        <div className="" key={index}>
-                          <AddressCard address={address} showRadio={false} />
-                        </div>
-                      )
-                    })}
+                  {!!userProfile?.DeliveryAddresses?.length && (
+                    <div className="flex flex-col gap-4 tablet:gap-6 mt-8 tablet:grid tablet:grid-cols-2">
+                      {userProfile?.DeliveryAddresses?.map((address) => {
+                        return (
+                          <div className="" key={address.id}>
+                            <AddressCard address={address} showRadio={false} />
+                          </div>
+                        )
+                      })}
+                    </div>
+                  )}
+                  <div className="mt-8">
+                    {showAddAddress && (
+                      <AddAddress {...{ toggleShowAddress }} />
+                    )}
                   </div>
                 </div>
               </div>

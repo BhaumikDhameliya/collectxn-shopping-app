@@ -9,12 +9,14 @@ const TextInput = (props) => {
     name,
     buttonText,
     onButtonClick,
+    register,
+    errors,
     ...rest
   } = props
   return (
     <div className="flex flex-col w-full">
       {labelText && (
-        <label htmlFor={name} className={`${labelClasses}`}>
+        <label htmlFor={name} className={`font-medium ${labelClasses}`}>
           {labelText}
         </label>
       )}
@@ -24,6 +26,7 @@ const TextInput = (props) => {
           className="py-3 px-6 border rounded-3xl border-black-mate"
           name={name}
           placeholder={placeholder}
+          {...(register ? register(name) : {})}
           {...rest}
         />
         {buttonText && (
@@ -31,15 +34,15 @@ const TextInput = (props) => {
             className="absolute right-6 top-1/2 -translate-y-1/2"
             onClick={onButtonClick}
           >
-            <div className="font-cera-pro font-semibold text-pink">
+            <div className="font-cera-pro font-medium text-pink">
               {buttonText}
             </div>
           </button>
         )}
       </div>
-      {error && (
+      {errors && errors[name] && (
         <div className="px-4 py-[6px] text-[13px] text-error">
-          <p>{`User already registered. Try to login :)`}</p>
+          <p>{errors[name]['message']}</p>
         </div>
       )}
     </div>
