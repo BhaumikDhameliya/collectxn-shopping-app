@@ -11,6 +11,7 @@ const TextInput = (props) => {
     onButtonClick,
     register,
     errors,
+    children,
     ...rest
   } = props
   return (
@@ -40,6 +41,7 @@ const TextInput = (props) => {
           </button>
         )}
       </div>
+      {children}
       {errors && errors[name] && (
         <div className="px-4 py-[6px] text-[13px] text-error">
           <p>{errors[name]['message']}</p>

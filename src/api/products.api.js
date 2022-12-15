@@ -105,3 +105,17 @@ export const getSearchedProducts = async (params) => {
     }
   }
 }
+
+export const createProductRequest = async (payload) => {
+  try {
+    const res = await collectionAPI.post('/requests', payload)
+    console.log('res-----', res)
+    return res?.data
+  } catch (error) {
+    const errorRes = error?.response?.data
+    if (errorRes) {
+      console.log('error-----', errorRes)
+      return errorRes
+    }
+  }
+}

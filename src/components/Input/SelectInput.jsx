@@ -9,8 +9,11 @@ const SelectInput = (props) => {
     selectClasses,
     options = [],
     defaultValue,
+    register,
+    errors,
     ...rest
   } = props
+
   return (
     <div className="flex flex-col w-full gap-1.5">
       {labelText && (
@@ -25,6 +28,7 @@ const SelectInput = (props) => {
         placeholder={placeholder}
         {...rest}
         defaultValue={defaultValue || ''}
+        {...(register ? register(name) : {})}
       >
         {placeholder && (
           <option value="" disabled>
@@ -40,6 +44,12 @@ const SelectInput = (props) => {
           )
         })}
       </select>
+
+      {errors && errors[name] && (
+        <div className="px-4 py-[6px] text-[13px] text-error">
+          <p>{errors[name]['message']}</p>
+        </div>
+      )}
     </div>
   )
 }
