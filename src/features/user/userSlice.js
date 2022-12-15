@@ -25,10 +25,31 @@ export const userSlice = createSlice({
         },
       )
     },
+    makeDefaultDeliveryAddress: (state, action) => {
+      state.profile.DeliveryAddresses = state.profile?.DeliveryAddresses?.map(
+        (address) => {
+          if (address.id === action.payload?.id) {
+            return action.payload
+          }
+          return { ...address, isDefault: false }
+        },
+      )
+    },
+    removeDeliveryAddress: (state, action) => {
+      state.profile.DeliveryAddresses =
+        state.profile?.DeliveryAddresses?.filter(
+          (address) => address.id !== action.payload?.id,
+        )
+    },
   },
 })
 
-export const { setUserProfile, addDeliveryAddress, updateDeliveryAddress } =
-  userSlice.actions
+export const {
+  setUserProfile,
+  addDeliveryAddress,
+  updateDeliveryAddress,
+  makeDefaultDeliveryAddress,
+  removeDeliveryAddress,
+} = userSlice.actions
 
 export default userSlice.reducer

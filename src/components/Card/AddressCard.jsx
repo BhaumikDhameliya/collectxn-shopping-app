@@ -1,9 +1,13 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { toast } from 'react-toastify'
 
-import { updateAddress } from '../../api/addresses.api'
+import { deleteAddress, updateAddress } from '../../api/addresses.api'
 import EditAddressModal from '../../features/user/EditAddressModal'
-import { updateDeliveryAddress } from '../../features/user/userSlice'
+import {
+  makeDefaultDeliveryAddress,
+  removeDeliveryAddress,
+} from '../../features/user/userSlice'
 
 const AddressCard = (props) => {
   const { address, showRadio = true } = props
@@ -13,9 +17,18 @@ const AddressCard = (props) => {
 
   const hanldeMakeDefault = async () => {
     const addressRes = await updateAddress(address.id, { isDefault: true })
-    const addressData = addressRes?.data?.address
-    if (addressData) {
-      dispatch(updateDeliveryAddress(addressData))
+    if (addressRes?.status === 200) {
+      dispatch(makeDefaultDeliveryAddress({ ...address, isDefault: true }))
+    }
+  }
+
+  const hanldeRemoveAddress = async () => {
+    const addressRes = await deleteAddress(address.id)
+    if (addressRes?.status === 200) {
+      toast.success('Address removed successfully')
+      dispatch(removeDeliveryAddress(address))
+    } else {
+      toast.error(addressRes?.message)
     }
   }
 
@@ -48,7 +61,12 @@ const AddressCard = (props) => {
               >
                 edit
               </button>
-              <button className="border-b capitalize">Remove</button>
+              <button
+                className="border-b capitalize"
+                onClick={hanldeRemoveAddress}
+              >
+                Remove
+              </button>
               {!address?.isDefault && (
                 <button
                   className="border-b capitalize"

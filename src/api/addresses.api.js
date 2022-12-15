@@ -29,6 +29,10 @@ export const deleteAddress = async (addressId, payload) => {
     console.log('res-----', res)
     return res?.data
   } catch (error) {
-    console.log('error-----', error)
+    const errorRes = error?.response?.data
+    if (errorRes) {
+      console.log('error-----', errorRes)
+      return errorRes
+    }
   }
 }
