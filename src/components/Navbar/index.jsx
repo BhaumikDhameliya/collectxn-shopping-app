@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 
 import LogoCollectionTransparent from '../../assets/img/logo_collectxn_transparent.png'
@@ -14,18 +14,15 @@ import { ReactComponent as MobileMenuSVG } from '../../assets/svg/mobile_menu_ic
 import { ReactComponent as CloseMobileMenuSVG } from '../../assets/svg/close_mobile_menu.svg'
 import UserSVG from '../../assets/SVGComponent/UserSVG'
 import SearchMenu from '../Menu/SearchMenu'
-import { getCategories } from '../../api/categories.api'
-
-import { setCategories } from '../../features/category/categorySlice'
 
 const Navbar = () => {
   const navigate = useNavigate()
-  const dispatch = useDispatch()
   const params = useParams()
+
+  const categories = useSelector((state) => state.category.categories)
 
   const [showMenu, setShowMenu] = useState(false)
   const [showSearchMenu, setShowSearchMenu] = useState(false)
-  const [categoryList, setCategoryList] = useState([])
 
   const toggleSearchMenu = () => setShowSearchMenu((prev) => !prev)
   const goToShoppingBag = () => navigate('/shopping-bag')
@@ -34,23 +31,6 @@ const Navbar = () => {
     setShowMenu(false)
     navigate('/profile')
   }
-
-  const getCategoryData = useCallback(async () => {
-    const res = await getCategories()
-    const catList = res?.data?.categories
-    if (catList) {
-      let categories = {}
-      catList.forEach((cat) => {
-        categories[cat.id] = cat
-      })
-      dispatch(setCategories(categories))
-      setCategoryList(catList)
-    }
-  }, [dispatch])
-
-  useEffect(() => {
-    getCategoryData()
-  }, [getCategoryData])
 
   return (
     <>
@@ -89,17 +69,17 @@ const Navbar = () => {
               <>
                 <div className="hidden laptop:block">
                   <ul className="flex gap-8 text-white font-bold text-base whitespace-nowrap">
-                    {categoryList?.map((cat) => {
+                    {Object.entries(categories || {})?.map(([catId, cat]) => {
                       return (
                         <li
                           className={`flex py-[6px] px-3 gap-[10px] rounded-[4px] ${
                             // eslint-disable-next-line eqeqeq
-                            params?.categoryId == cat?.id
+                            params?.categoryId == catId
                               ? 'border-b-5 border-punchy-neon'
                               : ''
                           }`}
                           onClick={() => {
-                            navigate(`/category/${cat.id}`)
+                            navigate(`/category/${catId}`)
                           }}
                           key={cat?.name}
                         >

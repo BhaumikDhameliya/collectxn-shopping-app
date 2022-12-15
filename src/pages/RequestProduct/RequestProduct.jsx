@@ -1,4 +1,5 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import * as yup from 'yup'
@@ -18,7 +19,7 @@ import { createProductRequest } from '../../api/products.api'
 export const requestProductSchemaResolver = yupResolver(
   yup.object().shape({
     userName: yup.string().required('Please enter your name'),
-    CategoryId: yup.number().required('Please select product category'),
+    CategoryId: yup.string().required('Please select product category'),
     brand: yup.string().required('Please enter brand name'),
     productName: yup.string().required('Please enter product name'),
     size: yup.string().required('Please enter product size'),
@@ -30,6 +31,8 @@ export const requestProductSchemaResolver = yupResolver(
 const RequestProduct = () => {
   const navigate = useNavigate()
 
+  const categories = useSelector((state) => state.category.categories)
+
   const goBack = () => navigate(-1)
 
   const {
@@ -38,16 +41,17 @@ const RequestProduct = () => {
     register,
     // watch,
   } = useForm({
-    defaultValues: { isDefault: true },
+    defaultValues: {},
     resolver: requestProductSchemaResolver,
   })
 
+  // console.log('values-----', watch())
+
   const onSubmit = async (data) => {
-    goBack()
-    debugger
-    const addressRes = await createProductRequest(data)
-    const addressData = addressRes?.data?.address
-    if (addressData) {
+    const requestRes = await createProductRequest(data)
+    const requestData = requestRes?.data?.request
+    if (requestData) {
+      navigate('/')
       toast.success('Product request sent')
     }
   }
@@ -75,10 +79,10 @@ const RequestProduct = () => {
           />
           <SelectInput
             labelText="Product Catagory*"
-            options={[
-              { value: 'sneakers', name: 'Sneakers' },
-              { value: 'apparels', name: 'Apparels' },
-            ]}
+            options={Object.entries(categories || {})?.map(([catId, cat]) => {
+              return { value: catId, name: cat?.name }
+            })}
+            placeholder="Select Category"
             name="CategoryId"
             {...{ register, errors }}
           />
@@ -170,7 +174,7 @@ const RequestProduct = () => {
             </div>
           </div>
         </div>
-        <PopButton btnClasses="text-xl">Submit</PopButton>
+        <PopButton btnClasses="text-xl bg-black-mate">Submit</PopButton>
       </form>
     </div>
   )

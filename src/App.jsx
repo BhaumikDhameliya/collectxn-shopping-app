@@ -28,6 +28,8 @@ import VerifyOtp from './pages/VerifyOtp'
 import { collectionAPI } from './utils/axios/axios.utils'
 import { getUserProfile } from './api/user.api'
 import { setUserProfile } from './features/user/userSlice'
+import { setCategories } from './features/category/categorySlice'
+import { getCategories } from './api/categories.api'
 
 export default function App() {
   const dispatch = useDispatch()
@@ -40,13 +42,26 @@ export default function App() {
     dispatch(setUserProfile(userP))
   }, [dispatch])
 
+  const getCategoryData = useCallback(async () => {
+    const res = await getCategories()
+    const catList = res?.data?.categories
+    if (catList) {
+      let categories = {}
+      catList.forEach((cat) => {
+        categories[cat.id] = cat
+      })
+      dispatch(setCategories(categories))
+    }
+  }, [dispatch])
+
   useEffect(() => {
     const authToken = localStorage.getItem('authToken')
     if (authToken) {
       collectionAPI.defaults.headers.common['Authorization'] = authToken
       getUserProfileData()
+      getCategoryData()
     }
-  }, [getUserProfileData])
+  }, [getUserProfileData, getCategoryData])
 
   return (
     <div className="text-black-mate min-h-screen">

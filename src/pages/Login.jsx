@@ -39,7 +39,7 @@ const Login = () => {
       <div className="flex flex-col w-full laptop:w-1/2">
         <div className="h-20 flex items-center px-8">
           <div className="flex items-center gap-8">
-            <button onClick={() => navigate(-1)}>
+            <button onClick={() => navigate('/')}>
               <RightArrow />
             </button>
             <img src={logo_cxn} alt="cxn" />

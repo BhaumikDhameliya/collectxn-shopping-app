@@ -12,7 +12,7 @@ const SearchProduct = (props) => {
     <div className="flex items-center p-4 gap-2.5 bg-white border-t border-gray-light justify-between">
       <div className="flex gap-2.5 items-center">
         <img
-          src={product?.ProductImages?.[0]?.image}
+          src={product?.image}
           alt={product?.name}
           className="w-16 rounded-md tablet:w-28"
         />
@@ -20,10 +20,12 @@ const SearchProduct = (props) => {
           <div className="flex flex-col justify-center">
             <p className="font-bold tablet:text-2xl">{product?.name}</p>
             <p className="font-medium text-13 tablet:text-base text-gray-mid">
-              Nike
+              {product?.brand}
             </p>
           </div>
-          <p className="hidden tablet:block font-bold text-xl">₹ 12,699.00</p>
+          <p className="hidden tablet:block font-bold text-xl">
+            ₹ {product?.displayPrice}
+          </p>
         </div>
       </div>
       <div>
