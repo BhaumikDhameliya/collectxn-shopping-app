@@ -1,6 +1,8 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 
+import * as yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import { Dialog } from '@headlessui/react'
 
@@ -8,15 +10,25 @@ import { ReactComponent as CloseRoundedWhiteSVG } from '../../assets/svg/close_r
 
 import TextInput from '../../components/Input/TextInput'
 
-import { addressSchemaResolver } from './AddAddressModal'
-
-import { updateAddress } from '../../api/addresses.api'
-import { updateDeliveryAddress } from './userSlice'
+import { createAddress } from '../../api/addresses.api'
+import { addDeliveryAddress } from './userSlice'
 import PopButton from '../../components/buttons/PopButton'
 import { toast } from 'react-toastify'
 
-const EditAddressModal = (props) => {
-  const { isOpen, setIsOpen, address } = props
+export const addressSchemaResolver = yupResolver(
+  yup.object().shape({
+    line1: yup.string().required('Please enter Address line 1'),
+    line2: yup.string(),
+    city: yup.string().required('Please enter City'),
+    state: yup.string().required('Please enter State'),
+    country: yup.string().required('Please enter Country'),
+    pinCode: yup.string().required('Please enter PinCode'),
+    isDefault: yup.boolean(),
+  }),
+)
+
+const AddAddressModal = (props) => {
+  const { isOpen, setIsOpen } = props
 
   const dispatch = useDispatch()
 
@@ -26,7 +38,7 @@ const EditAddressModal = (props) => {
     register,
     // watch,
   } = useForm({
-    defaultValues: { ...address },
+    defaultValues: { isDefault: true },
     resolver: addressSchemaResolver,
   })
 
@@ -34,10 +46,11 @@ const EditAddressModal = (props) => {
 
   const onSubmit = async (data) => {
     close()
-    const addressRes = await updateAddress(address.id, data)
-    if (addressRes?.status === 200) {
-      toast.success('Address updated successfully')
-      dispatch(updateDeliveryAddress(data))
+    const addressRes = await createAddress(data)
+    const addressData = addressRes?.data?.address
+    if (addressData) {
+      toast.success('Address added successfully')
+      dispatch(addDeliveryAddress(addressData))
     }
   }
 
@@ -49,7 +62,7 @@ const EditAddressModal = (props) => {
         <div className="flex items-center justify-center p-4 rounded-xl">
           <Dialog.Panel className="bg-white rounded-xl">
             <form
-              className="flex flex-col items-center p-8 gap-10 rounded-xl max-w-xl"
+              className="flex flex-col items-center p-8 gap-10 rounded-xl border max-w-xl"
               onSubmit={handleSubmit(onSubmit)}
             >
               <div className="flex items-center justify-between gap-6 w-full">
@@ -96,7 +109,7 @@ const EditAddressModal = (props) => {
                 </div>
               </div>
               <div className="flex w-full">
-                <PopButton btnClasses="bg-black-mate">Edit Address</PopButton>
+                <PopButton btnClasses="bg-black-mate">Add</PopButton>
               </div>
             </form>
           </Dialog.Panel>
@@ -106,4 +119,4 @@ const EditAddressModal = (props) => {
   )
 }
 
-export default EditAddressModal
+export default AddAddressModal
