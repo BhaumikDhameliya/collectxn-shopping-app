@@ -16,7 +16,11 @@ export const getAllProducts = async (params) => {
     console.log('res-----', res)
     return res?.data
   } catch (error) {
-    console.log('error-----', error)
+    const errorRes = error?.response?.data
+    if (errorRes) {
+      console.log('error-----', errorRes)
+      return errorRes
+    }
   }
 }
 

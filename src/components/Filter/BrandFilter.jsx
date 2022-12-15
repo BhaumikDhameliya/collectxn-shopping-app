@@ -1,7 +1,16 @@
 import React from 'react'
 
 const BrandFilter = (props) => {
-  const { brandList = [] } = props
+  const { setBrands, brandList = [] } = props
+
+  const handleBrandChange = (e) => {
+    if (e.target.checked) {
+      setBrands((prev) => [...prev, e.target.value])
+    } else {
+      setBrands((prev) => prev.filter((b) => b !== e.target.value))
+    }
+  }
+
   return (
     <div className="flex flex-col">
       <div className="flex pb-3 border-b border-gray-mid">
@@ -19,6 +28,7 @@ const BrandFilter = (props) => {
                     name="brand"
                     value={brand}
                     className="accent-black-mate"
+                    onChange={handleBrandChange}
                   />
                   <label htmlFor={brand} className="font-cera-pro font-medium">
                     {brand}
