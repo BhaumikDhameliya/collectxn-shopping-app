@@ -58,7 +58,7 @@ const ProductCard = (props) => {
         <div className="flex font-bold text-13 laptop:text-xl">
           {product?.name}
         </div>
-        {false ? (
+        {isLiked ? (
           <button
             className="hidden laptop:block"
             onClick={handleRemoveLikeProduct}
