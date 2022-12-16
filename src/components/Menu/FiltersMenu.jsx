@@ -28,6 +28,13 @@ const FiltersMenu = (props) => {
   )
 
   const [brands, setBrands] = useState([])
+  const [gender, setGender] = useState([])
+  const [sizes, setSizes] = useState([])
+  const [colors, setColors] = useState([])
+  const [type, setType] = useState([])
+  const [releaseYear, setReleaseYear] = useState([])
+  const [minPrice, setMinPrice] = useState()
+  const [maxPrice, setMaxPrice] = useState()
 
   const getCategoryProuductsData = useCallback(
     async (params) => {
@@ -39,7 +46,7 @@ const FiltersMenu = (props) => {
           products[product.id] = product
         })
         dispatch(
-          setCategoryProducts({ categoryId: params.categoryId, products }),
+          setCategoryProducts({ categoryId: params.Categories, products }),
         )
       }
     },
@@ -47,15 +54,46 @@ const FiltersMenu = (props) => {
   )
 
   const fetchFilteredProducts = useMemo(() => {
-    return debounce(
-      () =>
-        getCategoryProuductsData({
-          Categories: categoryId,
-          brands: brands.join(','),
-        }),
-      1000,
-    )
-  }, [brands, categoryId, getCategoryProuductsData])
+    return debounce(() => {
+      let params = { Categories: categoryId }
+      if (brands.length) {
+        params.brands = brands.join(',')
+      }
+      if (gender.length) {
+        params.gender = gender.join(',')
+      }
+      if (sizes.length) {
+        params.sizes = sizes.join(',')
+      }
+      if (colors.length) {
+        params.colors = colors.join(',')
+      }
+      if (type.length) {
+        params.type = type.join(',')
+      }
+      if (releaseYear.length) {
+        params.releaseYear = releaseYear.join(',')
+      }
+      if (minPrice) {
+        params.minPrice = minPrice
+      }
+      if (maxPrice) {
+        params.maxPrice = maxPrice
+      }
+      getCategoryProuductsData(params)
+    }, 1000)
+  }, [
+    categoryId,
+    brands,
+    gender,
+    sizes,
+    colors,
+    type,
+    releaseYear,
+    minPrice,
+    maxPrice,
+    getCategoryProuductsData,
+  ])
 
   useEffect(() => {
     fetchFilteredProducts()
@@ -64,7 +102,6 @@ const FiltersMenu = (props) => {
     }
   }, [brands, fetchFilteredProducts])
 
-  console.log('brands----', brands)
   return (
     <div className="absolute laptop:relative bg-white flex flex-col w-full z-10">
       <div className="p-6 laptop:pl-10 laptop:pr-0">
@@ -81,15 +118,23 @@ const FiltersMenu = (props) => {
               {...{ brands, setBrands, brandList: category?.brands }}
             />
           )}
-          <GenderFilter />
-          {category?.sizes && <SizeFilter sizeList={category?.sizes} />}
-          {category?.colors && <ColorFilter colorList={category?.colors} />}
-          {category?.types && <TypeFilter typeList={category?.types} />}
-          <RealeaseYearFilter />
-          <PriceFilter />
+          <GenderFilter {...{ gender, setGender }} />
+          {category?.sizes && (
+            <SizeFilter {...{ sizes, setSizes, sizeList: category?.sizes }} />
+          )}
+          {category?.colors && (
+            <ColorFilter
+              {...{ colors, setColors, colorList: category?.colors }}
+            />
+          )}
+          {category?.types && (
+            <TypeFilter {...{ type, setType, typeList: category?.types }} />
+          )}
+          <RealeaseYearFilter {...{ releaseYear, setReleaseYear }} />
+          <PriceFilter {...{ minPrice, setMinPrice, maxPrice, setMaxPrice }} />
         </div>
       </div>
-      <div className="flex flex-row items-center border divide-x text-center laptop:hidden">
+      {/* <div className="flex flex-row items-center border divide-x text-center laptop:hidden">
         <button
           className="flex flex-grow px-2.5 py-4 items-center justify-center"
           onClick={toggle}
@@ -99,7 +144,7 @@ const FiltersMenu = (props) => {
         <button className="flex flex-grow px-2.5 py-4 items-center justify-center bg-punchy-neon">
           <p className="font-bold text-13">Apply</p>
         </button>
-      </div>
+      </div> */}
     </div>
   )
 }

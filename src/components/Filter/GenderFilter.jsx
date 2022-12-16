@@ -2,7 +2,17 @@ import React from 'react'
 
 const genderList = [{ name: 'Men' }, { name: 'Women' }]
 
-const GenderFilter = () => {
+const GenderFilter = (props) => {
+  const { setGender } = props
+
+  const handleGenderChange = (e) => {
+    if (e.target.checked) {
+      setGender((prev) => [...prev, e.target.value])
+    } else {
+      setGender((prev) => prev.filter((b) => b !== e.target.value))
+    }
+  }
+
   return (
     <div className="flex flex-col">
       <div className="flex pb-3 border-b border-gray-mid">
@@ -20,6 +30,7 @@ const GenderFilter = () => {
                     name={name}
                     value={name}
                     className="accent-black-mate"
+                    onChange={handleGenderChange}
                   />
                   <label htmlFor={name} className="font-cera-pro font-medium">
                     {name}

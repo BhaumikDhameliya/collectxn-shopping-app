@@ -7,7 +7,17 @@ const yearList = [
   { name: '2019' },
 ]
 
-const RealeaseYearFilter = () => {
+const RealeaseYearFilter = (props) => {
+  const { setReleaseYear } = props
+
+  const handleReleaseYearChange = (e) => {
+    if (e.target.checked) {
+      setReleaseYear([e.target.value])
+    } else {
+      setReleaseYear((prev) => prev.filter((b) => b !== e.target.value))
+    }
+  }
+
   return (
     <div className="flex flex-col">
       <div className="flex pb-3 border-b border-gray-mid">
@@ -20,11 +30,12 @@ const RealeaseYearFilter = () => {
               <div className="">
                 <div className="flex items-center gap-2">
                   <input
-                    type="checkbox"
+                    type="radio"
                     id={name}
-                    name={name}
+                    name="release year"
                     value={name}
                     className="accent-black-mate"
+                    onChange={handleReleaseYearChange}
                   />
                   <label htmlFor={name} className="font-cera-pro font-medium">
                     {name}

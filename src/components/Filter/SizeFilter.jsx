@@ -1,7 +1,16 @@
 import React from 'react'
 
 const SizeFilter = (props) => {
-  const { sizeList = [] } = props
+  const { setSizes, sizeList = [] } = props
+
+  const handleSizeChange = (e) => {
+    if (e.target.checked) {
+      setSizes((prev) => [...prev, e.target.value])
+    } else {
+      setSizes((prev) => prev.filter((b) => b !== e.target.value))
+    }
+  }
+
   return (
     <div className="flex flex-col">
       <div className="flex pb-3 border-b border-gray-mid">
@@ -16,7 +25,9 @@ const SizeFilter = (props) => {
                   type="checkbox"
                   id={size}
                   name={size}
+                  value={size}
                   className="accent-black-mate hidden peer"
+                  onChange={handleSizeChange}
                 />
                 <label
                   htmlFor={size}

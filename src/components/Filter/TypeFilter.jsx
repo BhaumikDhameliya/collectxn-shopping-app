@@ -1,7 +1,16 @@
 import React from 'react'
 
 const TypeFilter = (props) => {
-  const { typeList = [] } = props
+  const { setType, typeList = [] } = props
+
+  const handleTypeChange = (e) => {
+    if (e.target.checked) {
+      setType((prev) => [...prev, e.target.value])
+    } else {
+      setType((prev) => prev.filter((b) => b !== e.target.value))
+    }
+  }
+
   return (
     <div className="flex flex-col">
       <div className="flex pb-3 border-b border-gray-mid">
@@ -19,6 +28,7 @@ const TypeFilter = (props) => {
                     name="type"
                     value={type}
                     className="accent-black-mate"
+                    onChange={handleTypeChange}
                   />
                   <label htmlFor={type} className="font-cera-pro font-medium">
                     {type}

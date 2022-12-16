@@ -18,7 +18,16 @@ import React from 'react'
 // ]
 
 const ColorFilter = (props) => {
-  const { colorList = [] } = props
+  const { colorList = [], setColors } = props
+
+  const handleColorChange = (e) => {
+    if (e.target.checked) {
+      setColors((prev) => [...prev, e.target.value])
+    } else {
+      setColors((prev) => prev.filter((b) => b !== e.target.value))
+    }
+  }
+
   return (
     <div className="flex flex-col">
       <div className="flex pb-3 border-b border-gray-mid">
@@ -33,8 +42,9 @@ const ColorFilter = (props) => {
                   type="checkbox"
                   id={color}
                   name={color}
-                  value={false}
+                  value={color}
                   className="accent-black-mate hidden peer"
+                  onChange={handleColorChange}
                 />
                 <label
                   htmlFor={color}
