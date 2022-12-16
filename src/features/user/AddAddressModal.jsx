@@ -37,6 +37,7 @@ const AddAddressModal = (props) => {
     handleSubmit,
     register,
     // watch,
+    reset,
   } = useForm({
     defaultValues: { isDefault: true },
     resolver: addressSchemaResolver,
@@ -52,6 +53,7 @@ const AddAddressModal = (props) => {
       toast.success('Address added successfully')
       dispatch(addDeliveryAddress(addressData))
     }
+    reset()
   }
 
   return (
@@ -59,7 +61,7 @@ const AddAddressModal = (props) => {
       <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
 
       <div className="fixed inset-0 overflow-y-auto">
-        <div className="flex items-center justify-center p-4 rounded-xl">
+        <div className="flex items-center justify-center p-4 rounded-xl min-h-full">
           <Dialog.Panel className="bg-white rounded-xl">
             <form
               className="flex flex-col items-center p-8 gap-10 rounded-xl border max-w-xl"

@@ -14,7 +14,6 @@ const ProductCard = (props) => {
 
   const handleLikeProduct = async () => {
     const res = await likeProduct({}, { ProductId: product.id })
-    debugger
     if (res?.data?.isLiked) {
       toast.success('Product liked successfully')
     }
@@ -22,7 +21,6 @@ const ProductCard = (props) => {
 
   const handleRemoveLikeProduct = async () => {
     const res = await removeLikedProduct({}, { ProductId: product.id })
-    debugger
     if (res?.status === 200) {
       toast.success('like removed successfully')
     }

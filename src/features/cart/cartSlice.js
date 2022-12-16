@@ -10,7 +10,8 @@ export const cartSlice = createSlice({
             state.cart = action.payload
         },
         addProductToCart: (state, action) => {
-            state.cart.cartItems.push(action.payload)
+            const updatedCartItems = [...(state.cart.cartItems ||[]), action.payload]
+            state.cart.cartItems = updatedCartItems
         },
         removeProductFromCart: (state, action) => {
             state.cart.cartItems = state.cart.cartItems?.filter(cartItem => {

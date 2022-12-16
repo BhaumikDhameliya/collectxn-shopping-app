@@ -230,6 +230,7 @@ const ProductInfo = () => {
                             onChange={(e) => {
                               if (e.target.checked) {
                                 setSelectedColor(prd)
+                                setSelectedSize(null)
                               }
                             }}
                           />

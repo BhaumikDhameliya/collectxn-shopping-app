@@ -28,7 +28,7 @@ const GoogleButton = ({ text = 'Google', type }) => {
         }
       }
     } catch (error) {
-      alert(error.message)
+      console.log(error.message)
     }
   }
   return (

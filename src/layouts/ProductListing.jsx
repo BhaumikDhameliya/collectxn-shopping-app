@@ -11,10 +11,15 @@ import SelectInput from '../components/Input/SelectInput'
 import FiltersMenu from '../components/Menu/FiltersMenu'
 import SortByMenu from '../components/Menu/SortByMenu'
 import { setCategoryProducts } from '../features/product/productSlice'
+import Breadcrumbs from '../components/Breadcrumbs'
 
 const ProductListing = () => {
   const dispatch = useDispatch()
   const { categoryId } = useParams()
+
+  const category = useSelector(
+    (state) => state.category.categories?.[categoryId],
+  )
 
   const products = useSelector(
     (state) => state.product.categoryProducts?.[categoryId],
@@ -56,13 +61,14 @@ const ProductListing = () => {
         </button>
       </div>
       <div>
-        <div className="flex items-center justify-center p-4 tablet:px-8 laptop:px-20 laptop:pt-8 tablet:justify-start">
-          <div className="flex gap-1.5 font-medium text-13">
-            <p className="text-gray-mid">Home</p>
-            <p className="text-gray-mid">/</p>
-            <p>Sneakers</p>
-          </div>
-        </div>
+        <Breadcrumbs
+          path={[
+            { text: 'home', to: '/' },
+            {
+              text: category?.name,
+            },
+          ]}
+        />
         <div className="flex justify-evenly px-10">
           <div className="hidden laptop:block">
             <FiltersMenu />

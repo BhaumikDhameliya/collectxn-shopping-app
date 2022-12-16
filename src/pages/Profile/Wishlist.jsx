@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import ProductCard from '../../components/Card/ProductCard'
@@ -11,12 +11,15 @@ import { setLikedProducts } from '../../features/product/productSlice'
 const Wishlist = () => {
   const dispatch = useDispatch()
 
+  const [count, setCount] = useState(0)
+
   const likedProducts = useSelector((state) => state.product.likedProducts)
   console.log('likedProducts----', likedProducts)
 
   const getLikedProductsData = useCallback(async () => {
     const likedProductsData = await getLikedProducts()
     const likedProducts = likedProductsData?.data?.likedProducts
+    setCount(likedProductsData?.results || 0)
     if (likedProducts) {
       dispatch(setLikedProducts(likedProducts))
     }
@@ -35,7 +38,7 @@ const Wishlist = () => {
               <p className="font-bold text-31 hidden laptop:block">
                 My Wishlist
               </p>
-              <div className="font-medium">(25 products)</div>
+              <div className="font-medium">({count} products)</div>
             </div>
           </div>
           <div className="flex items-center gap-2">
