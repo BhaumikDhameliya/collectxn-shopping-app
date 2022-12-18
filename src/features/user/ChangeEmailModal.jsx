@@ -94,7 +94,7 @@ const ChangeEmailModal = (props) => {
                     <div className="flex items-center justify-center w-full">
                       <EmailLogo />
                     </div>
-                    <div className="text-center">
+                    <div className="text-center flex flex-col w-full">
                       <p className="font-bold text-[31px]">OTP Verification</p>
                       <p className="font-cera-pro text-base">
                         We sent code to your email {email}, please enter the
