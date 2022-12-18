@@ -32,6 +32,7 @@ const TextInput = (props) => {
         />
         {buttonText && (
           <button
+            type="button"
             className="absolute right-6 top-1/2 -translate-y-1/2"
             onClick={onButtonClick}
           >

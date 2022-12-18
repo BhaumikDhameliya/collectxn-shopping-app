@@ -19,6 +19,8 @@ import ProfileCardLaptop from './ProfileCardLaptop'
 import { logout } from '../../utils/firebase/firebase.utils'
 import AddAddressModal from '../../features/user/AddAddressModal'
 import { toast } from 'react-toastify'
+import ChangeEmailModal from '../../features/user/ChangeEmailModal'
+import ChangeMobileModal from '../../features/user/ChangeMobileModal'
 
 export const profileSchemaResolver = yupResolver(
   yup.object().shape({
@@ -34,8 +36,12 @@ const Profile = () => {
 
   const [selectedTab, setSelectedTab] = useState('profile')
   const [showAddAddress, setShowAddAddress] = useState(false)
+  const [showChangeEmail, setShowChangeEmail] = useState(false)
+  const [showChangeMobile, setShowChangeMobile] = useState(false)
 
   const toggleShowAddress = () => setShowAddAddress((prev) => !prev)
+  const toggleShowChageEmail = () => setShowChangeEmail((prev) => !prev)
+  const toggleShowChageMobile = () => setShowChangeMobile((prev) => !prev)
 
   const {
     formState: { isDirty, errors },
@@ -121,13 +127,16 @@ const Profile = () => {
               {selectedTab === 'orders' && <ProfileOrders />}
               {selectedTab === 'profile' && (
                 <div className="flex flex-col gap-8 laptop:pl-13 laptop:pt-8">
-                  <form onSubmit={handleSubmit(onSubmit)}>
+                  <form
+                    onSubmit={handleSubmit(onSubmit)}
+                    className="flex flex-col gap-8"
+                  >
                     <div className="flex items-center justify-between gap-2.5 pt-3 pb-4 border-b border-gray-light">
                       <div className="font-medium text-xl">Account info</div>
                       <button
-                        className={`flex items-center justify-center px-4 py-2 gap-2.5 rounded-full ${
-                          isDirty ? 'bg-black-mate' : 'bg-gray-mid'
-                        }`}
+                        type="submit"
+                        className={`flex items-center justify-center px-4 py-2 gap-2.5 rounded-full bg-black-mate disabled:bg-gray-mid`}
+                        disabled={!isDirty}
                       >
                         <p className="font-medium text-13 text-white">
                           save changes
@@ -145,6 +154,7 @@ const Profile = () => {
                         <TextInput
                           labelText="Mobile Number"
                           buttonText="change"
+                          onButtonClick={toggleShowChageMobile}
                           name="mobile"
                           {...{ register, errors }}
                         />
@@ -153,6 +163,7 @@ const Profile = () => {
                         <TextInput
                           labelText="Email ID"
                           buttonText="change"
+                          onButtonClick={toggleShowChageEmail}
                           name="email"
                           {...{ register, errors }}
                         />
@@ -196,6 +207,12 @@ const Profile = () => {
       </div>
       <AddAddressModal
         {...{ isOpen: showAddAddress, setIsOpen: setShowAddAddress }}
+      />
+      <ChangeEmailModal
+        {...{ isOpen: showChangeEmail, setIsOpen: setShowChangeEmail }}
+      />
+      <ChangeMobileModal
+        {...{ isOpen: showChangeMobile, setIsOpen: setShowChangeMobile }}
       />
     </>
   )

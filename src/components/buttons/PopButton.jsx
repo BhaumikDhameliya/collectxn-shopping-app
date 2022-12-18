@@ -7,7 +7,7 @@ const PopButton = (props) => {
     'flex items-center justify-center px-4 py-2 tablet:px-6 tablet:py-3 gap-[10px] rounded-full w-full font-medium text-xs tablet:text-xl text-black-mate border border-black-mate'
 
   const disabledClasses =
-    'disabled:bg-gray-mid disabled:shadow-none disabled:text-white'
+    'disabled:bg-gray-mid disabled:shadow-none disabled:text-white disabled:border-0'
   const hoveredClasses =
     'hover:shadow-btn hover:bg-punchy-neon hover:text-black-mate '
 
