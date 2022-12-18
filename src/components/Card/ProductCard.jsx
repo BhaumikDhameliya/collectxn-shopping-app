@@ -32,7 +32,7 @@ const ProductCard = (props) => {
   }
 
   useEffect(() => {
-    setIsLiked(product.isLiked || false)
+    setIsLiked(product?.isLiked || false)
   }, [product])
 
   return (

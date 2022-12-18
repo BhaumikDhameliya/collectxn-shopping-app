@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 
-// import debounce from 'lodash.debounce'
+import debounce from 'lodash.debounce'
 
 import { CircleX } from 'akar-icons'
 import TextInput from '../Input/TextInput'
@@ -11,7 +11,7 @@ import { getSearchedProducts } from '../../api/products.api'
 const SearchMenu = (props) => {
   const { toggleSearchMenu } = props
 
-  const [name, setName] = useState('')
+  // const [name, setName] = useState('')
   const [products, setProducts] = useState([])
 
   const fetchSearchedProduct = async (name) => {
@@ -24,20 +24,20 @@ const SearchMenu = (props) => {
 
   const handleNameChange = (e) => {
     const name = e.target.value
-    setName(name)
-    // fetchSearchedProduct(name)
+    // setName(name)
+    fetchSearchedProduct(name)
   }
 
-  // const debouncedResults = useMemo(() => {
-  //   return debounce(handleNameChange, 300)
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [])
+  const debouncedResults = useMemo(() => {
+    return debounce(handleNameChange, 300)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
-  // useEffect(() => {
-  //   return () => {
-  //     debouncedResults.cancel()
-  //   }
-  // })
+  useEffect(() => {
+    return () => {
+      debouncedResults.cancel()
+    }
+  })
 
   return (
     <div className="flex flex-col bg-white absolute w-full z-20">
@@ -46,17 +46,17 @@ const SearchMenu = (props) => {
         <form
           onSubmit={(e) => {
             e.preventDefault()
-            fetchSearchedProduct(name)
+            // fetchSearchedProduct(name)
           }}
           className="w-full"
         >
           <TextInput
             placeholder=""
-            buttonText="search"
-            onButtonClick={() => fetchSearchedProduct(name)}
-            value={name}
-            onChange={handleNameChange}
-            // onChange={debouncedResults}
+            // buttonText="search"
+            // onButtonClick={() => fetchSearchedProduct(name)}
+            // value={name}
+            // onChange={handleNameChange}
+            onChange={debouncedResults}
           />
         </form>
       </div>
