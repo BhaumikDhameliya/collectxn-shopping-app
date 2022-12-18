@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
+import * as yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { useForm } from 'react-hook-form'
+
 import Navbar from '../../components/Navbar'
 
 import LogoutSVG from '../../assets/svg/logout_rounded.svg'
@@ -14,6 +18,15 @@ import ProfileTabsMobile from './ProfileTabsMobile'
 import ProfileCardLaptop from './ProfileCardLaptop'
 import { logout } from '../../utils/firebase/firebase.utils'
 import AddAddressModal from '../../features/user/AddAddressModal'
+import { toast } from 'react-toastify'
+
+export const profileSchemaResolver = yupResolver(
+  yup.object().shape({
+    email: yup.string(),
+    mobile: yup.string(),
+    name: yup.string().required('Please enter Your name'),
+  }),
+)
 
 const Profile = () => {
   const navigate = useNavigate()
@@ -24,16 +37,42 @@ const Profile = () => {
 
   const toggleShowAddress = () => setShowAddAddress((prev) => !prev)
 
+  const {
+    formState: { isDirty, errors },
+    handleSubmit,
+    register,
+    // watch,
+    setValue,
+    reset,
+  } = useForm({
+    defaultValues: {},
+    resolver: profileSchemaResolver,
+  })
+
+  const onSubmit = async (data) => {
+    // const addressRes = await createAddress(data)
+    // const addressData = addressRes?.data?.address
+    if (true) {
+      reset()
+      toast.success('Profile updated successfully')
+      // dispatch(addDeliveryAddress(addressData))
+    }
+  }
+
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (!Object.keys(userProfile)?.length) {
+      if (Object.keys(userProfile || {})?.length) {
+        setValue('email', userProfile?.email || '')
+        setValue('mobile', userProfile?.mobile || '')
+        setValue('name', userProfile?.name || '')
+      } else {
         navigate('/auth/login')
       }
     }, 300)
     return () => {
       clearTimeout(timer)
     }
-  }, [navigate, userProfile])
+  }, [navigate, setValue, userProfile])
 
   return (
     <>
@@ -82,26 +121,44 @@ const Profile = () => {
               {selectedTab === 'orders' && <ProfileOrders />}
               {selectedTab === 'profile' && (
                 <div className="flex flex-col gap-8 laptop:pl-13 laptop:pt-8">
-                  <div className="flex items-center justify-between gap-2.5 pt-3 pb-4 border-b border-gray-light">
-                    <div className="font-medium text-xl">Account info</div>
-                    <button className="flex items-center justify-center px-4 py-2 gap-2.5 bg-gray-mid rounded-full">
-                      <p className="font-medium text-13 text-white">
-                        save changes
-                      </p>
-                    </button>
-                  </div>
-                  <div className="flex flex-col gap-8 font-cera-pro font-meduim">
-                    <div className="flex flex-col tablet:flex-row gap-8">
-                      <TextInput labelText="Full Name" placeholder="John Doe" />
-                      <TextInput
-                        labelText="Mobile Number"
-                        buttonText="change"
-                      />
+                  <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className="flex items-center justify-between gap-2.5 pt-3 pb-4 border-b border-gray-light">
+                      <div className="font-medium text-xl">Account info</div>
+                      <button
+                        className={`flex items-center justify-center px-4 py-2 gap-2.5 rounded-full ${
+                          isDirty ? 'bg-black-mate' : 'bg-gray-mid'
+                        }`}
+                      >
+                        <p className="font-medium text-13 text-white">
+                          save changes
+                        </p>
+                      </button>
                     </div>
-                    <div className="flex tablet:max-w-md">
-                      <TextInput labelText="Email ID" buttonText="change" />
+                    <div className="flex flex-col gap-8 font-cera-pro font-meduim">
+                      <div className="flex flex-col tablet:flex-row gap-8">
+                        <TextInput
+                          labelText="Full Name"
+                          placeholder="John Doe"
+                          name="name"
+                          {...{ register, errors }}
+                        />
+                        <TextInput
+                          labelText="Mobile Number"
+                          buttonText="change"
+                          name="mobile"
+                          {...{ register, errors }}
+                        />
+                      </div>
+                      <div className="flex tablet:max-w-md">
+                        <TextInput
+                          labelText="Email ID"
+                          buttonText="change"
+                          name="email"
+                          {...{ register, errors }}
+                        />
+                      </div>
                     </div>
-                  </div>
+                  </form>
                   <div>
                     <div className="flex items-center justify-between gap-2.5 pt-3 pb-4 border-b border-gray-light">
                       <div className="font-medium text-xl">
