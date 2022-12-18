@@ -11,10 +11,8 @@ import { setLikedProducts } from '../../features/product/productSlice'
 const Wishlist = () => {
   const dispatch = useDispatch()
 
-  const [count, setCount] = useState(0)
-
   const likedProducts = useSelector((state) => state.product.likedProducts)
-  console.log('likedProducts----', likedProducts)
+  const [count, setCount] = useState(likedProducts?.length || 0)
 
   const getLikedProductsData = useCallback(async () => {
     const likedProductsData = await getLikedProducts()
@@ -58,9 +56,7 @@ const Wishlist = () => {
         </div>
         <div className="grid grid-cols-2 tablet:grid-cols-3 gap-4">
           {likedProducts?.map((product) => {
-            return (
-              <ProductCard key={product.id} product={product} isLiked={true} />
-            )
+            return <ProductCard key={product.id} product={product} />
           })}
         </div>
       </div>

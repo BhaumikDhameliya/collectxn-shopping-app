@@ -1,6 +1,8 @@
-import { Heart } from 'akar-icons'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+
+// import { toast } from 'react-toastify'
+import { Heart } from 'akar-icons'
 
 import air_max from '../../assets/img/air_max_flyknit_racer_shoes.png'
 
@@ -8,25 +10,30 @@ import air_max from '../../assets/img/air_max_flyknit_racer_shoes.png'
 import ViewAllArrow from '../../assets/SVGComponent/ViewAllArrow'
 
 import { likeProduct, removeLikedProduct } from '../../api/products.api'
-import { toast } from 'react-toastify'
 
 const ProductCardScrollable = (props) => {
   const { product } = props
+  const [isLiked, setIsLiked] = useState(false)
 
   const handleLikeProduct = async () => {
     const res = await likeProduct({}, { ProductId: product.id })
     if (res?.data?.isLiked) {
-      toast.success('Product liked successfully')
+      setIsLiked(true)
+      // toast.success('Product liked successfully')
     }
   }
 
   const handleRemoveLikeProduct = async () => {
-    const res = await removeLikedProduct({}, { ProductId: product.id })
-    debugger
-    if (res?.status === 200) {
-      toast.success('like removed successfully')
+    const res = await removeLikedProduct({ ProductId: product.id })
+    if (res?.data?.isRemoved) {
+      setIsLiked(false)
+      // toast.success('like removed successfully')
     }
   }
+
+  useEffect(() => {
+    setIsLiked(product.isLiked || false)
+  }, [product])
 
   return (
     <div className="flex flex-col border rounded-lg divide-y hover:shadow-card flex-none max-w-55 laptop:max-w-96">
@@ -43,7 +50,7 @@ const ProductCardScrollable = (props) => {
         <div className="flex font-bold text-xs laptop:text-xl">
           {product?.name}
         </div>
-        {false ? (
+        {isLiked ? (
           <button
             className="hidden laptop:block"
             onClick={handleRemoveLikeProduct}

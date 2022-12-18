@@ -84,11 +84,9 @@ export const getLikedProducts = async (params) => {
   }
 }
 
-export const removeLikedProduct = async (payload, params) => {
+export const removeLikedProduct = async (params) => {
   try {
-    const res = await collectionAPI.delete('/products/like', payload, {
-      params,
-    })
+    const res = await collectionAPI.delete('/products/like', { params })
     console.log('res-----', res)
     return res?.data
   } catch (error) {
