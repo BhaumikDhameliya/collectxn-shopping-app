@@ -94,6 +94,13 @@ const ProductInfo = () => {
     }
   }, [product?.ColorAvailabilities])
 
+  useEffect(()=>{
+    const selSize = selectedColor?.SizeAvailabilities?.[0]
+    if (selSize) {
+      setSelectedSize(selSize)
+    }
+  },[selectedColor])
+
   return (
     <div>
       <div className="relative laptop:hidden">
@@ -230,9 +237,9 @@ const ProductInfo = () => {
                             onChange={(e) => {
                               if (e.target.checked) {
                                 setSelectedColor(prd)
-                                setSelectedSize(null)
                               }
                             }}
+                            checked={colorId === selectedColor?.id}
                           />
                           <label htmlFor={colorId}>
                             <img

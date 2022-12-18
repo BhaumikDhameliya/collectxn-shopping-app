@@ -1,7 +1,7 @@
 import React from 'react'
 
 const SizeSelectProductInfo = (props) => {
-  const { product, setSelectedSize } = props
+  const { product, selectedSize, setSelectedSize } = props
   const { SizeAvailabilities } = product
   return (
     <div className="flex flex-col">
@@ -20,6 +20,7 @@ const SizeSelectProductInfo = (props) => {
                   name="productSize"
                   id={size}
                   value={size}
+                  checked={sizeId === selectedSize?.id}
                   onChange={(e) => {
                     if (e.target.checked) {
                       setSelectedSize(sizeProduct)
