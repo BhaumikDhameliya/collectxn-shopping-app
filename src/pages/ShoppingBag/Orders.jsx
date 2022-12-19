@@ -1,19 +1,17 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 
 import CartProduct from '../../components/Card/CartProduct'
 import ProductCardScrollable from '../../components/Card/ProductCardScrollable'
 import AddressAndBilling from '../Checkout/AddressAndBilling'
 
-const Orders = () => {
-  const cart = useSelector((state) => state.cart.cart)
-  console.log('cart-----', cart)
+const Orders = (props) => {
+  const { cartItems = [] } = props
 
   return (
     <div className="flex flex-col w-full laptop:px-20">
       <div className="laptop:flex gap-6">
         <div className="border-t border-gray-mid flex-grow">
-          {cart?.cartItems?.map((cartItem) => {
+          {cartItems?.map((cartItem) => {
             if (!cartItem?.Product) return null
             return <CartProduct cartItem={cartItem} key={cartItem.id} />
           })}

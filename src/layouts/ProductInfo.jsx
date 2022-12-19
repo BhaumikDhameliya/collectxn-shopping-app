@@ -94,12 +94,12 @@ const ProductInfo = () => {
     }
   }, [product?.ColorAvailabilities])
 
-  useEffect(()=>{
+  useEffect(() => {
     const selSize = selectedColor?.SizeAvailabilities?.[0]
     if (selSize) {
       setSelectedSize(selSize)
     }
-  },[selectedColor])
+  }, [selectedColor])
 
   return (
     <div>
@@ -121,7 +121,7 @@ const ProductInfo = () => {
         path={[
           { text: 'home', to: '/' },
           {
-            text: product?.Category?.name,
+            text: product?.Category?.name || '',
             to: `/category/${product?.CategoryId}`,
           },
           { text: product?.name },

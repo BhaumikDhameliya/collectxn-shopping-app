@@ -69,7 +69,7 @@ const ShoppingBag = () => {
         <div className="flex flex-col items-center justify-between flex-grow">
           {cart?.cartItems?.length ? (
             <>
-              <Orders />
+              <Orders cartItems={cart?.cartItems} />
             </>
           ) : (
             <EmptyShoppingBag onClick={handleCheckoutClick} />
