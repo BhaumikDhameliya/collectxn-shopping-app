@@ -66,12 +66,17 @@ const CartProduct = (props) => {
       const cartRes = await decreaseCartQuantity(cartItem.id)
       if (cartRes?.status === 200) {
         decreaseQuantity()
+        dispatch(
+          replaceCartItem({ ...cartItem, quantity: cartItem?.quantity - 1 }),
+        )
       }
     } catch (error) {
     } finally {
       setIsLoading(false)
     }
   }
+
+  console.log('isLoading-----', isLoading)
 
   return (
     <div className="flex px-4 py-6 gap-4 bg-white border-b border-gray-mid">

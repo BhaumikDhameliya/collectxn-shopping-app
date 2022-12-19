@@ -10,7 +10,7 @@ import {
 } from '../../features/user/userSlice'
 
 const AddressCard = (props) => {
-  const { address, showRadio = true } = props
+  const { address, showRadio = true, isSelected } = props
   const dispatch = useDispatch()
 
   const [isEditing, setIsEditing] = useState(false)
@@ -37,15 +37,18 @@ const AddressCard = (props) => {
   return (
     <>
       <label
-        htmlFor={`address_${address?.id}`}
+        htmlFor={address?.id}
         className="flex px-6 py-4 gap-5 bg-white border rounded-10"
       >
         {showRadio && (
           <div className="flex py-4">
-            {/* <div className="h-5 w-5 rounded-full border border-gray-light peer-checked:border-punchy-neon"></div> */}
-            <div className="h-5 w-5 rounded-full border border-punchy-neon flex items-center justify-center">
-              <div className="h-2.5 w-2.5 rounded-full bg-punchy-neon"></div>
-            </div>
+            {isSelected ? (
+              <div className="h-5 w-5 rounded-full border border-punchy-neon flex items-center justify-center">
+                <div className="h-2.5 w-2.5 rounded-full bg-punchy-neon"></div>
+              </div>
+            ) : (
+              <div className="h-5 w-5 rounded-full border border-gray-light peer-checked:border-punchy-neon"></div>
+            )}
           </div>
         )}
         <div className="flex flex-col gap-6 flex-grow">

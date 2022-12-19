@@ -14,8 +14,15 @@ const AddressAndBilling = () => {
 
   const [showAddAddress, setShowAddAddress] = useState(false)
   const [totalAmount, setTotalAmount] = useState(0)
+  const [selectedAddressId, setSelectedAddressId] = useState()
 
   const toggleShowAddress = () => setShowAddAddress((prev) => !prev)
+
+  const handleAddressSelect = (e) => {
+    if (e.target.checked) {
+      setSelectedAddressId(parseInt(e.target.value))
+    }
+  }
 
   useEffect(() => {
     if (cart?.cartItems) {
@@ -26,7 +33,15 @@ const AddressAndBilling = () => {
       }, 0)
       setTotalAmount(totalPrice)
     }
-  }, [cart])
+  }, [cart?.cartItems])
+
+  useEffect(() => {
+    userProfile?.DeliveryAddresses?.forEach((address) => {
+      if (address?.isDefault) {
+        setSelectedAddressId(address.id)
+      }
+    })
+  }, [userProfile?.DeliveryAddresses])
 
   return (
     <>
@@ -41,16 +56,21 @@ const AddressAndBilling = () => {
             </div>
           </div>
           <div className="flex flex-col gap-4">
-            {userProfile?.DeliveryAddresses?.map((address, index) => {
+            {userProfile?.DeliveryAddresses?.map((address) => {
               return (
-                <div className="" key={index}>
+                <div className="" key={address.id}>
                   <input
-                    type="checkbox"
-                    id={address.name}
-                    name={address.name}
-                    className="accent-black-mate peer hidden"
+                    type="radio"
+                    id={address.id}
+                    name="address"
+                    value={address.id}
+                    className="accent-black-mate hidden"
+                    onChange={handleAddressSelect}
                   />
-                  <AddressCard address={address} />
+                  <AddressCard
+                    address={address}
+                    isSelected={selectedAddressId === address?.id}
+                  />
                 </div>
               )
             })}
