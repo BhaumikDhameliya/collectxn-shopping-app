@@ -24,6 +24,11 @@ export const productSlice = createSlice({
         return { ...product, isLiked: true }
       })
     },
+    removeProductFromWishlist: (state, action) => {
+      state.likedProducts = state.likedProducts?.filter(
+        (product) => product.id !== action.payload?.id,
+      )
+    },
   },
 })
 
@@ -32,6 +37,7 @@ export const {
   setCategoryProducts,
   setProductDetail,
   setLikedProducts,
+  removeProductFromWishlist,
 } = productSlice.actions
 
 export default productSlice.reducer

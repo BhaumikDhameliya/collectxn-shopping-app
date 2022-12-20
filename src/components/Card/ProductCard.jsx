@@ -1,5 +1,6 @@
 import { Heart } from 'akar-icons'
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 // import { toast } from 'react-toastify'
 
@@ -10,8 +11,11 @@ import air_max from '../../assets/img/air_max_flyknit_racer_shoes.png'
 // import { ReactComponent as Heart } from '../../assets/svg/heart.svg'
 import ViewAllArrow from '../../assets/SVGComponent/ViewAllArrow'
 
+import { removeProductFromWishlist } from '../../features/product/productSlice'
+
 const ProductCard = (props) => {
   const { product } = props
+  const dispatch = useDispatch()
 
   const [isLiked, setIsLiked] = useState(false)
 
@@ -27,6 +31,7 @@ const ProductCard = (props) => {
     const res = await removeLikedProduct({ ProductId: product.id })
     if (res?.data?.isRemoved) {
       setIsLiked(false)
+      dispatch(removeProductFromWishlist(product))
       // toast.success('like removed successfully')
     }
   }
@@ -79,16 +84,14 @@ const ProductCard = (props) => {
         )}
       </div>
       <div className="flex items-center divide-x text-13 laptop:text-xl">
-        <div className="flex items-end p-2 laptop:py-3 laptop:px-4 gap-2 rounded-bl-lg whitespace-nowrap w-1/2">
+        <div className="flex flex-wrap justify-center items-end p-2 laptop:py-3 laptop:px-4 gap-2 rounded-bl-lg whitespace-nowrap w-1/2">
           <p className="font-medium">₹ {product?.price}</p>
           <p className="text-10 laptop:text-sm line-through text-gray-dark">
             ₹ {product?.displayPrice}
           </p>
         </div>
         <button className="hidden laptop:flex justify-center items-center py-3 px-4 gap-2 rounded-br-lg w-1/2">
-          <div className="font-medium text-xl  whitespace-nowrap">
-            Add to Bag
-          </div>
+          <div className="font-medium text-xl">Add to Bag</div>
           <div>
             <ViewAllArrow />
           </div>
