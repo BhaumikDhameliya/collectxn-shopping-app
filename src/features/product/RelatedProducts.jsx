@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+// import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
 import ProductCardScrollable from '../../components/Card/ProductCardScrollable'
@@ -10,8 +10,8 @@ const RelatedProducts = () => {
 
   const [relatedProductList, setRelatedProductList] = useState()
 
-  const product = useSelector((state) => state.product.products?.[productId])
-  console.log('Product-----', product)
+  // const product = useSelector((state) => state.product.products?.[productId])
+  // console.log('Product-----', product)
 
   const getCategoryProuductsData = useCallback(async () => {
     const res = await getRelatedProductDetails({ productId })

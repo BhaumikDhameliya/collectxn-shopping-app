@@ -36,7 +36,7 @@ const ProductInfo = () => {
   const { productId } = useParams()
 
   const product = useSelector((state) => state.product.products?.[productId])
-  console.log('Product-----', product)
+  // console.log('Product-----', product)
 
   const [quantity, setQuantity] = useState(1)
   const [selectedColor, setSelectedColor] = useState()
@@ -128,13 +128,13 @@ const ProductInfo = () => {
         ]}
       />
       <div className="flex px-20 justify-between">
-        <div className="hidden laptop:flex items-start justify-center">
+        <div className="hidden laptop:flex items-start justify-center flex-grow">
           {product?.ProductImages?.length === 1 ? (
-            <div className="relative flex items-center justify-center rounded-md bg-gray-100">
+            <div className="relative flex items-center justify-center rounded-md bg-gray-100 flex-grow">
               <img
                 src={product?.ProductImages?.[0]?.image}
                 alt={product?.ProductImages?.[0]?.image}
-                className="rounded-md"
+                className="rounded-md w-full"
               />
               <div className="absolute opacity-20 left-4 bottom-4 tablet:left-8 tablet:bottom-8">
                 <img src={logo_cxn_black} alt="logo_cxn_black" />
@@ -144,7 +144,10 @@ const ProductInfo = () => {
             <div className="hidden laptop:grid grid-cols-2 gap-4">
               {product?.ProductImages?.map((prImage) => {
                 return (
-                  <div className="relative flex items-center justify-center rounded-md bg-gray-100 max-w-sm">
+                  <div
+                    className="relative flex items-center justify-center rounded-md bg-gray-100 max-w-sm"
+                    key={prImage?.image}
+                  >
                     <img
                       src={prImage?.image}
                       alt={prImage?.image}
@@ -227,7 +230,7 @@ const ProductInfo = () => {
                     {product.ColorAvailabilities.map((prd) => {
                       const { id: colorId, color } = prd
                       return (
-                        <div className="">
+                        <div className="" key={colorId}>
                           <input
                             type="radio"
                             id={colorId}

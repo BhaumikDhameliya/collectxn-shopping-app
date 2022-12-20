@@ -8,13 +8,13 @@ const Breadcrumbs = (props) => {
       {path.map((p, index) => {
         if (index === path.length - 1) {
           return (
-            <span className="text-black-mate" key={p.text}>
+            <span className="text-black-mate" key={index}>
               {p?.text}
             </span>
           )
         }
         return (
-          <div className="flex gap-1" key={p?.text}>
+          <div className="flex gap-1" key={index}>
             <Link to={p?.to || '/'}>{p?.text}</Link>
             <span>/</span>
           </div>
