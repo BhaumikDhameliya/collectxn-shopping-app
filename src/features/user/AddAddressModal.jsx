@@ -109,6 +109,16 @@ const AddAddressModal = (props) => {
                     {...{ register, errors }}
                   />
                 </div>
+                <div className="font-medium">
+                  <input
+                    type="checkbox"
+                    name="isDefault"
+                    id="isDefault"
+                    {...register('isDefault')}
+                    className="accent-black-mate"
+                  />
+                  <label htmlFor="isDefault"> make default</label>
+                </div>
               </div>
               <div className="flex w-full">
                 <PopButton btnClasses="bg-black-mate">Add</PopButton>

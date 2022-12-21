@@ -21,6 +21,9 @@ export const userSlice = createSlice({
           if (address.id === action.payload?.id) {
             return action.payload
           }
+          if (action.payload?.isDefault) {
+            return { ...address, isDefault: false }
+          }
           return address
         },
       )
