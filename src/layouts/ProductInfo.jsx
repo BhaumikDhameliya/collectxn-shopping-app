@@ -22,8 +22,11 @@ import PopButton from '../components/buttons/PopButton'
 import TextInput from '../components/Input/TextInput'
 import BecomeACollectxrBanner from '../components/Banners/BecomeACollectxrBanner'
 import Breadcrumbs from '../components/Breadcrumbs'
-import { getProductDetails } from '../api/products.api'
-import { setProductDetail } from '../features/product/productSlice'
+import { getProductDetails, removeLikedProduct } from '../api/products.api'
+import {
+  removeProductFromWishlist,
+  setProductDetail,
+} from '../features/product/productSlice'
 import SizeSelectProductInfo from '../components/Select/SizeSelectProductInfo'
 import RelatedProducts from '../features/product/RelatedProducts'
 import { addToCart } from '../api/cart.api'
@@ -41,6 +44,7 @@ const ProductInfo = () => {
   const [quantity, setQuantity] = useState(1)
   const [selectedColor, setSelectedColor] = useState()
   const [selectedSize, setSelectedSize] = useState()
+  const [isLiked, setIsLiked] = useState(false)
 
   const increaseQuantity = () => setQuantity((prev) => prev + 1)
   const decreaseQuantity = () => setQuantity((prev) => prev - 1)
@@ -76,12 +80,25 @@ const ProductInfo = () => {
   }, [productId, dispatch])
 
   const handleLikeProduct = async () => {
-    const res = await likeProduct({}, { ProductId: productId })
-    debugger
+    const res = await likeProduct({}, { ProductId: product.id })
     if (res?.data?.isLiked) {
-      toast.success('Product liked successfully')
+      setIsLiked(true)
+      // toast.success('Product liked successfully')
     }
   }
+
+  const handleRemoveLikeProduct = async () => {
+    const res = await removeLikedProduct({ ProductId: product.id })
+    if (res?.data?.isRemoved) {
+      setIsLiked(false)
+      dispatch(removeProductFromWishlist(product))
+      // toast.success('like removed successfully')
+    }
+  }
+
+  useEffect(() => {
+    setIsLiked(product?.isLiked || false)
+  }, [product])
 
   useEffect(() => {
     getCategoryProuductsData()
@@ -176,8 +193,8 @@ const ProductInfo = () => {
                   <div className="flex flex-col gap-2">
                     <div className="flex items-center gap-10">
                       <p className="font-bold text-2xl">{product?.name}</p>
-                      {false ? (
-                        <button>
+                      {isLiked ? (
+                        <button className="" onClick={handleRemoveLikeProduct}>
                           <Heart
                             strokeWidth={0}
                             size={20}
@@ -185,7 +202,7 @@ const ProductInfo = () => {
                           />
                         </button>
                       ) : (
-                        <button onClick={handleLikeProduct}>
+                        <button className="" onClick={handleLikeProduct}>
                           <Heart strokeWidth={2.5} size={20} />
                         </button>
                       )}

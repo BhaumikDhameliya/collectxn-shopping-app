@@ -2,7 +2,7 @@ import React from 'react'
 
 const SizeSelectProductInfo = (props) => {
   const { product, selectedSize, setSelectedSize } = props
-  const { SizeAvailabilities } = product
+  const { SizeAvailabilities, id: colorId } = product
   return (
     <div className="flex flex-col">
       <div className="flex py-1 5 gap-2 items-center justify-between">
@@ -17,8 +17,8 @@ const SizeSelectProductInfo = (props) => {
               <div className="flex items-center gap-2">
                 <input
                   type="radio"
-                  name="productSize"
-                  id={size}
+                  name={colorId}
+                  id={sizeId}
                   value={size}
                   checked={sizeId === selectedSize?.id}
                   onChange={(e) => {
@@ -29,7 +29,7 @@ const SizeSelectProductInfo = (props) => {
                   className="accent-black-mate hidden peer"
                 />
                 <label
-                  htmlFor={size}
+                  htmlFor={sizeId}
                   className="font-cera-pro font-medium flex items-center justify-center px-2 py-1.5 rounded border border-gray-light peer-checked:bg-black-mate peer-checked:text-white flex-grow"
                 >
                   {size}
