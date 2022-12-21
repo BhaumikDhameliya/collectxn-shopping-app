@@ -14,6 +14,7 @@ const AddressAndBilling = () => {
 
   const [showAddAddress, setShowAddAddress] = useState(false)
   const [totalAmount, setTotalAmount] = useState(0)
+  const [totalDisplayAmount, setTotalDisplayAmount] = useState(0)
   const [selectedAddressId, setSelectedAddressId] = useState()
 
   const toggleShowAddress = () => setShowAddAddress((prev) => !prev)
@@ -32,6 +33,13 @@ const AddressAndBilling = () => {
         return total
       }, 0)
       setTotalAmount(totalPrice)
+      const totalDisplayPrice = cart.cartItems?.reduce((total, cartItem) => {
+        const itemPrice =
+          (cartItem?.displayPrice || cartItem?.price) * cartItem?.quantity
+        total += itemPrice
+        return total
+      }, 0)
+      setTotalDisplayAmount(totalDisplayPrice)
     }
   }, [cart?.cartItems])
 
@@ -83,12 +91,12 @@ const AddressAndBilling = () => {
           <div className="flex flex-col">
             <div className="flex flex-col pt-2.5 pb-5 border-b gap-2.5 flex-grow">
               <div className="flex items-center justify-between flex-grow gap-2.5">
-                <p>Price (2 items)</p>
-                <p>₹21,398.00</p>
+                <p>Price ({cart?.cartItems?.length} items)</p>
+                <p>₹{totalDisplayAmount.toFixed(2)}</p>
               </div>
               <div className="flex items-center justify-between flex-grow gap-2.5">
                 <p>Discount on MRP</p>
-                <p>-₹5000.00</p>
+                <p>-₹{(totalDisplayAmount - totalAmount).toFixed(2)}</p>
               </div>
               <div className="flex items-center justify-between flex-grow gap-2.5">
                 <p>Delivery Charges</p>
@@ -97,7 +105,7 @@ const AddressAndBilling = () => {
             </div>
             <div className="flex items-center justify-between flex-grow font-cera-pro font-bold gap-2.5 py-3">
               <p>Total Amount</p>
-              <p>₹{totalAmount}</p>
+              <p>₹{totalAmount.toFixed(2)}</p>
             </div>
           </div>
         </div>
