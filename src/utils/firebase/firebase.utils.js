@@ -6,7 +6,7 @@ import {
   GoogleAuthProvider,
   FacebookAuthProvider,
   // signInWithRedirect,
-  signOut
+  signOut,
 } from 'firebase/auth'
 
 // collectxn
@@ -55,10 +55,10 @@ export const logout = async () => {
   try {
     signOut(auth)
     localStorage.clear()
-    window.location.replace('/');
+    window.location.replace('/')
     // signed out success
   } catch (e) {
-    console.log("error logout-----", e)
+    console.log('error logout-----', e)
     // an error
   }
 }

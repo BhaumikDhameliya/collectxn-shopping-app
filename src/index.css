@@ -13,13 +13,13 @@ html {
 }
 
 @font-face {
-  font-family: "Cera Pro";
-  src: url("../public/fonts/cera-pro/Cera\ Pro\ Regular.otf");
+  font-family: 'Cera Pro';
+  src: url('../public/fonts/cera-pro/Cera\ Pro\ Regular.otf');
 }
 
 @font-face {
-  font-family: "Cera Pro";
-  src: url("../public/fonts/cera-pro/Cera\ Pro\ Medium.otf");
+  font-family: 'Cera Pro';
+  src: url('../public/fonts/cera-pro/Cera\ Pro\ Medium.otf');
   font-weight: 500;
 }
 
@@ -31,9 +31,8 @@ html {
 
 /* hide number spinner */
 @layer base {
-
-  input[type="number"]::-webkit-inner-spin-button,
-  input[type="number"]::-webkit-outer-spin-button {
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
     appearance: none;
     margin: 0;
   }
@@ -50,4 +49,8 @@ html {
   /* IE and Edge */
   scrollbar-width: none;
   /* Firefox */
+}
+
+.PhoneInputInput {
+  outline: none;
 }

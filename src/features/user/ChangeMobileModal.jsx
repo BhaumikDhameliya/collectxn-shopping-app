@@ -5,6 +5,8 @@ import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import { Dialog } from '@headlessui/react'
+import PhoneInputWithCountry from 'react-phone-number-input/react-hook-form'
+import { isValidPhoneNumber } from 'react-phone-number-input'
 
 import { ReactComponent as CloseRoundedWhiteSVG } from '../../assets/svg/close_rounded_white.svg'
 import { ReactComponent as EmailLogo } from '../../assets/svg/logo_email.svg'
@@ -13,11 +15,15 @@ import PopButton from '../../components/buttons/PopButton'
 import { toast } from 'react-toastify'
 import { emailLogin, otpVerification } from '../../api/auth.api'
 import OtpInput from './OtpInput'
-import TextInput from '../../components/Input/TextInput'
 
-export const changeEmailSchemaResolver = yupResolver(
+export const changeMobileSchemaResolver = yupResolver(
   yup.object().shape({
-    mobile: yup.string().required('Please enter Address line 1'),
+    mobile: yup
+      .string()
+      .required('Please enter Mobile number')
+      .test('Mobile Validation', 'Please enter valid Contact Number', (value) =>
+        value ? isValidPhoneNumber(value) : false,
+      ),
   }),
 )
 
@@ -26,26 +32,26 @@ const ChangeMobileModal = (props) => {
 
   //   const navigate = useNavigate()
 
-  const [mobile, setEmail] = useState('')
+  const [mobile, setMobile] = useState('')
   const [otpSent, setOtpSent] = useState(false)
   const [otp, setOtp] = useState('')
   const [error, setError] = useState('')
 
   const {
+    control,
     formState: { errors },
     handleSubmit,
-    register,
     // watch,
     reset,
   } = useForm({
-    defaultValues: { isDefault: true },
-    resolver: changeEmailSchemaResolver,
+    defaultValues: {},
+    resolver: changeMobileSchemaResolver,
   })
 
   const close = () => setIsOpen(false)
 
   const onSubmit = async (data) => {
-    setEmail(data?.mobile)
+    setMobile(data?.mobile)
     const res = await emailLogin(data)
     if (res?.status === 200) {
       setOtpSent(true)
@@ -132,11 +138,25 @@ const ChangeMobileModal = (props) => {
                 <div className="flex flex-col" style={{ minWidth: '500px' }}>
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="flex flex-col w-full gap-8">
-                      <TextInput
-                        labelText="Enter new number"
-                        name="mobile"
-                        {...{ register, errors }}
-                      />
+                      <div className="flex flex-col w-full">
+                        <label htmlFor="mobile" className="font-medium">
+                          Enter new number
+                        </label>
+                        <PhoneInputWithCountry
+                          international
+                          defaultCountry="IN"
+                          id="mobile"
+                          name="mobile"
+                          control={control}
+                          className="py-3 px-6 border rounded-3xl border-black-mate"
+                        />
+
+                        {errors && errors['mobile'] && (
+                          <div className="px-4 py-[6px] text-[13px] text-error">
+                            <p>{errors['mobile']['message']}</p>
+                          </div>
+                        )}
+                      </div>
                       <PopButton btnClasses="bg-black-mate">Submit</PopButton>
                     </div>
                   </form>

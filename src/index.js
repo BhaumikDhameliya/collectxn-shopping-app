@@ -12,8 +12,11 @@ import { Provider } from 'react-redux'
 import store from './app/store'
 
 // react-toastify
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
+// react-phone-number-input
+import 'react-phone-number-input/style.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
