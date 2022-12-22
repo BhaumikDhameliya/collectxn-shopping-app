@@ -12,9 +12,10 @@ import { ReactComponent as CloseRoundedWhiteSVG } from '../../assets/svg/close_r
 import { ReactComponent as EmailLogo } from '../../assets/svg/logo_email.svg'
 
 import PopButton from '../../components/buttons/PopButton'
-import { toast } from 'react-toastify'
-import { emailLogin, otpVerification } from '../../api/auth.api'
+import { otpVerification } from '../../api/auth.api'
 import OtpInput from './OtpInput'
+import { auth } from '../../utils/firebase/firebase.utils'
+import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth'
 
 export const changeMobileSchemaResolver = yupResolver(
   yup.object().shape({
@@ -23,7 +24,8 @@ export const changeMobileSchemaResolver = yupResolver(
       .required('Please enter Mobile number')
       .test('Mobile Validation', 'Please enter valid Contact Number', (value) =>
         value ? isValidPhoneNumber(value) : false,
-      ),
+      )
+      .nullable(),
   }),
 )
 
@@ -36,6 +38,7 @@ const ChangeMobileModal = (props) => {
   const [otpSent, setOtpSent] = useState(false)
   const [otp, setOtp] = useState('')
   const [error, setError] = useState('')
+  const [final, setfinal] = useState('')
 
   const {
     control,
@@ -52,29 +55,43 @@ const ChangeMobileModal = (props) => {
 
   const onSubmit = async (data) => {
     setMobile(data?.mobile)
-    const res = await emailLogin(data)
-    if (res?.status === 200) {
-      setOtpSent(true)
-      reset()
-    } else {
-      if (res?.message) {
-        toast.error(res.message)
-      }
-    }
+    window.recaptchaVerifier = new RecaptchaVerifier(
+      'recaptcha-container',
+      {
+        size: 'invisible',
+        callback: (response) => {},
+      },
+      auth,
+    )
+
+    const appVerifier = window.recaptchaVerifier
+
+    signInWithPhoneNumber(auth, data.mobile, appVerifier)
+      .then((confirmationResult) => {
+        debugger
+        setfinal(confirmationResult)
+        console.log('code sent')
+        setOtpSent(true)
+        reset()
+        window.confirmationResult = confirmationResult
+      })
+      .catch((error) => {
+        debugger
+        console.log(error)
+        // Error; SMS not sent
+        // ...
+      })
   }
 
   const handleOtpSubmit = async (e) => {
     e.preventDefault()
     try {
-      const res = await otpVerification({ OTP: otp })
-      if (res?.status === 200) {
-        close()
-        // navigate('/')
-      } else {
-        if (res?.message) {
-          setError(res.message)
-        }
-      }
+      const result = await final.confirm(otp)
+      const firebase_token = result?.user?.accessToken
+      debugger
+      console.log(firebase_token)
+
+      // close()
     } catch (error) {
       console.log(error)
     }
@@ -112,7 +129,7 @@ const ChangeMobileModal = (props) => {
                           <div className="flex flex-row justify-between gap-4">
                             <OtpInput
                               value={otp}
-                              valueLength={4}
+                              valueLength={6}
                               onChange={setOtp}
                               className="flex items-center justify-center px-6 py-3 border rounded-3xl border-black-mate w-full"
                             />
@@ -122,7 +139,7 @@ const ChangeMobileModal = (props) => {
                           </p>
                         </div>
                         <PopButton
-                          disabled={otp?.trim('')?.length !== 4}
+                          disabled={otp?.trim('')?.length !== 6}
                           btnClasses="bg-black-mate"
                         >
                           Verify
@@ -157,6 +174,7 @@ const ChangeMobileModal = (props) => {
                           </div>
                         )}
                       </div>
+                      <div id="recaptcha-container"></div>
                       <PopButton btnClasses="bg-black-mate">Submit</PopButton>
                     </div>
                   </form>
