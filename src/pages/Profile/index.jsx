@@ -49,7 +49,6 @@ const Profile = () => {
     register,
     // watch,
     setValue,
-    reset,
   } = useForm({
     defaultValues: {},
     resolver: profileSchemaResolver,
@@ -59,7 +58,6 @@ const Profile = () => {
     // const addressRes = await createAddress(data)
     // const addressData = addressRes?.data?.address
     if (true) {
-      reset()
       toast.success('Profile updated successfully')
       // dispatch(addDeliveryAddress(addressData))
     }
@@ -156,6 +154,7 @@ const Profile = () => {
                           buttonText="change"
                           onButtonClick={toggleShowChageMobile}
                           name="mobile"
+                          disabled
                           {...{ register, errors }}
                         />
                       </div>
@@ -165,6 +164,7 @@ const Profile = () => {
                           buttonText="change"
                           onButtonClick={toggleShowChageEmail}
                           name="email"
+                          disabled
                           {...{ register, errors }}
                         />
                       </div>
@@ -212,7 +212,13 @@ const Profile = () => {
         {...{ isOpen: showChangeEmail, setIsOpen: setShowChangeEmail }}
       />
       <ChangeMobileModal
-        {...{ isOpen: showChangeMobile, setIsOpen: setShowChangeMobile }}
+        {...{
+          isOpen: showChangeMobile,
+          setIsOpen: setShowChangeMobile,
+          onSuccess: (updatedMobile) => {
+            setValue('mobile', updatedMobile)
+          },
+        }}
       />
     </>
   )

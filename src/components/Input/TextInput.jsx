@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TextInput = React.forwardRef((props, ref) => {
+const TextInput = (props) => {
   const {
     labelText,
     error,
@@ -29,7 +29,6 @@ const TextInput = React.forwardRef((props, ref) => {
           placeholder={placeholder}
           {...(register ? register(name) : {})}
           {...rest}
-          ref={ref}
         />
         {buttonText && (
           <button
@@ -51,6 +50,6 @@ const TextInput = React.forwardRef((props, ref) => {
       )}
     </div>
   )
-})
+}
 
 export default TextInput

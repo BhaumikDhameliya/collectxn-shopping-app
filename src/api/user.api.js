@@ -1,51 +1,85 @@
-import { collectionAPI } from "../utils/axios/axios.utils"
+import { collectionAPI } from '../utils/axios/axios.utils'
 
 export const createUser = async (payload) => {
-    try {
-        const res = await collectionAPI.post('/user', payload)
-        console.log("res-----", res)
-        return res?.data
-    } catch (error) {
-        console.log("error-----", error)
+  try {
+    const res = await collectionAPI.post('/user', payload)
+    console.log('res-----', res)
+    return res?.data
+  } catch (error) {
+    const errorRes = error?.response?.data
+    if (errorRes) {
+      console.log('error-----', errorRes)
+      return errorRes
     }
+  }
 }
 
 export const getUser = async (payload) => {
-    try {
-        const res = await collectionAPI.get('/user', payload)
-        console.log("res-----", res)
-        return res?.data
-    } catch (error) {
-        console.log("error-----", error)
+  try {
+    const res = await collectionAPI.get('/user', payload)
+    console.log('res-----', res)
+    return res?.data
+  } catch (error) {
+    const errorRes = error?.response?.data
+    if (errorRes) {
+      console.log('error-----', errorRes)
+      return errorRes
     }
+  }
 }
 
 export const getUserProfile = async (payload) => {
-    try {
-        const res = await collectionAPI.get('/users/profile', payload)
-        console.log("res-----", res)
-        return res?.data
-    } catch (error) {
-        console.log("error-----", error)
+  try {
+    const res = await collectionAPI.get('/users/profile', payload)
+    console.log('res-----', res)
+    return res?.data
+  } catch (error) {
+    const errorRes = error?.response?.data
+    if (errorRes) {
+      console.log('error-----', errorRes)
+      return errorRes
     }
+  }
 }
 
 export const updateUser = async (payload) => {
-    try {
-        const res = await collectionAPI.patch('/user', payload)
-        console.log("res-----", res)
-        return res?.data
-    } catch (error) {
-        console.log("error-----", error)
+  try {
+    const res = await collectionAPI.patch('/user', payload)
+    console.log('res-----', res)
+    return res?.data
+  } catch (error) {
+    const errorRes = error?.response?.data
+    if (errorRes) {
+      console.log('error-----', errorRes)
+      return errorRes
     }
+  }
 }
 
 export const deleteUser = async (payload) => {
-    try {
-        const res = await collectionAPI.delete('/user', payload)
-        console.log("res-----", res)
-        return res?.data
-    } catch (error) {
-        console.log("error-----", error)
+  try {
+    const res = await collectionAPI.delete('/user', payload)
+    console.log('res-----', res)
+    return res?.data
+  } catch (error) {
+    const errorRes = error?.response?.data
+    if (errorRes) {
+      console.log('error-----', errorRes)
+      return errorRes
     }
+  }
+}
+
+export const updateMobile = async (payload) => {
+  try {
+    const res = await collectionAPI.patch('/users/mobile', payload)
+    console.log('res-----', res)
+    return res?.data
+  } catch (error) {
+    const errorRes = error?.response?.data
+    if (errorRes) {
+      console.log('error-----', errorRes)
+      return errorRes
+    }
+  }
 }

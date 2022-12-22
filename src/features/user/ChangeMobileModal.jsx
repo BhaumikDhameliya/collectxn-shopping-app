@@ -12,10 +12,10 @@ import { ReactComponent as CloseRoundedWhiteSVG } from '../../assets/svg/close_r
 import { ReactComponent as EmailLogo } from '../../assets/svg/logo_email.svg'
 
 import PopButton from '../../components/buttons/PopButton'
-import { otpVerification } from '../../api/auth.api'
 import OtpInput from './OtpInput'
 import { auth } from '../../utils/firebase/firebase.utils'
 import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth'
+import { updateMobile } from '../../api/user.api'
 
 export const changeMobileSchemaResolver = yupResolver(
   yup.object().shape({
@@ -30,7 +30,7 @@ export const changeMobileSchemaResolver = yupResolver(
 )
 
 const ChangeMobileModal = (props) => {
-  const { isOpen, setIsOpen } = props
+  const { isOpen, setIsOpen, onSuccess } = props
 
   //   const navigate = useNavigate()
 
@@ -68,7 +68,6 @@ const ChangeMobileModal = (props) => {
 
     signInWithPhoneNumber(auth, data.mobile, appVerifier)
       .then((confirmationResult) => {
-        debugger
         setfinal(confirmationResult)
         console.log('code sent')
         setOtpSent(true)
@@ -76,10 +75,7 @@ const ChangeMobileModal = (props) => {
         window.confirmationResult = confirmationResult
       })
       .catch((error) => {
-        debugger
-        console.log(error)
-        // Error; SMS not sent
-        // ...
+        console.log('sms not sent -----', error)
       })
   }
 
@@ -88,12 +84,19 @@ const ChangeMobileModal = (props) => {
     try {
       const result = await final.confirm(otp)
       const firebase_token = result?.user?.accessToken
-      debugger
-      console.log(firebase_token)
-
-      // close()
+      const response = await updateMobile({ firebase_token })
+      if (response?.isUpdated) {
+        setOtpSent(false)
+        setOtp('')
+        onSuccess(mobile)
+        close()
+      }
     } catch (error) {
-      console.log(error)
+      let errorCode = error?.code
+      if (errorCode) {
+        errorCode = errorCode.replace('auth/', '').replaceAll('-', ' ')
+        setError(errorCode)
+      }
     }
   }
 
@@ -120,7 +123,7 @@ const ChangeMobileModal = (props) => {
                     <div className="text-center flex flex-col w-full">
                       <p className="font-bold text-[31px]">OTP Verification</p>
                       <p className="font-cera-pro text-base">
-                        We sent code to your mobile number +91 {mobile}
+                        We sent code to your mobile number {mobile}
                       </p>
                     </div>
                     <form onSubmit={handleOtpSubmit}>
@@ -131,7 +134,7 @@ const ChangeMobileModal = (props) => {
                               value={otp}
                               valueLength={6}
                               onChange={setOtp}
-                              className="flex items-center justify-center px-6 py-3 border rounded-3xl border-black-mate w-full"
+                              className="flex items-center justify-center px-6 py-3 border rounded-3xl border-black-mate w-full text-center"
                             />
                           </div>
                           <p className="font-cera-pro text-base text-error text-center">
