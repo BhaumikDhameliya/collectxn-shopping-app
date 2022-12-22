@@ -51,7 +51,12 @@ const ChangeMobileModal = (props) => {
     resolver: changeMobileSchemaResolver,
   })
 
-  const close = () => setIsOpen(false)
+  const close = () => {
+    setIsOpen(false)
+    setOtpSent(false)
+    setOtp('')
+    setError('')
+  }
 
   const onSubmit = async (data) => {
     setMobile(data?.mobile)
@@ -86,8 +91,6 @@ const ChangeMobileModal = (props) => {
       const firebase_token = result?.user?.accessToken
       const response = await updateMobile({ firebase_token })
       if (response?.isUpdated) {
-        setOtpSent(false)
-        setOtp('')
         onSuccess(mobile)
         close()
       }

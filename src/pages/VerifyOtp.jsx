@@ -30,7 +30,7 @@ const VerifyOTP = () => {
         }
       }
     } catch (error) {
-  console.log(error)
+      console.log(error)
     }
   }
 
@@ -86,7 +86,7 @@ const VerifyOTP = () => {
                       value={otp}
                       valueLength={4}
                       onChange={setOtp}
-                      className="flex items-center justify-center px-6 py-3 border rounded-3xl border-black-mate w-full"
+                      className="flex items-center justify-center px-6 py-3 border rounded-3xl border-black-mate w-full text-center"
                     />
                   </div>
                   <p className="font-cera-pro text-base text-error text-center">

@@ -209,7 +209,13 @@ const Profile = () => {
         {...{ isOpen: showAddAddress, setIsOpen: setShowAddAddress }}
       />
       <ChangeEmailModal
-        {...{ isOpen: showChangeEmail, setIsOpen: setShowChangeEmail }}
+        {...{
+          isOpen: showChangeEmail,
+          setIsOpen: setShowChangeEmail,
+          onSuccess: (updatedEmail) => {
+            setValue('email', updatedEmail)
+          },
+        }}
       />
       <ChangeMobileModal
         {...{

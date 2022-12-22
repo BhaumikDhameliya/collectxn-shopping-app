@@ -11,9 +11,12 @@ import { ReactComponent as EmailLogo } from '../../assets/svg/logo_email.svg'
 
 import PopButton from '../../components/buttons/PopButton'
 import { toast } from 'react-toastify'
-import { emailLogin, otpVerification } from '../../api/auth.api'
 import OtpInput from './OtpInput'
 import TextInput from '../../components/Input/TextInput'
+import {
+  sendOTPToChangeEmail,
+  verifyOTPAndChangeEmail,
+} from '../../api/user.api'
 
 export const changeEmailSchemaResolver = yupResolver(
   yup.object().shape({
@@ -22,7 +25,7 @@ export const changeEmailSchemaResolver = yupResolver(
 )
 
 const ChangeEmailModal = (props) => {
-  const { isOpen, setIsOpen } = props
+  const { isOpen, setIsOpen, onSuccess } = props
 
   //   const navigate = useNavigate()
 
@@ -38,15 +41,20 @@ const ChangeEmailModal = (props) => {
     // watch,
     reset,
   } = useForm({
-    defaultValues: { isDefault: true },
+    defaultValues: {},
     resolver: changeEmailSchemaResolver,
   })
 
-  const close = () => setIsOpen(false)
+  const close = () => {
+    setIsOpen(false)
+    setOtpSent(false)
+    setOtp('')
+    setError('')
+  }
 
   const onSubmit = async (data) => {
     setEmail(data?.email)
-    const res = await emailLogin(data)
+    const res = await sendOTPToChangeEmail(data)
     if (res?.status === 200) {
       setOtpSent(true)
       reset()
@@ -60,10 +68,11 @@ const ChangeEmailModal = (props) => {
   const handleOtpSubmit = async (e) => {
     e.preventDefault()
     try {
-      const res = await otpVerification({ OTP: otp })
+      const res = await verifyOTPAndChangeEmail({ OTP: otp })
+
       if (res?.status === 200) {
+        onSuccess(email)
         close()
-        // navigate('/')
       } else {
         if (res?.message) {
           setError(res.message)
@@ -109,7 +118,7 @@ const ChangeEmailModal = (props) => {
                               value={otp}
                               valueLength={4}
                               onChange={setOtp}
-                              className="flex items-center justify-center px-6 py-3 border rounded-3xl border-black-mate w-full"
+                              className="flex items-center justify-center px-6 py-3 border rounded-3xl border-black-mate w-full text-center"
                             />
                           </div>
                           <p className="font-cera-pro text-base text-error text-center">

@@ -83,3 +83,43 @@ export const updateMobile = async (payload) => {
     }
   }
 }
+
+export const sendOTPToChangeEmail = async (payload) => {
+  try {
+    const res = await collectionAPI.post('/users/email/OTP', payload)
+    console.log('res-----', res)
+    let authToken = res?.data?.token
+    if (authToken) {
+      authToken = `Bearer ${authToken}`
+      localStorage.setItem('authToken', authToken)
+      collectionAPI.defaults.headers.common['Authorization'] = authToken
+    }
+    return res?.data
+  } catch (error) {
+    const errorRes = error?.response?.data
+    if (errorRes) {
+      console.log('error-----', errorRes)
+      return errorRes
+    }
+  }
+}
+
+export const verifyOTPAndChangeEmail = async (payload) => {
+  try {
+    const res = await collectionAPI.patch('/users/email', payload)
+    console.log('res-----', res)
+    let authToken = res?.data?.token
+    if (authToken) {
+      authToken = `Bearer ${authToken}`
+      localStorage.setItem('authToken', authToken)
+      collectionAPI.defaults.headers.common['Authorization'] = authToken
+    }
+    return res?.data
+  } catch (error) {
+    const errorRes = error?.response?.data
+    if (errorRes) {
+      console.log('error-----', errorRes)
+      return errorRes
+    }
+  }
+}
