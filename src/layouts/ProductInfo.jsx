@@ -301,7 +301,7 @@ const ProductInfo = () => {
                 </div>
                 <div className="flex flex-col gap-4">
                   <PopButton btnClasses="bg-black-mate">Buy Now</PopButton>
-                  <PopButton type="outline" onClick={handleAddtoCart}>
+                  <PopButton variant="outline" onClick={handleAddtoCart}>
                     Add to Bag
                   </PopButton>
                 </div>

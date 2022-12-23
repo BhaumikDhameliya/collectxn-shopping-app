@@ -36,7 +36,7 @@ const ExploreAssecersories = () => {
       </div>
       <div className="flex laptop:hidden items-center justify-center">
         <div>
-          <PopButton type="outline" onClick={goToAssecersoriesPage}>
+          <PopButton variant="outline" onClick={goToAssecersoriesPage}>
             View more
           </PopButton>
         </div>

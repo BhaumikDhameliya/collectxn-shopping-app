@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
+import PhoneInputWithCountry from 'react-phone-number-input/react-hook-form'
+import { isValidPhoneNumber } from 'react-phone-number-input'
 
 import { ReactComponent as CloseRoundedWhiteSVG } from '../../assets/svg/close_rounded_white.svg'
 import { ReactComponent as VerifiedRoundedSVG } from '../../assets/svg/verified_rounded.svg'
@@ -15,6 +17,7 @@ import RequestProductPageBanner from './RequestProductPageBanner'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import { createProductRequest } from '../../api/products.api'
+import VerifyMobile from './VerifyMobile'
 
 export const requestProductSchemaResolver = yupResolver(
   yup.object().shape({
@@ -24,7 +27,13 @@ export const requestProductSchemaResolver = yupResolver(
     productName: yup.string().required('Please enter product name'),
     size: yup.string().required('Please enter product size'),
     color: yup.string().required('Please enter product color'),
-    mobile: yup.string().required('Please enter phone number'),
+    // mobile: yup
+    //   .string()
+    //   .required('Please enter Mobile number')
+    //   .test('Mobile Validation', 'Please enter valid Mobile Number', (value) =>
+    //     value ? isValidPhoneNumber(value) : false,
+    //   )
+    //   .nullable(),
   }),
 )
 
@@ -32,6 +41,9 @@ const RequestProduct = () => {
   const navigate = useNavigate()
 
   const categories = useSelector((state) => state.category.categories)
+  const userProfile = useSelector((state) => state.user.profile)
+
+  const [isAllowed, setIsAllowed] = useState(false)
 
   const goBack = () => navigate(-1)
 
@@ -39,15 +51,20 @@ const RequestProduct = () => {
     formState: { errors },
     handleSubmit,
     register,
+    setValue,
     // watch,
   } = useForm({
     defaultValues: {},
     resolver: requestProductSchemaResolver,
   })
 
-  // console.log('values-----', watch())
+  console.log('values-----', errors)
 
   const onSubmit = async (data) => {
+    if (!isAllowed) {
+      toast.error('Please verify mobile number')
+      return
+    }
     const requestRes = await createProductRequest(data)
     const requestData = requestRes?.data?.request
     if (requestData) {
@@ -55,6 +72,13 @@ const RequestProduct = () => {
       toast.success('Product request sent')
     }
   }
+
+  useEffect(() => {
+    if (Object.keys(userProfile || {})?.length) {
+      setIsAllowed(true)
+      setValue('userName', userProfile?.name || '')
+    }
+  }, [setValue, userProfile])
 
   return (
     <div className="flex flex-row rounded-xl min-h-screen">
@@ -111,70 +135,15 @@ const RequestProduct = () => {
             </p>
           </TextInput>
         </div>
-        <div className="flex flex-col p-6 gap-6 bg-gray-extra-light border rounded-[10px] w-full">
-          <div className="font-cera-pro font-medium text-13 text-gray-dark ">
-            It will help us to reach you over the call if needed.
-          </div>
-          <div className="flex flex-col gap-4 tablet:flex-row tablet:items-end">
-            <div className="flex flex-col gap-1.5 flex-grow">
-              <TextInput
-                labelText="Phone Number*"
-                labelClasses="font-cera-pro font-medium"
-                name="mobile"
-                {...{ register, errors }}
-              ></TextInput>
-            </div>
-            <div className="w-max">
-              <PopButton btnClasses="text-xl bg-black-mate" type="button">
-                Verify
-              </PopButton>
-            </div>
-          </div>
-          <div className="flex flex-col gap-3">
-            <div className="flex items-center gap-6">
-              <p className="font-cera-pro font-medium">
-                Enter Verification OTP that sent on XXXXXX865
-              </p>
-              <button
-                type="button"
-                className="text-pink border-b border-pink font-medium text-13"
-              >
-                Edit
-              </button>
-            </div>
-            <div className="flex flex-row items-start gap-4">
-              <div className="flex-shrink">
-                <input
-                  type="text"
-                  className="flex items-center justify-center p-3 tablet:px-6 tablet:py-3 border rounded-3xl border-black-mate w-full text-center"
-                />
-              </div>
-              <div className="flex-shrink">
-                <input
-                  type="text"
-                  className="flex items-center justify-center p-3 tablet:px-6 tablet:py-3 border rounded-3xl border-black-mate w-full text-center"
-                />
-              </div>
-              <div className="flex-shrink">
-                <input
-                  type="text"
-                  className="flex items-center justify-center p-3 tablet:px-6 tablet:py-3 border rounded-3xl border-black-mate w-full text-center"
-                />
-              </div>
-              <div className="flex-shrink">
-                <input
-                  type="text"
-                  className="flex items-center justify-center p-3 tablet:px-6 tablet:py-3 border rounded-3xl border-black-mate w-full text-center"
-                />
-              </div>
-            </div>
-            <div className="flex items-center justify-center gap-3">
-              <p className="font-medium text-xl">Number verified</p>
-              <VerifiedRoundedSVG />
-            </div>
-          </div>
-        </div>
-        <PopButton btnClasses="text-xl bg-black-mate">Submit</PopButton>
+        <VerifyMobile
+          onSuccess={(updatedMobile) => {
+            setValue('mobile', updatedMobile)
+            setIsAllowed(true)
+          }}
+        />
+        <PopButton btnClasses="text-xl bg-black-mate" type="submit">
+          Submit
+        </PopButton>
       </form>
     </div>
   )

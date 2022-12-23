@@ -206,7 +206,7 @@ const Home = () => {
             </div>
           </div>
           <div className="w-min whitespace-nowrap mt-12 tablet:mt-8">
-            <PopButton type="outline">About us</PopButton>
+            <PopButton variant="outline">About us</PopButton>
           </div>
           <div className="absolute max-w-[70%] right-1 -bottom-1/5 tablet:-right-[30%] tablet:w-3/5 tablet:-bottom-1/10 laptop:w-auto">
             <img src={collectxn_focused_woman} alt="collectxn_focused" />

@@ -36,7 +36,7 @@ const ExplorePlaystation = () => {
       </div>
       <div className="flex laptop:hidden items-center justify-center">
         <div>
-          <PopButton type="outline" onClick={goToPlaystationPage}>
+          <PopButton variant="outline" onClick={goToPlaystationPage}>
             View more
           </PopButton>
         </div>

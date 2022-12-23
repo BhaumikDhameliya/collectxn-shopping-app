@@ -36,7 +36,7 @@ const ExploreApparels = () => {
       </div>
       <div className="flex laptop:hidden items-center justify-center">
         <div>
-          <PopButton type="outline" onClick={goToApparelsPage}>
+          <PopButton variant="outline" onClick={goToApparelsPage}>
             View more
           </PopButton>
         </div>

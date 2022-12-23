@@ -26,7 +26,7 @@ const RequestProductBanner = () => {
           </p>
         </div>
         <div className="w-1/3 mt-1/10 whitespace-nowrap">
-          <PopButton type="outline">
+          <PopButton variant="outline">
             <Link to="/request-product">Make Request</Link>
           </PopButton>
         </div>

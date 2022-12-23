@@ -25,7 +25,7 @@ const UserReviewsBanner = () => {
               </div>
               <div className="flex flex-col items-center gap-4">
                 <div className="w-max">
-                  <PopButton type="outline">Aman Singh</PopButton>
+                  <PopButton variant="outline">Aman Singh</PopButton>
                 </div>
                 <div className="flex items-center justify-center gap-3">
                   <div className="flex gap-2">

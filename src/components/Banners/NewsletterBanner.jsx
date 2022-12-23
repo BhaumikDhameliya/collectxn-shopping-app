@@ -31,7 +31,7 @@ const NewsletterBanner = () => {
         <div className="flex gap-3 w-full flex-col laptop:flex-row">
           <TextInput placeholder="Your email address" />
           <div className="w-max">
-            <PopButton>Subscribe</PopButton>
+            <PopButton btnClasses="bg-black-mate">Subscribe</PopButton>
           </div>
         </div>
       </div>

@@ -9,9 +9,9 @@ const ProfileOrders = () => {
         <p className="font-bold text-31 hidden laptop:block">Orders</p>
         <div className="flex gap-4 w-min">
           <PopButton btnClasses="bg-black-mate">All</PopButton>
-          <PopButton type="outline">Running</PopButton>
-          <PopButton type="outline">History</PopButton>
-          <PopButton type="outline">Cancel</PopButton>
+          <PopButton variant="outline">Running</PopButton>
+          <PopButton variant="outline">History</PopButton>
+          <PopButton variant="outline">Cancel</PopButton>
         </div>
       </div>
       <OrderStrip />

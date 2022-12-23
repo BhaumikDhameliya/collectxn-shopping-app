@@ -26,11 +26,11 @@ const SelectInput = (props) => {
         type="text"
         className={`py-3 pl-6 pr-11 border rounded-3xl border-black-mate appearance-none bg-transparent bg-[url('/src/assets/svg/caret_down.svg')] bg-no-repeat bg-select-caret ${selectClasses}`}
         {...rest}
-        defaultValue={defaultValue || ''}
+        defaultValue={defaultValue || placeholder || ''}
         {...(register ? register(name) : {})}
       >
         {placeholder && (
-          <option value="" disabled selected>
+          <option value={placeholder} disabled>
             {placeholder}
           </option>
         )}

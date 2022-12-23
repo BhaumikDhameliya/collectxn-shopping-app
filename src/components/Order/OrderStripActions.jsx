@@ -8,7 +8,7 @@ const OrderStripActions = () => {
       <PopButton btnClasses="bg-black-mate tablet:text-13">
         Give your feedback
       </PopButton>
-      <PopButton type="outline" btnClasses="tablet:text-13 tablet:py-2">
+      <PopButton variant="outline" btnClasses="tablet:text-13 tablet:py-2">
         Cancel order
       </PopButton>
     </div>

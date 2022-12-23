@@ -16,7 +16,7 @@ const BecomeACollectxrBanner = () => {
             />
           </div>
           <div>
-            <PopButton type="outline">Join us</PopButton>
+            <PopButton variant="outline">Join us</PopButton>
           </div>
         </div>
       </div>

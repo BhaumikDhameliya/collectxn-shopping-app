@@ -64,7 +64,7 @@ const ExploreCategory = (props) => {
       </div>
       <div className="flex laptop:hidden items-center justify-center">
         <div>
-          <PopButton type="outline" onClick={goToCategoryProductsPage}>
+          <PopButton variant="outline" onClick={goToCategoryProductsPage}>
             View more
           </PopButton>
         </div>

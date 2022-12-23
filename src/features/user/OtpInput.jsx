@@ -1,7 +1,13 @@
 import React, { useMemo } from 'react'
 import { RE_DIGIT } from '../../config/constants'
 
-export default function OtpInput({ value, valueLength, onChange, className }) {
+export default function OtpInput({
+  value,
+  valueLength,
+  onChange,
+  className,
+  form,
+}) {
   const valueItems = useMemo(() => {
     const valueArray = value.split('')
     const items = []
@@ -125,6 +131,7 @@ export default function OtpInput({ value, valueLength, onChange, className }) {
           onKeyDown={inputOnKeyDown}
           onFocus={inputOnFocus}
           className={`${className}`}
+          form={form || ''}
         />
       ))}
     </>

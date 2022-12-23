@@ -107,7 +107,7 @@ const ProductListing = () => {
               </div>
               {/* <div className="flex items-center justify-center">
                 <div>
-                  <PopButton type="outline" onClick={() => {}}>
+                  <PopButton variant="outline" onClick={() => {}}>
                     Load more
                   </PopButton>
                 </div>

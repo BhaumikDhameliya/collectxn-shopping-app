@@ -59,8 +59,8 @@ export default function App() {
     if (authToken) {
       collectionAPI.defaults.headers.common['Authorization'] = authToken
       getUserProfileData()
-      getCategoryData()
     }
+    getCategoryData()
   }, [getUserProfileData, getCategoryData])
 
   return (
