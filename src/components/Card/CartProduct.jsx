@@ -51,7 +51,9 @@ const CartProduct = (props) => {
       const updatedCartItem = cartRes?.data?.cartItem
       if (updatedCartItem) {
         increaseQuantity()
-        dispatch(replaceCartItem({ ...cartItem, quantity }))
+        dispatch(
+          replaceCartItem({ ...cartItem, quantity: cartItem?.quantity + 1 }),
+        )
       }
       setIsLoading(true)
     } catch (error) {

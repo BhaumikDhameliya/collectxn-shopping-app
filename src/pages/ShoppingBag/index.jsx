@@ -19,6 +19,7 @@ const ShoppingBag = () => {
   const [bag, setBag] = useState('empty')
 
   const cart = useSelector((state) => state.cart.cart)
+  const userProfile = useSelector((state) => state.user.profile)
 
   const goBack = () => navigate(-1)
 
@@ -39,8 +40,10 @@ const ShoppingBag = () => {
   }, [dispatch])
 
   useEffect(() => {
-    getCartData()
-  }, [getCartData])
+    if (Object.keys(userProfile || {})?.length) {
+      getCartData()
+    }
+  }, [getCartData, userProfile])
 
   return (
     <>
