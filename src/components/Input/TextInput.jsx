@@ -12,6 +12,7 @@ const TextInput = (props) => {
     register,
     errors,
     children,
+    autoFocus = false,
     ...rest
   } = props
   return (
@@ -28,6 +29,7 @@ const TextInput = (props) => {
           name={name}
           placeholder={placeholder}
           {...(register ? register(name) : {})}
+          autoFocus={autoFocus}
           {...rest}
         />
         {buttonText && (

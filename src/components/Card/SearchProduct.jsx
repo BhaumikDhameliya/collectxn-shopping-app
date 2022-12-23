@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 // import air_max from '../../assets/img/air_max_flyknit_racer_shoes.png'
 
@@ -7,9 +8,18 @@ import ViewAllArrow from '../../assets/SVGComponent/ViewAllArrow'
 import PopButton from '../buttons/PopButton'
 
 const SearchProduct = (props) => {
-  const { product } = props
+  const { product, toggleSearchMenu } = props
+  const navigate = useNavigate()
+
+  const navigateToProductDetailPage = () => {
+    toggleSearchMenu()
+    navigate(`/product/${product.id}`)
+  }
   return (
-    <div className="flex items-center p-4 gap-2.5 bg-white border-t border-gray-light justify-between">
+    <div
+      className="flex items-center p-4 gap-2.5 bg-white border-t border-gray-light justify-between cursor-pointer"
+      onClick={navigateToProductDetailPage}
+    >
       <div className="flex gap-2.5 items-center">
         <img
           src={product?.image}

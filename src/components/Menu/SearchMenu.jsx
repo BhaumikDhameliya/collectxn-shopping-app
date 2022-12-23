@@ -57,13 +57,20 @@ const SearchMenu = (props) => {
             // value={name}
             // onChange={handleNameChange}
             onChange={debouncedResults}
+            autoFocus="true"
           />
         </form>
       </div>
       {products?.length ? (
         <div className="flex flex-col w-full tablet:px-10">
           {products?.map((product) => {
-            return <SearchProduct product={product} key={product.id} />
+            return (
+              <SearchProduct
+                product={product}
+                key={product.id}
+                toggleSearchMenu={toggleSearchMenu}
+              />
+            )
           })}
         </div>
       ) : (
