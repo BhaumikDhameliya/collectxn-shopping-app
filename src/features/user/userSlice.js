@@ -10,10 +10,13 @@ export const userSlice = createSlice({
       state.profile = action.payload
     },
     addDeliveryAddress: (state, action) => {
-      state.profile.DeliveryAddresses = [
-        ...(state.profile?.DeliveryAddresses || []),
-        action.payload,
-      ]
+      let updatedAddresses = state.profile?.DeliveryAddresses || []
+      if (action.payload?.isDefault) {
+        updatedAddresses = updatedAddresses?.map((address) => {
+          return { ...address, isDefault: false }
+        })
+      }
+      state.profile.DeliveryAddresses = [...updatedAddresses, action.payload]
     },
     updateDeliveryAddress: (state, action) => {
       state.profile.DeliveryAddresses = state.profile?.DeliveryAddresses?.map(
