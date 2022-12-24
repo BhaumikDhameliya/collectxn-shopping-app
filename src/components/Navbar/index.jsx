@@ -27,8 +27,10 @@ const Navbar = () => {
   const toggleSearchMenu = () => setShowSearchMenu((prev) => !prev)
   const goToShoppingBag = () => navigate('/shopping-bag')
 
+  const toggleMenu = () => setShowMenu((prev) => !prev)
+
   const gotoProfile = () => {
-    setShowMenu(false)
+    toggleMenu()
     navigate('/profile')
   }
 
@@ -139,11 +141,11 @@ const Navbar = () => {
           </div>
           <div className="laptop:hidden">
             {showMenu ? (
-              <button onClick={() => setShowMenu(false)}>
+              <button onClick={toggleMenu}>
                 <CloseMobileMenuSVG />
               </button>
             ) : (
-              <button onClick={() => setShowMenu(true)}>
+              <button onClick={toggleMenu}>
                 <MobileMenuSVG />
               </button>
             )}
@@ -155,18 +157,22 @@ const Navbar = () => {
           className="flex flex-col items-center bg-white w-full absolute pt-16.5 laptop:pt-22 z-10
         font-cera-pro font-medium"
         >
-          <div className="flex items-center justify-center px-3 py-4 gap-2">
-            <p>Sneakers</p>
-          </div>
-          <div className="flex items-center justify-center px-3 py-4 gap-2">
-            <p>Apparels</p>
-          </div>
-          <div className="flex items-center justify-center px-3 py-4 gap-2">
-            <p>Jewellary</p>
-          </div>
-          <div className="flex items-center justify-center px-3 py-4 gap-2">
-            <p>PlayStation</p>
-          </div>
+          <ul className="">
+            {Object.entries(categories || {})?.map(([catId, cat]) => {
+              return (
+                <li
+                  className={`flex items-center justify-center px-3 py-4 gap-2`}
+                  onClick={() => {
+                    toggleMenu()
+                    navigate(`/category/${catId}`)
+                  }}
+                  key={cat?.name}
+                >
+                  <span className="">{cat?.name}</span>
+                </li>
+              )
+            })}
+          </ul>
           <div className="flex items-center justify-center px-3 py-4 gap-2 tablet:hidden">
             <p>
               <button
