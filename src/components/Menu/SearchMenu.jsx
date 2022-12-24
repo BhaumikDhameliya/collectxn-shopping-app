@@ -7,19 +7,23 @@ import TextInput from '../Input/TextInput'
 import SearchProduct from '../Card/SearchProduct'
 import NoSearchMatch from '../Card/NoSearchMatch'
 import { getSearchedProducts } from '../../api/products.api'
+import Spinner from '../Spinner'
 
 const SearchMenu = (props) => {
   const { toggleSearchMenu } = props
 
   // const [name, setName] = useState('')
   const [products, setProducts] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
 
   const fetchSearchedProduct = async (name) => {
+    setIsLoading(true)
     const searchRes = await getSearchedProducts({ name })
     const productsData = searchRes?.data?.suggestions
     if (productsData) {
       setProducts(productsData)
     }
+    setIsLoading(false)
   }
 
   const handleNameChange = (e) => {
@@ -61,7 +65,9 @@ const SearchMenu = (props) => {
           />
         </form>
       </div>
-      {products?.length ? (
+      {isLoading ? (
+        <Spinner />
+      ) : products?.length ? (
         <div className="flex flex-col w-full tablet:px-10">
           {products?.map((product) => {
             return (

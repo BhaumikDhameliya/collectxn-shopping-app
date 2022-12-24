@@ -182,12 +182,12 @@ const Home = () => {
               <p className="font-bold text-2xl tablet:text-31 laptop:text-6xl ">
                 Collectxn Focused on Providing Collectables In Best way
               </p>
-              <p className="font-cera-pro text-xs tablet:text-13 laptop:text-2xl max-w-lg font-semibold tablet:font-medium">
+              <p className="font-cera-pro text-xs tablet:text-13 laptop:text-2xl max-w-lg">
                 One of the leading retailers in premium sports footware and
                 apparel in India, which caters to sneaker enthusiasts.
               </p>
             </div>
-            <div className="flex gap-6 tablet:gap-8 mt-5 font-cera-pro font-medium text-xs tablet:text-base text-black text-center">
+            <div className="flex gap-6 tablet:gap-8 mt-5 font-cera-pro font-medium text-xs tablet:text-base text-black text-center max-w-[70%]">
               <div className="flex flex-col gap-1 tablet:gap-2 items-center w-16">
                 {/* <TrustedSuppliers /> */}
                 <img src={trusted_suppliers} alt="trusted_suppliers" />
