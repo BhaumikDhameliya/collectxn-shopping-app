@@ -12,6 +12,7 @@ import FiltersMenu from '../components/Menu/FiltersMenu'
 import SortByMenu from '../components/Menu/SortByMenu'
 import { setCategoryProducts } from '../features/product/productSlice'
 import Breadcrumbs from '../components/Breadcrumbs'
+import Spinner from '../components/Spinner'
 
 export const sortingOptions = [
   { value: 'price ASC', name: 'Price: Low to High' },
@@ -44,6 +45,7 @@ const ProductListing = () => {
   const [showSortByMenu, setShowSortByMenu] = useState(false)
   const [showFiltersMenu, setShowFiltersMenu] = useState(false)
   const [sortBy, setSortBy] = useState({})
+  const [isLoading, setIsLoading] = useState(false)
 
   const toggleSortByMenu = () => setShowSortByMenu((prev) => !prev)
   const toggleFiltersMenu = () => setShowFiltersMenu((prev) => !prev)
@@ -57,6 +59,7 @@ const ProductListing = () => {
 
   const getCategoryProuductsData = useCallback(
     async (params) => {
+      setIsLoading(true)
       const res = await getAllProducts(params)
       const productList = res?.data?.products
       if (productList) {
@@ -68,6 +71,7 @@ const ProductListing = () => {
           setCategoryProducts({ categoryId: params?.Categories, products }),
         )
       }
+      setIsLoading(false)
     },
     [dispatch],
   )
@@ -108,7 +112,7 @@ const ProductListing = () => {
         />
         <div className="flex justify-evenly px-10">
           <div className="hidden laptop:block">
-            <FiltersMenu />
+            <FiltersMenu {...{ setIsLoading }} />
           </div>
           <div className="flex flex-col gap-8 px-4 tablet:px-8 laptop:px-10 flex-grow">
             <div className="hidden laptop:flex items-center justify-end gap-2">
@@ -130,14 +134,18 @@ const ProductListing = () => {
             </div>
 
             <div className="flex flex-col gap-6 pb-8 tablet:pb-12">
-              <div className="grid grid-cols-2 tablet:grid-cols-4 laptop:grid-cols-3 justify-between gap-4 tablet:gap-6">
-                {Object.entries(products || {}).map(
-                  ([productId, product], index) => {
-                    if (index > 3) return null
-                    return <ProductCard key={productId} product={product} />
-                  },
-                )}
-              </div>
+              {isLoading ? (
+                <Spinner />
+              ) : (
+                <div className="grid grid-cols-2 tablet:grid-cols-4 laptop:grid-cols-3 justify-between gap-4 tablet:gap-6">
+                  {Object.entries(products || {}).map(
+                    ([productId, product], index) => {
+                      if (index > 3) return null
+                      return <ProductCard key={productId} product={product} />
+                    },
+                  )}
+                </div>
+              )}
               {/* <div className="flex items-center justify-center">
                 <div>
                   <PopButton variant="outline" onClick={() => {}}>

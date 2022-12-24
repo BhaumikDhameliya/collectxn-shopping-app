@@ -18,7 +18,7 @@ import { getAllProducts } from '../../api/products.api'
 import { setCategoryProducts } from '../../features/product/productSlice'
 
 const FiltersMenu = (props) => {
-  const { toggle } = props
+  const { toggle, setIsLoading } = props
   const { categoryId } = useParams()
 
   const dispatch = useDispatch()
@@ -38,6 +38,7 @@ const FiltersMenu = (props) => {
 
   const getCategoryProuductsData = useCallback(
     async (params) => {
+      setIsLoading(true)
       const res = await getAllProducts(params)
       const productList = res?.data?.products
       if (productList) {
@@ -49,8 +50,9 @@ const FiltersMenu = (props) => {
           setCategoryProducts({ categoryId: params.Categories, products }),
         )
       }
+      setIsLoading(false)
     },
-    [dispatch],
+    [dispatch, setIsLoading],
   )
 
   const fetchFilteredProducts = useMemo(() => {
