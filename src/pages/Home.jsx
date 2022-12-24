@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-// import air_Jordan_image from '../assets/img/air_jordan.png'
+import air_Jordan_image from '../assets/img/air_jordan.png'
 import the_only from '../assets/img/the_only.png'
 import collectxn_focused_woman from '../assets/img/collectxn_focused_woman.png'
 import style_for_men from '../assets/img/style_for_men.png'
@@ -34,6 +34,8 @@ import PopularRightNow from '../components/Banners/PopularRightNow'
 import { getAllProducts } from '../api/products.api'
 import { setProducts } from '../features/product/productSlice'
 import ExploreCategory from '../components/Explore/ExploreCategory'
+import UserReviewCarousel from '../components/Carousel/UserReviewCarousel'
+import { Carousel } from 'react-responsive-carousel'
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -61,107 +63,32 @@ const Home = () => {
       <div className="bg-black-mate text-white bg-[url('/src/assets/img/gird_pattern.png')] bg-con">
         <div className="pt-[14px] tablet:pt-6 laptop:pt-9 px-4 tablet:px-8 laptop:px-20">
           <div>
-            <div
-              id="carouselExampleCaptions"
-              className="carousel slide relative"
-              data-bs-ride="carousel"
+            <Carousel
+              statusFormatter={() => {}}
+              infiniteLoop
+              showThumbs={false}
             >
-              <div className="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
-                <button
-                  type="button"
-                  data-bs-target="#carouselExampleCaptions"
-                  data-bs-slide-to="0"
-                  className="active"
-                  aria-current="true"
-                  aria-label="Slide 1"
-                ></button>
-                <button
-                  type="button"
-                  data-bs-target="#carouselExampleCaptions"
-                  data-bs-slide-to="1"
-                  aria-label="Slide 2"
-                ></button>
-                <button
-                  type="button"
-                  data-bs-target="#carouselExampleCaptions"
-                  data-bs-slide-to="2"
-                  aria-label="Slide 3"
-                ></button>
-              </div>
-              <div className="carousel-inner relative w-full overflow-hidden">
-                <div className="carousel-item active relative float-left w-full">
-                  <img
-                    src="https://mdbootstrap.com/img/Photos/Slides/img%20(15).jpg"
-                    className="block w-full"
-                    alt="..."
-                  />
-                  <div className="carousel-caption hidden md:block absolute text-center">
-                    <h5 className="text-xl">First slide label</h5>
-                    <p>
-                      Some representative placeholder content for the first
-                      slide.
-                    </p>
-                  </div>
-                </div>
-                <div className="carousel-item relative float-left w-full">
-                  <img
-                    src="https://mdbootstrap.com/img/Photos/Slides/img%20(22).jpg"
-                    className="block w-full"
-                    alt="..."
-                  />
-                  <div className="carousel-caption hidden md:block absolute text-center">
-                    <h5 className="text-xl">Second slide label</h5>
-                    <p>
-                      Some representative placeholder content for the second
-                      slide.
-                    </p>
-                  </div>
-                </div>
-                <div className="carousel-item relative float-left w-full">
-                  <img
-                    src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
-                    className="block w-full"
-                    alt="..."
-                  />
-                  <div className="carousel-caption hidden md:block absolute text-center">
-                    <h5 className="text-xl">Third slide label</h5>
-                    <p>
-                      Some representative placeholder content for the third
-                      slide.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <button
-                className="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
-                type="button"
-                data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="prev"
-              >
-                <span
-                  className="carousel-control-prev-icon inline-block bg-no-repeat"
-                  aria-hidden="true"
-                ></span>
-                <span className="visually-hidden">Previous</span>
-              </button>
-              <button
-                className="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
-                type="button"
-                data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="next"
-              >
-                <span
-                  className="carousel-control-next-icon inline-block bg-no-repeat"
-                  aria-hidden="true"
-                ></span>
-                <span className="visually-hidden">Next</span>
-              </button>
-            </div>
-            {/* <img
-              src={air_Jordan_image}
-              alt="air_Jordan_image"
-              className="w-full"
-            /> */}
+              <img
+                src={air_Jordan_image}
+                alt="air_Jordan_image"
+                className="w-full"
+              />
+              <img
+                src={air_Jordan_image}
+                alt="air_Jordan_image"
+                className="w-full"
+              />
+              <img
+                src={air_Jordan_image}
+                alt="air_Jordan_image"
+                className="w-full"
+              />
+              <img
+                src={air_Jordan_image}
+                alt="air_Jordan_image"
+                className="w-full"
+              />
+            </Carousel>
           </div>
 
           <div className="flex items-center justify-between py-1/20">
@@ -278,6 +205,7 @@ const Home = () => {
       <TrendingBrandsBanner />
       <UserReviewsBanner />
       <FromTheMagazineBanner />
+      <UserReviewCarousel />
       <NewsletterBanner />
       <BecomeACollectxrBanner />
     </div>

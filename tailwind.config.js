@@ -1,10 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
-  content: [
-    './src/**/*.{html,js,jsx,ts,tsx}',
-    './node_modules/tw-elements/dist/js/**/*.js',
-  ],
+  content: ['./src/**/*.{html,js,jsx,ts,tsx}'],
   theme: {
     extend: {
       backgroundPosition: {
@@ -89,5 +86,5 @@ module.exports = {
       'cera-pro': ['Cera\\ Pro'],
     },
   },
-  plugins: [require('tw-elements/dist/plugin')],
+  plugins: [],
 }
