@@ -13,6 +13,21 @@ import SortByMenu from '../components/Menu/SortByMenu'
 import { setCategoryProducts } from '../features/product/productSlice'
 import Breadcrumbs from '../components/Breadcrumbs'
 
+export const sortingOptions = [
+  { value: 'price ASC', name: 'Price: Low to High' },
+  { value: 'price DESC', name: 'Price: High to Low' },
+  {
+    value: 'avgRating ASC',
+    name: 'Rating: Low to High',
+  },
+  {
+    value: 'avgRating DESC',
+    name: 'Rating: High to Low',
+  },
+  { value: 'releaseYear DESC', name: 'Newest Arrivals' },
+  { value: 'releaseYear ASC', name: 'Oldest' },
+]
+
 const ProductListing = () => {
   const dispatch = useDispatch()
   const { categoryId } = useParams()
@@ -28,29 +43,51 @@ const ProductListing = () => {
   // const [categoryData, setCategoryData] = useState()
   const [showSortByMenu, setShowSortByMenu] = useState(false)
   const [showFiltersMenu, setShowFiltersMenu] = useState(false)
+  const [sortBy, setSortBy] = useState({})
 
   const toggleSortByMenu = () => setShowSortByMenu((prev) => !prev)
   const toggleFiltersMenu = () => setShowFiltersMenu((prev) => !prev)
 
-  const getCategoryProuductsData = useCallback(async () => {
-    const res = await getAllProducts({ Categories: categoryId })
-    const productList = res?.data?.products
-    if (productList) {
-      let products = {}
-      productList.forEach((product) => {
-        products[product.id] = product
-      })
-      dispatch(setCategoryProducts({ categoryId: categoryId, products }))
-    }
-  }, [categoryId, dispatch])
+  const handleSortOptionSelect = (e) => {
+    const value = e.target.value
+    let [sortKey, sortValue] = value.split(' ')
+    sortKey = `sortBy[${sortKey}]`
+    setSortBy({ [sortKey]: sortValue })
+  }
+
+  const getCategoryProuductsData = useCallback(
+    async (params) => {
+      const res = await getAllProducts(params)
+      const productList = res?.data?.products
+      if (productList) {
+        let products = {}
+        productList.forEach((product) => {
+          products[product.id] = product
+        })
+        dispatch(
+          setCategoryProducts({ categoryId: params?.Categories, products }),
+        )
+      }
+    },
+    [dispatch],
+  )
 
   useEffect(() => {
-    getCategoryProuductsData()
-  }, [getCategoryProuductsData])
+    let params = { Categories: categoryId }
+    if (Object.keys(sortBy).length) {
+      params = {
+        ...params,
+        ...sortBy,
+      }
+    }
+    getCategoryProuductsData(params)
+  }, [categoryId, getCategoryProuductsData, sortBy])
 
   return (
     <div>
-      {showSortByMenu && <SortByMenu toggle={toggleSortByMenu} />}
+      {showSortByMenu && (
+        <SortByMenu toggle={toggleSortByMenu} setSortBy={setSortBy} />
+      )}
       {showFiltersMenu && <FiltersMenu toggle={toggleFiltersMenu} />}
       <div className="flex items-center divide-x border-b text-center laptop:hidden">
         <button className="flex-grow p-4 font-bold" onClick={toggleFiltersMenu}>
@@ -79,12 +116,8 @@ const ProductListing = () => {
               <div>
                 <SelectInput
                   selectClasses="font-semibold"
-                  options={[
-                    { value: 'recommanded', name: 'Recommanded' },
-                    { value: 'price: Low to High', name: 'Price: Low to High' },
-                    { value: 'price: High to Low', name: 'Price: High to Low' },
-                    { value: 'newest Arrivals', name: 'Newest Arrivals' },
-                  ]}
+                  onChange={handleSortOptionSelect}
+                  options={sortingOptions}
                 />
               </div>
             </div>

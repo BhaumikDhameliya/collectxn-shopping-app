@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import ProductCard from '../../components/Card/ProductCard'
@@ -7,23 +7,36 @@ import SelectInput from '../../components/Input/SelectInput'
 import { getLikedProducts } from '../../api/products.api'
 
 import { setLikedProducts } from '../../features/product/productSlice'
+import { sortingOptions } from '../../layouts/ProductListing'
 
 const Wishlist = () => {
   const dispatch = useDispatch()
 
   const likedProducts = useSelector((state) => state.product.likedProducts)
 
-  const getLikedProductsData = useCallback(async () => {
-    const likedProductsData = await getLikedProducts()
-    const likedProducts = likedProductsData?.data?.likedProducts
-    if (likedProducts) {
-      dispatch(setLikedProducts(likedProducts))
-    }
-  }, [dispatch])
+  const [sortBy, setSortBy] = useState({})
+
+  const handleSortOptionSelect = (e) => {
+    const value = e.target.value
+    let [sortKey, sortValue] = value.split(' ')
+    sortKey = `sortBy[${sortKey}]`
+    setSortBy({ [sortKey]: sortValue })
+  }
+
+  const getLikedProductsData = useCallback(
+    async (params) => {
+      const likedProductsData = await getLikedProducts(params)
+      const likedProducts = likedProductsData?.data?.likedProducts
+      if (likedProducts) {
+        dispatch(setLikedProducts(likedProducts))
+      }
+    },
+    [dispatch],
+  )
 
   useEffect(() => {
-    getLikedProductsData()
-  }, [getLikedProductsData])
+    getLikedProductsData(sortBy)
+  }, [getLikedProductsData, sortBy])
 
   return (
     <div className="flex flex-col">
@@ -44,12 +57,8 @@ const Wishlist = () => {
             <div>
               <SelectInput
                 selectClasses="font-semibold"
-                options={[
-                  { value: 'Latest', name: 'Latest' },
-                  { value: 'price: Low to High', name: 'Price: Low to High' },
-                  { value: 'price: High to Low', name: 'Price: High to Low' },
-                  { value: 'newest Arrivals', name: 'Newest Arrivals' },
-                ]}
+                options={sortingOptions}
+                onChange={handleSortOptionSelect}
               />
             </div>
           </div>
