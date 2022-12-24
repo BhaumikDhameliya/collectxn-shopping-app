@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 
 import sneakers_banner from '../assets/img/banner/sneakers_banner.png'
 
-// import PopButton from '../components/buttons/PopButton'
+import PopButton from '../components/buttons/PopButton'
 import ProductCard from '../components/Card/ProductCard'
 import SelectInput from '../components/Input/SelectInput'
 import FiltersMenu from '../components/Menu/FiltersMenu'
@@ -110,7 +110,7 @@ const ProductListing = () => {
             },
           ]}
         />
-        <div className="flex justify-evenly px-10">
+        <div className="flex justify-evenly px-10 pb-10">
           <div className="hidden laptop:block">
             <FiltersMenu {...{ setIsLoading }} />
           </div>
@@ -146,13 +146,13 @@ const ProductListing = () => {
                   )}
                 </div>
               )}
-              {/* <div className="flex items-center justify-center">
+              <div className="flex items-center justify-center">
                 <div>
                   <PopButton variant="outline" onClick={() => {}}>
                     Load more
                   </PopButton>
                 </div>
-              </div> */}
+              </div>
             </div>
           </div>
         </div>

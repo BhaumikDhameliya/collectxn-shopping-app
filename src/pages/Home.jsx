@@ -176,7 +176,7 @@ const Home = () => {
         <Crawler />
       </div>
       <div className="bg-white overflow-auto no-scrollbar relative">
-        <div className="relative bg-[#F1F1F1] pl-4 pr-8 pt-13 pb-37 tablet:rounded-2xl tablet:mt-12 laptop:mt-24 tablet:mb-32 tablet:ml-1/20 tablet:w-2/3 tablet:pt-6 laptop:pt-12 tablet:pb-7 laptop:pb-20 tablet:pl-8 laptop:pl-16 mb-42">
+        <div className="relative bg-[#F1F1F1] pl-4 pr-8 pt-13 pb-37 tablet:rounded-2xl tablet:mt-12 laptop:mt-24 tablet:mb-32 tablet:ml-1/20 tablet:w-2/3 tablet:pt-6 laptop:pt-12 tablet:pb-7 laptop:pb-20 tablet:pl-8 laptop:pl-16 mb-42 bg-[url('/src/assets/img/grid_chex_gray.png')]">
           <div className="flex flex-col gap-7 tablet:gap-2">
             <div className="flex flex-col gap-5 tablet:gap-7 tablet:max-w-[70%]">
               <p className="font-bold text-2xl tablet:text-31 laptop:text-6xl ">
@@ -187,20 +187,32 @@ const Home = () => {
                 apparel in India, which caters to sneaker enthusiasts.
               </p>
             </div>
-            <div className="flex gap-6 tablet:gap-8 mt-5 font-cera-pro font-medium text-xs tablet:text-base text-black text-center max-w-[70%]">
-              <div className="flex flex-col gap-1 tablet:gap-2 items-center w-16">
+            <div className="flex gap-6 tablet:gap-8 mt-5 font-cera-pro font-medium text-10 laptop:text-base text-black text-center tablet:max-w-[70%]">
+              <div className="flex flex-col gap-1 tablet:gap-2 items-center w-28 tablet:w-36">
                 {/* <TrustedSuppliers /> */}
-                <img src={trusted_suppliers} alt="trusted_suppliers" />
+                <img
+                  src={trusted_suppliers}
+                  alt="trusted_suppliers"
+                  className="max-w-[64px] laptop:max-w-[112px]"
+                />
                 <p className="">Trusted Suppliers</p>
               </div>
-              <div className="flex flex-col gap-1 tablet:gap-2 items-center w-16">
+              <div className="flex flex-col gap-1 tablet:gap-2 items-center w-28 tablet:w-36">
                 {/* <UniqueCollection /> */}
-                <img src={unique_collection} alt="unique_collection" />
+                <img
+                  src={unique_collection}
+                  alt="unique_collection"
+                  className="max-w-[64px] laptop:max-w-[112px]"
+                />
                 <p className="">Unique Collection</p>
               </div>
-              <div className="flex flex-col gap-1 tablet:gap-2 items-center w-16">
+              <div className="flex flex-col gap-1 tablet:gap-2 items-center w-28 tablet:w-36">
                 {/* <HappyCustomers /> */}
-                <img src={happy_customers} alt="happy_customers" />
+                <img
+                  src={happy_customers}
+                  alt="happy_customers"
+                  className="max-w-[64px] laptop:max-w-[112px]"
+                />
                 <p className="">5000+ Happy Customers</p>
               </div>
             </div>
@@ -208,8 +220,12 @@ const Home = () => {
           <div className="w-min whitespace-nowrap mt-12 tablet:mt-8">
             <PopButton variant="outline">About us</PopButton>
           </div>
-          <div className="absolute max-w-[70%] right-1 -bottom-1/5 tablet:-right-[30%] tablet:w-3/5 tablet:-bottom-1/10 laptop:w-auto">
-            <img src={collectxn_focused_woman} alt="collectxn_focused" />
+          <div className="absolute max-w-[70%] right-1 -bottom-3/10 tablet:-right-[30%] tablet:top-0 tablet:w-3/5 laptop:w-auto flex tablet:h-full">
+            <img
+              src={collectxn_focused_woman}
+              alt="collectxn_focused"
+              className="object-contain"
+            />
           </div>
         </div>
         <PopularRightNow />

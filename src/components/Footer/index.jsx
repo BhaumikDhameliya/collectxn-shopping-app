@@ -39,7 +39,7 @@ const Footer = () => {
         <div className="flex flex-col gap-12 laptop:flex-row laptop:justify-between">
           <div className="flex flex-col gap-8">
             <div className="flex flex-col gap-4 text-xs tablet:text-xl">
-              <p className="font-medium">
+              <p className="font-medium max-w-[626px]">
                 Ground Floor, 261, Westend Marg, Garden of Five Senses Road,
                 Saidulajab, New Delhi - 110074
               </p>
