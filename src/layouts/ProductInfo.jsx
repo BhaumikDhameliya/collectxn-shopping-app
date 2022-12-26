@@ -6,7 +6,7 @@ import { Minus, Plus, ArrowLeft, ArrowRight, Heart } from 'akar-icons'
 
 import air_max from '../assets/img/air_max_flyknit_racer_shoes.png'
 // import zestImage from '../assets/img/zest.png'
-import logo_cxn_black from '../assets/img/logo_cxn_black.png'
+import logo_cxn_black from '../assets/svg/logo/logo_cxn_black.svg'
 // import product_image_1 from '../assets/img/ProductImage/product_image_1.png'
 // import product_image_2 from '../assets/img/ProductImage/product_image_2.png'
 // import product_image_3 from '../assets/img/ProductImage/product_image_3.png'

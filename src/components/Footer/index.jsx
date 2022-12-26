@@ -1,6 +1,6 @@
 import React from 'react'
 
-import logo_collectxn_transparent from '../../assets/img/logo_collectxn_transparent.png'
+import logo_collectxn_white from '../../assets/svg/logo/logo_collectxn_white.svg'
 import payment_logos from '../../assets/img/payment_logos.png'
 
 import { ReactComponent as OpenAllDaysSVG } from '../../assets/svg/open_all_days.svg'
@@ -17,10 +17,7 @@ const Footer = () => {
           <div className="flex flex-col gap-12 tablet:flex-row">
             <div>
               <div className="tablet:flex tablet:flex-col gap-12">
-                <img
-                  src={logo_collectxn_transparent}
-                  alt="logo_collectxn_transparent"
-                />
+                <img src={logo_collectxn_white} alt="logo_collectxn_white" />
                 <div className="hidden tablet:block">
                   <KeepInTouch />
                 </div>

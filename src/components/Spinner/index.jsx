@@ -2,12 +2,12 @@ import React from 'react'
 
 const Spinner = () => {
   return (
-    <div className="flex items-center justify-center w-full">
+    <div className="flex items-center justify-center w-full p-2">
       <div
-        class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
+        className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
         role="status"
       >
-        <span class="visually-hidden">Loading...</span>
+        <span className="visually-hidden sr-only">Loading...</span>
       </div>
     </div>
   )

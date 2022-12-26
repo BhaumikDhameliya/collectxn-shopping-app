@@ -61,7 +61,7 @@ const SearchMenu = (props) => {
             // value={name}
             // onChange={handleNameChange}
             onChange={debouncedResults}
-            autoFocus="true"
+            autoFocus={true}
           />
         </form>
       </div>

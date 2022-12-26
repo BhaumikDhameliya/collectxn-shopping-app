@@ -93,7 +93,10 @@ const UserReviewCarousel = () => {
     >
       {[1, 2, 3, 4].map((index) => {
         return (
-          <div className="bg-[#F2F2EF] text-black p-8 laptop:px-1/20 py-1/10">
+          <div
+            className="bg-[#F2F2EF] text-black p-8 laptop:px-1/20 py-1/10"
+            key={index}
+          >
             <div className="flex flex-col items-center gap-12">
               <div className="flex flex-col items-center gap-10 laptop:w-2/3">
                 <div className="flex flex-col tablet:flex-row items-center gap-6">
