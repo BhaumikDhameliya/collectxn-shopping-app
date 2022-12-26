@@ -74,6 +74,12 @@ export const updateMobile = async (payload) => {
   try {
     const res = await collectionAPI.patch('/users/mobile', payload)
     console.log('res-----', res)
+    let authToken = res?.data?.token
+    if (authToken) {
+      authToken = `Bearer ${authToken}`
+      localStorage.setItem('authToken', authToken)
+      collectionAPI.defaults.headers.common['Authorization'] = authToken
+    }
     return res?.data
   } catch (error) {
     const errorRes = error?.response?.data

@@ -214,6 +214,7 @@ const Profile = () => {
           setIsOpen: setShowChangeEmail,
           onSuccess: (updatedEmail) => {
             setValue('email', updatedEmail)
+            toast.success('Email updated successfullly.')
           },
         }}
       />
@@ -223,6 +224,7 @@ const Profile = () => {
           setIsOpen: setShowChangeMobile,
           onSuccess: (updatedMobile) => {
             setValue('mobile', updatedMobile)
+            toast.success('Mobile number updated successfully.')
           },
         }}
       />

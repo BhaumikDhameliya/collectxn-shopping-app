@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getAllProducts } from '../api/products.api'
 import { useParams } from 'react-router-dom'
 
+import { ReactComponent as NoMatchBagSVG } from '../assets/svg/no_match_bag.svg'
 import sneakers_banner from '../assets/img/banner/sneakers_banner.png'
 
 import PopButton from '../components/buttons/PopButton'
@@ -136,7 +137,7 @@ const ProductListing = () => {
             <div className="flex flex-col gap-6 pb-8 tablet:pb-12">
               {isLoading ? (
                 <Spinner />
-              ) : (
+              ) : Object.keys(products || {}).length ? (
                 <div className="grid grid-cols-2 tablet:grid-cols-4 laptop:grid-cols-3 justify-between gap-4 tablet:gap-6">
                   {Object.entries(products || {}).map(
                     ([productId, product], index) => {
@@ -145,14 +146,21 @@ const ProductListing = () => {
                     },
                   )}
                 </div>
+              ) : (
+                <div className="flex flex-col items-center gap-3">
+                  <NoMatchBagSVG />
+                  <p className="font-bold text-gray-dark laptop:text-2xl">
+                    We couldn't find any matches!
+                  </p>
+                </div>
               )}
-              <div className="flex items-center justify-center">
+              {/* <div className="flex items-center justify-center">
                 <div>
                   <PopButton variant="outline" onClick={() => {}}>
                     Load more
                   </PopButton>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
