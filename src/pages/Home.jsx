@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import air_Jordan_image from '../assets/img/air_jordan.png'
-import the_only from '../assets/img/the_only.png'
+import the_only_plug_you_need_text from '../assets/svg/homepage/the_only_plug_you_need_text.svg'
 import collectxn_focused_woman from '../assets/img/collectxn_focused_woman.png'
 import style_for_men from '../assets/img/style_for_men.png'
 import fashion_for_women from '../assets/img/fashion_for_women.png'
@@ -93,7 +93,10 @@ const Home = () => {
 
           <div className="flex items-center justify-between py-1/20">
             <div className="">
-              <img src={the_only} alt="the_only" />
+              <img
+                src={the_only_plug_you_need_text}
+                alt="the only plug you need"
+              />
             </div>
             <div className="">
               <ScrollToExplore />

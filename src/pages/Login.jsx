@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-import img_log_in from '../assets/img/img_log_in.png'
-import logo_cxn from '../assets/img/logo_cxn.png'
+import img_log_in from '../assets/svg/auth/img_log_in.svg'
+import logo_cxn_black from '../assets/svg/logo/logo_cxn_black.svg'
 
 import { ReactComponent as RightArrow } from '../assets/svg/svg_arrow_right.svg'
 
@@ -35,14 +35,14 @@ const Login = () => {
   }
 
   return (
-    <div className="flex min-h-screen">
-      <div className="flex flex-col w-full laptop:w-1/2">
+    <div className="flex h-screen">
+      <div className="flex flex-col flex-grow w-full laptop:w-1/2">
         <div className="h-20 flex items-center px-8">
           <div className="flex items-center gap-8">
             <button onClick={() => navigate('/')}>
               <RightArrow />
             </button>
-            <img src={logo_cxn} alt="cxn" />
+            <img src={logo_cxn_black} alt="cxn" />
           </div>
         </div>
         <div className="px-1/10 flex items-center justify-center h-full">
@@ -79,7 +79,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <div className="hidden laptop:block laptop:w-1/2">
+      <div className="hidden laptop:block max-w-[50%]">
         <img src={img_log_in} alt="Log in" className="h-full w-full" />
       </div>
     </div>

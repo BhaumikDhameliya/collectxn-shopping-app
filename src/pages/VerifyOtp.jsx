@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
-import img_signup from '../assets/img/img_signup.png'
-import logo_cxn from '../assets/img/logo_cxn.png'
+import img_signup from '../assets/svg/auth/img_signup.svg'
+import logo_cxn_black from '../assets/svg/logo/logo_cxn_black.svg'
 
 import { ReactComponent as RightArrow } from '../assets/svg/svg_arrow_right.svg'
 import { ReactComponent as EmailLogo } from '../assets/svg/logo_email.svg'
@@ -56,14 +56,14 @@ const VerifyOTP = () => {
   console.log('token-----', token)
 
   return (
-    <div className="flex min-h-screen">
-      <div className="flex flex-col w-full laptop:w-1/2">
+    <div className="flex h-screen">
+      <div className="flex flex-col flex-grow w-full laptop:w-1/2">
         <div className="h-20 flex items-center px-8">
           <div className="flex items-center gap-8">
             <button onClick={() => navigate(-1)}>
               <RightArrow />
             </button>
-            <img src={logo_cxn} alt="cxn" />
+            <img src={logo_cxn_black} alt="cxn" />
           </div>
         </div>
         <div className="px-1/10 flex items-center justify-center h-full">
@@ -107,7 +107,7 @@ const VerifyOTP = () => {
           </div>
         </div>
       </div>
-      <div className="hidden laptop:block laptop:w-1/2">
+      <div className="hidden laptop:block max-w-[50%]">
         <img src={img_signup} alt="sign up" className="h-full w-full" />
       </div>
     </div>
