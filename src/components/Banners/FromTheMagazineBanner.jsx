@@ -1,6 +1,6 @@
 import React from 'react'
 
-import from_the_magazine_text from '../../assets/img/from_the_magazine_text.png'
+import from_the_magazine_text from '../../assets/svg/from_the_magazine_banner/from_the_magazine_text.svg'
 
 import ViewAllArrow from '../../assets/SVGComponent/ViewAllArrow'
 

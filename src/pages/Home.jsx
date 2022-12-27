@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import air_Jordan_image from '../assets/img/air_jordan.png'
 import the_only_plug_you_need_text from '../assets/svg/homepage/the_only_plug_you_need_text.svg'
 import collectxn_focused_woman from '../assets/img/collectxn_focused_woman.png'
-import style_for_men from '../assets/img/style_for_men.png'
-import fashion_for_women from '../assets/img/fashion_for_women.png'
-import style_fashion_men_women from '../assets/img/style_fashion_men_women.png'
-import explore_collectxn from '../assets/img/explore_collectxn.png'
+import style_for_men from '../assets/svg/style_banner/style_for_men.svg'
+import fashion_for_women from '../assets/svg/style_banner/fashion_for_women.svg'
+import style_fashion_men_women from '../assets/svg/style_banner/style_fashion_men_women.svg'
+import explore_collectxn from '../assets/svg/style_banner/explore_collectxn.svg'
 import happy_customers from '../assets/img/happy_customers.png'
 import trusted_suppliers from '../assets/img/trusted_suppliers.png'
 import unique_collection from '../assets/img/unique_collection.png'
@@ -26,7 +26,7 @@ import Crawler from '../components/Crawler'
 // import ExplorePlaystation from '../components/Explore/ExplorePlaystation'
 import RequestProductBanner from '../components/Banners/RequestProductBanner'
 import TrendingBrandsBanner from '../components/Banners/TrendingBrandsBanner'
-import UserReviewsBanner from '../components/Banners/UserReviewsBanner'
+// import UserReviewsBanner from '../components/Banners/UserReviewsBanner'
 import FromTheMagazineBanner from '../components/Banners/FromTheMagazineBanner'
 import NewsletterBanner from '../components/Banners/NewsletterBanner'
 import BecomeACollectxrBanner from '../components/Banners/BecomeACollectxrBanner'
@@ -109,8 +109,10 @@ const Home = () => {
         <div className="relative bg-[#F1F1F1] pl-4 pr-8 pt-13 pb-37 tablet:rounded-2xl tablet:mt-12 laptop:mt-24 tablet:mb-32 tablet:ml-1/20 tablet:w-2/3 tablet:pt-6 laptop:pt-12 tablet:pb-7 laptop:pb-20 tablet:pl-8 laptop:pl-16 mb-42 bg-[url('/src/assets/img/grid_chex_gray.png')]">
           <div className="flex flex-col gap-7 tablet:gap-2">
             <div className="flex flex-col gap-5 tablet:gap-7 tablet:max-w-[70%]">
-              <p className="font-bold text-2xl tablet:text-31 laptop:text-6xl ">
-                Collectxn Focused on Providing Collectables In Best way
+              <p className="font-bold text-2xl tablet:text-31 laptop:text-6xl whitespace-nowrap">
+                <p>Collectxn Focused on </p>
+                <p>Providing Collectables In </p>
+                <p>Best way</p>
               </p>
               <p className="font-cera-pro text-xs tablet:text-13 laptop:text-2xl max-w-lg">
                 One of the leading retailers in premium sports footware and
@@ -206,9 +208,9 @@ const Home = () => {
       </div>
       <RequestProductBanner />
       <TrendingBrandsBanner />
-      <UserReviewsBanner />
-      <FromTheMagazineBanner />
+      {/* <UserReviewsBanner /> */}
       <UserReviewCarousel />
+      <FromTheMagazineBanner />
       <NewsletterBanner />
       <BecomeACollectxrBanner />
     </div>

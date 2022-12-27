@@ -1,8 +1,8 @@
 import React from 'react'
 
-import request_product_banner from '../../assets/img/request_product/request_product_banner.png'
-import request_product_sticker from '../../assets/img/request_product/request_product_sticker.png'
-import request_product_text from '../../assets/img/request_product/request_product_text.png'
+import request_product_banner from '../../assets/svg/request_product/request_product_banner.svg'
+import request_product_sticker from '../../assets/svg/request_product/request_product_sticker.svg'
+import request_product_text from '../../assets/svg/request_product/request_product_text.svg'
 
 const RequestProductPageBanner = () => {
   return (
