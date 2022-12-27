@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 
 import LogoCollectionTransparent from '../../assets/svg/logo/logo_collectxn_white.svg'
 import logo_collectxn_black from '../../assets/svg/logo/logo_collectxn_black.svg'
@@ -18,6 +18,7 @@ import SearchMenu from '../Menu/SearchMenu'
 const Navbar = () => {
   const navigate = useNavigate()
   const params = useParams()
+  const location = useLocation()
 
   const categories = useSelector((state) => state.category.categories)
 
@@ -34,12 +35,16 @@ const Navbar = () => {
     navigate('/profile')
   }
 
+  let backgroundClass = showMenu
+    ? 'bg-white'
+    : location.pathname === '/'
+    ? 'bg-transparent'
+    : 'bg-black-mate'
+
   return (
     <>
       <nav
-        className={`absolute h-16.5 tablet:h-22 p-4 tablet:px-8 laptop:px-20 tablet:py-6 w-full overflow-auto no-scrollbar z-20 ${
-          showMenu ? 'bg-white' : 'bg-black-mate'
-        }`}
+        className={`absolute h-16.5 tablet:h-22 p-4 tablet:px-8 laptop:px-20 tablet:py-6 w-full overflow-auto no-scrollbar z-20 ${backgroundClass}`}
       >
         <div className="flex items-center justify-between gap-6">
           <div className="flex items-center justify-between flex-grow">

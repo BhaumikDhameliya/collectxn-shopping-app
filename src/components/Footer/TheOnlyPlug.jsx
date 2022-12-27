@@ -1,7 +1,7 @@
 import React from 'react'
 
-import the_only_gray_mid from '../../assets/img/Footer/the_only_gray_mid.png'
-import original_badge from '../../assets/img/Footer/original_badge.png'
+import the_only_gray_mid from '../../assets/svg/footer/the_only_gray_mid.svg'
+import original_badge from '../../assets/svg/footer/original_badge.svg'
 
 const TheOnlyPlug = () => {
   return (

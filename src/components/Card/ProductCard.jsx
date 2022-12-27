@@ -83,15 +83,17 @@ const ProductCard = (props) => {
           </button>
         )}
       </div>
-      <div className="flex items-center divide-x text-13 laptop:text-xl">
-        <div className="flex flex-wrap justify-center items-end p-2 laptop:py-3 laptop:px-4 gap-2 rounded-bl-lg whitespace-nowrap w-1/2">
+      <div className="flex items-center justify-between divide-x text-13 laptop:text-xl flex-grow">
+        <div className="flex flex-wrap justify-center items-end p-2 laptop:py-3 laptop:px-4 gap-2 rounded-bl-lg whitespace-nowrap">
           <p className="font-medium">₹ {product?.price}</p>
           <p className="text-10 laptop:text-sm line-through text-gray-dark">
             ₹ {product?.displayPrice}
           </p>
         </div>
-        <button className="hidden laptop:flex justify-center items-center py-3 px-4 gap-2 rounded-br-lg w-1/2">
-          <div className="font-medium text-xl">Add to Bag</div>
+        <button className="hidden laptop:flex justify-center items-center py-3 px-4 gap-2 rounded-br-lg min-h-full">
+          <div className="font-medium text-xl whitespace-nowrap">
+            Add to Bag
+          </div>
           <div>
             <ViewAllArrow />
           </div>

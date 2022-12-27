@@ -4,9 +4,10 @@ import { getAllProducts } from '../api/products.api'
 import { useParams } from 'react-router-dom'
 
 import { ReactComponent as NoMatchBagSVG } from '../assets/svg/no_match_bag.svg'
-import sneakers_banner from '../assets/img/banner/sneakers_banner.png'
+import category_banner from '../assets/svg/category_page/category_banner.svg'
+// import sneakers_banner from '../assets/img/banner/sneakers_banner.png'
 
-import PopButton from '../components/buttons/PopButton'
+// import PopButton from '../components/buttons/PopButton'
 import ProductCard from '../components/Card/ProductCard'
 import SelectInput from '../components/Input/SelectInput'
 import FiltersMenu from '../components/Menu/FiltersMenu'
@@ -103,15 +104,17 @@ const ProductListing = () => {
         </button>
       </div>
       <div>
-        <Breadcrumbs
-          path={[
-            { text: 'home', to: '/' },
-            {
-              text: category?.name,
-            },
-          ]}
-        />
-        <div className="flex justify-evenly px-10 pb-10">
+        <div className="flex items-center justify-center tablet:justify-start">
+          <Breadcrumbs
+            path={[
+              { text: 'home', to: '/' },
+              {
+                text: category?.name,
+              },
+            ]}
+          />
+        </div>
+        <div className="flex justify-evenly laptop:px-10 laptop:pb-10">
           <div className="hidden laptop:block">
             <FiltersMenu {...{ setIsLoading }} />
           </div>
@@ -126,12 +129,29 @@ const ProductListing = () => {
                 />
               </div>
             </div>
-            <div>
-              <img
-                src={sneakers_banner}
-                alt="sneakers_banner"
-                className="w-full"
-              />
+            <div className="bg-pink rounded flex items-center justify-between">
+              <div className="ml-5 tablet:ml-9 my-2.5 tablet:my-8 whitespace-nowrap text-white">
+                <div className="font-bold text-sm tablet:text-2xl laptop:text-4xl">
+                  <p>Flat ₹500 off +</p>
+                  <p>Free Shipping</p>
+                </div>
+                <div className="font-medium text-8 tablet:text-xs laptop:text-base font-cera-pro">
+                  <p>On First Order</p>
+                </div>
+                <div className="flex items-center gap-1 tablet:gap-2 laptop:gap-2.5 font-medium text-8 tablet:text-xs laptop:text-base font-cera-pro mt-1 tablet:mt-2.5">
+                  <p className="">Code:</p>
+                  <div className="border laptop:border-2 border-dashed rounded-sm tablet:rounded laptop:rounded-md border-[#BE265D] bg-[#FF699F] p-1 uppercase">
+                    COLLECTXN500
+                  </div>
+                </div>
+              </div>
+              <div>
+                <img
+                  src={category_banner}
+                  alt="category_banner"
+                  className="h-full object-cover"
+                />
+              </div>
             </div>
 
             <div className="flex flex-col gap-6 pb-8 tablet:pb-12">

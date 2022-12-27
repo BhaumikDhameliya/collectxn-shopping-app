@@ -1,7 +1,7 @@
 import React from 'react'
 
 import logo_collectxn_white from '../../assets/svg/logo/logo_collectxn_white.svg'
-import payment_logos from '../../assets/img/payment_logos.png'
+import payment_logos from '../../assets/svg/footer/payment_logos.svg'
 
 import { ReactComponent as OpenAllDaysSVG } from '../../assets/svg/open_all_days.svg'
 import { ReactComponent as CallSVG } from '../../assets/svg/call.svg'

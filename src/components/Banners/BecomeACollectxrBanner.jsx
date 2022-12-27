@@ -1,6 +1,6 @@
 import React from 'react'
 
-import become_a_collectxr_text from '../../assets/img/become_a_collectxr/become_a_collectxr_text.png'
+import become_a_collectxr_text from '../../assets/svg/become_a_collectxr_text.svg'
 import PopButton from '../buttons/PopButton'
 
 const BecomeACollectxrBanner = () => {
@@ -12,7 +12,7 @@ const BecomeACollectxrBanner = () => {
             <img
               src={become_a_collectxr_text}
               alt="become_a_collectxr_text"
-              className="object-cover"
+              className="object-cover max-w-220px tablet:max-w-[326px] laptop:max-w-[512px]"
             />
           </div>
           <div>

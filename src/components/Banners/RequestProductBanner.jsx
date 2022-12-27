@@ -25,13 +25,13 @@ const RequestProductBanner = () => {
             deliver that.
           </p>
         </div>
-        <div className="w-1/3 mt-1/10 whitespace-nowrap">
-          <PopButton variant="outline">
+        <div className="mt-1/10 whitespace-nowrap">
+          <PopButton variant="outline" btnClasses="w-auto">
             <Link to="/request-product">Make Request</Link>
           </PopButton>
         </div>
       </div>
-      <div className="relative tablet:absolute -top-16 -right-10 tablet:-top-1/10 tablet:right-0 pointer-events-none">
+      <div className="relative tablet:absolute -top-16 -right-10 tablet:-top-1/10 tablet:right-0 pointer-events-none tablet:flex tablet:max-h-full tablet:max-w-[50%]">
         <img src={request_product_banner} alt="request_product_banner" />
       </div>
     </div>

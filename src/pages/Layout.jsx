@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { Outlet, useNavigate } from 'react-router-dom'
+import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 
 import { collectionAPI } from '../utils/axios/axios.utils'
 
@@ -14,6 +14,7 @@ import Navbar from '../components/Navbar'
 const Layout = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  let location = useLocation()
 
   const getUserProfileData = useCallback(async () => {
     const res = await getUserProfile()
@@ -39,9 +40,13 @@ const Layout = () => {
   return (
     <div>
       <Navbar />
-      <div className="pt-16.5 tablet:pt-22">
+      {location.pathname === '/' ? (
         <Outlet />
-      </div>
+      ) : (
+        <div className="pt-16.5 tablet:pt-22">
+          <Outlet />
+        </div>
+      )}
       <Footer />
     </div>
   )

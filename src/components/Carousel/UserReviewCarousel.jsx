@@ -30,6 +30,7 @@ const UserReviewCarousel = () => {
       infiniteLoop
       showThumbs={false}
       statusFormatter={() => {}}
+      preventMovementUntilSwipeScrollTolerance={true}
       renderArrowPrev={(onClickHandler, hasPrev, label) =>
         hasPrev && (
           <button

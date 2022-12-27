@@ -13,7 +13,7 @@ import trusted_suppliers from '../assets/img/trusted_suppliers.png'
 import unique_collection from '../assets/img/unique_collection.png'
 
 // import { ReactComponent as HappyCustomers } from '../assets/svg/happy_customers.svg'
-import { ReactComponent as ScrollToExplore } from '../assets/svg/scroll_to_explore.svg'
+import scroll_to_explore from '../assets/svg/scroll_to_explore.svg'
 // import { ReactComponent as TrustedSuppliers } from '../assets/svg/trusted_suppliers.svg'
 // import { ReactComponent as UniqueCollection } from '../assets/svg/unique_collection.svg'
 import PopButton from '../components/buttons/PopButton'
@@ -60,13 +60,14 @@ const Home = () => {
 
   return (
     <div className="overflow-auto no-scrollbar">
-      <div className="bg-black-mate text-white bg-[url('/src/assets/img/gird_pattern.png')] bg-con">
+      <div className="bg-black-mate text-white bg-[url('/src/assets/img/gird_pattern.png')] bg-contain pt-16.5 tablet:pt-22">
         <div className="pt-[14px] tablet:pt-6 laptop:pt-9 px-4 tablet:px-8 laptop:px-20">
-          <div>
+          <div className="relative">
             <Carousel
               statusFormatter={() => {}}
               infiniteLoop
               showThumbs={false}
+              preventMovementUntilSwipeScrollTolerance={true}
             >
               <img
                 src={air_Jordan_image}
@@ -89,6 +90,15 @@ const Home = () => {
                 className="w-full"
               />
             </Carousel>
+            <div className="hidden laptop:block absolute right-0 bottom-2 transform translate-y-full -translate-x-1/2">
+              <a href="#exploreProduct">
+                <img
+                  src={scroll_to_explore}
+                  alt="scroll to explore our products"
+                  className=""
+                />
+              </a>
+            </div>
           </div>
 
           <div className="flex items-center justify-between py-1/20">
@@ -98,9 +108,13 @@ const Home = () => {
                 alt="the only plug you need"
               />
             </div>
-            <div className="">
-              <ScrollToExplore />
-            </div>
+            <a href="#exploreProduct" className="laptop:hidden">
+              <img
+                src={scroll_to_explore}
+                alt="scroll to explore our products"
+                className=""
+              />
+            </a>
           </div>
         </div>
         <Crawler />
@@ -189,7 +203,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="bg-white p-1/20">
+      <div className="bg-white p-1/20" id="exploreProduct">
         <div className="flex flex-col gap-12">
           <div className="font-cera-pro font-bold text-xl laptop:text-3xl">
             Explore Various Categories
