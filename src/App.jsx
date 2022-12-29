@@ -11,7 +11,6 @@ import ProductListing from './layouts/ProductListing'
 // import PlayStation from './pages/Playstation'
 // import Sneakers from './pages/Sneakers'
 
-import Checkout from './pages/Checkout'
 import OrderPlaced from './pages/Checkout/OrderPlaced'
 import CoomingSoon from './pages/CoomingSoon'
 import Home from './pages/Home'
@@ -86,7 +85,6 @@ export default function App() {
         </Route>
         <Route path="/order-placed" element={<OrderPlaced />} />
         <Route path="/shopping-bag" element={<ShoppingBag />} />
-        <Route path="/checkout" element={<Checkout />} />
         <Route path="profile" element={<Profile />} />
 
         <Route path="*" element={<NoMatch />} />

@@ -7,6 +7,7 @@ import { ReactComponent as ShieldSVG } from '../../assets/svg/shield.svg'
 import PopButton from '../../components/buttons/PopButton'
 import AddressCard from '../../components/Card/AddressCard'
 import AddAddressModal from '../../features/user/AddAddressModal'
+import { handlePlaceOrderFromCart } from '../../utils/placeOrder/placeOrder.utils'
 
 const AddressAndBilling = () => {
   const userProfile = useSelector((state) => state.user.profile)
@@ -16,8 +17,20 @@ const AddressAndBilling = () => {
   const [totalAmount, setTotalAmount] = useState(0)
   const [totalDisplayAmount, setTotalDisplayAmount] = useState(0)
   const [selectedAddressId, setSelectedAddressId] = useState()
+  const [isLoading, setIsLoading] = useState(false)
 
   const toggleShowAddress = () => setShowAddAddress((prev) => !prev)
+
+  const handlePlaceOrder = async () => {
+    try {
+      setIsLoading(true)
+      await handlePlaceOrderFromCart()
+    } catch (error) {
+      console.log('error-----', error)
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
   const handleAddressSelect = (e) => {
     if (e.target.checked) {
@@ -110,7 +123,13 @@ const AddressAndBilling = () => {
           </div>
         </div>
         <div className="hidden laptop:flex flex-col items-center px-4 tablet:px-8 py-3 gap-5 relative bottom-0 w-full">
-          <PopButton btnClasses="bg-black-mate">Place order</PopButton>
+          <PopButton
+            btnClasses="bg-black-mate"
+            onClick={handlePlaceOrder}
+            disabled={isLoading}
+          >
+            Place order
+          </PopButton>
           <div className="flex items-center px-2 py-1 gap-2">
             <div>
               <ShieldSVG />

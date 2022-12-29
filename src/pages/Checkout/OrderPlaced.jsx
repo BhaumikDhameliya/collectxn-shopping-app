@@ -23,12 +23,16 @@ const OrderPlaced = () => {
               </div>
             </div>
             <div className="mt-6">
-              <button className="bg-black-mate text-xl flex items-center justify-center px-4 py-2 tablet:px-6 tablet:py-3 gap-[10px] rounded-full w-full font-medium tablet:text-xl border border-black-mate hover:shadow-btn hover:bg-punchy-neon hover:text-black-mate text-white">
+              <Link
+                className="bg-black-mate text-xl flex items-center justify-center px-4 py-2 tablet:px-6 tablet:py-3 gap-[10px] rounded-full w-full font-medium tablet:text-xl border border-black-mate hover:shadow-btn hover:bg-punchy-neon hover:text-black-mate text-white"
+                to="/"
+                replace
+              >
                 Continue Shopping
-              </button>
+              </Link>
             </div>
             <div className="mt-4">
-              <Link to="/" className="border-b">
+              <Link className="border-b" to="/" replace>
                 Go to orders page
               </Link>
             </div>

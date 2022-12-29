@@ -123,11 +123,11 @@ const Home = () => {
         <div className="relative bg-[#F1F1F1] pl-4 pr-8 pt-13 pb-37 tablet:rounded-2xl tablet:mt-12 laptop:mt-24 tablet:mb-32 tablet:ml-1/20 tablet:w-2/3 tablet:pt-6 laptop:pt-12 tablet:pb-7 laptop:pb-20 tablet:pl-8 laptop:pl-16 mb-42 bg-[url('/src/assets/img/grid_chex_gray.png')]">
           <div className="flex flex-col gap-7 tablet:gap-2">
             <div className="flex flex-col gap-5 tablet:gap-7 tablet:max-w-[70%]">
-              <p className="font-bold text-2xl tablet:text-31 laptop:text-6xl whitespace-nowrap">
+              <div className="font-bold text-2xl tablet:text-31 laptop:text-6xl whitespace-nowrap">
                 <p>Collectxn Focused on </p>
                 <p>Providing Collectables In </p>
                 <p>Best way</p>
-              </p>
+              </div>
               <p className="font-cera-pro text-xs tablet:text-13 laptop:text-2xl max-w-lg">
                 One of the leading retailers in premium sports footware and
                 apparel in India, which caters to sneaker enthusiasts.

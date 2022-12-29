@@ -11,24 +11,21 @@ import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import { getMyCart } from '../../api/cart.api'
 import { setCartData } from '../../features/cart/cartSlice'
+import Checkout from '../Checkout'
 
 const ShoppingBag = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const [bag, setBag] = useState('empty')
+  const [showCheckout, setShowCheckout] = useState(false)
 
   const cart = useSelector((state) => state.cart.cart)
   const userProfile = useSelector((state) => state.user.profile)
 
   const goBack = () => navigate(-1)
 
-  const handleCheckoutClick = () => {
-    if (bag === 'empty') {
-      setBag('full')
-    } else {
-      navigate('/checkout')
-    }
+  const handleProceedToCheckoutClick = () => {
+    setShowCheckout(true)
   }
 
   const getCartData = useCallback(async () => {
@@ -44,6 +41,10 @@ const ShoppingBag = () => {
       getCartData()
     }
   }, [getCartData, userProfile])
+
+  if (showCheckout) {
+    return <Checkout />
+  }
 
   return (
     <>
@@ -75,10 +76,13 @@ const ShoppingBag = () => {
               <Orders cartItems={cart?.cartItems} />
             </>
           ) : (
-            <EmptyShoppingBag onClick={handleCheckoutClick} />
+            <EmptyShoppingBag />
           )}
           <div className="flex items-center px-4 py-3 gap-5 border-t relative bottom-0 w-full laptop:hidden">
-            <PopButton btnClasses="bg-black-mate" onClick={handleCheckoutClick}>
+            <PopButton
+              btnClasses="bg-black-mate"
+              onClick={handleProceedToCheckoutClick}
+            >
               Proceed to Checkout
             </PopButton>
           </div>
