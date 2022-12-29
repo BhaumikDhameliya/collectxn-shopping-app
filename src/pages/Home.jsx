@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import air_Jordan_image from '../assets/img/air_jordan.png'
 import the_only_plug_you_need_text from '../assets/svg/homepage/the_only_plug_you_need_text.svg'
 import collectxn_focused_woman from '../assets/img/collectxn_focused_woman.png'
 import style_for_men from '../assets/svg/style_banner/style_for_men.svg'
@@ -35,7 +34,7 @@ import { getAllProducts } from '../api/products.api'
 import { setProducts } from '../features/product/productSlice'
 import ExploreCategory from '../components/Explore/ExploreCategory'
 import UserReviewCarousel from '../components/Carousel/UserReviewCarousel'
-import { Carousel } from 'react-responsive-carousel'
+import HomeBannerCarousel from '../components/Carousel/HomeBannerCarousel'
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -63,33 +62,7 @@ const Home = () => {
       <div className="bg-black-mate text-white bg-[url('/src/assets/img/gird_pattern.png')] bg-contain pt-16.5 tablet:pt-22">
         <div className="pt-[14px] tablet:pt-6 laptop:pt-9 px-4 tablet:px-8 laptop:px-20">
           <div className="relative">
-            <Carousel
-              statusFormatter={() => {}}
-              infiniteLoop
-              showThumbs={false}
-              preventMovementUntilSwipeScrollTolerance={true}
-            >
-              <img
-                src={air_Jordan_image}
-                alt="air_Jordan_image"
-                className="w-full"
-              />
-              <img
-                src={air_Jordan_image}
-                alt="air_Jordan_image"
-                className="w-full"
-              />
-              <img
-                src={air_Jordan_image}
-                alt="air_Jordan_image"
-                className="w-full"
-              />
-              <img
-                src={air_Jordan_image}
-                alt="air_Jordan_image"
-                className="w-full"
-              />
-            </Carousel>
+            <HomeBannerCarousel />
             <div className="hidden laptop:block absolute right-0 bottom-2 transform translate-y-full -translate-x-1/2">
               <a href="#exploreProduct">
                 <img
