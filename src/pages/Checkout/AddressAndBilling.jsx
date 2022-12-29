@@ -67,11 +67,14 @@ const AddressAndBilling = () => {
   return (
     <>
       <div className="flex flex-col w-full laptop:bg-[#FAFAFA] laptop:border laptop:rounded-10">
-        <div className="flex flex-col px-4 tablet:px-8 pt-4 pb-6 gap-4">
-          <div className="flex items-center justify-between py-4 pt-4 pb-6 gap-4">
+        <div className="flex flex-col px-4 tablet:px-8 pt-4 pb-6 gap-4 laptop:pt-8">
+          <div className="flex items-center justify-between py-4 pt-4 pb-6 gap-4 laptop:py-3">
             <p className="font-bold text-xl">Shipping Address</p>
             <div>
-              <PopButton btnClasses="bg-black-mate" onClick={toggleShowAddress}>
+              <PopButton
+                btnClasses="bg-black-mate laptop:text-13 laptop:py-2"
+                onClick={toggleShowAddress}
+              >
                 Add address
               </PopButton>
             </div>

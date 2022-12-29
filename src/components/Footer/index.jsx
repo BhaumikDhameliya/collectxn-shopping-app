@@ -13,8 +13,8 @@ const Footer = () => {
   return (
     <div className="bg-black-mate text-white px-4 py-10 tablet:px-8 tablet:py-16 laptop:p-20 flex flex-col gap-12">
       <div className="flex flex-col gap-12">
-        <div className="flex flex-col gap-12 laptop:flex-row">
-          <div className="flex flex-col gap-12 tablet:flex-row">
+        <div className="flex flex-col gap-12 laptop:flex-row laptop:justify-between">
+          <div className="flex flex-col gap-12 tablet:flex-row laptop:w-full laptop:max-w-[50%]">
             <div>
               <div className="tablet:flex tablet:flex-col gap-12">
                 <img src={logo_collectxn_white} alt="logo_collectxn_white" />
@@ -28,7 +28,7 @@ const Footer = () => {
               <KeepInTouch />
             </div>
           </div>
-          <div className="hidden laptop:block flex-grow">
+          <div className="hidden laptop:block flex-grow max-w-[50%] laptop:transform laptop:translate-x-20 -translate-y-12">
             <TheOnlyPlug />
           </div>
         </div>

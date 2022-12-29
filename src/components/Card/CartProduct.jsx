@@ -107,12 +107,23 @@ const CartProduct = (props) => {
         <div className="flex items-center justify-between gap-3">
           <p className="font-bold">₹ {cartItem?.price}</p>
           <div className="flex items-center p-2 gap-2 bg-white border rounded-full">
-            <button disabled={quantity < 2} onClick={handleDecreaseQuantity}>
-              <Minus size={12} color={quantity < 2 ? '#B3B3B3' : '#161617'} />
+            <button
+              disabled={quantity < 2}
+              onClick={handleDecreaseQuantity}
+              className="w-6 h-6 flex items-center justify-center"
+            >
+              <Minus
+                size={12}
+                strokeWidth={3}
+                color={quantity < 2 ? '#B3B3B3' : '#161617'}
+              />
             </button>
             <p>{quantity}</p>
-            <button onClick={handleIncreaseQuantity}>
-              <Plus size={12} />
+            <button
+              onClick={handleIncreaseQuantity}
+              className="w-6 h-6 flex items-center justify-center"
+            >
+              <Plus size={12} strokeWidth={3} />
             </button>
           </div>
         </div>

@@ -80,7 +80,11 @@ const Login = () => {
         </div>
       </div>
       <div className="hidden laptop:block max-w-[50%]">
-        <img src={img_log_in} alt="Log in" className="h-full w-full" />
+        <img
+          src={img_log_in}
+          alt="Log in"
+          className="h-full w-full object-cover"
+        />
       </div>
     </div>
   )

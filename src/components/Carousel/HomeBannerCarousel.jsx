@@ -6,6 +6,7 @@ import HomeBanner from '../Banners/HomeBanner'
 const HomeBannerCarousel = () => {
   return (
     <Carousel
+      autoPlay={true}
       statusFormatter={() => {}}
       infiniteLoop
       showThumbs={false}

@@ -9,7 +9,7 @@ const QuickLinks = () => {
   return (
     <div className="flex w-full gap-12 tablet:justify-around font-medium text-base tablet:text-xl">
       <div className="flex flex-col gap-4">
-        <div className="font-cera-pro font-bold text-xs tablet:text-lg text-[#A8A8A8]">
+        <div className="font-cera-pro font-bold text-xs tablet:text-base tracking-[0.075em] text-[#A8A8A8] uppercase">
           Quick links
         </div>
         {Object.entries(categories || {})?.map(([categoryId, category]) => {
@@ -26,7 +26,7 @@ const QuickLinks = () => {
         })}
       </div>
       <div className="flex flex-col gap-4">
-        <div className="font-cera-pro font-bold text-xs tablet:text-lg text-[#A8A8A8]">
+        <div className="font-cera-pro font-bold text-xs tablet:text-base tracking-[0.075em] text-[#A8A8A8] uppercase">
           Company
         </div>
         <div>

@@ -74,7 +74,11 @@ const Signup = () => {
         </div>
       </div>
       <div className="hidden laptop:block max-w-[50%]">
-        <img src={img_signup} alt="sign up" className="h-full w-full" />
+        <img
+          src={img_signup}
+          alt="sign up"
+          className="h-full w-full object-cover"
+        />
       </div>
     </div>
   )

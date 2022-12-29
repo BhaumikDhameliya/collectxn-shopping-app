@@ -27,6 +27,7 @@ const indicatorStyles = {
 const UserReviewCarousel = () => {
   return (
     <Carousel
+      autoPlay={true}
       infiniteLoop
       showThumbs={false}
       statusFormatter={() => {}}

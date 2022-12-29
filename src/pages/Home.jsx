@@ -2,14 +2,14 @@ import React, { useCallback, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import the_only_plug_you_need_text from '../assets/svg/homepage/the_only_plug_you_need_text.svg'
-import collectxn_focused_woman from '../assets/img/collectxn_focused_woman.png'
+import collectxn_focused_woman from '../assets/svg/homepage/collectxn_focused_woman.svg'
 import style_for_men from '../assets/svg/style_banner/style_for_men.svg'
 import fashion_for_women from '../assets/svg/style_banner/fashion_for_women.svg'
 import style_fashion_men_women from '../assets/svg/style_banner/style_fashion_men_women.svg'
 import explore_collectxn from '../assets/svg/style_banner/explore_collectxn.svg'
-import happy_customers from '../assets/img/happy_customers.png'
-import trusted_suppliers from '../assets/img/trusted_suppliers.png'
-import unique_collection from '../assets/img/unique_collection.png'
+import happy_customers from '../assets/svg/homepage/happy_customers.svg'
+import trusted_suppliers from '../assets/svg/homepage/trusted_suppliers.svg'
+import unique_collection from '../assets/svg/homepage/unique_collection.svg'
 
 // import { ReactComponent as HappyCustomers } from '../assets/svg/happy_customers.svg'
 import scroll_to_explore from '../assets/svg/scroll_to_explore.svg'
@@ -139,7 +139,7 @@ const Home = () => {
           <div className="w-min whitespace-nowrap mt-12 tablet:mt-8">
             <PopButton variant="outline">About us</PopButton>
           </div>
-          <div className="absolute max-w-[70%] right-1 -bottom-3/10 tablet:-right-[30%] tablet:top-0 tablet:w-3/5 laptop:w-auto flex tablet:h-full">
+          <div className="absolute max-w-[70%] right-1 -bottom-3/10 tablet:-right-[30%] tablet:top-0 tablet:w-3/5 laptop:w-auto flex tablet:h-[110%] transform -translate-y-[4%]">
             <img
               src={collectxn_focused_woman}
               alt="collectxn_focused"
@@ -171,7 +171,7 @@ const Home = () => {
           <div className="absolute top-0">
             <img src={explore_collectxn} alt="explore_collectxn" />
           </div>
-          <div>
+          <div className="relative">
             <img src={style_fashion_men_women} alt="style_fashion_men_women" />
           </div>
         </div>

@@ -192,7 +192,9 @@ const ProductInfo = () => {
                   </div>
                   <div className="flex flex-col gap-2">
                     <div className="flex items-center gap-10">
-                      <p className="font-bold text-2xl">{product?.name}</p>
+                      <p className="font-bold text-2xl laptop:text-31">
+                        {product?.name}
+                      </p>
                       {isLiked ? (
                         <button className="" onClick={handleRemoveLikeProduct}>
                           <Heart
@@ -217,10 +219,10 @@ const ProductInfo = () => {
                   <div className="flex flex-col gap-2">
                     <div className="flex items-center gap-2 5">
                       <div className="flex items-end gap-2 5">
-                        <p className="font-medium tablet:text-xl">
+                        <p className="font-medium tablet:text-xl laptop:text-2xl">
                           ₹ {selectedSize?.price || product?.price || 0}
                         </p>
-                        <p className="text-10 tablet:text-13 line-through text-gray-dark">
+                        <p className="text-10 tablet:text-13 laptop:text-base line-through text-gray-dark">
                           ₹{' '}
                           {selectedSize?.displayPrice ||
                             product?.displayPice ||
@@ -235,7 +237,7 @@ const ProductInfo = () => {
                         % off)
                       </p>
                     </div>
-                    <p className="font-bold text-10 text-green">
+                    <p className="font-bold text-10 laptop:text-13 text-green">
                       Inclusive of all taxes
                     </p>
                   </div>
@@ -287,15 +289,24 @@ const ProductInfo = () => {
                 <div className="flex items-center gap-3">
                   <p className="font-medium">Select Quantity</p>
                   <div className="flex items-center p-2 gap-2 bg-white border rounded-full">
-                    <button disabled={quantity < 2} onClick={decreaseQuantity}>
+                    <button
+                      disabled={quantity < 2}
+                      onClick={decreaseQuantity}
+                      className="w-6 h-6 flex items-center justify-center"
+                    >
                       <Minus
                         size={12}
+                        strokeWidth={3}
                         color={quantity < 2 ? '#B3B3B3' : '#161617'}
                       />
                     </button>
                     <p>{quantity}</p>
-                    <button onClick={increaseQuantity}>
-                      <Plus size={12} />
+                    <button
+                      onClick={increaseQuantity}
+                      className="w-6 h-6 flex items-center justify-center"
+                      color="black"
+                    >
+                      <Plus size={12} strokeWidth={3} />
                     </button>
                   </div>
                 </div>

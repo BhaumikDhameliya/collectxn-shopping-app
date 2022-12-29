@@ -9,7 +9,7 @@ import BlogCard from '../Card/BlogCard'
 const FromTheMagazineBanner = () => {
   return (
     <div className="bg-black-mate px-1/20 pt-1/10 pb-1/20 ">
-      <div className="bg-[url('/src/assets/img/chex_mask.png')] bg-contain">
+      <div className="bg-[url('/src/assets/img/chex_mask.png')] bg-contain bg-no-repeat">
         <div className="pb-9 pt-32 tablet:pt-0">
           <img
             src={from_the_magazine_text}

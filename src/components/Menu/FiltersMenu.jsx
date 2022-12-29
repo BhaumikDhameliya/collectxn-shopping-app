@@ -111,7 +111,9 @@ const FiltersMenu = (props) => {
           <button onClick={toggle} className="laptop:hidden">
             <ArrowSVG />
           </button>
-          <p className="font-bold text-xl uppercase">Filters</p>
+          <p className="font-bold text-xl uppercase laptop:normal-case">
+            Filters
+          </p>
         </div>
         <div className="flex flex-col gap-6 pt-4">
           <CategoryFilter />
