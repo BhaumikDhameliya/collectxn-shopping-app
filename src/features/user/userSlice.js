@@ -4,6 +4,7 @@ export const userSlice = createSlice({
   name: 'user',
   initialState: {
     profile: {},
+    orders: [],
   },
   reducers: {
     setUserProfile: (state, action) => {
@@ -47,6 +48,9 @@ export const userSlice = createSlice({
           (address) => address.id !== action.payload?.id,
         )
     },
+    setUserOrders: (state, action) => {
+      return { ...state, orders: action.payload }
+    },
   },
 })
 
@@ -56,6 +60,7 @@ export const {
   updateDeliveryAddress,
   makeDefaultDeliveryAddress,
   removeDeliveryAddress,
+  setUserOrders,
 } = userSlice.actions
 
 export default userSlice.reducer
