@@ -26,7 +26,7 @@ export const getAllProducts = async (params) => {
 
 export const getProductDetails = async (productId, params) => {
   try {
-    const res = await collectionAPI.get(`/products/id/${productId}`, { params })
+    const res = await collectionAPI.get(`/products/${productId}`, { params })
     console.log('res-----', res)
     return res?.data
   } catch (error) {

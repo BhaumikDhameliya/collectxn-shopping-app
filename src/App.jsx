@@ -33,8 +33,7 @@ import { getCategories } from './api/categories.api'
 export default function App() {
   const dispatch = useDispatch()
   const getUserProfileData = useCallback(async () => {
-    const res = await getUserProfile()
-    const userP = res?.data?.user
+    const userP = await getUserProfile()
     if (!userP) {
       localStorage.removeItem('authToken')
     }
@@ -43,10 +42,9 @@ export default function App() {
 
   const getCategoryData = useCallback(async () => {
     const res = await getCategories()
-    const catList = res?.data?.categories
-    if (catList) {
+    if (res) {
       let categories = {}
-      catList.forEach((cat) => {
+      res.forEach((cat) => {
         categories[cat.id] = cat
       })
       dispatch(setCategories(categories))
@@ -63,7 +61,7 @@ export default function App() {
   }, [getUserProfileData, getCategoryData])
 
   return (
-    <div className="text-black-mate min-h-screen">
+    <div className="min-h-screen text-black-mate">
       <Routes>
         <Route path="routes" element={<RouteLinks />} />
         <Route path="/auth">

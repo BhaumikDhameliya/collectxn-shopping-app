@@ -12,7 +12,7 @@ export const createAddress = async (payload) => {
 
 export const updateAddress = async (addressId, payload) => {
   try {
-    const res = await collectionAPI.patch(`/addresses/id/${addressId}`, payload)
+    const res = await collectionAPI.patch(`/addresses/${addressId}`, payload)
     console.log('res-----', res)
     return res?.data
   } catch (error) {
@@ -22,10 +22,7 @@ export const updateAddress = async (addressId, payload) => {
 
 export const deleteAddress = async (addressId, payload) => {
   try {
-    const res = await collectionAPI.delete(
-      `/addresses/id/${addressId}`,
-      payload,
-    )
+    const res = await collectionAPI.delete(`/addresses/${addressId}`, payload)
     console.log('res-----', res)
     return res?.data
   } catch (error) {

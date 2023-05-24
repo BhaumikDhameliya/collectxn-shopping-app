@@ -42,8 +42,7 @@ const Home = () => {
   const { categories } = useSelector((state) => state.category)
 
   const getAllProuductsData = useCallback(async () => {
-    const res = await getAllProducts()
-    const productList = res?.data?.products
+    const productList = await getAllProducts()
     if (productList) {
       let products = {}
       productList.forEach((product) => {
@@ -63,7 +62,7 @@ const Home = () => {
         <div className="pt-[14px] tablet:pt-6 laptop:pt-9 px-4 tablet:px-8 laptop:px-20">
           <div className="relative">
             <HomeBannerCarousel />
-            <div className="hidden laptop:block absolute right-0 bottom-2 transform translate-y-full -translate-x-1/2">
+            <div className="absolute right-0 hidden transform -translate-x-1/2 translate-y-full laptop:block bottom-2">
               <a href="#exploreProduct">
                 <img
                   src={scroll_to_explore}
@@ -92,22 +91,22 @@ const Home = () => {
         </div>
         <Crawler />
       </div>
-      <div className="bg-white overflow-auto no-scrollbar relative">
+      <div className="relative overflow-auto bg-white no-scrollbar">
         <div className="relative bg-[#F1F1F1] pl-4 pr-8 pt-13 pb-37 tablet:rounded-2xl tablet:mt-12 laptop:mt-24 tablet:mb-32 tablet:ml-1/20 tablet:w-2/3 tablet:pt-6 laptop:pt-12 tablet:pb-7 laptop:pb-20 tablet:pl-8 laptop:pl-16 mb-42 bg-[url('/src/assets/img/grid_chex_gray.png')]">
           <div className="flex flex-col gap-7 tablet:gap-2">
             <div className="flex flex-col gap-5 tablet:gap-7 tablet:max-w-[70%]">
-              <div className="font-bold text-2xl tablet:text-31 laptop:text-6xl whitespace-nowrap">
+              <div className="text-2xl font-bold tablet:text-31 laptop:text-6xl whitespace-nowrap">
                 <p>Collectxn Focused on </p>
                 <p>Providing Collectables In </p>
                 <p>Best way</p>
               </div>
-              <p className="font-cera-pro text-xs tablet:text-13 laptop:text-2xl max-w-lg">
+              <p className="max-w-lg text-xs font-cera-pro tablet:text-13 laptop:text-2xl">
                 One of the leading retailers in premium sports footware and
                 apparel in India, which caters to sneaker enthusiasts.
               </p>
             </div>
             <div className="flex gap-6 tablet:gap-8 mt-5 font-cera-pro font-medium text-10 laptop:text-base text-black text-center tablet:max-w-[70%]">
-              <div className="flex flex-col gap-1 tablet:gap-2 items-center w-28 tablet:w-36">
+              <div className="flex flex-col items-center gap-1 tablet:gap-2 w-28 tablet:w-36">
                 {/* <TrustedSuppliers /> */}
                 <img
                   src={trusted_suppliers}
@@ -116,7 +115,7 @@ const Home = () => {
                 />
                 <p className="">Trusted Suppliers</p>
               </div>
-              <div className="flex flex-col gap-1 tablet:gap-2 items-center w-28 tablet:w-36">
+              <div className="flex flex-col items-center gap-1 tablet:gap-2 w-28 tablet:w-36">
                 {/* <UniqueCollection /> */}
                 <img
                   src={unique_collection}
@@ -125,7 +124,7 @@ const Home = () => {
                 />
                 <p className="">Unique Collection</p>
               </div>
-              <div className="flex flex-col gap-1 tablet:gap-2 items-center w-28 tablet:w-36">
+              <div className="flex flex-col items-center gap-1 tablet:gap-2 w-28 tablet:w-36">
                 {/* <HappyCustomers /> */}
                 <img
                   src={happy_customers}
@@ -136,7 +135,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className="w-min whitespace-nowrap mt-12 tablet:mt-8">
+          <div className="mt-12 w-min whitespace-nowrap tablet:mt-8">
             <PopButton variant="outline">About us</PopButton>
           </div>
           <div className="absolute max-w-[70%] right-1 -bottom-3/10 tablet:-right-[30%] tablet:top-0 tablet:w-3/5 laptop:w-auto flex tablet:h-[110%] transform -translate-y-[4%]">
@@ -178,7 +177,7 @@ const Home = () => {
       </div>
       <div className="bg-white p-1/20" id="exploreProduct">
         <div className="flex flex-col gap-12">
-          <div className="font-cera-pro font-bold text-xl laptop:text-3xl">
+          <div className="text-xl font-bold font-cera-pro laptop:text-3xl">
             Explore Various Categories
           </div>
           <div className="flex flex-col gap-12 pb-16">

@@ -72,8 +72,7 @@ const ProductInfo = () => {
   }
 
   const getCategoryProuductsData = useCallback(async () => {
-    const res = await getProductDetails(productId)
-    const product = res?.data?.product
+    const product = await getProductDetails(productId)
     if (product) {
       dispatch(setProductDetail({ productId, product }))
     }
@@ -122,11 +121,11 @@ const ProductInfo = () => {
     <div>
       <div className="relative laptop:hidden">
         <img src={air_max} alt="air_max" className="w-full" />
-        <div className="flex gap-3 absolute right-4 bottom-4 tablet:right-8 tablet:bottom-8">
-          <div className="p-2 border border-black-mate rounded-full">
+        <div className="absolute flex gap-3 right-4 bottom-4 tablet:right-8 tablet:bottom-8">
+          <div className="p-2 border rounded-full border-black-mate">
             <ArrowLeft />
           </div>
-          <div className="p-2 border border-black-mate rounded-full">
+          <div className="p-2 border rounded-full border-black-mate">
             <ArrowRight />
           </div>
         </div>
@@ -144,25 +143,25 @@ const ProductInfo = () => {
           { text: product?.name },
         ]}
       />
-      <div className="flex px-20 justify-between">
-        <div className="hidden laptop:flex items-start justify-center flex-grow">
+      <div className="flex justify-between px-20">
+        <div className="items-start justify-center flex-grow hidden laptop:flex">
           {product?.ProductImages?.length === 1 ? (
-            <div className="relative flex items-center justify-center rounded-md bg-gray-100 flex-grow">
+            <div className="relative flex items-center justify-center flex-grow bg-gray-100 rounded-md">
               <img
                 src={product?.ProductImages?.[0]?.image}
                 alt={product?.ProductImages?.[0]?.image}
-                className="rounded-md w-full"
+                className="w-full rounded-md"
               />
               <div className="absolute opacity-20 left-4 bottom-4 tablet:left-8 tablet:bottom-8">
                 <img src={logo_cxn_black} alt="logo_cxn_black" />
               </div>
             </div>
           ) : (
-            <div className="hidden laptop:grid grid-cols-2 gap-4">
+            <div className="hidden grid-cols-2 gap-4 laptop:grid">
               {product?.ProductImages?.map((prImage) => {
                 return (
                   <div
-                    className="relative flex items-center justify-center rounded-md bg-gray-100 max-w-sm"
+                    className="relative flex items-center justify-center max-w-sm bg-gray-100 rounded-md"
                     key={prImage?.image}
                   >
                     <img
@@ -180,10 +179,10 @@ const ProductInfo = () => {
             </div>
           )}
         </div>
-        <div className="flex flex-col px-4 py-6 gap-10 laptop:w-2/5">
+        <div className="flex flex-col gap-10 px-4 py-6 laptop:w-2/5">
           <div className="flex flex-col gap-10">
             <div className="flex flex-col items-center gap-10">
-              <div className="flex flex-col pb-8 gap-6 border-b border-gray-mid w-full">
+              <div className="flex flex-col w-full gap-6 pb-8 border-b border-gray-mid">
                 <div className="flex flex-col gap-3">
                   <div className="flex gap-3 font-medium text-13 text-gray-dark">
                     <p>{product?.brand}</p>
@@ -192,7 +191,7 @@ const ProductInfo = () => {
                   </div>
                   <div className="flex flex-col gap-2">
                     <div className="flex items-center gap-10">
-                      <p className="font-bold text-2xl laptop:text-31">
+                      <p className="text-2xl font-bold laptop:text-31">
                         {product?.name}
                       </p>
                       {isLiked ? (
@@ -222,7 +221,7 @@ const ProductInfo = () => {
                         <p className="font-medium tablet:text-xl laptop:text-2xl">
                           ₹ {selectedSize?.price || product?.price || 0}
                         </p>
-                        <p className="text-10 tablet:text-13 laptop:text-base line-through text-gray-dark">
+                        <p className="line-through text-10 tablet:text-13 laptop:text-base text-gray-dark">
                           ₹{' '}
                           {selectedSize?.displayPrice ||
                             product?.displayPice ||
@@ -243,7 +242,7 @@ const ProductInfo = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col pb-10 gap-8 border-b border-gray-light w-full">
+              <div className="flex flex-col w-full gap-8 pb-10 border-b border-gray-light">
                 {product?.ColorAvailabilities?.length && (
                   <div className="flex gap-3">
                     {product.ColorAvailabilities.map((prd) => {
@@ -288,11 +287,11 @@ const ProductInfo = () => {
                 )}
                 <div className="flex items-center gap-3">
                   <p className="font-medium">Select Quantity</p>
-                  <div className="flex items-center p-2 gap-2 bg-white border rounded-full">
+                  <div className="flex items-center gap-2 p-2 bg-white border rounded-full">
                     <button
                       disabled={quantity < 2}
                       onClick={decreaseQuantity}
-                      className="w-6 h-6 flex items-center justify-center"
+                      className="flex items-center justify-center w-6 h-6"
                     >
                       <Minus
                         size={12}
@@ -303,7 +302,7 @@ const ProductInfo = () => {
                     <p>{quantity}</p>
                     <button
                       onClick={increaseQuantity}
-                      className="w-6 h-6 flex items-center justify-center"
+                      className="flex items-center justify-center w-6 h-6"
                       color="black"
                     >
                       <Plus size={12} strokeWidth={3} />
@@ -318,8 +317,8 @@ const ProductInfo = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col pb-6 gap-5 border-b border-gray-light">
-              <p className="font-bold text-lg">DELIVERY OPTIONS</p>
+            <div className="flex flex-col gap-5 pb-6 border-b border-gray-light">
+              <p className="text-lg font-bold">DELIVERY OPTIONS</p>
               <div className="flex flex-col gap-3">
                 <div>
                   <TextInput
@@ -331,14 +330,14 @@ const ProductInfo = () => {
                 <div className="flex flex-col gap-2.5">
                   {/* <div className="flex items-center gap-1 5">
                     <GetItBySVG />
-                    <p className="font-cera-pro font-medium">
+                    <p className="font-medium font-cera-pro">
                       Get it by Sun, Sep 18
                     </p>
                   </div> */}
                   {product?.allowPayOnDelivery && (
                     <div className="flex items-center gap-1 5">
                       <PayOnDeliverySVG />
-                      <p className="font-cera-pro font-medium">
+                      <p className="font-medium font-cera-pro">
                         Pay on delivery available
                       </p>
                     </div>
@@ -348,12 +347,12 @@ const ProductInfo = () => {
             </div>
           </div>
           <div className="flex flex-col gap-5">
-            <p className="font-bold text-lg">PRODUCT DESCRIPTION</p>
+            <p className="text-lg font-bold">PRODUCT DESCRIPTION</p>
             <div className="flex flex-col gap-6 ont-cera-pro">
               <p className="">{product?.description}</p>
-              {/* <div>
+              <div>
                 <p className="font-bold">More Benefits</p>
-                <ul className="list-disc pl-6">
+                <ul className="pl-6 list-disc">
                   <li>
                     See-through leno-weave upper is strong and
                     ultra-lightweight.
@@ -367,7 +366,7 @@ const ProductInfo = () => {
                   <li>Style: DH0832-071</li>
                   <li>Country/Region of Origin: Vietnam</li>
                 </ul>
-              </div> */}
+              </div>
               <div>
                 <p className="font-bold">Product Policy</p>
                 <p className="">{product?.policy}</p>

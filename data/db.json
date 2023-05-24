@@ -1,0 +1,30 @@
+{
+  "products": [
+    {
+      "name": "Air Jordan XXXVI Low",
+      "description": "From the perimeter to the hoop, take the court with confidence. This is one of the lightest Air Jordan game shoes to date, with a minimal but durable leno-weave upper reinforced with tough plastic details. Meanwhile, Zoom Air cushioning delivers energy return and elite responsiveness. The game asks for everything—now you have the shoe to match.",
+      "id": 1,
+      "isLiked": true,
+      "ColorAvailabilities": [],
+      "policy": "",
+      "Category": { "id": 1, "name": "New Release" },
+      "CategoryId": 1,
+      "ProductImages": [{ "image": "" }],
+      "brand": "Addidas",
+      "releaseYear": "2023",
+      "price": 9999,
+      "displayPrice": 14999,
+      "discountPercent": 33,
+      "allowPayOnDelivery": true
+    }
+  ],
+  "categories": [
+    { "name": "New Release", "id": 1 },
+    { "name": "Sneakers", "id": 2 },
+    { "name": "Jewellary", "id": 3 },
+    { "name": "Play station", "id": 4 }
+  ],
+  "addresses": [],
+  "orders": [],
+  "user": []
+}

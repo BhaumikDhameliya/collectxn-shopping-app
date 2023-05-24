@@ -62,8 +62,7 @@ const ProductListing = () => {
   const getCategoryProuductsData = useCallback(
     async (params) => {
       setIsLoading(true)
-      const res = await getAllProducts(params)
-      const productList = res?.data?.products
+      const productList = await getAllProducts(params)
       if (productList) {
         let products = {}
         productList.forEach((product) => {
@@ -95,7 +94,7 @@ const ProductListing = () => {
         <SortByMenu toggle={toggleSortByMenu} setSortBy={setSortBy} />
       )}
       {showFiltersMenu && <FiltersMenu toggle={toggleFiltersMenu} />}
-      <div className="flex items-center divide-x border-b text-center laptop:hidden">
+      <div className="flex items-center text-center border-b divide-x laptop:hidden">
         <button className="flex-grow p-4 font-bold" onClick={toggleFiltersMenu}>
           Filters
         </button>
@@ -118,8 +117,8 @@ const ProductListing = () => {
           <div className="hidden laptop:block">
             <FiltersMenu {...{ setIsLoading }} />
           </div>
-          <div className="flex flex-col gap-8 px-4 tablet:px-8 laptop:px-10 flex-grow">
-            <div className="hidden laptop:flex items-center justify-end gap-2">
+          <div className="flex flex-col flex-grow gap-8 px-4 tablet:px-8 laptop:px-10">
+            <div className="items-center justify-end hidden gap-2 laptop:flex">
               <p className="font-bold">sort by:</p>
               <div>
                 <SelectInput
@@ -129,9 +128,9 @@ const ProductListing = () => {
                 />
               </div>
             </div>
-            <div className="bg-pink rounded flex items-center justify-between">
+            <div className="flex items-center justify-between rounded bg-pink">
               <div className="ml-5 tablet:ml-9 my-2.5 tablet:my-8 whitespace-nowrap text-white">
-                <div className="font-bold text-sm tablet:text-2xl laptop:text-4xl">
+                <div className="text-sm font-bold tablet:text-2xl laptop:text-4xl">
                   <p>Flat ₹500 off +</p>
                   <p>Free Shipping</p>
                 </div>
@@ -149,7 +148,7 @@ const ProductListing = () => {
                 <img
                   src={category_banner}
                   alt="category_banner"
-                  className="h-full object-cover"
+                  className="object-cover h-full"
                 />
               </div>
             </div>
@@ -158,7 +157,7 @@ const ProductListing = () => {
               {isLoading ? (
                 <Spinner />
               ) : Object.keys(products || {}).length ? (
-                <div className="grid grid-cols-2 tablet:grid-cols-4 laptop:grid-cols-3 justify-between gap-4 tablet:gap-6">
+                <div className="grid justify-between grid-cols-2 gap-4 tablet:grid-cols-4 laptop:grid-cols-3 tablet:gap-6">
                   {Object.entries(products || {}).map(
                     ([productId, product], index) => {
                       if (index > 3) return null

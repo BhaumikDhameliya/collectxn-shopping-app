@@ -39,8 +39,7 @@ const FiltersMenu = (props) => {
   const getCategoryProuductsData = useCallback(
     async (params) => {
       setIsLoading(true)
-      const res = await getAllProducts(params)
-      const productList = res?.data?.products
+      const productList = await getAllProducts(params)
       if (productList) {
         let products = {}
         productList.forEach((product) => {
@@ -105,13 +104,13 @@ const FiltersMenu = (props) => {
   }, [brands, fetchFilteredProducts])
 
   return (
-    <div className="absolute laptop:relative bg-white flex flex-col w-full z-10">
+    <div className="absolute z-10 flex flex-col w-full bg-white laptop:relative">
       <div className="p-6 laptop:pl-10 laptop:pr-0">
         <div className="flex items-center gap-6 pb-5">
           <button onClick={toggle} className="laptop:hidden">
             <ArrowSVG />
           </button>
-          <p className="font-bold text-xl uppercase laptop:normal-case">
+          <p className="text-xl font-bold uppercase laptop:normal-case">
             Filters
           </p>
         </div>
@@ -138,7 +137,7 @@ const FiltersMenu = (props) => {
           <PriceFilter {...{ minPrice, setMinPrice, maxPrice, setMaxPrice }} />
         </div>
       </div>
-      {/* <div className="flex flex-row items-center border divide-x text-center laptop:hidden">
+      {/* <div className="flex flex-row items-center text-center border divide-x laptop:hidden">
         <button
           className="flex flex-grow px-2.5 py-4 items-center justify-center"
           onClick={toggle}

@@ -64,7 +64,7 @@ const Navbar = () => {
                   />
                 )}
               </div>
-              <div className="hidden tablet:flex flex-none">
+              <div className="flex-none hidden tablet:flex">
                 {showMenu ? (
                   <img src={logo_collectxn_black} alt="collection logo" />
                 ) : (
@@ -75,7 +75,7 @@ const Navbar = () => {
             {!showMenu && (
               <>
                 <div className="hidden laptop:block">
-                  <ul className="flex gap-8 text-white font-bold text-base whitespace-nowrap">
+                  <ul className="flex gap-8 text-base font-bold text-white whitespace-nowrap">
                     {Object.entries(categories || {})?.map(([catId, cat]) => {
                       return (
                         <li
@@ -126,7 +126,7 @@ const Navbar = () => {
                     <button onClick={toggleSearchMenu} className="flex gap-2.5">
                       <SearchIcon />
                       <div className="hidden laptop:block">
-                        <span className="text-white font-medium">Search</span>
+                        <span className="font-medium text-white">Search</span>
                       </div>
                     </button>
                   </div>
@@ -178,10 +178,10 @@ const Navbar = () => {
               )
             })}
           </ul>
-          <div className="flex items-center justify-center px-3 py-4 gap-2 tablet:hidden">
+          <div className="flex items-center justify-center gap-2 px-3 py-4 tablet:hidden">
             <p>
               <button
-                className="flex items-center px-3 py-2 gap-2 bg-punchy-neon border rounded-3xl"
+                className="flex items-center gap-2 px-3 py-2 border bg-punchy-neon rounded-3xl"
                 onClick={gotoProfile}
               >
                 <UserSVG fill="#000000" />

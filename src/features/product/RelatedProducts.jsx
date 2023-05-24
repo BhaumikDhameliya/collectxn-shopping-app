@@ -14,8 +14,7 @@ const RelatedProducts = () => {
   // console.log('Product-----', product)
 
   const getCategoryProuductsData = useCallback(async () => {
-    const res = await getRelatedProductDetails({ productId })
-    const productList = res?.data?.related
+    const productList = await getRelatedProductDetails({ productId })
     if (productList) {
       setRelatedProductList(productList)
     }
@@ -26,13 +25,13 @@ const RelatedProducts = () => {
   }, [getCategoryProuductsData])
 
   return (
-    <div className="flex flex-col items-center gap-4 laptop:gap-8 px-1/20 my-16">
-      <div className="flex justify-between items-center w-full">
-        <div className="font-cera-pro font-bold text-2xl ">
+    <div className="flex flex-col items-center gap-4 my-16 laptop:gap-8 px-1/20">
+      <div className="flex items-center justify-between w-full">
+        <div className="text-2xl font-bold font-cera-pro ">
           Product you might like
         </div>
       </div>
-      <div className="flex items-center gap-6 w-full overflow-x-scroll no-scrollbar pb-1/20">
+      <div className="flex items-center w-full gap-6 overflow-x-scroll no-scrollbar pb-1/20">
         {relatedProductList?.map((product) => {
           return <ProductCardScrollable product={product} key={product.id} />
         })}
